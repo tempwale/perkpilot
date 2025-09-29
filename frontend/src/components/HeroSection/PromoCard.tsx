@@ -2,7 +2,6 @@ import React from "react";
 import { AppIcon } from "./AppIcon";
 import { CursorPointer } from "./CursorPointer";
 import {
-  imgFreepikBackground120081,
   imgDeviconSlack,
   imgDeviconFigma,
   imgLogosAirtable,
@@ -10,6 +9,7 @@ import {
   imgDeviconFramermotion,
   imgSkillIconsWebflow,
   imgHugeIconsChatGPT,
+  image,
 } from "./assets";
 
 // White circle logo component with lightning bolt
@@ -295,7 +295,7 @@ export const PromoCard: React.FC = () => {
         <img
           alt=""
           className="absolute inset-0 max-w-none object-center object-cover pointer-events-none size-full"
-          src={imgFreepikBackground120081}
+          src={image}
         />
       </div>
 
