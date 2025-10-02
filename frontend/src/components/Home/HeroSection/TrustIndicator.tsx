@@ -1,7 +1,7 @@
 import React from "react";
-import profile1 from "../../assets/images/profiles/profile-1.svg";
-import profile2 from "../../assets/images/profiles/profile-2.svg";
-import profile3 from "../../assets/images/profiles/profile-3.svg";
+import profile1 from "../../../assets/images/profiles/profile-1.svg";
+import profile2 from "../../../assets/images/profiles/profile-2.svg";
+import profile3 from "../../../assets/images/profiles/profile-3.svg";
 
 // Star icon component
 const StarIcon: React.FC<{ size?: number; className?: string }> = ({

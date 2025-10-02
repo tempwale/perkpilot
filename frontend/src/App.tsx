@@ -1,16 +1,14 @@
-import Header from "./components/Header";
-import HeroSection from "./components/HeroSection";
+import { Routes, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import DealsPage from "./pages/DealsPage";
 import "./App.css";
 
 function App() {
   return (
-    <div className="min-h-screen bg-black">
-      <div className="px-[50px]">
-        <Header />
-        <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[rgba(255,255,255,0.08)] to-transparent"></div>
-        <HeroSection />
-      </div>
-    </div>
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/deals" element={<DealsPage />} />
+    </Routes>
   );
 }
 

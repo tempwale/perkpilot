@@ -1,8 +1,8 @@
 import React from "react";
 import { HeroContent } from "./HeroSection/HeroContent";
 import { PromoCard } from "./HeroSection/PromoCard";
-import { HeroBackground } from "./HeroSection/HeroBackground";
-import { TestimonialsSection } from "./TestimonialsSection";
+import { TestimonialsSection } from "./HeroSection/TestimonialsSection";
+import Background from "../Background";
 
 const HeroSection: React.FC = () => {
   return (
@@ -13,10 +13,10 @@ const HeroSection: React.FC = () => {
       }}
     >
       {/* Background SVG */}
-      <HeroBackground />
+      <Background />
 
       {/* Main Content */}
-      <div className="relative z-10 flex items-start justify-between w-full gap-[8px] flex-1">
+      <div className="relative z-10 flex items-start justify-between w-full gap-[8px] pl-15 flex-1">
         <div className="flex-[6]">
           <HeroContent />
         </div>

@@ -1,11 +1,11 @@
 import React from "react";
 
-interface HeroBackgroundProps {
+interface BackgroundProps {
   className?: string;
   style?: React.CSSProperties;
 }
 
-export const HeroBackground: React.FC<HeroBackgroundProps> = ({
+export const Background: React.FC<BackgroundProps> = ({
   className = "",
   style = {},
 }) => {
@@ -32,4 +32,4 @@ export const HeroBackground: React.FC<HeroBackgroundProps> = ({
   );
 };
 
-export default HeroBackground;
+export default Background;

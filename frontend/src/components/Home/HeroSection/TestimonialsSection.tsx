@@ -42,14 +42,14 @@ const TestimonialItem: React.FC<TestimonialItemProps> = ({ quote }) => (
 export const TestimonialsSection: React.FC = () => {
   const testimonials = [
     {
-      quote: "Saved a good amount of money by purchasing tools via perkpilot.",
+      quote: '"Saved a good amount of money by purchasing tools via perkpilot."',
     },
     {
       quote:
-        "Perkpilot is awesome platform for finding deals at discounted price.",
+        '"Perkpilot is awesome platform for finding deals at discounted price."',
     },
     {
-      quote: "Choosing perkpilot over other marketplace is the best decision.",
+      quote: '"Choosing perkpilot over other marketplace is the best decision."',
     },
   ];
 
