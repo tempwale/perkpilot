@@ -84,7 +84,7 @@ const defaultBenefits: Benefit[] = [
 
 const Benefits: React.FC<BenefitsProps> = ({ benefits = defaultBenefits }) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-24 mt-12 w-full max-w-6xl justify-items-center">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-6 mt-12 w-full max-w-6xl justify-items-center">
       {benefits.map((benefit, index) => (
         <div
           key={index}

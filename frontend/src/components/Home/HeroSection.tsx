@@ -18,7 +18,7 @@ const HeroSection: React.FC = () => {
       <Background />
 
       {/* Main Content */}
-      <div className="relative z-10 flex flex-col lg:flex-row items-start justify-between w-full gap-[20px] lg:gap-[8px] lg:pl-15 flex-1">
+      <div className="relative z-10 flex flex-col lg:flex-row items-start justify-between w-full gap-[20px] lg:gap-[8px] lg:pl-0 flex-1">
         {/* Desktop: Left side content */}
         <div className="w-full lg:flex-[6] order-1 lg:order-1">
           <HeroContent />
