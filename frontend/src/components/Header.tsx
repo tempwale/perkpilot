@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Logo from "./Logo";
 
 // Hamburger Menu Icon Component
@@ -63,6 +63,7 @@ const CloseIcon = () => (
 const Header = () => {
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -70,10 +71,24 @@ const Header = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      setIsScrolled(scrollTop > 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <>
       <div
-        className="backdrop-blur-[8px] backdrop-filter bg-[rgba(255,255,255,0.01)] border-b border-[rgba(255,255,255,0.08)] border-solid box-border flex items-center justify-between px-[20px] lg:px-[100px] py-[24px] relative w-full max-w-full h-[80px] shrink-0 mx-auto z-[100]"
+        className={`${
+          isScrolled
+            ? "backdrop-blur-[8px] backdrop-filter bg-[rgba(255,255,255,0.01)]"
+            : "bg-transparent"
+        } border-b border-[rgba(255,255,255,0.08)] border-solid box-border flex items-center justify-between px-[20px] lg:px-[100px] py-[24px] fixed top-0 left-0 w-full h-[80px] shrink-0 z-[100] transition-all duration-300`}
         data-name="Header"
         data-node-id="1:1124"
       >
@@ -133,13 +148,22 @@ const Header = () => {
             >
               <p className="leading-[24px]">Reviews</p>
             </Link>
-            <div
-              className="bg-clip-text bg-gradient-to-r font-['Plus_Jakarta_Sans:Regular',_sans-serif] font-normal from-[rgba(250,250,250,0.6)] leading-[0] relative shrink-0 text-[16px] text-center to-[rgba(148,148,148,0.6)] whitespace-nowrap cursor-pointer hover:from-[#fafafa] hover:to-[#949494] transition-all"
+            <Link
+              to="/comparisons"
+              className={`bg-clip-text bg-gradient-to-r font-['Plus_Jakarta_Sans:${
+                isActive("/comparisons") ? "SemiBold" : "Regular"
+              }',_sans-serif] ${
+                isActive("/comparisons") ? "font-semibold" : "font-normal"
+              } ${
+                isActive("/comparisons")
+                  ? "from-[#fafafa] to-[#949494]"
+                  : "from-[rgba(250,250,250,0.6)] to-[rgba(148,148,148,0.6)]"
+              } leading-[0] relative shrink-0 text-[16px] text-center whitespace-nowrap hover:from-[#fafafa] hover:to-[#949494] transition-all`}
               data-node-id="1:1136"
               style={{ WebkitTextFillColor: "transparent" }}
             >
               <p className="leading-[24px]">Comparisons</p>
-            </div>
+            </Link>
             <Link
               to="/deals"
               className={`bg-clip-text bg-gradient-to-r font-['Plus_Jakarta_Sans:${
@@ -156,13 +180,22 @@ const Header = () => {
             >
               <p className="leading-[24px]">Deals</p>
             </Link>
-            <div
-              className="bg-clip-text bg-gradient-to-r font-['Plus_Jakarta_Sans:Regular',_sans-serif] font-normal from-[rgba(250,250,250,0.6)] leading-[0] relative shrink-0 text-[16px] text-center to-[rgba(148,148,148,0.6)] whitespace-nowrap cursor-pointer hover:from-[#fafafa] hover:to-[#949494] transition-all"
+            <Link
+              to="/blogs"
+              className={`bg-clip-text bg-gradient-to-r font-['Plus_Jakarta_Sans:${
+                isActive("/blogs") ? "SemiBold" : "Regular"
+              }',_sans-serif] ${
+                isActive("/blogs") ? "font-semibold" : "font-normal"
+              } ${
+                isActive("/blogs")
+                  ? "from-[#fafafa] to-[#949494]"
+                  : "from-[rgba(250,250,250,0.6)] to-[rgba(148,148,148,0.6)]"
+              } leading-[0] relative shrink-0 text-[16px] text-center whitespace-nowrap hover:from-[#fafafa] hover:to-[#949494] transition-all`}
               data-node-id="1:1138"
               style={{ WebkitTextFillColor: "transparent" }}
             >
               <p className="leading-[24px]">Blogs</p>
-            </div>
+            </Link>
           </div>
         </div>
 
@@ -237,13 +270,22 @@ const Header = () => {
               >
                 Reviews
               </Link>
-              <div
-                className="bg-clip-text bg-gradient-to-r font-['Plus_Jakarta_Sans:Regular',_sans-serif] font-normal from-[rgba(250,250,250,0.95)] to-[rgba(148,148,148,0.95)] text-[22px] py-4 cursor-pointer block hover:from-[#fafafa] hover:to-[#949494] transition-all border-b border-[rgba(255,255,255,0.08)]"
-                style={{ WebkitTextFillColor: "transparent" }}
+              <Link
+                to="/comparisons"
                 onClick={() => setIsMobileMenuOpen(false)}
+                className={`bg-clip-text bg-gradient-to-r font-['Plus_Jakarta_Sans:${
+                  isActive("/comparisons") ? "SemiBold" : "Regular"
+                }',_sans-serif] ${
+                  isActive("/comparisons") ? "font-semibold" : "font-normal"
+                } ${
+                  isActive("/comparisons")
+                    ? "from-[#fafafa] to-[#949494]"
+                    : "from-[rgba(250,250,250,0.95)] to-[rgba(148,148,148,0.95)]"
+                } text-[22px] py-4 block hover:from-[#fafafa] hover:to-[#949494] transition-all border-b border-[rgba(255,255,255,0.08)]`}
+                style={{ WebkitTextFillColor: "transparent" }}
               >
                 Comparisons
-              </div>
+              </Link>
               <Link
                 to="/deals"
                 onClick={() => setIsMobileMenuOpen(false)}
@@ -260,13 +302,22 @@ const Header = () => {
               >
                 Deals
               </Link>
-              <div
-                className="bg-clip-text bg-gradient-to-r font-['Plus_Jakarta_Sans:Regular',_sans-serif] font-normal from-[rgba(250,250,250,0.95)] to-[rgba(148,148,148,0.95)] text-[22px] py-4 cursor-pointer block hover:from-[#fafafa] hover:to-[#949494] transition-all border-b border-[rgba(255,255,255,0.08)]"
-                style={{ WebkitTextFillColor: "transparent" }}
+              <Link
+                to="/blogs"
                 onClick={() => setIsMobileMenuOpen(false)}
+                className={`bg-clip-text bg-gradient-to-r font-['Plus_Jakarta_Sans:${
+                  isActive("/blogs") ? "SemiBold" : "Regular"
+                }',_sans-serif] ${
+                  isActive("/blogs") ? "font-semibold" : "font-normal"
+                } ${
+                  isActive("/blogs")
+                    ? "from-[#fafafa] to-[#949494]"
+                    : "from-[rgba(250,250,250,0.95)] to-[rgba(148,148,148,0.95)]"
+                } text-[22px] py-4 block hover:from-[#fafafa] hover:to-[#949494] transition-all border-b border-[rgba(255,255,255,0.08)]`}
+                style={{ WebkitTextFillColor: "transparent" }}
               >
                 Blogs
-              </div>
+              </Link>
 
               {/* Mobile Get Started Button */}
               <div className="pt-6">
