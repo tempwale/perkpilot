@@ -333,7 +333,7 @@ export default function ReviewDetailPage() {
           </div>
           <ReviewDetailContent reviewData={reviewData} />
         </div>
-        <ProductDetailsSection title={reviewData.title} />
+        <ProductDetailsSection />
         <RatingsDetails />
         <ProsCons
           pros={reviewData.pros.map((pro: string, index: number) => ({
