@@ -60,9 +60,9 @@ const ComparisionsGrid: React.FC = () => {
     },
     {
       app1Name: "Notion",
-      app1Icon: logosAirtable, // Using Airtable icon as placeholder for Notion
+      app1Icon: logosAirtable,
       app2Name: "Obsidian",
-      app2Icon: deviconSlack, // Using Slack icon as placeholder for Obsidian
+      app2Icon: deviconSlack,
       title: "Notion Vs Obsidian",
       subtitle: "Knowledge Management Battle",
       description:
