@@ -1,13 +1,18 @@
 import React from "react";
 import ComparisionsCard from "./ComparisionsCard";
+import deviconFigma from "../../../assets/images/app-icons/devicon_figma.svg";
+import deviconFramermotion from "../../../assets/images/app-icons/devicon_framermotion.svg";
+import deviconSlack from "../../../assets/images/app-icons/devicon_slack.svg";
+import logosAirtable from "../../../assets/images/app-icons/logos_airtable.svg";
+import skillIconsWebflow from "../../../assets/images/app-icons/skill-icons_webflow.svg";
 
 const ComparisionsGrid: React.FC = () => {
   const comparisons = [
     {
       app1Name: "Framer",
-      app1Icon: "src/assets/images/app-icons/devicon_figma.svg",
+      app1Icon: deviconFramermotion,
       app2Name: "Webflow",
-      app2Icon: "src/assets/images/app-icons/devicon_figma.svg",
+      app2Icon: skillIconsWebflow,
       title: "Framer Vs Webflow",
       subtitle: "Battle of Best No-Code Dev Tool",
       description:
@@ -15,9 +20,9 @@ const ComparisionsGrid: React.FC = () => {
     },
     {
       app1Name: "Figma",
-      app1Icon: "src/assets/images/app-icons/devicon_figma.svg",
+      app1Icon: deviconFigma,
       app2Name: "Adobe XD",
-      app2Icon: "src/assets/images/app-icons/devicon_figma.svg",
+      app2Icon: deviconFigma, // Using Figma icon as placeholder for Adobe XD
       title: "Figma Vs Adobe XD",
       subtitle: "Design Tool Showdown",
       description:
@@ -25,9 +30,9 @@ const ComparisionsGrid: React.FC = () => {
     },
     {
       app1Name: "Notion",
-      app1Icon: "src/assets/images/app-icons/devicon_figma.svg",
+      app1Icon: logosAirtable, // Using Airtable icon as placeholder for Notion
       app2Name: "Obsidian",
-      app2Icon: "src/assets/images/app-icons/devicon_figma.svg",
+      app2Icon: deviconSlack, // Using Slack icon as placeholder for Obsidian
       title: "Notion Vs Obsidian",
       subtitle: "Knowledge Management Battle",
       description:
@@ -35,9 +40,9 @@ const ComparisionsGrid: React.FC = () => {
     },
     {
       app1Name: "Framer",
-      app1Icon: "src/assets/images/app-icons/devicon_figma.svg",
+      app1Icon: deviconFramermotion,
       app2Name: "Webflow",
-      app2Icon: "src/assets/images/app-icons/devicon_figma.svg",
+      app2Icon: skillIconsWebflow,
       title: "Framer Vs Webflow",
       subtitle: "Battle of Best No-Code Dev Tool",
       description:
@@ -45,9 +50,9 @@ const ComparisionsGrid: React.FC = () => {
     },
     {
       app1Name: "Figma",
-      app1Icon: "src/assets/images/app-icons/devicon_figma.svg",
+      app1Icon: deviconFigma,
       app2Name: "Adobe XD",
-      app2Icon: "src/assets/images/app-icons/devicon_figma.svg",
+      app2Icon: deviconFigma, // Using Figma icon as placeholder for Adobe XD
       title: "Figma Vs Adobe XD",
       subtitle: "Design Tool Showdown",
       description:
@@ -55,9 +60,9 @@ const ComparisionsGrid: React.FC = () => {
     },
     {
       app1Name: "Notion",
-      app1Icon: "src/assets/images/app-icons/devicon_figma.svg",
+      app1Icon: logosAirtable, // Using Airtable icon as placeholder for Notion
       app2Name: "Obsidian",
-      app2Icon: "src/assets/images/app-icons/devicon_figma.svg",
+      app2Icon: deviconSlack, // Using Slack icon as placeholder for Obsidian
       title: "Notion Vs Obsidian",
       subtitle: "Knowledge Management Battle",
       description:
