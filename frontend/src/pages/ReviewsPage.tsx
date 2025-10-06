@@ -48,11 +48,9 @@ export default function ReviewsPage() {
           <SearchSection />
           <ReviewsSection />
 
-          
-        <Footer />
+          <Footer />
         </div>
       </div>
     </div>
   );
-
 }

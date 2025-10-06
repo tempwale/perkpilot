@@ -335,22 +335,22 @@ export default function ReviewDetailPage() {
             </div>
             <ReviewDetailContent reviewData={reviewData} />
           </div>
-        <ProductDetailsSection />
-        <RatingsDetails />
-        <ProsCons
-          pros={reviewData.pros.map((pro: string, index: number) => ({
-            id: `pro-${index}`,
-            text: pro,
-          }))}
-          cons={reviewData.cons.map((con: string, index: number) => ({
-            id: `con-${index}`,
-            text: con,
-          }))}
-        />
-        <BestUseCase useCases={reviewData.bestUseCases} />
-        <PopularIntegrations integrations={reviewData.integrations} />
-        <CTAReviewDetails />
-        <Footer />
+          <ProductDetailsSection />
+          <RatingsDetails />
+          <ProsCons
+            pros={reviewData.pros.map((pro: string, index: number) => ({
+              id: `pro-${index}`,
+              text: pro,
+            }))}
+            cons={reviewData.cons.map((con: string, index: number) => ({
+              id: `con-${index}`,
+              text: con,
+            }))}
+          />
+          <BestUseCase useCases={reviewData.bestUseCases} />
+          <PopularIntegrations integrations={reviewData.integrations} />
+          <CTAReviewDetails />
+          <Footer />
         </div>
       </div>
     </div>

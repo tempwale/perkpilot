@@ -49,9 +49,8 @@ export default function BlogsPage() {
           <DealsSection />
 
           <Footer />
-          </div>
         </div>
       </div>
-   
+    </div>
   );
 }

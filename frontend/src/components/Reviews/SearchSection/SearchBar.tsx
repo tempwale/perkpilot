@@ -284,7 +284,7 @@ export default function SearchBar({
 
       {/* Suggestion Tags */}
       <div
-        className="content-stretch flex gap-[8px] md:gap-[16px] items-start relative w-full overflow-x-auto md:overflow-x-visible justify-start md:justify-center pt-10 px-4 md:px-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+        className="content-stretch flex gap-[8px] md:gap-[16px] items-start relative w-full overflow-x-auto md:overflow-x-visible justify-start md:justify-center px-4 md:px-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
         data-node-id="234:516"
       >
         {suggestions.map((suggestion, index) => (

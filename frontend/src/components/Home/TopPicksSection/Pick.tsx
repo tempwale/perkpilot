@@ -166,9 +166,8 @@ const Pick: React.FC<PickProps> = ({
 
         {/* Redeem Button */}
         <button
-          className="flex-1 flex items-center justify-center px-3 py-2 rounded-full text-[#09090B] text-base"
+          className="flex-1 flex items-center justify-center px-3 py-2 rounded-full text-[#09090B] hover:text-white text-base bg-[#FAFAFA] hover:bg-gradient-to-b hover:from-[#501BD6] hover:to-[#7F57E2] transition-all duration-200"
           style={{
-            backgroundColor: "#FAFAFA",
             fontFamily: "Poppins",
             lineHeight: "24px",
           }}

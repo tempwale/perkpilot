@@ -114,7 +114,12 @@ const Stats: React.FC = () => {
   const animatedValue2 = useCountUp(stats[2].numericValue, 2500, isInView);
   const animatedValue3 = useCountUp(stats[3].numericValue, 2800, isInView);
 
-  const animatedValues = [animatedValue0, animatedValue1, animatedValue2, animatedValue3];
+  const animatedValues = [
+    animatedValue0,
+    animatedValue1,
+    animatedValue2,
+    animatedValue3,
+  ];
 
   const formatValue = (animatedValue: number, originalStat: StatItem) => {
     if (originalStat.suffix === "M+") {

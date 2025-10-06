@@ -201,12 +201,12 @@ const Header = () => {
 
         {/* Desktop Get Started Button */}
         <div
-          className="hidden lg:flex backdrop-blur-sm backdrop-filter bg-gradient-to-b from-[#501bd6] to-[#7f57e2] h-[48px] items-center justify-center px-[32px] py-[12px] gap-[12px] rounded-[100px] border border-[rgba(250,250,250,0.08)]"
+          className="hidden lg:flex group backdrop-blur-sm backdrop-filter bg-gradient-to-b from-[#501bd6] to-[#7f57e2] hover:bg-white hover:from-white hover:to-white h-[48px] items-center justify-center px-[32px] py-[12px] gap-[12px] rounded-[100px] border border-[rgba(250,250,250,0.08)] cursor-pointer transition-all duration-200"
           data-name="Buttons/main"
           data-node-id="1:1139"
         >
           <div
-            className="font-['Plus_Jakarta_Sans:Medium',_sans-serif] font-medium leading-[0] text-[16px] text-center text-neutral-50 whitespace-nowrap"
+            className="font-['Plus_Jakarta_Sans:Medium',_sans-serif] font-medium leading-[0] text-[16px] text-center text-neutral-50 group-hover:text-black whitespace-nowrap transition-colors duration-200"
             data-node-id="1:1140"
           >
             <p className="leading-[24px]">Get Started</p>
@@ -323,10 +323,10 @@ const Header = () => {
               <div className="pt-6">
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="backdrop-blur-sm backdrop-filter bg-gradient-to-b from-[#501bd6] to-[#7f57e2] flex h-[56px] items-center justify-center px-[32px] py-[12px] gap-[12px] rounded-[100px] border border-[rgba(250,250,250,0.08)] w-full hover:opacity-90 transition-opacity shadow-xl"
+                  className="group backdrop-blur-sm backdrop-filter bg-gradient-to-b from-[#501bd6] to-[#7f57e2] hover:bg-white hover:from-white hover:to-white flex h-[56px] items-center justify-center px-[32px] py-[12px] gap-[12px] rounded-[100px] border border-[rgba(250,250,250,0.08)] w-full transition-all duration-200 shadow-xl"
                   data-name="Buttons/main"
                 >
-                  <div className="font-['Plus_Jakarta_Sans:Medium',_sans-serif] font-medium text-[18px] text-center text-neutral-50">
+                  <div className="font-['Plus_Jakarta_Sans:Medium',_sans-serif] font-medium text-[18px] text-center text-neutral-50 group-hover:text-black transition-colors duration-200">
                     Get Started
                   </div>
                 </button>
