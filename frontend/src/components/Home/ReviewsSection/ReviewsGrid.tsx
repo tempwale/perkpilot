@@ -1,6 +1,8 @@
 import React from "react";
 import ReviewsCard from "./ReviewsCard";
-
+import profile1 from "../../../assets/images/profiles/profile-1.svg";
+import profile2 from "../../../assets/images/profiles/profile-2.svg";
+import profile3 from "../../../assets/images/profiles/profile-3.svg";
 const ReviewsGrid: React.FC = () => {
   const reviewsData = [
     {
@@ -52,11 +54,7 @@ const ReviewsGrid: React.FC = () => {
             description={review.description}
             rating="4.8"
             reviewCount="1234"
-            userAvatars={[
-              "src/assets/images/profiles/profile-1.svg",
-              "src/assets/images/profiles/profile-2.svg",
-              "src/assets/images/profiles/profile-3.svg",
-            ]}
+            userAvatars={[profile1, profile2, profile3]}
             starRating="4.8/5.0"
             onReadReview={() =>
               console.log(`Read review for ${review.appName}`)
