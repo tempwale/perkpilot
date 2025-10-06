@@ -241,7 +241,7 @@ export default function SearchBar({
       >
         <div className="box-border flex flex-wrap gap-[24px] items-center justify-between content-center overflow-clip px-[16px] py-[8px] relative rounded-[inherit] w-full h-full">
           {/* Search Icon and Input */}
-          <div className="absolute content-stretch flex gap-[12px] items-center left-[16px] top-1/2 translate-y-[-50%] flex-1">
+          <div className="absolute content-stretch flex gap-[12px] items-center left-[16px] top-1/2 translate-y-[-50%] right-[140px]">
             <div
               className="relative shrink-0 size-[24px]"
               data-name="search-normal"
@@ -256,7 +256,16 @@ export default function SearchBar({
                 onKeyPress={handleKeyPress}
                 onClick={handleInputClick}
                 placeholder={placeholder}
-                className="capitalize font-normal leading-[24px] text-[16px] text-zinc-300 bg-transparent border-none outline-none w-full placeholder:text-zinc-300 placeholder:capitalize"
+                className="bg-transparent border-none outline-none w-full placeholder:text-[#D4D4D8] placeholder:capitalize"
+                style={{
+                  color: "var(--Primary-200, #D4D4D8)",
+                  fontFamily: '"Plus Jakarta Sans"',
+                  fontSize: "16px",
+                  fontStyle: "normal",
+                  fontWeight: 400,
+                  lineHeight: "24px",
+                  textTransform: "capitalize",
+                }}
               />
             </div>
           </div>

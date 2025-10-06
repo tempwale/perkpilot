@@ -167,7 +167,7 @@ const ReviewsCard: React.FC<ReviewsCardProps> = ({
           </div>
           <p
             className="italic text-neutral-50"
-            style={{ fontFamily: "Plus Jakarta Sans", fontSize: "14px" }}
+            style={{ fontFamily: "Plus Jakarta Sans", fontSize: "12px" }}
           >
             Trusted by 50+ Founders Globally
           </p>

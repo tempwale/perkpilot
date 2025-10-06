@@ -76,7 +76,7 @@ const ComparisionsGrid: React.FC = () => {
   };
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-8">
+    <div className="w-full lg: py-8">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center items-stretch">
         {comparisons.map((comparison, index) => (
           <div key={index} className="w-full flex">

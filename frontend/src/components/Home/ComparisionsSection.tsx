@@ -14,7 +14,7 @@ const ComparisionsSection: React.FC = () => {
   };
 
   return (
-    <section className="w-full py-20 px-8">
+    <section className="w-full py-20 px-40">
       <div className="max-w-7xl mx-auto">
         <ComparisionsHeading onPrevious={handlePrevious} onNext={handleNext} />
 

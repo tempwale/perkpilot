@@ -354,7 +354,7 @@ export default function ReviewCard({
             className="aspect-[56/56] h-full mr-[-24px] relative shrink-0"
             data-node-id="250:1180"
           >
-            <div className="w-[48px] h-[48px] rounded-full bg-white border-2 border-gray-200 flex items-center justify-center">
+            <div className="w-[48px] h-[48px] rounded-full bg-white  flex items-center justify-center">
               <span className="font-['Poppins:Medium',_sans-serif] text-[12px] text-zinc-950 font-medium">
                 887+
               </span>
@@ -369,12 +369,12 @@ export default function ReviewCard({
         </div>
         <Link
           to={`/review/${id}`}
-          className="bg-white box-border content-stretch flex flex-[1_0_0] items-center justify-center min-h-px min-w-px px-[12px] py-[8px] relative rounded-[100px] shrink-0 hover:bg-gray-100 transition-colors"
+          className="group bg-white hover:bg-gradient-to-b hover:from-[#501BD6] hover:to-[#7F57E2] box-border content-stretch flex flex-[1_0_0] items-center justify-center min-h-px min-w-px px-[12px] py-[8px] relative rounded-[100px] shrink-0 transition-all duration-200"
           data-name="All Assets"
           data-node-id="250:1182"
         >
           <p
-            className="font-['Poppins:Regular',_sans-serif] leading-[24px] not-italic relative shrink-0 text-[16px] text-zinc-950"
+            className="font-['Poppins:Regular',_sans-serif] leading-[24px] not-italic relative shrink-0 text-[16px] text-zinc-950 group-hover:text-white transition-colors duration-200"
             data-node-id="250:1183"
           >
             Read Full Review
