@@ -1,8 +1,6 @@
-interface ProductFeaturesProps {
-  title: string;
-}
 
-export default function ProductFeatures({ title }: ProductFeaturesProps) {
+
+export default function ProductFeatures() {
   return (
     <div
       data-layer="Frame 2147206296"

@@ -4,13 +4,10 @@ import ProductFeatures from "./tabs/ProductFeatures";
 import ProductPricing from "./tabs/ProductPricing";
 import ProductReviews from "./tabs/ProductReviews";
 import ProductAlternatives from "./tabs/ProductAlternatives";
-import RatingsDetails from "./RatingsDetails";
 
-interface NavigationTabsProps {
-  title: string;
-}
 
-export default function NavigationTabs({ title }: NavigationTabsProps) {
+
+export default function NavigationTabs() {
   const [activeTab, setActiveTab] = useState("overview");
 
   const tabs = [
@@ -24,9 +21,9 @@ export default function NavigationTabs({ title }: NavigationTabsProps) {
   const renderTabContent = () => {
     switch (activeTab) {
       case "overview":
-        return <ProductOverview title={title} />;
+        return <ProductOverview  />;
       case "features":
-        return <ProductFeatures title={title} />;
+        return <ProductFeatures  />;
       case "pricing":
         return <ProductPricing />;
       case "reviews":
@@ -35,7 +32,7 @@ export default function NavigationTabs({ title }: NavigationTabsProps) {
       case "alternatives":
         return <ProductAlternatives />;
       default:
-        return <ProductOverview title={title} />;
+        return <ProductOverview  />;
     }
   };
 

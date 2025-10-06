@@ -429,8 +429,7 @@ interface ReviewGridProps {
 
 export default function ReviewGrid({
   Reviews = sampleReviews,
-  onViewDetails,
-  onGetReview,
+
   itemsPerPage = 6,
   showPagination = true,
 }: ReviewGridProps) {
@@ -471,22 +470,7 @@ export default function ReviewGrid({
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const handleViewDetails = (ReviewId: number) => {
-    if (onViewDetails) {
-      onViewDetails(ReviewId);
-    } else {
-      console.log(`View details for Review ${ReviewId}`);
-    }
-  };
-
-  const handleGetReview = (ReviewId: number) => {
-    if (onGetReview) {
-      onGetReview(ReviewId);
-    } else {
-      console.log(`Get Review ${ReviewId}`);
-    }
-  };
-
+ 
   return (
     <div className="w-full">
       {/* Grid Container */}
