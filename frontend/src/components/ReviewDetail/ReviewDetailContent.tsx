@@ -2,7 +2,6 @@ import Breadcrumb from "./Breadcrumb";
 import ProductHeader from "./ProductHeader";
 import CompanyStats from "./CompanyStats";
 import PricingSidebar from "./PricingSidebar";
-import NavigationTabs from "./NavigationTabs";
 
 interface ReviewDetailContentProps {
   reviewData: any;

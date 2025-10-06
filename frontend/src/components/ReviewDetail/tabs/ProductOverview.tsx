@@ -1,8 +1,6 @@
-interface ProductOverviewProps {
-  title: string;
-}
 
-export default function ProductOverview({ title }: ProductOverviewProps) {
+
+export default function ProductOverview() {
   return (
     <div
       className="bg-zinc-900 border border-[#2e2e2f] border-solid box-border content-stretch flex flex-col gap-[24px] min-h-[192px] items-start p-[24px] relative rounded-[24px] shrink-0 w-full"

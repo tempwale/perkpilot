@@ -1,9 +1,3 @@
-interface RatingBarProps {
-  stars: number;
-  percentage: number;
-  count: number;
-}
-
 interface OverallRatingProps {
   rating: number;
   totalReviews: number;

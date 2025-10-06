@@ -3,7 +3,6 @@ import Footer from "../components/Footer";
 import SearchSection from "../components/Reviews/SearchSection";
 import Background from "../components/Background";
 import ReviewsSection from "../components/Reviews/ReviewsSection";
-import ProductDetailsSection from "../components/ReviewDetail/ProductDetailsSection";
 import { UniversalBadge } from "../components/UniversalBadge";
 
 export default function ReviewsPage() {
