@@ -73,7 +73,7 @@ const Header = () => {
   return (
     <>
       <div
-        className="backdrop-blur-[8px] backdrop-filter bg-[rgba(255,255,255,0.01)] border-b border-[rgba(255,255,255,0.08)] border-solid box-border flex items-center justify-between px-[20px] md:px-[100px] py-[24px] relative w-full max-w-full h-[80px] shrink-0 mx-auto z-[100]"
+        className="backdrop-blur-[8px] backdrop-filter bg-[rgba(255,255,255,0.01)] border-b border-[rgba(255,255,255,0.08)] border-solid box-border flex items-center justify-between px-[20px] lg:px-[100px] py-[24px] relative w-full max-w-full h-[80px] shrink-0 mx-auto z-[100]"
         data-name="Header"
         data-node-id="1:1124"
       >
@@ -94,7 +94,7 @@ const Header = () => {
 
         {/* Desktop Navigation Menu */}
         <div
-          className="hidden md:flex content-stretch gap-[24px] items-center relative shrink-0"
+          className="hidden lg:flex content-stretch gap-[24px] items-center relative shrink-0"
           data-node-id="1:1131"
         >
           <div
@@ -168,7 +168,7 @@ const Header = () => {
 
         {/* Desktop Get Started Button */}
         <div
-          className="hidden md:flex backdrop-blur-sm backdrop-filter bg-gradient-to-b from-[#501bd6] to-[#7f57e2] h-[48px] items-center justify-center px-[32px] py-[12px] gap-[12px] rounded-[100px] border border-[rgba(250,250,250,0.08)]"
+          className="hidden lg:flex backdrop-blur-sm backdrop-filter bg-gradient-to-b from-[#501bd6] to-[#7f57e2] h-[48px] items-center justify-center px-[32px] py-[12px] gap-[12px] rounded-[100px] border border-[rgba(250,250,250,0.08)]"
           data-name="Buttons/main"
           data-node-id="1:1139"
         >
@@ -183,7 +183,7 @@ const Header = () => {
         {/* Mobile Hamburger Menu Button */}
         <button
           onClick={toggleMobileMenu}
-          className="md:hidden relative shrink-0 size-[40px] flex items-center justify-center"
+          className="lg:hidden relative shrink-0 size-[40px] flex items-center justify-center"
           data-name="mobile-menu-button"
         >
           {isMobileMenuOpen ? <CloseIcon /> : <HamburgerIcon />}
@@ -192,7 +192,7 @@ const Header = () => {
 
       {/* Mobile Menu Portal - positioned outside main header to avoid blur effect on logo */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-50 md:hidden">
+        <div className="fixed inset-0 z-50 lg:hidden">
           {/* Dark background overlay with custom backdrop filter */}
           <div
             className="absolute inset-0"
