@@ -8,16 +8,16 @@ interface StatItem {
 const Stats: React.FC = () => {
   const stats: StatItem[] = [
     {
-      value: "5000+",
-      label: "Happy Customers",
+      value: "500+",
+      label: "Active Deals",
     },
     {
       value: "1000+",
       label: "Expert Reviews",
     },
     {
-      value: "500+",
-      label: "Active Deals",
+      value: "5000+",
+      label: "Happy Customers",
     },
     {
       value: "2M+",

@@ -23,7 +23,7 @@ interface TestimonialItemProps {
 }
 
 const TestimonialItem: React.FC<TestimonialItemProps> = ({ quote }) => (
-  <div className="flex flex-col gap-[12px] items-center justify-center w-[260px]">
+  <div className="flex flex-col gap-[12px] items-center justify-center w-[280px] md:w-[260px] flex-shrink-0 px-4 md:px-0">
     {/* 5-star rating */}
     <div className="flex gap-[4px] items-center">
       {[...Array(5)].map((_, index) => (
@@ -32,7 +32,7 @@ const TestimonialItem: React.FC<TestimonialItemProps> = ({ quote }) => (
     </div>
 
     {/* Quote */}
-    <div className="font-['Inter'] font-normal italic text-[16px] leading-[24px] text-center text-zinc-100 min-w-full">
+    <div className="font-['Inter'] font-normal italic text-[14px] md:text-[16px] leading-[22px] md:leading-[24px] text-center text-zinc-100 min-w-full">
       <p className="whitespace-pre-wrap">{quote}</p>
     </div>
   </div>
@@ -42,22 +42,27 @@ const TestimonialItem: React.FC<TestimonialItemProps> = ({ quote }) => (
 export const TestimonialsSection: React.FC = () => {
   const testimonials = [
     {
-      quote: '"Saved a good amount of money by purchasing tools via perkpilot."',
+      quote:
+        '"Saved a good amount of money by purchasing tools via perkpilot."',
     },
     {
       quote:
         '"Perkpilot is awesome platform for finding deals at discounted price."',
     },
     {
-      quote: '"Choosing perkpilot over other marketplace is the best decision."',
+      quote:
+        '"Choosing perkpilot over other marketplace is the best decision."',
     },
   ];
 
   return (
-    <div className="flex items-center justify-between w-full  mx-auto px-30 py-20">
-      {testimonials.map((testimonial, index) => (
-        <TestimonialItem key={index} quote={testimonial.quote} />
-      ))}
+    <div className="w-full">
+      {/* Desktop: Centered grid */}
+      <div className="hidden md: block flex items-center justify-between w-full mx-auto px-30 py-20">
+        {testimonials.map((testimonial, index) => (
+          <TestimonialItem key={index} quote={testimonial.quote} />
+        ))}
+      </div>
     </div>
   );
 };

@@ -76,7 +76,7 @@ const ReviewsCard: React.FC<ReviewsCardProps> = ({
   );
 
   return (
-    <div className="backdrop-blur-md bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.08)] rounded-[24px] p-4 flex flex-col gap-4 w-full h-full max-w-[380px]">
+ <div className="backdrop-blur-md bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.08)] rounded-[24px] p-4 flex flex-col gap-4 w-full h-full max-w-[380px]">
       {/* Header Section */}
       <div className="border-b border-[rgba(235,239,245,0.12)] pb-4 flex flex-col gap-3">
         {/* App Info Row */}
@@ -186,7 +186,7 @@ const ReviewsCard: React.FC<ReviewsCardProps> = ({
         </p>
         <ArrowRightIcon />
       </button>
-    </div>
+    </div>   
   );
 };
 

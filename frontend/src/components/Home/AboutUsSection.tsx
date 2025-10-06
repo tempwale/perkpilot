@@ -5,7 +5,7 @@ import AboutUsContent from "./AboutUsSection/AboutUsContent";
 
 const AboutUsSection: React.FC = () => {
   return (
-    <section className="w-full py-[80px] relative">
+    <section className="w-full py-[0px] relative">
       <div className="relative z-10 max-w-[1200px] mx-auto px-[40px]">
         {/* Section Header with Badge and Heading */}
         <AboutUsHeading />

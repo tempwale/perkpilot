@@ -85,22 +85,21 @@ const CircleBulletPoint: React.FC<{ size?: number; className?: string }> = ({
 export const PromoCard: React.FC = () => {
   return (
     <div
-      className="bg-[#672bff] overflow-clip relative rounded-bl-[40px] rounded-tl-[40px] w-full h-[524px]"
+      className="bg-[#672bff] overflow-clip relative rounded-[40px] xl:rounded-none xl:rounded-tl-[40px] xl:rounded-bl-[40px] w-full h-[600px] md:h-[524px]"
       data-node-id="1:1142"
     >
       <div
-        className="absolute bg-[#7f57e3] h-[72px] left-0 top-[452px] w-full"
+        className="absolute bg-[#7f57e3] h-[48px] md:h-[72px] left-0 top-[552px] md:top-[452px] w-full"
         data-node-id="1:1143"
       />
 
       {/* Main Content */}
       <div
-        className="absolute content-stretch flex flex-col gap-[24px] items-start left-[24.8px] translate-y-[-50%]"
+        className="absolute content-stretch flex flex-col gap-[16px] md:gap-[24px] items-start left-[20px] md:left-[24.8px] pt-6 md:pt-10"
         data-node-id="1:1144"
-        style={{ top: "calc(50% - 69.038px)" }}
       >
         <div
-          className="capitalize font-['Plus_Jakarta_Sans'] font-bold leading-[42px] relative shrink-0 text-[32px] w-[538.704px]"
+          className="capitalize font-['Plus_Jakarta_Sans'] font-bold leading-[28px] md:leading-[42px] relative shrink-0 text-[24px] md:text-[32px] w-[300px] md:w-[538.704px]"
           data-node-id="1:1145"
           style={{
             color: "var(--Primary-25, #FAFAFA)",
@@ -118,21 +117,22 @@ export const PromoCard: React.FC = () => {
 
         {/* Feature List */}
         <div
-          className="content-stretch flex flex-col gap-[16px] items-start relative shrink-0 w-full"
+          className="content-stretch flex flex-col gap-[12px] md:gap-[16px] items-start relative shrink-0 w-full"
           data-node-id="1:1146"
         >
           <div
-            className="content-stretch flex gap-[8px] items-center relative shrink-0 w-full"
+            className="content-stretch flex gap-[6px] md:gap-[8px] items-center relative shrink-0 w-full"
             data-node-id="1:1147"
           >
             <div
-              className="relative shrink-0 size-[18px]"
+              className="relative shrink-0 size-[14px] md:size-[18px]"
               data-node-id="1:1148"
             >
-              <CircleBulletPoint size={18} />
+              <CircleBulletPoint size={14} className="md:hidden" />
+              <CircleBulletPoint size={18} className="hidden md:block" />
             </div>
             <div
-              className="bg-white box-border content-stretch flex gap-[16px] items-center justify-center px-[16px] py-[8px] relative rounded-[100px] shrink-0"
+              className="bg-white box-border content-stretch flex gap-[12px] md:gap-[16px] items-center justify-center px-[12px] md:px-[16px] py-[6px] md:py-[8px] relative rounded-[100px] shrink-0"
               data-name="Buttons/main"
               data-node-id="1:1149"
             >
@@ -141,27 +141,28 @@ export const PromoCard: React.FC = () => {
                 className="absolute border border-[rgba(235,239,245,0.12)] border-solid inset-0 pointer-events-none rounded-[100px]"
               />
               <div
-                className="font-['Plus_Jakarta_Sans:Medium',_sans-serif] font-medium leading-[0] relative shrink-0 text-[14px] text-center text-zinc-950 whitespace-nowrap"
+                className="font-['Plus_Jakarta_Sans:Medium',_sans-serif] font-medium leading-[0] relative shrink-0 text-[12px] md:text-[14px] text-center text-zinc-950 whitespace-nowrap"
                 data-node-id="1:1150"
               >
-                <p className="leading-[21px]">
+                <p className="leading-[18px] md:leading-[21px]">
                   Find & Redeem Exclusive SaaS Deals
                 </p>
               </div>
             </div>
           </div>
           <div
-            className="content-stretch flex gap-[8px] items-center relative shrink-0 w-full"
+            className="content-stretch flex gap-[6px] md:gap-[8px] items-center relative shrink-0 w-full"
             data-node-id="1:1151"
           >
             <div
-              className="relative shrink-0 size-[18px]"
+              className="relative shrink-0 size-[14px] md:size-[18px]"
               data-node-id="1:1152"
             >
-              <CircleBulletPoint size={18} />
+              <CircleBulletPoint size={14} className="md:hidden" />
+              <CircleBulletPoint size={18} className="hidden md:block" />
             </div>
             <div
-              className="bg-white box-border content-stretch flex gap-[16px] items-center justify-center px-[16px] py-[8px] relative rounded-[100px] shrink-0"
+              className="bg-white box-border content-stretch flex gap-[12px] md:gap-[16px] items-center justify-center px-[12px] md:px-[16px] py-[6px] md:py-[8px] relative rounded-[100px] shrink-0"
               data-name="Buttons/main"
               data-node-id="1:1153"
             >
@@ -170,27 +171,28 @@ export const PromoCard: React.FC = () => {
                 className="absolute border border-[rgba(235,239,245,0.12)] border-solid inset-0 pointer-events-none rounded-[100px]"
               />
               <div
-                className="font-['Plus_Jakarta_Sans:Medium',_sans-serif] font-medium leading-[0] relative shrink-0 text-[14px] text-center text-zinc-950 whitespace-nowrap"
+                className="font-['Plus_Jakarta_Sans:Medium',_sans-serif] font-medium leading-[0] relative shrink-0 text-[12px] md:text-[14px] text-center text-zinc-950 whitespace-nowrap"
                 data-node-id="1:1154"
               >
-                <p className="leading-[21px]">
+                <p className="leading-[18px] md:leading-[21px]">
                   Read Real Reviews On All The SaaS Tools
                 </p>
               </div>
             </div>
           </div>
           <div
-            className="content-stretch flex gap-[8px] items-center relative shrink-0 w-full"
+            className="content-stretch flex gap-[6px] md:gap-[8px] items-center relative shrink-0 w-full"
             data-node-id="1:1155"
           >
             <div
-              className="relative shrink-0 size-[18px]"
+              className="relative shrink-0 size-[14px] md:size-[18px]"
               data-node-id="1:1156"
             >
-              <CircleBulletPoint size={18} />
+              <CircleBulletPoint size={14} className="md:hidden" />
+              <CircleBulletPoint size={18} className="hidden md:block" />
             </div>
             <div
-              className="bg-white box-border content-stretch flex gap-[16px] items-center justify-center px-[16px] py-[8px] relative rounded-[100px] shrink-0"
+              className="bg-white box-border content-stretch flex gap-[12px] md:gap-[16px] items-center justify-center px-[12px] md:px-[16px] py-[6px] md:py-[8px] relative rounded-[100px] shrink-0"
               data-name="Buttons/main"
               data-node-id="1:1157"
             >
@@ -199,25 +201,28 @@ export const PromoCard: React.FC = () => {
                 className="absolute border border-[rgba(235,239,245,0.12)] border-solid inset-0 pointer-events-none rounded-[100px]"
               />
               <div
-                className="font-['Plus_Jakarta_Sans:Medium',_sans-serif] font-medium leading-[0] relative shrink-0 text-[14px] text-center text-zinc-950 whitespace-nowrap"
+                className="font-['Plus_Jakarta_Sans:Medium',_sans-serif] font-medium leading-[0] relative shrink-0 text-[12px] md:text-[14px] text-center text-zinc-950 whitespace-nowrap"
                 data-node-id="1:1158"
               >
-                <p className="leading-[21px]">Tools Comparisons Details</p>
+                <p className="leading-[18px] md:leading-[21px]">
+                  Tools Comparisons Details
+                </p>
               </div>
             </div>
           </div>
           <div
-            className="content-stretch flex gap-[8px] items-center relative shrink-0 w-full"
+            className="content-stretch flex gap-[6px] md:gap-[8px] items-center relative shrink-0 w-full"
             data-node-id="1:1159"
           >
             <div
-              className="relative shrink-0 size-[18px]"
+              className="relative shrink-0 size-[14px] md:size-[18px]"
               data-node-id="1:1160"
             >
-              <CircleBulletPoint size={18} />
+              <CircleBulletPoint size={14} className="md:hidden" />
+              <CircleBulletPoint size={18} className="hidden md:block" />
             </div>
             <div
-              className="bg-white box-border content-stretch flex gap-[16px] items-center justify-center px-[16px] py-[8px] relative rounded-[100px] shrink-0"
+              className="bg-white box-border content-stretch flex gap-[12px] md:gap-[16px] items-center justify-center px-[12px] md:px-[16px] py-[6px] md:py-[8px] relative rounded-[100px] shrink-0"
               data-name="Buttons/main"
               data-node-id="1:1161"
             >
@@ -226,53 +231,21 @@ export const PromoCard: React.FC = () => {
                 className="absolute border border-[rgba(235,239,245,0.12)] border-solid inset-0 pointer-events-none rounded-[100px]"
               />
               <div
-                className="font-['Plus_Jakarta_Sans:Medium',_sans-serif] font-medium leading-[0] relative shrink-0 text-[14px] text-center text-zinc-950 whitespace-nowrap"
+                className="font-['Plus_Jakarta_Sans:Medium',_sans-serif] font-medium leading-[0] relative shrink-0 text-[12px] md:text-[14px] text-center text-zinc-950 whitespace-nowrap"
                 data-node-id="1:1162"
               >
-                <p className="leading-[21px]">SaaS Tool Stacks</p>
+                <p className="leading-[18px] md:leading-[21px]">
+                  SaaS Tool Stacks
+                </p>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Floating App Icons */}
-      <AppIcon
-        src={imgDeviconSlack}
-        className="absolute left-[245.05px] top-[429px]"
-      />
-
-      <AppIcon
-        src={imgLogosAirtable}
-        className="absolute  left-[285.05px] top-[270px]"
-      />
-      <AppIcon
-        src={imgLogosLoomIcon}
-        className="absolute left-[335.05px] top-[125px]"
-      />
-      <AppIcon
-        src={imgDeviconFramermotion}
-        className="absolute left-[400.05px] top-[-10px]"
-      />
-      <AppIcon
-        src={imgHugeIconsChatGPT}
-        className="absolute left-[525.05px] top-[-60px]"
-      />
-      <AppIcon
-        src={imgSkillIconsWebflow}
-        className="absolute left-[590.05px] top-[-40px]"
-      />
-      <AppIcon
-        src={imgDeviconFigma}
-        className="absolute left-[640.05px] top-[-10px]"
-      />
-      <AppIcon
-        src={imgLogosAirtable}
-        className="absolute left-[665.05px] top-[25px]"
-      />
       {/* Brand Logo */}
       <div
-        className="absolute content-stretch flex gap-[12px] items-center right-[24.88px] top-[40.96px]"
+        className="hidden absolute content-stretch flex gap-[12px] items-center right-[24.88px] top-[40.96px] xl:block"
         data-node-id="1:1221"
       >
         <div className="relative shrink-0 size-[40px]" data-node-id="1:1222">
@@ -286,22 +259,56 @@ export const PromoCard: React.FC = () => {
         </div>
       </div>
 
-      {/* Background Image */}
+      {/* Background Image with Floating App Icons */}
       <div
-        className="absolute bottom-0 h-[370.932px] right-[10px] w-[446.743px]"
+        className="absolute bottom-0 h-[280px] md:h-[370.932px] w-[335px] md:w-[446.743px] md:right-[10px] left-1/2 -translate-x-1/2 md:-translate-x-[20%]"
         data-name="freepik__background__12008 1"
         data-node-id="1:1243"
       >
+        {/* Floating App Icons - positioned in a circle for mobile */}
+        <AppIcon
+          src={imgDeviconSlack}
+          className="absolute left-[0px] top-[80px] md:left-[0px] md:top-[272px] z-0"
+        />
+        <AppIcon
+          src={imgLogosAirtable}
+          className="absolute left-[40px] top-[80px] md:left-[25px] md:top-[125px] z-0"
+        />
+        <AppIcon
+          src={imgLogosLoomIcon}
+          className="absolute left-[40px] top-[-100px] md:left-[75px] md:top-[-25px] z-0"
+        />
+        <AppIcon
+          src={imgDeviconFramermotion}
+          className="absolute left-[110px] top-[-200px] md:left-[150px] md:top-[-175px] z-0"
+        />
+        <AppIcon
+          src={imgHugeIconsChatGPT}
+          className="absolute left-[200px] top-[-255px] md:left-[260px] md:top-[-225px] z-0"
+        />
+        <AppIcon
+          src={imgSkillIconsWebflow}
+          className="absolute left-[255px] top-[-260px] md:left-[340px] md:top-[-200px] z-0"
+        />
+        <AppIcon
+          src={imgDeviconFigma}
+          className="absolute left-[285px] top-[-255px] md:left-[375px] md:top-[-160px] z-0"
+        />
+        <AppIcon
+          src={imgLogosAirtable}
+          className="absolute left-[250px] top-[-250px] md:left-[400px] md:top-[-138px] z-0"
+        />
+
         <img
           alt=""
-          className="absolute inset-0 max-w-none object-center object-cover pointer-events-none size-full"
+          className="absolute inset-0 max-w-none object-center object-cover pointer-events-none size-full z-10"
           src={image}
         />
       </div>
 
       {/* Cursor with Text */}
       <div
-        className="absolute content-stretch flex flex-col gap-[4px] items-center rounded-[16px] top-[361.87px] translate-x-[-50%]"
+        className="hidden absolute content-stretch flex flex-col gap-[4px] items-center rounded-[16px] top-[361.87px] translate-x-[-50%] xl:block"
         data-node-id="1:1244"
         style={{ left: "calc(50% - 230px)" }}
       >

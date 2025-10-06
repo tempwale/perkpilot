@@ -1,12 +1,10 @@
 import React from "react";
-import { TrustIndicator } from "./TrustIndicator";
 import { UniversalBadge } from "../../UniversalBadge";
-import { UniversalCTAButton } from "../../UniversalCTAButton";
 
 export const HeroContent: React.FC = () => {
   return (
     <div
-      className="content-stretch flex flex-col gap-[16px] items-start justify-center relative flex-1 pl-[90px] pr-[36px] py-[22px]"
+      className="content-stretch flex flex-col gap-[12px] md:gap-[16px] items-center md:items-start justify-center relative flex-1 px-4 md:pl-[90px] md:pr-[36px] py-[16px] md:py-[22px] text-center md:text-left"
       data-node-id="1:163"
     >
       {/* Badge Section */}
@@ -20,7 +18,7 @@ export const HeroContent: React.FC = () => {
 
       {/* Main Heading */}
       <div
-        className="bg-clip-text bg-gradient-to-b font-['Plus_Jakarta_Sans'] font-bold from-[#ffffff] leading-[65px] relative shrink-0 text-[50px] to-[#949494] whitespace-pre-wrap self-stretch"
+        className="bg-clip-text bg-gradient-to-b font-['Plus_Jakarta_Sans'] font-bold from-[#ffffff] leading-[36px] md:leading-[52px] lg:leading-[65px] relative shrink-0 text-[28px] md:text-[42px] lg:text-[50px] to-[#949494] whitespace-pre-wrap self-stretch"
         data-node-id="1:170"
         style={{
           background: "linear-gradient(180deg, #FFF 0%, #949494 100%)",
@@ -35,7 +33,7 @@ export const HeroContent: React.FC = () => {
 
       {/* Subtitle */}
       <div
-        className="font-['Plus_Jakarta_Sans'] font-medium leading-[29px] relative shrink-0 text-[18px] whitespace-pre-wrap self-stretch"
+        className="font-['Plus_Jakarta_Sans'] font-medium leading-[22px] md:leading-[26px] lg:leading-[29px] relative shrink-0 text-[14px] md:text-[16px] lg:text-[18px] whitespace-pre-wrap self-stretch max-w-[320px] md:max-w-none mx-auto md:mx-0"
         data-node-id="1:171"
         style={{
           color: "var(--Primary-300, #A1A1AA)",
@@ -46,23 +44,6 @@ export const HeroContent: React.FC = () => {
           an instant, personalized list of all the software you need-with
           exclusive discounts.
         </p>
-      </div>
-
-      {/* CTA Button */}
-      <div className="mt-[20px]">
-        <UniversalCTAButton
-          text="Start Exploring Deals & Discounts"
-          icon="arrow"
-          variant="primary"
-          size="md"
-          iconRotation="-rotate-45"
-          onClick={() => console.log("CTA clicked")}
-        />
-      </div>
-
-      {/* Trust Indicator */}
-      <div className="mt-[28px]">
-        <TrustIndicator />
       </div>
     </div>
   );

@@ -84,11 +84,11 @@ const defaultBenefits: Benefit[] = [
 
 const Benefits: React.FC<BenefitsProps> = ({ benefits = defaultBenefits }) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-24 mt-12 w-full max-w-6xl">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-24 mt-12 w-full max-w-6xl justify-items-center">
       {benefits.map((benefit, index) => (
         <div
           key={index}
-          className="bg-[#0c071b] border border-[#311a6b] border-solid flex flex-col gap-[16px] items-start p-[24px] rounded-[24px] w-[292px] h-[232px]"
+          className="bg-[#0c071b] border border-[#311a6b] border-solid flex flex-col gap-[16px] items-start p-[24px] rounded-[24px] w-full max-w-[292px] h-[232px]"
         >
           {/* Icon Container */}
           <div className="bg-gradient-to-b from-[#501bd6] to-[#7f57e2] p-[2px] rounded-full w-[48px] h-[48px] flex items-center justify-center shrink-0">

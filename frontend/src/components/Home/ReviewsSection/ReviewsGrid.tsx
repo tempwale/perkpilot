@@ -42,8 +42,8 @@ const ReviewsGrid: React.FC = () => {
   ];
 
   return (
-    <div className="w-full max-w-6xl mx-auto overflow-hidden">
-      <div className="grid grid-cols-3 gap-6 justify-items-center items-stretch">
+    <div className="w-full max-w-6xl mx-auto overflow-hidden px-4 md:px-0">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 justify-items-center items-stretch">
         {reviewsData.map((review, index) => (
           <ReviewsCard
             key={index}

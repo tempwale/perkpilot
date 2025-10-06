@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import DealCard from "./DealCard";
+import ReviewCard from "./ReviewsCard";
 import Pagination from "./Pagination";
 
 // Logo Components
@@ -149,8 +149,8 @@ function WebflowLogo() {
   );
 }
 
-// Sample deals data - in a real app this would come from props or API
-const sampleDeals = [
+// Sample Reviews data - in a real app this would come from props or API
+const sampleReviews = [
   {
     id: 1,
     title: "Framer",
@@ -159,15 +159,20 @@ const sampleDeals = [
       "Every communications experience, Integrated contact center, voice, video, chat, and APIs.",
     logoComponent: <FramerLogo />,
     verified: true,
-    dealType: "Hot Deal",
-    features: [
-      "Unlimited Blocks",
-      "Team Collaboration",
-      "Advance Permissions",
-      "Version History",
+    rating: "4.8/5.0 Ratings",
+    pros: [
+      "Real-time collaboration",
+      "Browser-based",
+      "Excellent prototyping",
+      "Power design tool",
     ],
-    discount: "25% OFF",
-    savings: "Save Up To $1234",
+    cons: [
+      "Limited offline access",
+      "Pages limitations",
+      "Not ideal for e-com",
+      "Heavy websites lag",
+    ],
+    planPrice: "$14/Monthly",
   },
   {
     id: 2,
@@ -177,15 +182,20 @@ const sampleDeals = [
       "Collaborative interface design tool for teams. Create, prototype, and gather feedback all in one place.",
     logoComponent: <FigmaLogo />,
     verified: true,
-    dealType: "Limited Time",
-    features: [
+    rating: "4.9/5.0 Ratings",
+    pros: [
       "Unlimited Files",
       "Advanced Prototyping",
       "Team Libraries",
       "Version Control",
     ],
-    discount: "50% OFF",
-    savings: "Save Up To $2000",
+    cons: [
+      "Internet dependency",
+      "Learning curve",
+      "Performance issues",
+      "Limited offline features",
+    ],
+    planPrice: "$12/Monthly",
   },
   {
     id: 3,
@@ -195,15 +205,20 @@ const sampleDeals = [
       "All-in-one workspace for notes, tasks, wikis, and databases. Organize your work and life.",
     logoComponent: <NotionLogo />,
     verified: false,
-    dealType: "New Deal",
-    features: [
+    rating: "4.6/5.0 Ratings",
+    pros: [
       "Unlimited Pages",
       "Real-time Collaboration",
       "Advanced Permissions",
       "API Access",
     ],
-    discount: "40% OFF",
-    savings: "Save Up To $800",
+    cons: [
+      "Slow loading times",
+      "Complex interface",
+      "Limited formatting",
+      "No offline mode",
+    ],
+    planPrice: "$8/Monthly",
   },
   {
     id: 4,
@@ -213,15 +228,20 @@ const sampleDeals = [
       "Team communication platform with channels, direct messages, file sharing, and integrations.",
     logoComponent: <SlackLogo />,
     verified: true,
-    dealType: "Popular",
-    features: [
+    rating: "4.7/5.0 Ratings",
+    pros: [
       "Unlimited Messages",
       "App Integrations",
       "Advanced Search",
       "Guest Access",
     ],
-    discount: "30% OFF",
-    savings: "Save Up To $1500",
+    cons: [
+      "Can be distracting",
+      "Information overload",
+      "Threading confusion",
+      "Storage limitations",
+    ],
+    planPrice: "$7.25/Monthly",
   },
   {
     id: 5,
@@ -231,10 +251,15 @@ const sampleDeals = [
       "Flexible database platform that combines the simplicity of a spreadsheet with database power.",
     logoComponent: <AirtableLogo />,
     verified: true,
-    dealType: "Best Value",
-    features: ["Unlimited Bases", "Advanced Views", "Automation", "API Access"],
-    discount: "35% OFF",
-    savings: "Save Up To $1200",
+    rating: "4.5/5.0 Ratings",
+    pros: ["Unlimited Bases", "Advanced Views", "Automation", "API Access"],
+    cons: [
+      "Expensive for teams",
+      "Complex permissions",
+      "Limited reporting",
+      "Steep learning curve",
+    ],
+    planPrice: "$20/Monthly",
   },
   {
     id: 6,
@@ -244,15 +269,20 @@ const sampleDeals = [
       "Visual web design platform that generates clean, semantic code automatically.",
     logoComponent: <WebflowLogo />,
     verified: true,
-    dealType: "Hot Deal",
-    features: [
+    rating: "4.4/5.0 Ratings",
+    pros: [
       "Visual Editor",
       "CMS Integration",
       "E-commerce Features",
       "Custom Code",
     ],
-    discount: "45% OFF",
-    savings: "Save Up To $1800",
+    cons: [
+      "Steep learning curve",
+      "Expensive hosting",
+      "Limited templates",
+      "Complex interactions",
+    ],
+    planPrice: "$23/Monthly",
   },
   {
     id: 7,
@@ -262,15 +292,20 @@ const sampleDeals = [
       "Every communications experience, Integrated contact center, voice, video, chat, and APIs.",
     logoComponent: <FramerLogo />,
     verified: true,
-    dealType: "Hot Deal",
-    features: [
-      "Unlimited Blocks",
-      "Team Collaboration",
-      "Advance Permissions",
-      "Version History",
+    rating: "4.8/5.0 Ratings",
+    pros: [
+      "Real-time collaboration",
+      "Browser-based",
+      "Excellent prototyping",
+      "Power design tool",
     ],
-    discount: "25% OFF",
-    savings: "Save Up To $1234",
+    cons: [
+      "Limited offline access",
+      "Pages limitations",
+      "Not ideal for e-com",
+      "Heavy websites lag",
+    ],
+    planPrice: "$14/Monthly",
   },
   {
     id: 8,
@@ -280,15 +315,20 @@ const sampleDeals = [
       "Collaborative interface design tool for teams. Create, prototype, and gather feedback all in one place.",
     logoComponent: <FigmaLogo />,
     verified: true,
-    dealType: "Limited Time",
-    features: [
+    rating: "4.9/5.0 Ratings",
+    pros: [
       "Unlimited Files",
       "Advanced Prototyping",
       "Team Libraries",
       "Version Control",
     ],
-    discount: "50% OFF",
-    savings: "Save Up To $2000",
+    cons: [
+      "Internet dependency",
+      "Learning curve",
+      "Performance issues",
+      "Limited offline features",
+    ],
+    planPrice: "$12/Monthly",
   },
   {
     id: 9,
@@ -298,15 +338,20 @@ const sampleDeals = [
       "All-in-one workspace for notes, tasks, wikis, and databases. Organize your work and life.",
     logoComponent: <NotionLogo />,
     verified: false,
-    dealType: "New Deal",
-    features: [
+    rating: "4.6/5.0 Ratings",
+    pros: [
       "Unlimited Pages",
       "Real-time Collaboration",
       "Advanced Permissions",
       "API Access",
     ],
-    discount: "40% OFF",
-    savings: "Save Up To $800",
+    cons: [
+      "Slow loading times",
+      "Complex interface",
+      "Limited formatting",
+      "No offline mode",
+    ],
+    planPrice: "$8/Monthly",
   },
   {
     id: 10,
@@ -316,15 +361,20 @@ const sampleDeals = [
       "Team communication platform with channels, direct messages, file sharing, and integrations.",
     logoComponent: <SlackLogo />,
     verified: true,
-    dealType: "Popular",
-    features: [
+    rating: "4.7/5.0 Ratings",
+    pros: [
       "Unlimited Messages",
       "App Integrations",
       "Advanced Search",
       "Guest Access",
     ],
-    discount: "30% OFF",
-    savings: "Save Up To $1500",
+    cons: [
+      "Can be distracting",
+      "Information overload",
+      "Threading confusion",
+      "Storage limitations",
+    ],
+    planPrice: "$7.25/Monthly",
   },
   {
     id: 11,
@@ -334,10 +384,15 @@ const sampleDeals = [
       "Flexible database platform that combines the simplicity of a spreadsheet with database power.",
     logoComponent: <AirtableLogo />,
     verified: true,
-    dealType: "Best Value",
-    features: ["Unlimited Bases", "Advanced Views", "Automation", "API Access"],
-    discount: "35% OFF",
-    savings: "Save Up To $1200",
+    rating: "4.5/5.0 Ratings",
+    pros: ["Unlimited Bases", "Advanced Views", "Automation", "API Access"],
+    cons: [
+      "Expensive for teams",
+      "Complex permissions",
+      "Limited reporting",
+      "Steep learning curve",
+    ],
+    planPrice: "$20/Monthly",
   },
   {
     id: 12,
@@ -347,33 +402,38 @@ const sampleDeals = [
       "Visual web design platform that generates clean, semantic code automatically.",
     logoComponent: <WebflowLogo />,
     verified: true,
-    dealType: "Hot Deal",
-    features: [
+    rating: "4.4/5.0 Ratings",
+    pros: [
       "Visual Editor",
       "CMS Integration",
       "E-commerce Features",
       "Custom Code",
     ],
-    discount: "45% OFF",
-    savings: "Save Up To $1800",
+    cons: [
+      "Steep learning curve",
+      "Expensive hosting",
+      "Limited templates",
+      "Complex interactions",
+    ],
+    planPrice: "$23/Monthly",
   },
 ];
 
-interface DealGridProps {
-  deals?: typeof sampleDeals;
-  onViewDetails?: (dealId: number) => void;
-  onGetDeal?: (dealId: number) => void;
+interface ReviewGridProps {
+  Reviews?: typeof sampleReviews;
+  onViewDetails?: (ReviewId: number) => void;
+  onGetReview?: (ReviewId: number) => void;
   itemsPerPage?: number;
   showPagination?: boolean;
 }
 
-export default function DealGrid({
-  deals = sampleDeals,
+export default function ReviewGrid({
+  Reviews = sampleReviews,
   onViewDetails,
-  onGetDeal,
+  onGetReview,
   itemsPerPage = 6,
   showPagination = true,
-}: DealGridProps) {
+}: ReviewGridProps) {
   const [currentPage, setCurrentPage] = useState(1);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -398,12 +458,12 @@ export default function DealGrid({
   const effectiveItemsPerPage = isMobile ? 3 : itemsPerPage;
 
   // Calculate pagination
-  const totalPages = Math.ceil(deals.length / effectiveItemsPerPage);
+  const totalPages = Math.ceil(Reviews.length / effectiveItemsPerPage);
   const startIndex = (currentPage - 1) * effectiveItemsPerPage;
   const endIndex = startIndex + effectiveItemsPerPage;
-  const displayDeals = showPagination
-    ? deals.slice(startIndex, endIndex)
-    : deals;
+  const displayReviews = showPagination
+    ? Reviews.slice(startIndex, endIndex)
+    : Reviews;
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -411,19 +471,19 @@ export default function DealGrid({
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const handleViewDetails = (dealId: number) => {
+  const handleViewDetails = (ReviewId: number) => {
     if (onViewDetails) {
-      onViewDetails(dealId);
+      onViewDetails(ReviewId);
     } else {
-      console.log(`View details for deal ${dealId}`);
+      console.log(`View details for Review ${ReviewId}`);
     }
   };
 
-  const handleGetDeal = (dealId: number) => {
-    if (onGetDeal) {
-      onGetDeal(dealId);
+  const handleGetReview = (ReviewId: number) => {
+    if (onGetReview) {
+      onGetReview(ReviewId);
     } else {
-      console.log(`Get deal ${dealId}`);
+      console.log(`Get Review ${ReviewId}`);
     }
   };
 
@@ -431,20 +491,19 @@ export default function DealGrid({
     <div className="w-full">
       {/* Grid Container */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-7xl mx-auto px-4">
-        {displayDeals.map((deal) => (
-          <div key={deal.id} className="flex">
-            <DealCard
-              title={deal.title}
-              category={deal.category}
-              description={deal.description}
-              logoComponent={deal.logoComponent}
-              verified={deal.verified}
-              dealType={deal.dealType}
-              features={deal.features}
-              discount={deal.discount}
-              savings={deal.savings}
-              onViewDetails={() => handleViewDetails(deal.id)}
-              onGetDeal={() => handleGetDeal(deal.id)}
+        {displayReviews.map((Review) => (
+          <div key={Review.id} className="flex">
+            <ReviewCard
+              id={Review.id}
+              title={Review.title}
+              category={Review.category}
+              description={Review.description}
+              logoComponent={Review.logoComponent}
+              verified={Review.verified}
+              rating={Review.rating}
+              pros={Review.pros}
+              cons={Review.cons}
+              planPrice={Review.planPrice}
             />
           </div>
         ))}

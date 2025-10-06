@@ -1,13 +1,12 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import SearchSection from "../components/Deals/SearchSection";
+import SearchSection from "../components/Reviews/SearchSection";
 import Background from "../components/Background";
-import DealsSection from "../components/Deals/DealsSection";
+import ReviewsSection from "../components/Reviews/ReviewsSection";
+import ProductDetailsSection from "../components/ReviewDetail/ProductDetailsSection";
 import { UniversalBadge } from "../components/UniversalBadge";
-import Stats from "../components/Deals/Stats";
-import { CTASection } from "../components/CTASection";
 
-export default function DealsPage() {
+export default function ReviewsPage() {
   return (
     <div className="min-h-screen bg-black">
       <div className="max-w-full">
@@ -17,11 +16,11 @@ export default function DealsPage() {
           <Background />
         </div>
         {/* Hero Section */}
-        <div className="pt-24 px-4">
-          <div className="content-stretch flex flex-col gap-[24px] items-center relative w-full max-w-6xl mx-auto">
+        <div className="pt-24 px-[20px] md:px-[100px] w-full max-w-[1440px] mx-auto">
+          <div className="content-stretch flex flex-col gap-[24px] items-center relative w-full">
             <UniversalBadge
               badgeText="#1 Platform"
-              secondaryText="For Discounted SaaS Deals"
+              secondaryText="For Software Reviews"
               icon="electric"
               className=""
               variant="primary"
@@ -33,26 +32,21 @@ export default function DealsPage() {
               className="bg-clip-text bg-gradient-to-b font-bold from-[#ffffff] leading-[72px] relative shrink-0 text-[56px] text-center to-[#949494] whitespace-pre-wrap"
               style={{ WebkitTextFillColor: "transparent" }}
             >
-              Software Deals
+              Software Reviews
             </h1>
 
             {/* Description */}
             <div className="font-medium leading-[32px] relative shrink-0 text-[20px] text-center text-zinc-400 max-w-[818px] whitespace-pre-wrap">
               <p className="mb-0">
-                Stop searching endlessly. Tell our AI Agent your vision and get
-                an instant,
+                Honest, in-depth reviews of the software tools that matter
               </p>
-              <p>
-                personalized list of all the software you need-with exclusive
-                discounts.
-              </p>
+              <p>to your productivity and workflow.</p>
             </div>
           </div>
         </div>
         <SearchSection />
-        <DealsSection />
-        <Stats />
-        <CTASection />
+        <ReviewsSection />
+
         <Footer />
       </div>
     </div>

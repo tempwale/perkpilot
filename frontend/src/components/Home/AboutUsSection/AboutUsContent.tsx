@@ -11,7 +11,7 @@ const AboutUsContent: React.FC = () => {
       <AboutUsBackground />
 
       {/* Content Container */}
-      <div className="relative flex flex-col gap-[24px] items-center w-full pt-70 min-h-[600px]">
+      <div className="relative flex flex-col gap-4 md:gap-[24px] items-center w-full pt-16 md:pt-70 min-h-[400px] md:min-h-[600px] px-4 md:px-0">
         {/* Multiple Floating App Icons positioned around the content */}
 
         {/* Top center */}
@@ -68,7 +68,7 @@ const AboutUsContent: React.FC = () => {
         </div>
 
         {/* Main content centered */}
-        <div className="relative z-30 flex flex-col gap-[24px] items-center max-w-[900px] mx-auto px-4">
+        <div className="relative z-30 flex flex-col gap-4 md:gap-[24px] items-center max-w-[320px] md:max-w-[600px] lg:max-w-[900px] mx-auto px-4">
           {/* Badge with discount information */}
           <UniversalBadge
             badgeText="20% - 30%"
@@ -79,19 +79,18 @@ const AboutUsContent: React.FC = () => {
           />
 
           {/* Main heading */}
-          <h2 className="capitalize font-['Plus_Jakarta_Sans'] font-semibold text-[40px] leading-[52px] text-center text-neutral-50 max-w-full">
+          <h2 className="capitalize font-['Plus_Jakarta_Sans'] font-semibold text-[24px] md:text-[32px] lg:text-[40px] leading-[30px] md:leading-[42px] lg:leading-[52px] text-center text-neutral-50 max-w-full">
             Packed With Big Discounts.
           </h2>
 
           {/* Description text */}
-          <p className="font-['Plus_Jakarta_Sans'] font-normal text-[16px] leading-[24px] text-center text-zinc-300 w-[818px] max-w-full whitespace-pre-wrap">
+          <p className="font-['Plus_Jakarta_Sans'] font-normal text-[14px] md:text-[16px] leading-[20px] md:leading-[24px] text-center text-zinc-300 max-w-full">
             PerkPilot is packed with big discounted deals on all software
-            listings
-            {"\n"}you can find in our SaaS marketplace.
+            listings you can find in our SaaS marketplace.
           </p>
 
           {/* CTA Button */}
-          <div className="mt-[8px]">
+          <div className="mt-2 md:mt-[8px]">
             <UniversalCTAButton
               text="Explore SaaS Marketplace"
               icon="arrow"
