@@ -1,4 +1,7 @@
 import { Link } from "react-router-dom";
+import profile1 from "../../../assets/images/profiles/profile-1.svg";
+import profile2 from "../../../assets/images/profiles/profile-2.svg";
+import profile3 from "../../../assets/images/profiles/profile-3.svg";
 
 // SVG Components
 function DefaultLogo() {
@@ -322,7 +325,7 @@ export default function ReviewCard({
             data-node-id="250:1177"
           >
             <img
-              src="/src/assets/images/profiles/profile-1.svg"
+              src={profile1}
               alt="Profile 1"
               className="w-[48px] h-[48px] rounded-full object-cover"
             />
@@ -332,7 +335,7 @@ export default function ReviewCard({
             data-node-id="250:1178"
           >
             <img
-              src="/src/assets/images/profiles/profile-2.svg"
+              src={profile2}
               alt="Profile 2"
               className="w-[48px] h-[48px] rounded-full object-cover"
             />
@@ -342,7 +345,7 @@ export default function ReviewCard({
             data-node-id="250:1179"
           >
             <img
-              src="/src/assets/images/profiles/profile-3.svg"
+              src={profile3}
               alt="Profile 3"
               className="w-[48px] h-[48px] rounded-full object-cover"
             />
