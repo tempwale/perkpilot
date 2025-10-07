@@ -1,11 +1,11 @@
-import Background from "../components/Background";
-import BlogsSection from "../components/Blogs/BlogsSection";
-import SearchSection from "../components/Blogs/SearchSection";
-import Footer from "../components/Footer";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
+import SearchSection from "../components/Comparisions/SearchSection";
+import Background from "../components/Background";
 import { UniversalBadge } from "../components/UniversalBadge";
+import ComparisionsSection from "../components/Comparisions/ComparisionsSection";
 
-export default function BlogsPage() {
+export default function ComparisionsPage() {
   return (
     <div className="min-h-screen bg-black">
       <div className="max-w-full">
@@ -21,7 +21,7 @@ export default function BlogsPage() {
             <div className="content-stretch flex flex-col gap-[24px] items-center relative w-full max-w-6xl mx-auto">
               <UniversalBadge
                 badgeText="#1 Platform"
-                secondaryText="For Expert Insights"
+                secondaryText="For Software Comparisons"
                 icon="electric"
                 className=""
                 variant="primary"
@@ -33,20 +33,20 @@ export default function BlogsPage() {
                 className="bg-clip-text bg-gradient-to-b font-bold from-[#ffffff] leading-[72px] relative shrink-0 text-[56px] text-center to-[#949494] whitespace-pre-wrap"
                 style={{ WebkitTextFillColor: "transparent" }}
               >
-                Software Blogs
+                Software Comparisons{" "}
               </h1>
 
               {/* Description */}
               <div className="font-medium leading-[32px] relative shrink-0 text-[20px] text-center text-zinc-400 max-w-[818px] whitespace-pre-wrap">
                 <p className="mb-0">
-                  In-depth reviews, comparisons, and insights about the latest
-                  software tools and productivity solutions.
+                  In-depth side-by-side comparisons to help you choose the
                 </p>
+                <p>right tools for your workflow.</p>
               </div>
             </div>
           </div>
           <SearchSection />
-          <BlogsSection />
+          <ComparisionsSection />
           <Footer />
         </div>
       </div>
