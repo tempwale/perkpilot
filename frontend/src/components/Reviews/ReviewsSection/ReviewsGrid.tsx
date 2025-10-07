@@ -27,127 +27,127 @@ function FramerLogo() {
   );
 }
 
-function FigmaLogo() {
-  return (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M12 12C12 10.34 13.34 9 15 9C16.66 9 18 10.34 18 12C18 13.66 16.66 15 15 15C13.34 15 12 13.66 12 12Z"
-        fill="#1ABCFE"
-      />
-      <path
-        d="M6 21C6 19.34 7.34 18 9 18H12V21C12 22.66 10.66 24 9 24C7.34 24 6 22.66 6 21Z"
-        fill="#0ACF83"
-      />
-      <path
-        d="M12 0V9H15C16.66 9 18 7.66 18 6C18 4.34 16.66 3 15 3H12V0Z"
-        fill="#FF7262"
-      />
-      <path
-        d="M6 6C6 7.66 7.34 9 9 9H12V3H9C7.34 3 6 4.34 6 6Z"
-        fill="#F24E1E"
-      />
-      <path
-        d="M6 15C6 16.66 7.34 18 9 18H12V12H9C7.34 12 6 13.34 6 15Z"
-        fill="#A259FF"
-      />
-    </svg>
-  );
-}
+// function FigmaLogo() {
+//   return (
+//     <svg
+//       width="24"
+//       height="24"
+//       viewBox="0 0 24 24"
+//       fill="none"
+//       xmlns="http://www.w3.org/2000/svg"
+//     >
+//       <path
+//         d="M12 12C12 10.34 13.34 9 15 9C16.66 9 18 10.34 18 12C18 13.66 16.66 15 15 15C13.34 15 12 13.66 12 12Z"
+//         fill="#1ABCFE"
+//       />
+//       <path
+//         d="M6 21C6 19.34 7.34 18 9 18H12V21C12 22.66 10.66 24 9 24C7.34 24 6 22.66 6 21Z"
+//         fill="#0ACF83"
+//       />
+//       <path
+//         d="M12 0V9H15C16.66 9 18 7.66 18 6C18 4.34 16.66 3 15 3H12V0Z"
+//         fill="#FF7262"
+//       />
+//       <path
+//         d="M6 6C6 7.66 7.34 9 9 9H12V3H9C7.34 3 6 4.34 6 6Z"
+//         fill="#F24E1E"
+//       />
+//       <path
+//         d="M6 15C6 16.66 7.34 18 9 18H12V12H9C7.34 12 6 13.34 6 15Z"
+//         fill="#A259FF"
+//       />
+//     </svg>
+//   );
+// }
 
-function NotionLogo() {
-  return (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M4 4L20 4C20.55 4 21 4.45 21 5V19C21 19.55 20.55 20 20 20H4C3.45 20 3 19.55 3 19V5C3 4.45 3.45 4 4 4ZM5 6V18H19V6H5ZM7 8H17V10H7V8ZM7 12H17V14H7V12ZM7 16H13V18H7V16Z"
-        fill="white"
-      />
-    </svg>
-  );
-}
+// function NotionLogo() {
+//   return (
+//     <svg
+//       width="24"
+//       height="24"
+//       viewBox="0 0 24 24"
+//       fill="none"
+//       xmlns="http://www.w3.org/2000/svg"
+//     >
+//       <path
+//         d="M4 4L20 4C20.55 4 21 4.45 21 5V19C21 19.55 20.55 20 20 20H4C3.45 20 3 19.55 3 19V5C3 4.45 3.45 4 4 4ZM5 6V18H19V6H5ZM7 8H17V10H7V8ZM7 12H17V14H7V12ZM7 16H13V18H7V16Z"
+//         fill="white"
+//       />
+//     </svg>
+//   );
+// }
 
-function SlackLogo() {
-  return (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M5.042 15.165C5.042 16.73 3.777 18 2.217 18C0.656 18 -0.609 16.73 -0.609 15.165C-0.609 13.6 0.656 12.33 2.217 12.33H5.042V15.165Z"
-        fill="#E01E5A"
-      />
-      <path
-        d="M6.313 15.165C6.313 13.6 7.578 12.33 9.139 12.33C10.7 12.33 11.965 13.6 11.965 15.165V21.783C11.965 23.348 10.7 24.618 9.139 24.618C7.578 24.618 6.313 23.348 6.313 21.783V15.165Z"
-        fill="#E01E5A"
-      />
-      <path
-        d="M9.139 5.042C7.578 5.042 6.313 3.777 6.313 2.217C6.313 0.656 7.578 -0.609 9.139 -0.609C10.7 -0.609 11.965 0.656 11.965 2.217V5.042H9.139Z"
-        fill="#36C5F0"
-      />
-      <path
-        d="M9.139 6.313C10.7 6.313 11.965 7.578 11.965 9.139C11.965 10.7 10.7 11.965 9.139 11.965H2.521C0.96 11.965 -0.305 10.7 -0.305 9.139C-0.305 7.578 0.96 6.313 2.521 6.313H9.139Z"
-        fill="#36C5F0"
-      />
-    </svg>
-  );
-}
+// function SlackLogo() {
+//   return (
+//     <svg
+//       width="24"
+//       height="24"
+//       viewBox="0 0 24 24"
+//       fill="none"
+//       xmlns="http://www.w3.org/2000/svg"
+//     >
+//       <path
+//         d="M5.042 15.165C5.042 16.73 3.777 18 2.217 18C0.656 18 -0.609 16.73 -0.609 15.165C-0.609 13.6 0.656 12.33 2.217 12.33H5.042V15.165Z"
+//         fill="#E01E5A"
+//       />
+//       <path
+//         d="M6.313 15.165C6.313 13.6 7.578 12.33 9.139 12.33C10.7 12.33 11.965 13.6 11.965 15.165V21.783C11.965 23.348 10.7 24.618 9.139 24.618C7.578 24.618 6.313 23.348 6.313 21.783V15.165Z"
+//         fill="#E01E5A"
+//       />
+//       <path
+//         d="M9.139 5.042C7.578 5.042 6.313 3.777 6.313 2.217C6.313 0.656 7.578 -0.609 9.139 -0.609C10.7 -0.609 11.965 0.656 11.965 2.217V5.042H9.139Z"
+//         fill="#36C5F0"
+//       />
+//       <path
+//         d="M9.139 6.313C10.7 6.313 11.965 7.578 11.965 9.139C11.965 10.7 10.7 11.965 9.139 11.965H2.521C0.96 11.965 -0.305 10.7 -0.305 9.139C-0.305 7.578 0.96 6.313 2.521 6.313H9.139Z"
+//         fill="#36C5F0"
+//       />
+//     </svg>
+//   );
+// }
 
-function AirtableLogo() {
-  return (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#FFBF00" />
-      <path
-        d="M2 17L12 22L22 17"
-        stroke="#FFBF00"
-        strokeWidth="2"
-        fill="none"
-      />
-      <path
-        d="M2 12L12 17L22 12"
-        stroke="#FFBF00"
-        strokeWidth="2"
-        fill="none"
-      />
-    </svg>
-  );
-}
+// function AirtableLogo() {
+//   return (
+//     <svg
+//       width="24"
+//       height="24"
+//       viewBox="0 0 24 24"
+//       fill="none"
+//       xmlns="http://www.w3.org/2000/svg"
+//     >
+//       <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#FFBF00" />
+//       <path
+//         d="M2 17L12 22L22 17"
+//         stroke="#FFBF00"
+//         strokeWidth="2"
+//         fill="none"
+//       />
+//       <path
+//         d="M2 12L12 17L22 12"
+//         stroke="#FFBF00"
+//         strokeWidth="2"
+//         fill="none"
+//       />
+//     </svg>
+//   );
+// }
 
-function WebflowLogo() {
-  return (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M12 2C6.477 2 2 6.477 2 12C2 17.523 6.477 22 12 22C17.523 22 22 17.523 22 12C22 6.477 17.523 2 12 2ZM16.5 8L12 16L7.5 8H16.5Z"
-        fill="#4353FF"
-      />
-    </svg>
-  );
-}
+// function WebflowLogo() {
+//   return (
+//     <svg
+//       width="24"
+//       height="24"
+//       viewBox="0 0 24 24"
+//       fill="none"
+//       xmlns="http://www.w3.org/2000/svg"
+//     >
+//       <path
+//         d="M12 2C6.477 2 2 6.477 2 12C2 17.523 6.477 22 12 22C17.523 22 22 17.523 22 12C22 6.477 17.523 2 12 2ZM16.5 8L12 16L7.5 8H16.5Z"
+//         fill="#4353FF"
+//       />
+//     </svg>
+//   );
+// }
 
 // Sample Reviews data - in a real app this would come from props or API
 const sampleReviews = [
