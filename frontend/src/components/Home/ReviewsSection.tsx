@@ -1,11 +1,18 @@
 import { UniversalBadge } from "../UniversalBadge";
 import { UniversalCTAButton } from "../UniversalCTAButton";
 import ReviewsGrid from "./ReviewsSection/ReviewsGrid";
+import { motion } from "framer-motion";
 
 const ReviewsSection: React.FC = () => {
   return (
     <section className="relative w-full py-16 flex items-center justify-center">
-      <div className="flex flex-col items-center gap-6 w-full max-w-7xl px-4">
+      <motion.div
+        className="flex flex-col items-center gap-6 w-full max-w-7xl px-4"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+      >
         <UniversalBadge
           badgeText="Editors Choice"
           secondaryText="Latest Tool’s Reviews"
@@ -15,29 +22,49 @@ const ReviewsSection: React.FC = () => {
           size="md"
         />
 
-        {/* Main heading */}
-        <h2
+        {/* Main heading with animation */}
+        <motion.h2
           className="font-semibold text-[40px] leading-[52px] text-center text-neutral-50 capitalize w-full"
           style={{ fontFamily: "Plus Jakarta Sans" }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
         >
           Top Picks This Month
-        </h2>
+        </motion.h2>
 
-        {/* Description text */}
-        <p
+        {/* Description text with animation */}
+        <motion.p
           className="font-normal text-[16px] leading-[24px] text-center text-zinc-300 max-w-[818px]"
           style={{ fontFamily: "Plus Jakarta Sans" }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.35, ease: "easeOut" }}
         >
           Hand-picked software tools that deliver exceptional value and
           performance for modern teams.
-        </p>
+        </motion.p>
 
-        {/* Picks Grid below the content */}
-        <div className="mt-8 w-full overflow-hidden px-2">
+        {/* Picks Grid below the content with animation */}
+        <motion.div
+          className="mt-8 w-full overflow-hidden px-2"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
+        >
           <ReviewsGrid />
-        </div>
-        {/* CTA Button */}
-        <div className="flex justify-center mt-[10px]">
+        </motion.div>
+        {/* CTA Button with animation */}
+        <motion.div
+          className="flex justify-center mt-[10px]"
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.5, delay: 0.7, ease: "easeOut" }}
+        >
           <UniversalCTAButton
             text="Explore All Deals"
             icon="arrow"
@@ -46,8 +73,8 @@ const ReviewsSection: React.FC = () => {
             iconRotation="-rotate-45"
             onClick={() => console.log("About Us CTA clicked")}
           />
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };

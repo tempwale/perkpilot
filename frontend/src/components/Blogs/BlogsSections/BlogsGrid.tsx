@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import BlogsCard from "./BlogsCard";
 import Pagination from "./Pagination";
+import { motion } from "framer-motion";
 
 const blogsData = [
   {
@@ -167,12 +168,26 @@ const BlogsGrid: React.FC = () => {
 
   return (
     <div className="w-full flex flex-col items-center gap-8 pb-20">
-      {/* Blog Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-7xl mx-auto">
+      {/* Blog Cards Grid with animation */}
+      <motion.div
+        className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-7xl mx-auto"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+      >
         {displayBlogs.map((blog, idx) => (
-          <BlogsCard key={idx} {...blog} />
+          <motion.div
+            key={idx}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, delay: idx * 0.07, ease: "easeOut" }}
+          >
+            <BlogsCard {...blog} />
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
       {/* Pagination */}
       {showPagination && totalPages > 1 && (
         <Pagination

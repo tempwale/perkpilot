@@ -4,6 +4,7 @@ import SearchSection from "../components/Comparisions/SearchSection";
 import Background from "../components/Background";
 import { UniversalBadge } from "../components/UniversalBadge";
 import ComparisionsSection from "../components/Comparisions/ComparisionsSection";
+import { motion } from "framer-motion";
 
 export default function ComparisionsPage() {
   return (
@@ -18,7 +19,13 @@ export default function ComparisionsPage() {
           </div>
           {/* Hero Section */}
           <div className="pt-24 px-4">
-            <div className="content-stretch flex flex-col gap-[24px] items-center relative w-full max-w-6xl mx-auto">
+            <motion.div
+              className="content-stretch flex flex-col gap-[24px] items-center relative w-full max-w-6xl mx-auto"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+            >
               <UniversalBadge
                 badgeText="#1 Platform"
                 secondaryText="For Software Comparisons"
@@ -28,22 +35,32 @@ export default function ComparisionsPage() {
                 size="md"
               />
 
-              {/* Main Heading */}
-              <h1
+              {/* Main Heading with animation */}
+              <motion.h1
                 className="bg-clip-text bg-gradient-to-b font-bold from-[#ffffff] leading-[72px] relative shrink-0 text-[56px] text-center to-[#949494] whitespace-pre-wrap"
                 style={{ WebkitTextFillColor: "transparent" }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
               >
                 Software Comparisons{" "}
-              </h1>
+              </motion.h1>
 
-              {/* Description */}
-              <div className="font-medium leading-[32px] relative shrink-0 text-[20px] text-center text-zinc-400 max-w-[818px] whitespace-pre-wrap">
+              {/* Description with animation */}
+              <motion.div
+                className="font-medium leading-[32px] relative shrink-0 text-[20px] text-center text-zinc-400 max-w-[818px] whitespace-pre-wrap"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, delay: 0.35, ease: "easeOut" }}
+              >
                 <p className="mb-0">
                   In-depth side-by-side comparisons to help you choose the
                 </p>
                 <p>right tools for your workflow.</p>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
           <SearchSection />
           <ComparisionsSection />

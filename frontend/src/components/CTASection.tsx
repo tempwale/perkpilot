@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 
 const CTASection: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -24,7 +25,13 @@ const CTASection: React.FC = () => {
   return (
     <section className="w-full py-16 flex items-center justify-center">
       <div className="w-full max-w-7xl px-4">
-        <div className="relative bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-[24px] px-4 md:px-10 py-6 md:py-12 flex flex-col gap-6 items-center justify-center text-center text-white overflow-hidden">
+        <motion.div
+          className="relative bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-[24px] px-4 md:px-10 py-6 md:py-12 flex flex-col gap-6 items-center justify-center text-center text-white overflow-hidden"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+        >
           {/* SVG Dotted Pattern Background */}
           <svg
             className="absolute inset-0 w-full h-full"
@@ -46,9 +53,21 @@ const CTASection: React.FC = () => {
           </svg>
 
           {/* Content - positioned above the dots */}
-          <div className="relative z-10 w-full flex flex-col gap-6 items-center justify-center">
+          <motion.div
+            className="relative z-10 w-full flex flex-col gap-6 items-center justify-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+          >
             {/* Heading and Description */}
-            <div className="flex flex-col gap-4 md:gap-5 items-center text-center w-full">
+            <motion.div
+              className="flex flex-col gap-4 md:gap-5 items-center text-center w-full"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+            >
               <h2
                 className="text-[32px] md:text-[48px] leading-[42px] md:leading-[60px] font-medium md:font-semibold capitalize w-full"
                 style={{ fontFamily: "Plus Jakarta Sans" }}
@@ -68,11 +87,17 @@ const CTASection: React.FC = () => {
                   subscriptions.
                 </p>
               </div>
-            </div>
+            </motion.div>
 
             {/* Email Input and Subscribe Button */}
             {/* Mobile Layout - Stacked */}
-            <div className="md:hidden flex flex-col gap-4 items-center w-full">
+            <motion.div
+              className="md:hidden flex flex-col gap-4 items-center w-full"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+            >
               {/* Email Input Field */}
               <div className="w-full">
                 <div className="backdrop-blur-sm bg-[rgba(255,255,255,0.08)] border border-[rgba(255,255,255,0.16)] rounded-full h-14 w-full">
@@ -104,10 +129,16 @@ const CTASection: React.FC = () => {
               >
                 Subscribe
               </button>
-            </div>
+            </motion.div>
 
             {/* Desktop Layout - Side by Side */}
-            <div className="hidden md:flex gap-6 items-center w-full max-w-[628px]">
+            <motion.div
+              className="hidden md:flex gap-6 items-center w-full max-w-[628px]"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
+            >
               {/* Email Input Field */}
               <div className="flex-1 min-w-[240px]">
                 <div className="backdrop-blur-sm bg-[rgba(255,255,255,0.08)] border border-[rgba(255,255,255,0.16)] rounded-full h-14 w-full">
@@ -139,9 +170,9 @@ const CTASection: React.FC = () => {
               >
                 Subscribe
               </button>
-            </div>
-          </div>
-        </div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );
