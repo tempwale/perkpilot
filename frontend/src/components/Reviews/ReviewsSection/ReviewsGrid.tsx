@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import ReviewCard from "./ReviewsCard";
 import Pagination from "./Pagination";
 
@@ -668,10 +669,23 @@ export default function ReviewGrid({
 
   return (
     <div className="w-full">
-      {/* Grid Container */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-7xl mx-auto px-4">
-        {displayReviews.map((Review) => (
-          <div key={Review.id} className="flex">
+      {/* Grid Container with animation */}
+      <motion.div
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-7xl mx-auto px-4"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+      >
+        {displayReviews.map((Review, idx) => (
+          <motion.div
+            key={Review.id}
+            className="flex"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, delay: idx * 0.07, ease: "easeOut" }}
+          >
             <ReviewCard
               id={Review.id}
               title={Review.title}
@@ -684,9 +698,9 @@ export default function ReviewGrid({
               cons={Review.cons}
               planPrice={Review.planPrice}
             />
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
 
       {/* Pagination */}
       {showPagination && totalPages > 1 && (

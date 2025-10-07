@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import DealCard from "./DealCard";
 import Pagination from "../../Blogs/BlogsSections/Pagination";
+import { motion } from "framer-motion";
 
 // Logo Components
 function FramerLogo() {
@@ -429,10 +430,23 @@ export default function DealGrid({
 
   return (
     <div className="w-full">
-      {/* Grid Container */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-7xl mx-auto px-4">
-        {displayDeals.map((deal) => (
-          <div key={deal.id} className="flex">
+      {/* Grid Container with animation */}
+      <motion.div
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-7xl mx-auto px-4"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+      >
+        {displayDeals.map((deal, idx) => (
+          <motion.div
+            key={deal.id}
+            className="flex"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, delay: idx * 0.07, ease: "easeOut" }}
+          >
             <DealCard
               title={deal.title}
               category={deal.category}
@@ -446,9 +460,9 @@ export default function DealGrid({
               onViewDetails={() => handleViewDetails(deal.id)}
               onGetDeal={() => handleGetDeal(deal.id)}
             />
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
 
       {/* Pagination */}
       {showPagination && totalPages > 1 && (

@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 interface PaginationProps {
   currentPage: number;
   totalPages: number;
@@ -58,7 +60,13 @@ export default function Pagination({
   }
 
   return (
-    <div className="content-stretch flex gap-[8px] items-center justify-center relative w-full mt-8 mb-50">
+    <motion.div
+      className="content-stretch flex gap-[8px] items-center justify-center relative w-full mt-8 mb-50"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+    >
       {visiblePages.map((page, index) => {
         if (page === "ellipsis") {
           return (
@@ -91,6 +99,6 @@ export default function Pagination({
           </button>
         );
       })}
-    </div>
+    </motion.div>
   );
 }

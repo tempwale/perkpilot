@@ -6,6 +6,7 @@ import DealsSection from "../components/Deals/DealsSection";
 import { UniversalBadge } from "../components/UniversalBadge";
 import Stats from "../components/Deals/Stats";
 import { CTASection } from "../components/CTASection";
+import { motion } from "framer-motion";
 
 export default function DealsPage() {
   return (
@@ -20,7 +21,13 @@ export default function DealsPage() {
           </div>
           {/* Hero Section */}
           <div className="pt-24 px-4">
-            <div className="content-stretch flex flex-col gap-[24px] items-center relative w-full max-w-6xl mx-auto">
+            <motion.div
+              className="content-stretch flex flex-col gap-[24px] items-center relative w-full max-w-6xl mx-auto"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+            >
               <UniversalBadge
                 badgeText="#1 Platform"
                 secondaryText="For Discounted SaaS Deals"
@@ -30,16 +37,26 @@ export default function DealsPage() {
                 size="md"
               />
 
-              {/* Main Heading */}
-              <h1
+              {/* Main Heading with animation */}
+              <motion.h1
                 className="bg-clip-text bg-gradient-to-b font-bold from-[#ffffff] leading-[72px] relative shrink-0 text-[56px] text-center to-[#949494] whitespace-pre-wrap"
                 style={{ WebkitTextFillColor: "transparent" }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
               >
                 Software Deals
-              </h1>
+              </motion.h1>
 
-              {/* Description */}
-              <div className="font-medium leading-[32px] relative shrink-0 text-[20px] text-center text-zinc-400 max-w-[818px] whitespace-pre-wrap">
+              {/* Description with animation */}
+              <motion.div
+                className="font-medium leading-[32px] relative shrink-0 text-[20px] text-center text-zinc-400 max-w-[818px] whitespace-pre-wrap"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, delay: 0.35, ease: "easeOut" }}
+              >
                 <p className="mb-0">
                   Stop searching endlessly. Tell our AI Agent your vision and
                   get an instant,
@@ -48,8 +65,8 @@ export default function DealsPage() {
                   personalized list of all the software you need-with exclusive
                   discounts.
                 </p>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
           <SearchSection />
           <DealsSection />
