@@ -68,6 +68,7 @@ const ReviewsCard: React.FC<ReviewsCardProps> = ({
       <path
         d="M7.5 15L12.5 10L7.5 5"
         stroke="#09090B"
+        className="group-hover:stroke-white transition-colors duration-200"
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -165,8 +166,8 @@ const ReviewsCard: React.FC<ReviewsCardProps> = ({
             </p>
           </div>
           <p
-            className="text-sm italic text-neutral-50"
-            style={{ fontFamily: "Plus Jakarta Sans" }}
+            className="italic text-neutral-50"
+            style={{ fontFamily: "Plus Jakarta Sans", fontSize: "12px" }}
           >
             Trusted by 50+ Founders Globally
           </p>
@@ -176,10 +177,10 @@ const ReviewsCard: React.FC<ReviewsCardProps> = ({
       {/* Read Full Review Button */}
       <button
         onClick={onReadReview}
-        className="bg-neutral-50 rounded-full h-10 flex items-center justify-between px-6 py-2 w-full hover:opacity-90 transition-opacity"
+        className="group bg-neutral-50 hover:bg-gradient-to-b hover:from-[#501BD6] hover:to-[#7F57E2] rounded-full h-10 flex items-center justify-between px-6 py-2 w-full transition-all duration-200"
       >
         <p
-          className="text-sm font-medium text-zinc-950"
+          className="text-sm font-medium text-zinc-950 group-hover:text-white transition-colors duration-200"
           style={{ fontFamily: "Plus Jakarta Sans", lineHeight: "21px" }}
         >
           Read Full Review

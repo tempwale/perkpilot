@@ -241,7 +241,7 @@ export default function SearchBar({
       >
         <div className="box-border flex flex-wrap gap-[24px] items-center justify-between content-center overflow-clip px-[16px] py-[8px] relative rounded-[inherit] w-full h-full">
           {/* Search Icon and Input */}
-          <div className="absolute content-stretch flex gap-[12px] items-center left-[16px] top-1/2 translate-y-[-50%] flex-1">
+          <div className="absolute content-stretch flex gap-[12px] items-center left-[16px] top-1/2 translate-y-[-50%] right-[140px]">
             <div
               className="relative shrink-0 size-[24px]"
               data-name="search-normal"
@@ -256,7 +256,16 @@ export default function SearchBar({
                 onKeyPress={handleKeyPress}
                 onClick={handleInputClick}
                 placeholder={placeholder}
-                className="capitalize font-normal leading-[24px] text-[16px] text-zinc-300 bg-transparent border-none outline-none w-full placeholder:text-zinc-300 placeholder:capitalize"
+                className="bg-transparent border-none outline-none w-full placeholder:text-[#D4D4D8] placeholder:capitalize"
+                style={{
+                  color: "var(--Primary-200, #D4D4D8)",
+                  fontFamily: '"Plus Jakarta Sans"',
+                  fontSize: "16px",
+                  fontStyle: "normal",
+                  fontWeight: 400,
+                  lineHeight: "24px",
+                  textTransform: "capitalize",
+                }}
               />
             </div>
           </div>
@@ -264,10 +273,10 @@ export default function SearchBar({
           {/* Search Button */}
           <button
             onClick={handleSearch}
-            className="absolute bg-neutral-50 box-border content-stretch flex gap-[12px] h-[48px] items-center justify-center px-[48px] py-[12px] right-[8px] rounded-[100px] top-1/2 translate-y-[-50%] hover:bg-white transition-colors"
+            className="absolute bg-neutral-50 box-border content-stretch flex gap-[12px] h-[48px] items-center justify-center px-[48px] py-[12px] right-[8px] rounded-[100px] top-1/2 translate-y-[-50%] hover:bg-gradient-to-b hover:from-[#501bd6] hover:to-[#7f57e2] transition-all duration-300 group"
             data-name="Buttons/main"
           >
-            <p className="font-medium leading-[24px] relative shrink-0 text-[16px] text-center text-zinc-950">
+            <p className="font-medium leading-[24px] relative shrink-0 text-[16px] text-center text-zinc-950 group-hover:text-white transition-colors">
               Search
             </p>
           </button>
@@ -284,7 +293,7 @@ export default function SearchBar({
 
       {/* Suggestion Tags */}
       <div
-        className="content-stretch flex gap-[8px] md:gap-[16px] items-start relative w-full overflow-x-auto md:overflow-x-visible justify-start md:justify-center pt-10 px-4 md:px-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+        className="content-stretch flex gap-[8px] md:gap-[16px] items-start relative w-full overflow-x-auto md:overflow-x-visible justify-start md:justify-center px-4 md:px-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
         data-node-id="234:516"
       >
         {suggestions.map((suggestion, index) => (

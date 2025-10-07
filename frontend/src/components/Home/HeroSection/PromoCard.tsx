@@ -245,7 +245,7 @@ export const PromoCard: React.FC = () => {
 
       {/* Brand Logo */}
       <div
-        className="hidden absolute content-stretch flex gap-[12px] items-center right-[24.88px] top-[40.96px] xl:block"
+        className="hidden absolute flex flex-row gap-[12px] items-center right-[24.88px] top-[40.96px] xl:flex"
         data-node-id="1:1221"
       >
         <div className="relative shrink-0 size-[40px]" data-node-id="1:1222">

@@ -115,10 +115,10 @@ const ComparisionsCard: React.FC<ComparisionsCardProps> = ({
       {/* CTA Button */}
       <button
         onClick={onViewComparison}
-        className="bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-full h-12 flex items-center justify-center px-3 py-2 w-full hover:opacity-90 transition-opacity mt-4"
+        className="group bg-gradient-to-b from-[#501bd6] to-[#7f57e2] hover:bg-white hover:from-white hover:to-white rounded-full h-12 flex items-center justify-center px-3 py-2 w-full transition-all duration-200 mt-4"
       >
         <p
-          className="text-neutral-50 text-base font-normal leading-6"
+          className="text-neutral-50 group-hover:text-black text-base font-normal leading-6 transition-colors duration-200"
           style={{ fontFamily: "Poppins" }}
         >
           View Full Comparison

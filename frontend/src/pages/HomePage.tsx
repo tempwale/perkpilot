@@ -13,15 +13,18 @@ export default function HomePage() {
     <div className="min-h-screen bg-black">
       <div className="max-w-full">
         <Header />
-        <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[rgba(255,255,255,0.08)] to-transparent"></div>
-        <HeroSection />
-        <AboutUsSection />
-        <WhyUsSection />
-        <TopPicksSection />
-        <ComparisionsSection />
-        <ReviewsSection />
-        <CTASection />
-        <Footer />
+        {/* Content container with top padding to account for fixed header */}
+        <div className="pt-[80px]">
+          <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[rgba(255,255,255,0.08)] to-transparent"></div>
+          <HeroSection />
+          <AboutUsSection />
+          <WhyUsSection />
+          <TopPicksSection />
+          <ComparisionsSection />
+          <ReviewsSection />
+          <CTASection />
+          <Footer />
+        </div>
       </div>
     </div>
   );

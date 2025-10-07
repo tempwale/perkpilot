@@ -325,30 +325,33 @@ export default function ReviewDetailPage() {
     <div className="min-h-screen bg-black">
       <div className="max-w-full">
         <Header />
-        <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[rgba(255,255,255,0.08)] to-transparent"></div>
+        {/* Content container with top padding to account for fixed header */}
+        <div className="pt-[80px]">
+          <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[rgba(255,255,255,0.08)] to-transparent"></div>
 
-        <div className="relative ">
-          <div className="hidden md:block">
-            <ReviewBackground />
+          <div className="relative ">
+            <div className="hidden md:block">
+              <ReviewBackground />
+            </div>
+            <ReviewDetailContent reviewData={reviewData} />
           </div>
-          <ReviewDetailContent reviewData={reviewData} />
+          <ProductDetailsSection />
+          <RatingsDetails />
+          <ProsCons
+            pros={reviewData.pros.map((pro: string, index: number) => ({
+              id: `pro-${index}`,
+              text: pro,
+            }))}
+            cons={reviewData.cons.map((con: string, index: number) => ({
+              id: `con-${index}`,
+              text: con,
+            }))}
+          />
+          <BestUseCase useCases={reviewData.bestUseCases} />
+          <PopularIntegrations integrations={reviewData.integrations} />
+          <CTAReviewDetails />
+          <Footer />
         </div>
-        <ProductDetailsSection />
-        <RatingsDetails />
-        <ProsCons
-          pros={reviewData.pros.map((pro: string, index: number) => ({
-            id: `pro-${index}`,
-            text: pro,
-          }))}
-          cons={reviewData.cons.map((con: string, index: number) => ({
-            id: `con-${index}`,
-            text: con,
-          }))}
-        />
-        <BestUseCase useCases={reviewData.bestUseCases} />
-        <PopularIntegrations integrations={reviewData.integrations} />
-        <CTAReviewDetails />
-        <Footer />
       </div>
     </div>
   );

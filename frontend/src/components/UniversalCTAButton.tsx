@@ -168,19 +168,19 @@ export const UniversalCTAButton: React.FC<UniversalCTAButtonProps> = ({
     primary: {
       background: "bg-gradient-to-b from-[#501BD6] to-[#7F57E2]",
       border: "border-[rgba(250,250,250,0.08)]",
-      textColor: "text-white",
-      iconBg: "bg-white",
-      iconColor: "text-[#7f57e2]",
-      hover: "hover:opacity-90",
+      textColor: "text-white group-hover:text-black",
+      iconBg: "bg-white group-hover:bg-black",
+      iconColor: "text-[#7f57e2] group-hover:text-white",
+      hover: "hover:bg-white hover:from-white hover:to-white",
       shadow: "shadow-[0px_1px_4px_0px_rgba(12,12,13,0.05)]",
     },
     secondary: {
       background: "bg-gradient-to-b from-[#6B7280] to-[#4B5563]",
       border: "border-[rgba(250,250,250,0.08)]",
-      textColor: "text-white",
-      iconBg: "bg-white",
-      iconColor: "text-[#4B5563]",
-      hover: "hover:opacity-90",
+      textColor: "text-white group-hover:text-black",
+      iconBg: "bg-white group-hover:bg-black",
+      iconColor: "text-[#4B5563] group-hover:text-white",
+      hover: "hover:bg-white hover:from-white hover:to-white",
       shadow: "shadow-[0px_1px_4px_0px_rgba(12,12,13,0.05)]",
     },
     outline: {
@@ -206,10 +206,10 @@ export const UniversalCTAButton: React.FC<UniversalCTAButtonProps> = ({
         ? `bg-gradient-to-b from-[${customGradient.from}] to-[${customGradient.to}]`
         : "bg-gradient-to-b from-[#501BD6] to-[#7F57E2]",
       border: "border-[rgba(250,250,250,0.08)]",
-      textColor: "text-white",
-      iconBg: "bg-white",
-      iconColor: "text-[#7f57e2]",
-      hover: "hover:opacity-90",
+      textColor: "text-white group-hover:text-black",
+      iconBg: "bg-white group-hover:bg-black",
+      iconColor: "text-[#7f57e2] group-hover:text-white",
+      hover: "hover:bg-white hover:from-white hover:to-white",
       shadow: "shadow-[0px_1px_4px_0px_rgba(12,12,13,0.05)]",
     },
   };
@@ -283,6 +283,7 @@ export const UniversalCTAButton: React.FC<UniversalCTAButtonProps> = ({
   return (
     <button
       className={`
+        group
         ${config.background}
         ${config.border}
         ${config.hover}
