@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import DealCard from "./DealCard";
-import Pagination from "./Pagination";
+import Pagination from "../../Blogs/BlogsSections/Pagination";
 
 // Logo Components
 function FramerLogo() {
