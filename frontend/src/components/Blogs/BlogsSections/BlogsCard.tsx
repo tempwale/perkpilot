@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 // Eye Icon SVG
 const EyeIcon = () => (
@@ -35,6 +36,7 @@ const ArrowUpIcon = () => (
 );
 
 interface BlogsCardProps {
+  id?: string;
   imageUrl?: string;
   featured?: boolean;
   views?: number | string;
@@ -46,6 +48,7 @@ interface BlogsCardProps {
 }
 
 const BlogsCard: React.FC<BlogsCardProps> = ({
+  id = "blog-1",
   imageUrl = "",
   featured = true,
   views = 1234,
@@ -56,7 +59,10 @@ const BlogsCard: React.FC<BlogsCardProps> = ({
   date = "27/06/2004",
 }) => {
   return (
-    <div className="w-[608px] p-6 bg-white/5 rounded-3xl shadow-[0px_1px_4px_0px_rgba(12,12,13,0.05)] outline outline-1 outline-offset-[-1px] outline-white/10 inline-flex flex-col justify-center items-start gap-6">
+    <Link
+      to={`/blog/${id}`}
+      className="w-full lg:w-[608px] p-6 bg-white/5 rounded-3xl shadow-[0px_1px_4px_0px_rgba(12,12,13,0.05)] outline outline-1 outline-offset-[-1px] outline-white/10 inline-flex flex-col justify-center items-start gap-6"
+    >
       {/* Image Section */}
       <div className="self-stretch h-[238px] bg-white/10 rounded-2xl flex flex-col justify-center items-start gap-3 overflow-hidden">
         <div className="self-stretch flex-1 rounded-2xl">
@@ -129,7 +135,7 @@ const BlogsCard: React.FC<BlogsCardProps> = ({
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

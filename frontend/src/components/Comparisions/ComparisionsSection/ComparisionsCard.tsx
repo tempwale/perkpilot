@@ -1,6 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 interface ComparisionsCardProps {
+  id?: string | number;
   app1Logo?: React.ReactNode;
   app2Logo?: React.ReactNode;
   title?: string;
@@ -62,6 +64,7 @@ const LineIcon = () => (
 );
 
 const ComparisionsCard: React.FC<ComparisionsCardProps> = ({
+  id = "1",
   app1Logo = <SlackLogo />, // Replace with your own
   app2Logo = <FramerLogo />, // Replace with your own
   title = "Notion vs Obsidian",
@@ -118,14 +121,15 @@ const ComparisionsCard: React.FC<ComparisionsCardProps> = ({
         </div>
       </div>
       {/* CTA Button */}
-      <div
+      <Link
+        to={`/comparison/${id}`}
+        onClick={() => onReadComparison && onReadComparison()}
         className="self-stretch h-12 px-3 py-2 bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-[100px] inline-flex justify-center items-center cursor-pointer"
-        onClick={onReadComparison}
       >
         <div className="text-neutral-50 text-base font-normal font-['Poppins'] leading-normal">
           Read Full Comparison
         </div>
-      </div>
+      </Link>
     </div>
   );
 };

@@ -1,3 +1,7 @@
+import profile1 from "../../assets/images/profiles/profile-1.svg";
+import profile2 from "../../assets/images/profiles/profile-2.svg";
+import profile3 from "../../assets/images/profiles/profile-3.svg";
+
 interface ProductHeaderProps {
   logoComponent: React.ReactNode;
   title: string;
@@ -12,8 +16,6 @@ export default function ProductHeader({
   title,
   category,
   shortDescription,
-  rating,
-  totalReviews,
 }: ProductHeaderProps) {
   return (
     <div className="flex items-start gap-4 lg:gap-10" data-node-id="250:3625">
@@ -73,52 +75,73 @@ export default function ProductHeader({
 
         {/* Rating Section */}
         <div
-          className="flex gap-2 lg:gap-4 items-center relative shrink-0"
-          data-node-id="250:3640"
+          className="content-stretch flex gap-[16px] items-center relative shrink-0 w-full"
+          data-name="Filter"
+          data-node-id="250:1175"
         >
-          {/* Stars Container */}
           <div
-            className="flex h-[20px] lg:h-[24px] items-center relative shrink-0 w-[100px] lg:w-[121px]"
-            data-node-id="250:3641"
+            className="box-border content-stretch flex h-[48px] items-center pl-0 pr-[24px] py-0 relative shrink-0"
+            data-node-id="250:1176"
           >
-            {[...Array(5)].map((_, i) => (
-              <div
-                key={i}
-                className="relative shrink-0 size-[20px] lg:size-[24px]"
-                data-node-id={`250:364${2 + i}`}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="21"
-                  height="20"
-                  viewBox="0 0 21 20"
-                  fill="none"
-                  className="w-full h-full"
-                >
-                  <path
-                    d="M4.22561 19.3207L5.8743 12.1933L0.344849 7.39942L7.64981 6.76531L10.4906 0.0437317L13.3314 6.76531L20.6364 7.39942L15.1069 12.1933L16.7556 19.3207L10.4906 15.5414L4.22561 19.3207Z"
-                    fill="#FFDD33"
-                  />
-                </svg>
+            <div
+              className="aspect-[56/56] h-full mr-[-24px] relative shrink-0"
+              data-node-id="250:1177"
+            >
+              <img
+                src={profile1}
+                alt="Profile 1"
+                className="w-[48px] h-[48px] rounded-full object-cover"
+              />
+            </div>
+            <div
+              className="aspect-[56/56] h-full mr-[-24px] relative shrink-0"
+              data-node-id="250:1178"
+            >
+              <img
+                src={profile2}
+                alt="Profile 2"
+                className="w-[48px] h-[48px] rounded-full object-cover"
+              />
+            </div>
+            <div
+              className="aspect-[56/56] h-full mr-[-24px] relative shrink-0"
+              data-node-id="250:1179"
+            >
+              <img
+                src={profile3}
+                alt="Profile 3"
+                className="w-[48px] h-[48px] rounded-full object-cover"
+              />
+            </div>
+            <div
+              className="aspect-[56/56] h-full mr-[-24px] relative shrink-0"
+              data-node-id="250:1180"
+            >
+              <div className="w-[48px] h-[48px] rounded-full bg-white  flex items-center justify-center">
+                <span className="font-['Poppins:Medium',_sans-serif] text-[12px] text-zinc-950 font-medium">
+                  887+
+                </span>
               </div>
-            ))}
+            </div>
+            <p
+              className="absolute font-['Poppins:Medium',_sans-serif] leading-[normal] left-[96px] not-italic text-[12px] text-center text-zinc-950 top-[15px] translate-x-[-50%] opacity-0 pointer-events-none"
+              data-node-id="250:1181"
+            >
+              887+
+            </p>
           </div>
-
-          {/* Rating Text */}
-          <span
-            className="font-['Plus_Jakarta_Sans'] font-medium leading-[21px] lg:leading-normal relative shrink-0 text-[14px] lg:text-[16px] text-neutral-50"
-            data-node-id="250:3647"
+          <div
+            data-layer="Deal Claimed By"
+            className="DealClaimedBy justify-start text-neutral-50 text-base font-normal font-['Plus_Jakarta_Sans'] leading-normal"
           >
-            {rating}
-          </span>
-
-          {/* Reviews Count */}
-          <span
-            className="font-['Plus_Jakarta_Sans'] font-medium leading-[18px] lg:leading-normal relative shrink-0 text-[12px] lg:text-[16px] text-zinc-400"
-            data-node-id="250:3648"
+            Deal Claimed By
+          </div>
+          <div
+            data-layer="( 50 Reviews )"
+            className="50Reviews justify-start text-zinc-400 text-base font-normal font-['Plus_Jakarta_Sans'] leading-normal"
           >
-            ( {totalReviews} Reviews )
-          </span>
+            ( 50 Reviews )
+          </div>
         </div>
       </div>
     </div>

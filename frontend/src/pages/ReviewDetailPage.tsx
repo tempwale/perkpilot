@@ -9,6 +9,7 @@ import ProsCons from "../components/ReviewDetail/ProsCons";
 import BestUseCase from "../components/ReviewDetail/BestUseCase";
 import PopularIntegrations from "../components/ReviewDetail/PopularIntegrations";
 import CTAReviewDetails from "../components/ReviewDetail/CTAReviewDetails";
+import FAQ from "../components/ReviewDetail/FAQ";
 
 // Sample data - in a real app this would come from an API
 const getReviewData = (id: string) => {
@@ -349,6 +350,7 @@ export default function ReviewDetailPage() {
           />
           <BestUseCase useCases={reviewData.bestUseCases} />
           <PopularIntegrations integrations={reviewData.integrations} />
+          <FAQ />
           <CTAReviewDetails />
           <Footer />
         </div>

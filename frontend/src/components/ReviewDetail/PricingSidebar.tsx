@@ -224,6 +224,65 @@ export default function PricingSidebar({ title }: PricingSidebarProps) {
           </div>
         </div>
       </div>
+      <div
+        data-layer="Frame 2147223635"
+        className="Frame2147223635 self-stretch inline-flex justify-between items-center"
+      >
+        <div
+          data-layer="Frame 2147223642"
+          className="Frame2147223642 flex justify-start items-center gap-3"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="25"
+            height="25"
+            viewBox="0 0 25 25"
+            fill="none"
+          >
+            <path
+              d="M21.7343 8.31201C20.1911 4.7802 16.667 2.31201 12.5663 2.31201C7.381 2.31201 3.11745 6.25869 2.61572 11.312"
+              stroke="#FAFAFA"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M17.5664 8.31201H21.9664C22.2978 8.31201 22.5664 8.04338 22.5664 7.71201V3.31201"
+              stroke="#FAFAFA"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M3.44787 16.312C4.99098 19.8438 8.51514 22.312 12.6158 22.312C17.8011 22.312 22.0647 18.3653 22.5664 13.312"
+              stroke="#FAFAFA"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M7.61572 16.312H3.21572C2.88435 16.312 2.61572 16.5806 2.61572 16.912V21.312"
+              stroke="#FAFAFA"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <div
+            data-layer="Last Updated On"
+            className="LastUpdatedOn text-center justify-start text-neutral-50 text-base font-normal font-['Plus_Jakarta_Sans'] leading-normal"
+          >
+            Last Updated On
+          </div>
+        </div>
+        <div
+          data-layer="Oct 2025"
+          className="Oct2025 text-center justify-start text-neutral-50 text-base font-normal font-['Plus_Jakarta_Sans'] leading-normal"
+        >
+          {" "}
+          Oct 2025
+        </div>
+      </div>
     </div>
   );
 }

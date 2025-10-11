@@ -104,7 +104,10 @@ const ComparisionsGrid: React.FC = () => {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5, delay: idx * 0.07, ease: "easeOut" }}
           >
-            <ComparisionsCard {...comparison} />
+            <ComparisionsCard
+              {...comparison}
+              id={`comparison-${startIndex + idx + 1}`}
+            />
           </motion.div>
         ))}
       </motion.div>
