@@ -18,10 +18,9 @@ export default function Hero({
   title = "Notion vs obsidian vs roam research",
   description = "This comprasion blogs will help you understand the difference between these three tools and which one suits you the best.",
   date = "Thursday 19 June 2025",
-  readTime = "9 Minute Read",
+  readTime = "• 9 Minute Read",
   socialIcons,
   imageComponent,
-  className = "",
 }: HeroProps) {
   // Default SVG icon components
   const XIcon = (
@@ -109,84 +108,85 @@ export default function Hero({
   );
 
   const defaultIcons = [XIcon, InstaIcon, LinkedInIcon, LinkIcon];
+
   return (
     <div
       data-layer="Frame 2147206225"
-      className={
-        "Frame2147206225 inline-flex justify-start items-center gap-6 " +
-        className
-      }
+      className="Frame2147206225 flex flex-col px-4 lg:flex-row justify-start items-start lg:items-center gap-6"
     >
       <div
         data-layer="Frame 2147206224"
-        className="Frame2147206224 w-[608px] inline-flex flex-col justify-start items-start gap-6"
+        className="Frame2147206224 w-full lg:w-[608px] inline-flex flex-col justify-start items-start gap-6"
       >
         <div
           data-layer="Frame 2147206180"
-          className="Frame2147206180 inline-flex justify-start items-center gap-4"
+          className="Frame2147206180 inline-flex justify-start items-center gap-4 px-4 flex md:flex-row flex-col"
         >
           {/* leading dot before category */}
-          <span
-            aria-hidden
-            className="w-2 h-2 rounded-full bg-zinc-500 inline-block"
-          />
-          <div
-            data-layer="Project Management"
-            className="ProjectManagement justify-start text-zinc-500 text-sm font-medium font-['Plus_Jakarta_Sans'] leading-[21px]"
-          >
-            {category}
+          <div className="flex flex-row justify-start items-center gap-4">
+            <span
+              aria-hidden
+              className="w-2 h-2 rounded-full bg-zinc-500 inline-block "
+            />
+            <div
+              data-layer="Project Management"
+              className="ProjectManagement  text-zinc-500 text-sm font-medium font-['Plus_Jakarta_Sans'] leading-[21px]"
+            >
+              {category}
+            </div>
           </div>
           {/* small circular separator dot */}
-          <span
-            aria-hidden
-            className="w-2 h-2 rounded-full bg-[#F4F4F5] inline-block"
-          />
-          <div
-            data-layer="Notion vs Obsidian vs Roam Research"
-            className="NotionVsObsidianVsRoamResearch justify-start text-zinc-100 text-sm font-medium font-['Plus_Jakarta_Sans'] leading-[21px]"
-          >
-            {breadcrumb}
+          <div className="flex flex-row justify-start items-center gap-4">
+            <span
+              aria-hidden
+              className="w-2 h-2 rounded-full bg-[#F4F4F5] inline-block"
+            />
+            <div
+              data-layer="Notion vs Obsidian vs Roam Research"
+              className="NotionVsObsidianVsRoamResearch justify-start text-zinc-100 text-sm font-medium font-['Plus_Jakarta_Sans'] leading-[21px]"
+            >
+              {breadcrumb}
+            </div>
           </div>
         </div>
+
         <div
           data-layer="Notion vs obsidian vs roam research"
-          className="NotionVsObsidiantitle self-stretch justify-start text-neutral-50 text-5xl font-semibold font-['Plus_Jakarta_Sans'] capitalize leading-[60px]"
+          className="NotionVsObsidiantitle self-stretch justify-start text-neutral-50 text-3xl md:text-4xl lg:text-5xl font-semibold font-['Plus_Jakarta_Sans'] capitalize leading-[1.05]"
         >
           {title}
         </div>
+
         <div
           data-layer="This comprasion blogs will help you understand the difference between these three tools and which one suits you the best."
           className="ThisComprasionBlogsWillHelpYouUnderstandTheDifferenceBetweenTheseThreeToolsAndWhichOneSuitsYouTheBest self-stretch justify-start text-zinc-400 text-xl font-medium font-['Plus_Jakarta_Sans'] leading-loose"
         >
           {description}
         </div>
+
         <div
           data-layer="Frame 2147206208"
-          className="Frame2147206208 w-[306.50px] flex flex-col justify-start items-start gap-3"
+          className="Frame2147206208 w-full md:w-[306.50px] flex flex-col justify-start items-start gap-3"
         >
           <div
             data-layer="Frame 2147205829"
-            className="Frame2147205829 self-stretch h-[21px] inline-flex justify-start items-center gap-6 whitespace-nowrap"
+            className="Frame2147205829 w-full h-[21px] inline-flex justify-start items-center gap-6 whitespace-nowrap"
           >
             <div
               data-layer="Thursday 19 June 2025"
-              className="Thursday19June2025 justify-start text-zinc-500 text-sm font-medium font-['Poppins'] truncate"
+              className="Thursday19June2025 justify-start text-zinc-500 text-sm font-medium font-['Poppins'] "
             >
               {date}
             </div>
-            {/* small circular separator dot */}
-            <span
-              aria-hidden
-              className="w-1 h-1 rounded-full bg-[#F4F4F5] inline-block"
-            />
 
             <div
               data-layer="9 Minute Read"
-              className="MinuteRead justify-start text-zinc-500 text-sm font-medium font-['Poppins'] truncate"
+              className="MinuteRead text-zinc-500 text-sm font-medium font-['Poppins']"
             >
               {readTime}
             </div>
           </div>
+
           <div
             data-layer="Button List"
             className="ButtonList inline-flex justify-start items-center gap-4"
@@ -211,11 +211,18 @@ export default function Hero({
           </div>
         </div>
       </div>
+
       <div
         data-layer="Rectangle 2825"
-        className="Rectangle2825 w-[608px] h-[400px] bg-[#d9d9d9]/10 rounded-3xl border border-white/10"
+        className="Rectangle2825 w-full lg:w-[608px] rounded-3xl border border-white/10 overflow-hidden bg-[#d9d9d9]/10"
       >
-        {imageComponent}
+        <div className="w-full h-56 md:h-72 lg:h-[400px] flex items-center justify-center">
+          {imageComponent ? (
+            <div className="w-full h-full object-cover">{imageComponent}</div>
+          ) : (
+            <div className="w-full h-full bg-gradient-to-b from-white/10 to-[#d9d9d9]/10" />
+          )}
+        </div>
       </div>
     </div>
   );

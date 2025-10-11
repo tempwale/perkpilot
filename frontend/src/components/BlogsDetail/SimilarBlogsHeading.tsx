@@ -1,11 +1,11 @@
 import React from "react";
 
-interface ComparisionsHeadingProps {
+interface SimilarBlogsHeading {
   onPrevious?: () => void;
   onNext?: () => void;
 }
 
-const ComparisionsHeading: React.FC<ComparisionsHeadingProps> = ({
+const SimilarBlogsHeading: React.FC<SimilarBlogsHeading> = ({
   onPrevious,
   onNext,
 }) => {
@@ -86,7 +86,7 @@ const ComparisionsHeading: React.FC<ComparisionsHeadingProps> = ({
             textTransform: "capitalize",
           }}
         >
-          Software Comparisons
+          Similar Blogs{" "}
         </h2>
       </div>
 
@@ -112,4 +112,4 @@ const ComparisionsHeading: React.FC<ComparisionsHeadingProps> = ({
   );
 };
 
-export default ComparisionsHeading;
+export default SimilarBlogsHeading;

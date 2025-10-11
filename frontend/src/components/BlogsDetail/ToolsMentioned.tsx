@@ -1,4 +1,3 @@
-import Pick from "../Home/TopPicksSection/Pick";
 import ToolsCard from "./ToolsCard";
 
 export default function ToolsMentioned() {
@@ -11,7 +10,7 @@ export default function ToolsMentioned() {
       <div className="flex flex-col gap-4">
         <div
           data-layer="Frame 2147206209"
-          className="Frame2147206209 flex justify-between items-center "
+          className="Frame2147206209 flex flex-col justify-between items-center md:flex-row"
         >
           <div className="flex flex-row">
             <div
@@ -61,7 +60,7 @@ export default function ToolsMentioned() {
             </div>
           </div>
         </div>
-        <div className="flex items-center gap-4 mt-2">
+        <div className="flex flex-col items-center gap-4 mt-2 lg:flex-row">
           <ToolsCard />
           <ToolsCard />
         </div>

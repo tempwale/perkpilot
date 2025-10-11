@@ -24,7 +24,7 @@ export default function ToolsCard({
   return (
     <div
       data-layer="Card"
-      className="Card w-[614px] p-4 bg-white/10 rounded-3xl outline outline-1 outline-offset-[-1px] outline-white/10 inline-flex justify-start items-center gap-4"
+      className="Card w-[400px] lg:w-[614px] p-4 bg-white/10 rounded-3xl outline outline-1 outline-offset-[-1px] outline-white/10 inline-flex justify-start items-center gap-4"
     >
       <div
         data-layer="Frame 1321320236"

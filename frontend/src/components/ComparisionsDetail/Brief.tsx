@@ -2,7 +2,7 @@ export default function Brief() {
   return (
     <div
       data-layer="Frame 2147206226"
-      className="Frame2147206226 w-full p-6 bg-white/5 rounded-3xl outline outline-1 outline-offset-[-1px] outline-white/10 inline-flex flex-col justify-start items-start gap-4"
+      className="Frame2147206226  p-6 bg-white/5 rounded-3xl outline outline-1 outline-offset-[-1px] outline-white/10 inline-flex flex-col justify-start items-start gap-4 w-full"
     >
       <div
         data-layer="Notion vs Obsidian vs Roam Research"
