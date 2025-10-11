@@ -6,6 +6,8 @@ import ReviewsPage from "./pages/ReviewsPage";
 import ReviewDetailPage from "./pages/ReviewDetailPage";
 import BlogsPage from "./pages/BlogsPage";
 import ComparisionsPage from "./pages/ComparisionsPage";
+import ComparisionsDetailPage from "./pages/ComparisionsDetailPage";
+import BlogsDetailPage from "./pages/BlogsDetailPage";
 
 function App() {
   return (
@@ -16,7 +18,9 @@ function App() {
       <Route path="/review/:id" element={<ReviewDetailPage />} />
       <Route path="*" element={<HomePage />} />
       <Route path="/blogs" element={<BlogsPage />} />
+      <Route path="/blog/:id" element={<BlogsDetailPage />} />
       <Route path="/comparisons" element={<ComparisionsPage />} />
+      <Route path="/comparison/:id" element={<ComparisionsDetailPage />} />
     </Routes>
   );
 }
