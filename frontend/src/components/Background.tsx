@@ -16,7 +16,6 @@ export const Background: React.FC<BackgroundProps> = ({
         background:
           "linear-gradient(180deg, rgba(103, 43, 255, 0.80) 0%, rgba(159, 121, 255, 0.80) 225.96%)",
         filter: "blur(150px)",
-        width: "800px",
         height: "240.523px",
         flexShrink: 0,
         zIndex: 0,

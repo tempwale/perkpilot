@@ -11,6 +11,8 @@ export default function Breadcrumb({ title }: BreadcrumbProps) {
         className="flex items-center gap-2 text-sm font-medium"
         style={{ fontFamily: "Plus Jakarta Sans" }}
       >
+        <span className="text-zinc-500">•</span>
+
         <Link
           to="/"
           className="text-zinc-500 hover:text-zinc-700 transition-colors"

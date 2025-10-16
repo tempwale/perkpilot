@@ -25,16 +25,6 @@ const StarIcon = () => (
   </svg>
 );
 
-const SketchLogo = () => (
-  <div className="w-[26.48px] h-6 left-[14.76px] top-[16px] absolute overflow-hidden">
-    <div className="w-[26.48px] h-6 left-0 top-0 absolute bg-[#fdb300]" />
-    <div className="w-[26.48px] h-[15.42px] left-0 top-[8.55px] absolute bg-[#eb6c00]" />
-    <div className="w-[15.76px] h-[15.42px] left-[5.36px] top-[8.55px] absolute bg-[#fdad00]" />
-    <div className="w-[15.76px] h-[8.55px] left-[5.36px] top-0 absolute bg-[#fdd231]" />
-    <div className="w-[15.76px] h-[8.55px] left-[5.36px] top-0 absolute bg-[#feeeb7]" />
-  </div>
-);
-
 const AlternativeCard = ({
   name,
   category,
@@ -91,7 +81,6 @@ export default function ProductAlternatives() {
       reviewCount: 200,
       pricing: "Free - $20/Month",
       buttonText: "Compare With Figma",
-      logo: <SketchLogo />,
     },
     {
       name: "Adobe XD",
@@ -147,7 +136,6 @@ export default function ProductAlternatives() {
             reviewCount={alternative.reviewCount}
             pricing={alternative.pricing}
             buttonText={alternative.buttonText}
-            logo={alternative.logo}
           />
         ))}
       </div>

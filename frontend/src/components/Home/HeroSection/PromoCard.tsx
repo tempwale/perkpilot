@@ -95,11 +95,11 @@ export const PromoCard: React.FC = () => {
 
       {/* Main Content */}
       <div
-        className="absolute content-stretch flex flex-col gap-[16px] md:gap-[24px] items-start left-[20px] md:left-[24.8px] pt-6 md:pt-10"
+        className="absolute content-stretch flex flex-col gap-[16px] md:gap-[24px] items-start left-[20px] md:left-[24.8px] top-6 md:top-10"
         data-node-id="1:1144"
       >
         <div
-          className="capitalize font-['Plus_Jakarta_Sans'] font-bold leading-[28px] md:leading-[42px] relative shrink-0 text-[24px] md:text-[32px] w-[300px] md:w-[538.704px]"
+          className="capitalize font-['Plus_Jakarta_Sans'] font-bold leading-[28px] md:leading-[42px] relative shrink-0 text-[24px] md:text-[32px] w-[300px] md:w-[500.704px] "
           data-node-id="1:1145"
           style={{
             color: "var(--Primary-25, #FAFAFA)",
@@ -109,10 +109,9 @@ export const PromoCard: React.FC = () => {
             fontWeight: 700,
             lineHeight: "42px",
             textTransform: "capitalize",
-            width: "538.704px",
           }}
         >
-          <p className="whitespace-pre-wrap">{`Best Deals, Reviews, & Comparisons of all SaaS Tools`}</p>
+          <p className="whitespace-pre-wrap w-[350px] text-[21px] leading-[28px] md:w-[450px] md:text-[32px] md:leading-[42px]">{`Best Deals, Reviews, & Comparisons of all SaaS Tools`}</p>
         </div>
 
         {/* Feature List */}
