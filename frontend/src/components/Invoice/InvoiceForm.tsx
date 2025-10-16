@@ -101,15 +101,21 @@ export default function InvoiceForm() {
               >
                 USD
               </div>
-              <div
-                data-layer="nav-arrow-down"
-                className="NavArrowDown w-6 h-6 relative overflow-hidden"
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
               >
-                <div
-                  data-layer="Vector"
-                  className="Vector w-[4.64px] h-3 left-[6px] top-[13.64px] absolute origin-top-left -rotate-90 outline outline-[1.50px] outline-offset-[-0.75px] outline-zinc-950"
+                <path
+                  d="M6 9L12 15L18 9"
+                  stroke="#09090B"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
                 />
-              </div>
+              </svg>
             </div>
           </div>
         </div>
@@ -159,27 +165,42 @@ export default function InvoiceForm() {
               >
                 dd/mm/yy
               </div>
-              <div
-                data-layer="calendar"
-                className="Calendar w-6 h-6 relative overflow-hidden"
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
               >
-                <div
-                  data-layer="Vector"
-                  className="Vector w-[18px] h-[19px] left-[3px] top-[2px] absolute outline outline-[1.50px] outline-offset-[-0.75px] outline-zinc-400"
+                <path
+                  d="M15 4V2M15 4V6M15 4H10.5M3 10V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V10H3Z"
+                  stroke="#A1A1AA"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
                 />
-                <div
-                  data-layer="Vector"
-                  className="Vector w-1 h-1.5 left-[3px] top-[4px] absolute outline outline-[1.50px] outline-offset-[-0.75px] outline-zinc-400"
+                <path
+                  d="M3 10V6C3 4.89543 3.89543 4 5 4H7"
+                  stroke="#A1A1AA"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
                 />
-                <div
-                  data-layer="Vector"
-                  className="Vector w-0 h-1 left-[7px] top-[2px] absolute outline outline-[1.50px] outline-offset-[-0.75px] outline-zinc-400"
+                <path
+                  d="M7 2V6"
+                  stroke="#A1A1AA"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
                 />
-                <div
-                  data-layer="Vector"
-                  className="Vector w-[2.50px] h-1.5 left-[18.50px] top-[4px] absolute outline outline-[1.50px] outline-offset-[-0.75px] outline-zinc-400"
+                <path
+                  d="M21 10V6C21 4.89543 20.1046 4 19 4H18.5"
+                  stroke="#A1A1AA"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
                 />
-              </div>
+              </svg>
             </div>
           </div>
         </div>
@@ -288,6 +309,147 @@ export default function InvoiceForm() {
               data-layer="Input"
               className="Input self-stretch h-14 px-4 py-3 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 inline-flex justify-start items-center gap-3 overflow-hidden"
             >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+              >
+                <path
+                  d="M7 9L12 12.5L17 9"
+                  stroke="#A1A1AA"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M2 17V7C2 5.89543 2.89543 5 4 5H20C21.1046 5 22 5.89543 22 7V17C22 18.1046 21.1046 19 20 19H4C2.89543 19 2 18.1046 2 17Z"
+                  stroke="#A1A1AA"
+                  stroke-width="1.5"
+                />
+              </svg>
+              <div
+                data-layer="Email"
+                className="Email flex-1 justify-start text-zinc-400 text-base font-normal font-['Poppins'] leading-normal"
+              >
+                Email
+              </div>
+            </div>
+          </div>
+          <div
+            data-layer="Frame 2147206179"
+            className="Frame2147206179 flex-1 inline-flex flex-col justify-start items-start gap-3"
+          >
+            <div
+              data-layer="Phone"
+              className="Phone self-stretch justify-center text-zinc-950 text-sm font-medium font-['Poppins']"
+            >
+              Phone
+            </div>
+            <div
+              data-layer="Input"
+              className="Input self-stretch h-14 px-4 py-3 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 inline-flex justify-start items-center gap-3 overflow-hidden"
+            >
+              <div
+                data-layer="+91"
+                className="91 justify-start text-zinc-400 text-base font-normal font-['Poppins'] leading-normal"
+              >
+                +91
+              </div>
+              <div
+                data-layer="0000000000"
+                className="flex-1 justify-start text-zinc-400 text-base font-normal font-['Poppins'] leading-normal"
+              >
+                0000000000
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          data-layer="Frame 2147223654"
+          className="Frame2147223654 self-stretch inline-flex justify-start items-start gap-4"
+        >
+          <div
+            data-layer="Frame 2147206178"
+            className="Frame2147206178 flex-1 inline-flex flex-col justify-start items-start gap-3"
+          >
+            <div
+              data-layer="Address"
+              className="Address self-stretch justify-center text-zinc-950 text-sm font-medium font-['Poppins']"
+            >
+              Address
+            </div>
+            <div
+              data-layer="Input"
+              className="Input self-stretch px-4 py-3 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 inline-flex justify-start items-center gap-3 overflow-hidden"
+            >
+              <div
+                data-layer="Detail address here..."
+                className="DetailAddressHere flex-1 justify-start text-zinc-400 text-base font-normal font-['Poppins'] leading-normal"
+              >
+                Detail address here...
+                <br />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        data-layer="Frame 2147223653"
+        className="Frame2147223653 self-stretch p-6 bg-white rounded-3xl inline-flex flex-col justify-start items-start gap-4"
+      >
+        <div
+          data-layer="Bill To Client"
+          className="BillToClient text-center justify-start text-zinc-950 text-xl font-medium font-['Plus_Jakarta_Sans'] leading-loose"
+        >
+          Bill To Client
+        </div>
+        <div
+          data-layer="Frame 2147223652"
+          className="Frame2147223652 self-stretch inline-flex justify-start items-start gap-4"
+        >
+          <div
+            data-layer="Frame 2147206178"
+            className="Frame2147206178 flex-1 inline-flex flex-col justify-start items-start gap-3"
+          >
+            <div
+              data-layer="Client Name"
+              className="ClientName self-stretch justify-center text-zinc-950 text-sm font-medium font-['Poppins']"
+            >
+              Client Name
+            </div>
+            <div
+              data-layer="Input"
+              className="Input self-stretch h-14 px-4 py-3 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 inline-flex justify-start items-center gap-3 overflow-hidden"
+            >
+              <div
+                data-layer="Client company name"
+                className="ClientCompanyName flex-1 justify-start text-zinc-400 text-base font-normal font-['Poppins'] leading-normal"
+              >
+                Client company name
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          data-layer="Frame 2147223653"
+          className="Frame2147223653 self-stretch inline-flex justify-start items-start gap-4"
+        >
+          <div
+            data-layer="Frame 2147206178"
+            className="Frame2147206178 flex-1 inline-flex flex-col justify-start items-start gap-3"
+          >
+            <div
+              data-layer="Email"
+              className="Email self-stretch justify-center text-zinc-950 text-sm font-medium font-['Poppins']"
+            >
+              Email
+            </div>
+            <div
+              data-layer="Input"
+              className="Input self-stretch h-14 px-4 py-3 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 inline-flex justify-start items-center gap-3 overflow-hidden"
+            >
               <div
                 data-layer="mail"
                 className="Mail w-6 h-6 relative overflow-hidden"
@@ -366,140 +528,6 @@ export default function InvoiceForm() {
             </div>
           </div>
         </div>
-        <div
-          data-layer="Frame 2147223653"
-          className="Frame2147223653 self-stretch p-6 bg-white rounded-3xl inline-flex flex-col justify-start items-start gap-4"
-        >
-          <div
-            data-layer="Bill To Client"
-            className="BillToClient text-center justify-start text-zinc-950 text-xl font-medium font-['Plus_Jakarta_Sans'] leading-loose"
-          >
-            Bill To Client
-          </div>
-          <div
-            data-layer="Frame 2147223652"
-            className="Frame2147223652 self-stretch inline-flex justify-start items-start gap-4"
-          >
-            <div
-              data-layer="Frame 2147206178"
-              className="Frame2147206178 flex-1 inline-flex flex-col justify-start items-start gap-3"
-            >
-              <div
-                data-layer="Client Name"
-                className="ClientName self-stretch justify-center text-zinc-950 text-sm font-medium font-['Poppins']"
-              >
-                Client Name
-              </div>
-              <div
-                data-layer="Input"
-                className="Input self-stretch h-14 px-4 py-3 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 inline-flex justify-start items-center gap-3 overflow-hidden"
-              >
-                <div
-                  data-layer="Client company name"
-                  className="ClientCompanyName flex-1 justify-start text-zinc-400 text-base font-normal font-['Poppins'] leading-normal"
-                >
-                  Client company name
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            data-layer="Frame 2147223653"
-            className="Frame2147223653 self-stretch inline-flex justify-start items-start gap-4"
-          >
-            <div
-              data-layer="Frame 2147206178"
-              className="Frame2147206178 flex-1 inline-flex flex-col justify-start items-start gap-3"
-            >
-              <div
-                data-layer="Email"
-                className="Email self-stretch justify-center text-zinc-950 text-sm font-medium font-['Poppins']"
-              >
-                Email
-              </div>
-              <div
-                data-layer="Input"
-                className="Input self-stretch h-14 px-4 py-3 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 inline-flex justify-start items-center gap-3 overflow-hidden"
-              >
-                <div
-                  data-layer="mail"
-                  className="Mail w-6 h-6 relative overflow-hidden"
-                >
-                  <div
-                    data-layer="Vector"
-                    className="Vector w-[3.50px] h-2.5 left-[7px] top-[12.50px] absolute origin-top-left -rotate-90 outline outline-[1.50px] outline-offset-[-0.75px] outline-zinc-400"
-                  />
-                  <div
-                    data-layer="Vector"
-                    className="Vector w-5 h-3.5 left-[2px] top-[5px] absolute rounded-sm outline outline-[1.50px] outline-offset-[-0.75px] outline-zinc-400"
-                  />
-                </div>
-                <div
-                  data-layer="Email"
-                  className="Email flex-1 justify-start text-zinc-400 text-base font-normal font-['Poppins'] leading-normal"
-                >
-                  Email
-                </div>
-              </div>
-            </div>
-            <div
-              data-layer="Frame 2147206179"
-              className="Frame2147206179 flex-1 inline-flex flex-col justify-start items-start gap-3"
-            >
-              <div
-                data-layer="Phone"
-                className="Phone self-stretch justify-center text-zinc-950 text-sm font-medium font-['Poppins']"
-              >
-                Phone
-              </div>
-              <div
-                data-layer="Input"
-                className="Input self-stretch h-14 px-4 py-3 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 inline-flex justify-start items-center gap-3 overflow-hidden"
-              >
-                <div
-                  data-layer="+91"
-                  className="91 justify-start text-zinc-400 text-base font-normal font-['Poppins'] leading-normal"
-                >
-                  +91
-                </div>
-                <div
-                  data-layer="0000000000"
-                  className="flex-1 justify-start text-zinc-400 text-base font-normal font-['Poppins'] leading-normal"
-                >
-                  0000000000
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            data-layer="Frame 2147223654"
-            className="Frame2147223654 self-stretch inline-flex justify-start items-start gap-4"
-          >
-            <div
-              data-layer="Frame 2147206178"
-              className="Frame2147206178 flex-1 inline-flex flex-col justify-start items-start gap-3"
-            >
-              <div
-                data-layer="Address"
-                className="Address self-stretch justify-center text-zinc-950 text-sm font-medium font-['Poppins']"
-              >
-                Address
-              </div>
-              <div
-                data-layer="Input"
-                className="Input self-stretch px-4 py-3 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 inline-flex justify-start items-center gap-3 overflow-hidden"
-              >
-                <div
-                  data-layer="Detail address here..."
-                  className="DetailAddressHere flex-1 justify-start text-zinc-400 text-base font-normal font-['Poppins'] leading-normal"
-                >
-                  Detail address here...
-                  <br />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
       <div
         data-layer="Frame 2147223653"
@@ -556,19 +584,26 @@ export default function InvoiceForm() {
               data-layer="Input"
               className="Input self-stretch h-14 px-4 py-3 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 inline-flex justify-start items-center gap-3 overflow-hidden"
             >
-              <div
-                data-layer="mail"
-                className="Mail w-6 h-6 relative overflow-hidden"
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
               >
-                <div
-                  data-layer="Vector"
-                  className="Vector w-[3.50px] h-2.5 left-[7px] top-[12.50px] absolute origin-top-left -rotate-90 outline outline-[1.50px] outline-offset-[-0.75px] outline-zinc-400"
+                <path
+                  d="M7 9L12 12.5L17 9"
+                  stroke="#A1A1AA"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
                 />
-                <div
-                  data-layer="Vector"
-                  className="Vector w-5 h-3.5 left-[2px] top-[5px] absolute rounded-sm outline outline-[1.50px] outline-offset-[-0.75px] outline-zinc-400"
+                <path
+                  d="M2 17V7C2 5.89543 2.89543 5 4 5H20C21.1046 5 22 5.89543 22 7V17C22 18.1046 21.1046 19 20 19H4C2.89543 19 2 18.1046 2 17Z"
+                  stroke="#A1A1AA"
+                  stroke-width="1.5"
                 />
-              </div>
+              </svg>
               <div
                 data-layer="Email"
                 className="Email flex-1 justify-start text-zinc-400 text-base font-normal font-['Poppins'] leading-normal"
@@ -759,15 +794,21 @@ export default function InvoiceForm() {
           data-layer="Buttons/main"
           className="ButtonsMain h-12 pl-6 pr-10 py-3 rounded-[100px] outline outline-1 outline-offset-[-1px] outline-[#737eff] inline-flex justify-center items-center gap-3"
         >
-          <div
-            data-layer="plus"
-            className="Plus w-6 h-6 relative overflow-hidden"
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
           >
-            <div
-              data-layer="Vector"
-              className="Vector w-3 h-3 left-[6px] top-[6px] absolute outline outline-[1.50px] outline-offset-[-0.75px] outline-[#737eff]"
+            <path
+              d="M6 12H12M18 12H12M12 12V6M12 12V18"
+              stroke="#737EFF"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
             />
-          </div>
+          </svg>
           <div
             data-layer="Add Item"
             className="AddItem text-center justify-start text-[#737eff] text-base font-medium font-['Plus_Jakarta_Sans'] leading-normal"
@@ -830,15 +871,21 @@ export default function InvoiceForm() {
                 >
                   %
                 </div>
-                <div
-                  data-layer="nav-arrow-down"
-                  className="NavArrowDown w-6 h-6 relative overflow-hidden"
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
                 >
-                  <div
-                    data-layer="Vector"
-                    className="Vector w-[4.64px] h-3 left-[6px] top-[13.64px] absolute origin-top-left -rotate-90 outline outline-[1.50px] outline-offset-[-0.75px] outline-zinc-950"
+                  <path
+                    d="M6 9L12 15L18 9"
+                    stroke="#09090B"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
                   />
-                </div>
+                </svg>
               </div>
             </div>
             <div
@@ -877,15 +924,21 @@ export default function InvoiceForm() {
                 >
                   %
                 </div>
-                <div
-                  data-layer="nav-arrow-down"
-                  className="NavArrowDown w-6 h-6 relative overflow-hidden"
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
                 >
-                  <div
-                    data-layer="Vector"
-                    className="Vector w-[4.64px] h-3 left-[6px] top-[13.64px] absolute origin-top-left -rotate-90 outline outline-[1.50px] outline-offset-[-0.75px] outline-zinc-950"
+                  <path
+                    d="M6 9L12 15L18 9"
+                    stroke="#09090B"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
                   />
-                </div>
+                </svg>
               </div>
             </div>
           </div>
@@ -990,19 +1043,28 @@ export default function InvoiceForm() {
             data-layer="Buttons/main"
             className="ButtonsMain h-12 pl-6 pr-10 py-3 rounded-[100px] outline outline-1 outline-offset-[-1px] outline-[#737eff] inline-flex justify-center items-center gap-3"
           >
-            <div
-              data-layer="upload"
-              className="Upload w-6 h-6 relative overflow-hidden"
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
             >
-              <div
-                data-layer="Vector"
-                className="Vector w-3 h-0 left-[6px] top-[20px] absolute outline outline-[1.50px] outline-offset-[-0.75px] outline-[#737eff]"
+              <path
+                d="M6 20L18 20"
+                stroke="#737EFF"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
               />
-              <div
-                data-layer="Vector"
-                className="Vector w-[7px] h-3 left-[8.50px] top-[4px] absolute outline outline-[1.50px] outline-offset-[-0.75px] outline-[#737eff]"
+              <path
+                d="M12 16V4M12 4L15.5 7.5M12 4L8.5 7.5"
+                stroke="#737EFF"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
               />
-            </div>
+            </svg>
             <div
               data-layer="Upload Signature"
               className="UploadSignature text-center justify-start text-[#737eff] text-base font-medium font-['Plus_Jakarta_Sans'] leading-normal"

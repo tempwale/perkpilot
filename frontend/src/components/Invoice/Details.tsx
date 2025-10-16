@@ -87,15 +87,21 @@ export default function Details() {
                 >
                   USD
                 </div>
-                <div
-                  data-layer="nav-arrow-down"
-                  className="NavArrowDown w-[16.84px] h-[16.84px] relative overflow-hidden"
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="17"
+                  height="17"
+                  viewBox="0 0 17 17"
+                  fill="none"
                 >
-                  <div
-                    data-layer="Vector"
-                    className="Vector w-[4.64px] h-[8.42px] left-[4.21px] top-[10.96px] absolute origin-top-left -rotate-90 outline outline-[1.05px] outline-offset-[-0.53px] outline-zinc-950"
+                  <path
+                    d="M4.21045 6.3157L8.42087 10.5261L12.6313 6.3157"
+                    stroke="#09090B"
+                    stroke-width="1.05261"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
                   />
-                </div>
+                </svg>
               </div>
             </div>
           </div>
@@ -145,27 +151,42 @@ export default function Details() {
                 >
                   dd/mm/yy
                 </div>
-                <div
-                  data-layer="calendar"
-                  className="Calendar w-[16.84px] h-[16.84px] relative overflow-hidden"
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="17"
+                  height="17"
+                  viewBox="0 0 17 17"
+                  fill="none"
                 >
-                  <div
-                    data-layer="Vector"
-                    className="Vector w-[12.63px] h-[13.33px] left-[2.10px] top-[1.40px] absolute outline outline-[1.05px] outline-offset-[-0.53px] outline-zinc-700"
+                  <path
+                    d="M10.5258 2.80704V1.40356M10.5258 2.80704V4.21051M10.5258 2.80704H7.36801M2.10498 7.01746V13.3331C2.10498 14.1082 2.73334 14.7366 3.50846 14.7366H13.3328C14.1079 14.7366 14.7363 14.1082 14.7363 13.3331V7.01746H2.10498Z"
+                    stroke="#3F3F46"
+                    stroke-width="1.05261"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
                   />
-                  <div
-                    data-layer="Vector"
-                    className="Vector w-[2.81px] h-[4.21px] left-[2.10px] top-[2.81px] absolute outline outline-[1.05px] outline-offset-[-0.53px] outline-zinc-700"
+                  <path
+                    d="M2.10498 7.01731V4.21036C2.10498 3.43524 2.73334 2.80688 3.50846 2.80688H4.91193"
+                    stroke="#3F3F46"
+                    stroke-width="1.05261"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
                   />
-                  <div
-                    data-layer="Vector"
-                    className="Vector w-0 h-[2.81px] left-[4.91px] top-[1.40px] absolute outline outline-[1.05px] outline-offset-[-0.53px] outline-zinc-700"
+                  <path
+                    d="M4.91211 1.40356V4.21051"
+                    stroke="#3F3F46"
+                    stroke-width="1.05261"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
                   />
-                  <div
-                    data-layer="Vector"
-                    className="Vector w-[1.75px] h-[4.21px] left-[12.98px] top-[2.81px] absolute outline outline-[1.05px] outline-offset-[-0.53px] outline-zinc-700"
+                  <path
+                    d="M14.7363 7.01731V4.21036C14.7363 3.43524 14.1079 2.80688 13.3328 2.80688H12.9819"
+                    stroke="#3F3F46"
+                    stroke-width="1.05261"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
                   />
-                </div>
+                </svg>
               </div>
             </div>
           </div>
