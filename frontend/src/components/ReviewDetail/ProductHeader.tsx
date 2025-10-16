@@ -18,27 +18,23 @@ export default function ProductHeader({
   shortDescription,
 }: ProductHeaderProps) {
   return (
-    <div className="flex items-start gap-4 lg:gap-10" data-node-id="250:3625">
+    <div className="flex items-start gap-4 lg:gap-6" data-node-id="250:3625">
       {/* Logo Container */}
       <div
-        className="grid-cols-[max-content] grid-rows-[max-content] inline-grid justify-items-start leading-[0] relative shrink-0"
+        className="pt-8 inline-grid place-items-center leading-[0] relative shrink-0"
         data-node-id="250:3626"
       >
         <div
-          className="bg-white col-[1] ml-0 mt-0 rounded-[1000px] row-[1] size-[56px] lg:size-[100px]"
+          className="bg-white rounded-full size-[56px] lg:size-[100px] flex items-center justify-center overflow-hidden"
           data-node-id="250:3627"
-        />
-        <div
-          className="col-[1] ml-[12px] mt-[12px] lg:ml-[24px] lg:mt-[24px] relative row-[1] size-[32px] lg:size-[52px]"
-          data-node-id="250:3628"
         >
-          {logoComponent}
+          <div className="">{logoComponent}</div>
         </div>
       </div>
 
       {/* Content Container */}
       <div
-        className="flex flex-1 flex-col gap-3 lg:gap-4 items-start min-h-px min-w-px relative shrink-0"
+        className="flex flex-1 flex-col gap-3 lg:gap-2 items-start min-h-px min-w-px relative shrink-0"
         data-node-id="250:3634"
       >
         {/* Title and Category */}

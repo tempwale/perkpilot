@@ -8,6 +8,9 @@ import BlogsPage from "./pages/BlogsPage";
 import ComparisionsPage from "./pages/ComparisionsPage";
 import ComparisionsDetailPage from "./pages/ComparisionsDetailPage";
 import BlogsDetailPage from "./pages/BlogsDetailPage";
+import PasswordGeneratorPage from "./pages/PasswordGeneratorPage";
+import InvoiceGeneratorPage from "./pages/InvoiceGeneratorPage";
+import SEOPage from "./pages/SEOPage";
 
 function App() {
   return (
@@ -21,6 +24,10 @@ function App() {
       <Route path="/blog/:id" element={<BlogsDetailPage />} />
       <Route path="/comparisons" element={<ComparisionsPage />} />
       <Route path="/comparison/:id" element={<ComparisionsDetailPage />} />
+      <Route path="/password-generator" element={<PasswordGeneratorPage />} />
+      <Route path="/invoice-generator" element={<InvoiceGeneratorPage />} />
+      <Route path="/seo" element={<SEOPage />} />
+
     </Routes>
   );
 }

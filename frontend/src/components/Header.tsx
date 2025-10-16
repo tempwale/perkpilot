@@ -71,6 +71,14 @@ const Header = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  // Scroll to top and optionally close mobile menu when navigating
+  const handleNavClick = () => {
+    if (typeof window !== "undefined" && window.scrollTo) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+    setIsMobileMenuOpen(false);
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
@@ -95,6 +103,7 @@ const Header = () => {
         {/* Logo and Brand */}
         <Link
           to="/"
+          onClick={handleNavClick}
           className="content-stretch flex gap-[16px] items-center relative shrink-0"
           data-node-id="1:1125"
         >
@@ -118,6 +127,7 @@ const Header = () => {
           >
             <Link
               to="/"
+              onClick={handleNavClick}
               className={`bg-clip-text bg-gradient-to-r font-['Plus_Jakarta_Sans:${
                 isActive("/") ? "SemiBold" : "Regular"
               }',_sans-serif] ${
@@ -134,6 +144,7 @@ const Header = () => {
             </Link>
             <Link
               to="/reviews"
+              onClick={handleNavClick}
               className={`bg-clip-text bg-gradient-to-r font-['Plus_Jakarta_Sans:${
                 isActive("/reviews") ? "SemiBold" : "Regular"
               }',_sans-serif] ${
@@ -150,6 +161,7 @@ const Header = () => {
             </Link>
             <Link
               to="/comparisons"
+              onClick={handleNavClick}
               className={`bg-clip-text bg-gradient-to-r font-['Plus_Jakarta_Sans:${
                 isActive("/comparisons") ? "SemiBold" : "Regular"
               }',_sans-serif] ${
@@ -166,6 +178,7 @@ const Header = () => {
             </Link>
             <Link
               to="/deals"
+              onClick={handleNavClick}
               className={`bg-clip-text bg-gradient-to-r font-['Plus_Jakarta_Sans:${
                 isActive("/deals") ? "SemiBold" : "Regular"
               }',_sans-serif] ${
@@ -182,6 +195,7 @@ const Header = () => {
             </Link>
             <Link
               to="/blogs"
+              onClick={handleNavClick}
               className={`bg-clip-text bg-gradient-to-r font-['Plus_Jakarta_Sans:${
                 isActive("/blogs") ? "SemiBold" : "Regular"
               }',_sans-serif] ${
@@ -240,7 +254,9 @@ const Header = () => {
             <div className="flex flex-col px-[20px] py-[32px] space-y-6">
               <Link
                 to="/"
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={() => {
+                  handleNavClick();
+                }}
                 className={`bg-clip-text bg-gradient-to-r font-['Plus_Jakarta_Sans:${
                   isActive("/") ? "SemiBold" : "Regular"
                 }',_sans-serif] ${
@@ -256,7 +272,9 @@ const Header = () => {
               </Link>
               <Link
                 to="/reviews"
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={() => {
+                  handleNavClick();
+                }}
                 className={`bg-clip-text bg-gradient-to-r font-['Plus_Jakarta_Sans:${
                   isActive("/reviews") ? "SemiBold" : "Regular"
                 }',_sans-serif] ${
@@ -272,7 +290,9 @@ const Header = () => {
               </Link>
               <Link
                 to="/comparisons"
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={() => {
+                  handleNavClick();
+                }}
                 className={`bg-clip-text bg-gradient-to-r font-['Plus_Jakarta_Sans:${
                   isActive("/comparisons") ? "SemiBold" : "Regular"
                 }',_sans-serif] ${
@@ -288,7 +308,9 @@ const Header = () => {
               </Link>
               <Link
                 to="/deals"
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={() => {
+                  handleNavClick();
+                }}
                 className={`bg-clip-text bg-gradient-to-r font-['Plus_Jakarta_Sans:${
                   isActive("/deals") ? "SemiBold" : "Regular"
                 }',_sans-serif] ${
@@ -304,7 +326,9 @@ const Header = () => {
               </Link>
               <Link
                 to="/blogs"
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={() => {
+                  handleNavClick();
+                }}
                 className={`bg-clip-text bg-gradient-to-r font-['Plus_Jakarta_Sans:${
                   isActive("/blogs") ? "SemiBold" : "Regular"
                 }',_sans-serif] ${

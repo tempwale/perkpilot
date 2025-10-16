@@ -1,30 +1,26 @@
 import { useState } from "react";
+import { UniversalBadge } from "../UniversalBadge";
 
 const DEFAULT_FAQS = [
   {
-    id: "what-is-figma",
-    q: "What is Figma used for?",
-    a: "Figma is a collaborative interface design tool used for UI/UX design, prototyping, wireframing, and creating design systems. It's ideal for designing web and mobile applications with real-time team collaboration.",
+    id: "free-to-use",
+    q: "Is the invoice generator actually free to use?",
+    a: "Yes! You can create and download an unlimited number of professional invoices at absolutely no cost. We aim to support freelancers and small businesses with this essential tool.",
   },
   {
-    id: "figma-cost",
-    q: "How much does Figma cost?",
-    a: "Figma offers a free tier for individuals and scalable paid plans for teams and organizations. Pricing depends on feature needs and team size.",
+    id: "legal-compliance",
+    q: "Are the invoices professional and legally compliant?",
+    a: "Yes, our invoice templates are designed to meet standard business and legal requirements, ensuring professionalism and compliance across industries.",
   },
   {
-    id: "figma-vs-sketch",
-    q: "Is Figma better than Sketch?",
-    a: "Figma and Sketch each have strengths; Figma excels at collaboration and cross-platform use while Sketch has a long-standing Mac-native ecosystem.",
+    id: "creation-time",
+    q: "How long does it take to create a new invoice?",
+    a: "Creating a new invoice takes only a few minutes. Simply enter your details, review the preview, and download your professional invoice instantly.",
   },
   {
-    id: "figma-offline",
-    q: "Can Figma be used offline?",
-    a: "Figma's desktop app allows some offline work, but full collaboration features require an internet connection.",
-  },
-  {
-    id: "figma-platforms",
-    q: "Does Figma work on Windows and Mac?",
-    a: "Yes — Figma runs in the browser and has desktop apps for Windows and Mac.",
+    id: "data-safety",
+    q: "Is my client and business data safe?",
+    a: "Absolutely. Your data is securely processed and never shared with third parties. We prioritize the privacy and protection of all business and client information.",
   },
 ];
 
@@ -36,7 +32,15 @@ export default function FAQ() {
   };
 
   return (
-       <div className="w-full flex justify-center">
+    <div className="w-full flex flex-col justify-center items-center my-20">
+      <UniversalBadge
+        badgeText="#1 Platform"
+        secondaryText="FAQs"
+        icon="electric"
+        className=""
+        variant="primary"
+        size="md"
+      />
       <div
         data-layer="Frame 2147223642"
         className="Frame2147223642 w-full max-w-[818px] inline-flex flex-col justify-start items-center gap-10"

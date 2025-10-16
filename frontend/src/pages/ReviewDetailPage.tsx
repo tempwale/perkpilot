@@ -24,23 +24,30 @@ const getReviewData = (id: string) => {
         "Framer is a powerful no-code design and prototyping tool that enables teams to create interactive, responsive websites and applications without writing code. With its intuitive interface and robust feature set, Framer bridges the gap between design and development, making it an ideal choice for designers, product teams, and agencies who want to bring their ideas to life quickly and efficiently.",
       logoComponent: (
         <svg
-          width="21"
-          height="32"
-          viewBox="0 0 21 32"
-          fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 81 81"
+          className="w-full h-full object-contain"
         >
-          <g clipPath="url(#clip0_1_1900)">
-            <path
-              d="M0 0H21V10.6667H10.5L0 0ZM0 10.6667H10.5L21 21.3333H10.5V32L0 21.3333V10.6667Z"
-              fill="#0D0D11"
-            />
-          </g>
-          <defs>
-            <clipPath id="clip0_1_1900">
-              <rect width="21" height="32" fill="white" />
-            </clipPath>
-          </defs>
+          <path
+            d="M30.5664 10.4873H40.5664V30.4873H30.5664C27.9142 30.4873 25.3707 29.4337 23.4953 27.5584C21.62 25.683 20.5664 23.1395 20.5664 20.4873C20.5664 17.8351 21.62 15.2916 23.4953 13.4162C25.3707 11.5409 27.9142 10.4873 30.5664 10.4873Z"
+            fill="#F4511E"
+          />
+          <path
+            d="M50.5664 30.4873H40.5664V10.4873H50.5664C53.2186 10.4873 55.7621 11.5409 57.6375 13.4162C59.5128 15.2916 60.5664 17.8351 60.5664 20.4873C60.5664 23.1395 59.5128 25.683 57.6375 27.5584C55.7621 29.4337 53.2186 30.4873 50.5664 30.4873Z"
+            fill="#FF8A65"
+          />
+          <path
+            d="M40.5664 40.4873C40.5664 46.0102 45.0436 50.4873 50.5664 50.4873C56.0893 50.4873 60.5664 46.0102 60.5664 40.4873C60.5664 34.9645 56.0893 30.4873 50.5664 30.4873C45.0436 30.4873 40.5664 34.9645 40.5664 40.4873Z"
+            fill="#29B6F6"
+          />
+          <path
+            d="M30.5664 30.4873H40.5664V50.4873H30.5664C27.9142 50.4873 25.3707 49.4337 23.4953 47.5584C21.62 45.683 20.5664 43.1395 20.5664 40.4873C20.5664 37.8351 21.62 35.2916 23.4953 33.4162C25.3707 31.5409 27.9142 30.4873 30.5664 30.4873Z"
+            fill="#7C4DFF"
+          />
+          <path
+            d="M30.5664 50.4873H40.5664V60.4873C40.5664 63.1395 39.5128 65.683 37.6375 67.5584C35.7621 69.4337 33.2186 70.4873 30.5664 70.4873C27.9142 70.4873 25.3707 69.4337 23.4953 67.5584C21.62 65.683 20.5664 63.1395 20.5664 60.4873C20.5664 57.8351 21.62 55.2916 23.4953 53.4162C25.3707 51.5409 27.9142 50.4873 30.5664 50.4873Z"
+            fill="#00E676"
+          />
         </svg>
       ),
       verified: true,
