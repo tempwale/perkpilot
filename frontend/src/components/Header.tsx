@@ -60,7 +60,7 @@ const CloseIcon = () => (
   </svg>
 );
 
-const Header = () => {
+const Header = ({ forceBlackText = false }: { forceBlackText?: boolean }) => {
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -89,6 +89,44 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Helpers to generate className and style for navigation links
+  const makeLinkClass = (path: string, desktop = true) => {
+    const active = isActive(path);
+    if (forceBlackText) {
+      const sizeCls = desktop ? "text-[16px]" : "text-[22px] py-4 block";
+      return `font-['Plus_Jakarta_Sans:${
+        active ? "SemiBold" : "Regular"
+      }',_sans-serif] ${
+        active ? "font-semibold" : "font-normal"
+      } leading-[0] relative shrink-0 ${sizeCls} text-center whitespace-nowrap ${
+        active ? "text-black" : "text-black/80"
+      } hover:text-black transition-all`;
+    }
+
+    // Default gradient style
+    const sizeCls = desktop ? "text-[16px]" : "text-[22px] py-4 block";
+    const gradient = desktop
+      ? active
+        ? "from-[#fafafa] to-[#949494]"
+        : "from-[rgba(250,250,250,0.6)] to-[rgba(148,148,148,0.6)]"
+      : active
+      ? "from-[#fafafa] to-[#949494]"
+      : "from-[rgba(250,250,250,0.95)] to-[rgba(148,148,148,0.95)]";
+
+    return `bg-clip-text bg-gradient-to-r font-['Plus_Jakarta_Sans:${
+      active ? "SemiBold" : "Regular"
+    }',_sans-serif] ${
+      active ? "font-semibold" : "font-normal"
+    } ${gradient} leading-[0] relative shrink-0 ${sizeCls} text-center whitespace-nowrap hover:from-[#fafafa] hover:to-[#949494] transition-all`;
+  };
+
+  const makeLinkStyle = (_path?: string) =>
+    forceBlackText ? undefined : { WebkitTextFillColor: "transparent" };
+
+  const getStartedTextClass = forceBlackText
+    ? "text-black"
+    : "font-['Plus_Jakarta_Sans:Medium',_sans-serif] font-medium leading-[0] text-[16px] text-center text-neutral-50 group-hover:text-black whitespace-nowrap transition-colors duration-200";
+
   return (
     <>
       <div
@@ -109,7 +147,9 @@ const Header = () => {
         >
           <Logo size={40} />
           <div
-            className="font-['Plus_Jakarta_Sans:Bold',_sans-serif] font-bold leading-[0] relative shrink-0 text-[24px] text-neutral-50 whitespace-nowrap"
+            className={`font-['Plus_Jakarta_Sans:Bold',_sans-serif] font-bold leading-[0] relative shrink-0 text-[24px] whitespace-nowrap ${
+              forceBlackText ? "text-black" : "text-neutral-50"
+            }`}
             data-node-id="1:1130"
           >
             <p className="leading-[32px]">PerkPilot</p>
@@ -128,85 +168,45 @@ const Header = () => {
             <Link
               to="/"
               onClick={handleNavClick}
-              className={`bg-clip-text bg-gradient-to-r font-['Plus_Jakarta_Sans:${
-                isActive("/") ? "SemiBold" : "Regular"
-              }',_sans-serif] ${
-                isActive("/") ? "font-semibold" : "font-normal"
-              } ${
-                isActive("/")
-                  ? "from-[#fafafa] to-[#949494]"
-                  : "from-[rgba(250,250,250,0.6)] to-[rgba(148,148,148,0.6)]"
-              } leading-[0] relative shrink-0 text-[16px] text-center whitespace-nowrap hover:from-[#fafafa] hover:to-[#949494] transition-all`}
+              className={makeLinkClass("/")}
               data-node-id="1:1134"
-              style={{ WebkitTextFillColor: "transparent" }}
+              style={makeLinkStyle("/")}
             >
               <p className="leading-[32px]">Home</p>
             </Link>
             <Link
               to="/reviews"
               onClick={handleNavClick}
-              className={`bg-clip-text bg-gradient-to-r font-['Plus_Jakarta_Sans:${
-                isActive("/reviews") ? "SemiBold" : "Regular"
-              }',_sans-serif] ${
-                isActive("/reviews") ? "font-semibold" : "font-normal"
-              } ${
-                isActive("/reviews")
-                  ? "from-[#fafafa] to-[#949494]"
-                  : "from-[rgba(250,250,250,0.6)] to-[rgba(148,148,148,0.6)]"
-              } leading-[0] relative shrink-0 text-[16px] text-center whitespace-nowrap hover:from-[#fafafa] hover:to-[#949494] transition-all`}
+              className={makeLinkClass("/reviews")}
               data-node-id="1:1135"
-              style={{ WebkitTextFillColor: "transparent" }}
+              style={makeLinkStyle("/reviews")}
             >
               <p className="leading-[24px]">Reviews</p>
             </Link>
             <Link
               to="/comparisons"
               onClick={handleNavClick}
-              className={`bg-clip-text bg-gradient-to-r font-['Plus_Jakarta_Sans:${
-                isActive("/comparisons") ? "SemiBold" : "Regular"
-              }',_sans-serif] ${
-                isActive("/comparisons") ? "font-semibold" : "font-normal"
-              } ${
-                isActive("/comparisons")
-                  ? "from-[#fafafa] to-[#949494]"
-                  : "from-[rgba(250,250,250,0.6)] to-[rgba(148,148,148,0.6)]"
-              } leading-[0] relative shrink-0 text-[16px] text-center whitespace-nowrap hover:from-[#fafafa] hover:to-[#949494] transition-all`}
+              className={makeLinkClass("/comparisons")}
               data-node-id="1:1136"
-              style={{ WebkitTextFillColor: "transparent" }}
+              style={makeLinkStyle("/comparisons")}
             >
               <p className="leading-[24px]">Comparisons</p>
             </Link>
             <Link
               to="/deals"
               onClick={handleNavClick}
-              className={`bg-clip-text bg-gradient-to-r font-['Plus_Jakarta_Sans:${
-                isActive("/deals") ? "SemiBold" : "Regular"
-              }',_sans-serif] ${
-                isActive("/deals") ? "font-semibold" : "font-normal"
-              } ${
-                isActive("/deals")
-                  ? "from-[#fafafa] to-[#949494]"
-                  : "from-[rgba(250,250,250,0.6)] to-[rgba(148,148,148,0.6)]"
-              } leading-[0] relative shrink-0 text-[16px] text-center whitespace-nowrap hover:from-[#fafafa] hover:to-[#949494] transition-all`}
+              className={makeLinkClass("/deals")}
               data-node-id="1:1137"
-              style={{ WebkitTextFillColor: "transparent" }}
+              style={makeLinkStyle("/deals")}
             >
               <p className="leading-[24px]">Deals</p>
             </Link>
             <Link
               to="/blogs"
               onClick={handleNavClick}
-              className={`bg-clip-text bg-gradient-to-r font-['Plus_Jakarta_Sans:${
-                isActive("/blogs") ? "SemiBold" : "Regular"
-              }',_sans-serif] ${
-                isActive("/blogs") ? "font-semibold" : "font-normal"
-              } ${
-                isActive("/blogs")
-                  ? "from-[#fafafa] to-[#949494]"
-                  : "from-[rgba(250,250,250,0.6)] to-[rgba(148,148,148,0.6)]"
-              } leading-[0] relative shrink-0 text-[16px] text-center whitespace-nowrap hover:from-[#fafafa] hover:to-[#949494] transition-all`}
+              className={makeLinkClass("/blogs")}
               data-node-id="1:1138"
-              style={{ WebkitTextFillColor: "transparent" }}
+              style={makeLinkStyle("/blogs")}
             >
               <p className="leading-[24px]">Blogs</p>
             </Link>
@@ -219,10 +219,7 @@ const Header = () => {
           data-name="Buttons/main"
           data-node-id="1:1139"
         >
-          <div
-            className="font-['Plus_Jakarta_Sans:Medium',_sans-serif] font-medium leading-[0] text-[16px] text-center text-neutral-50 group-hover:text-black whitespace-nowrap transition-colors duration-200"
-            data-node-id="1:1140"
-          >
+          <div className={getStartedTextClass} data-node-id="1:1140">
             <p className="leading-[24px]">Get Started</p>
           </div>
         </div>
@@ -257,16 +254,11 @@ const Header = () => {
                 onClick={() => {
                   handleNavClick();
                 }}
-                className={`bg-clip-text bg-gradient-to-r font-['Plus_Jakarta_Sans:${
-                  isActive("/") ? "SemiBold" : "Regular"
-                }',_sans-serif] ${
-                  isActive("/") ? "font-semibold" : "font-normal"
-                } ${
-                  isActive("/")
-                    ? "from-[#fafafa] to-[#949494]"
-                    : "from-[rgba(250,250,250,0.95)] to-[rgba(148,148,148,0.95)]"
-                } text-[22px] py-4 block hover:from-[#fafafa] hover:to-[#949494] transition-all border-b border-[rgba(255,255,255,0.08)]`}
-                style={{ WebkitTextFillColor: "transparent" }}
+                className={`${makeLinkClass(
+                  "/",
+                  false
+                )} border-b border-[rgba(255,255,255,0.08)]`}
+                style={makeLinkStyle("/")}
               >
                 Home
               </Link>
@@ -275,16 +267,11 @@ const Header = () => {
                 onClick={() => {
                   handleNavClick();
                 }}
-                className={`bg-clip-text bg-gradient-to-r font-['Plus_Jakarta_Sans:${
-                  isActive("/reviews") ? "SemiBold" : "Regular"
-                }',_sans-serif] ${
-                  isActive("/reviews") ? "font-semibold" : "font-normal"
-                } ${
-                  isActive("/reviews")
-                    ? "from-[#fafafa] to-[#949494]"
-                    : "from-[rgba(250,250,250,0.95)] to-[rgba(148,148,148,0.95)]"
-                } text-[22px] py-4 block hover:from-[#fafafa] hover:to-[#949494] transition-all border-b border-[rgba(255,255,255,0.08)]`}
-                style={{ WebkitTextFillColor: "transparent" }}
+                className={`${makeLinkClass(
+                  "/reviews",
+                  false
+                )} border-b border-[rgba(255,255,255,0.08)]`}
+                style={makeLinkStyle("/reviews")}
               >
                 Reviews
               </Link>
@@ -293,16 +280,11 @@ const Header = () => {
                 onClick={() => {
                   handleNavClick();
                 }}
-                className={`bg-clip-text bg-gradient-to-r font-['Plus_Jakarta_Sans:${
-                  isActive("/comparisons") ? "SemiBold" : "Regular"
-                }',_sans-serif] ${
-                  isActive("/comparisons") ? "font-semibold" : "font-normal"
-                } ${
-                  isActive("/comparisons")
-                    ? "from-[#fafafa] to-[#949494]"
-                    : "from-[rgba(250,250,250,0.95)] to-[rgba(148,148,148,0.95)]"
-                } text-[22px] py-4 block hover:from-[#fafafa] hover:to-[#949494] transition-all border-b border-[rgba(255,255,255,0.08)]`}
-                style={{ WebkitTextFillColor: "transparent" }}
+                className={`${makeLinkClass(
+                  "/comparisons",
+                  false
+                )} border-b border-[rgba(255,255,255,0.08)]`}
+                style={makeLinkStyle("/comparisons")}
               >
                 Comparisons
               </Link>
@@ -311,16 +293,11 @@ const Header = () => {
                 onClick={() => {
                   handleNavClick();
                 }}
-                className={`bg-clip-text bg-gradient-to-r font-['Plus_Jakarta_Sans:${
-                  isActive("/deals") ? "SemiBold" : "Regular"
-                }',_sans-serif] ${
-                  isActive("/deals") ? "font-semibold" : "font-normal"
-                } ${
-                  isActive("/deals")
-                    ? "from-[#fafafa] to-[#949494]"
-                    : "from-[rgba(250,250,250,0.95)] to-[rgba(148,148,148,0.95)]"
-                } text-[22px] py-4 block hover:from-[#fafafa] hover:to-[#949494] transition-all border-b border-[rgba(255,255,255,0.08)]`}
-                style={{ WebkitTextFillColor: "transparent" }}
+                className={`${makeLinkClass(
+                  "/deals",
+                  false
+                )} border-b border-[rgba(255,255,255,0.08)]`}
+                style={makeLinkStyle("/deals")}
               >
                 Deals
               </Link>
@@ -329,16 +306,11 @@ const Header = () => {
                 onClick={() => {
                   handleNavClick();
                 }}
-                className={`bg-clip-text bg-gradient-to-r font-['Plus_Jakarta_Sans:${
-                  isActive("/blogs") ? "SemiBold" : "Regular"
-                }',_sans-serif] ${
-                  isActive("/blogs") ? "font-semibold" : "font-normal"
-                } ${
-                  isActive("/blogs")
-                    ? "from-[#fafafa] to-[#949494]"
-                    : "from-[rgba(250,250,250,0.95)] to-[rgba(148,148,148,0.95)]"
-                } text-[22px] py-4 block hover:from-[#fafafa] hover:to-[#949494] transition-all border-b border-[rgba(255,255,255,0.08)]`}
-                style={{ WebkitTextFillColor: "transparent" }}
+                className={`${makeLinkClass(
+                  "/blogs",
+                  false
+                )} border-b border-[rgba(255,255,255,0.08)]`}
+                style={makeLinkStyle("/blogs")}
               >
                 Blogs
               </Link>
@@ -350,9 +322,7 @@ const Header = () => {
                   className="group backdrop-blur-sm backdrop-filter bg-gradient-to-b from-[#501bd6] to-[#7f57e2] hover:bg-white hover:from-white hover:to-white flex h-[56px] items-center justify-center px-[32px] py-[12px] gap-[12px] rounded-[100px] border border-[rgba(250,250,250,0.08)] w-full transition-all duration-200 shadow-xl"
                   data-name="Buttons/main"
                 >
-                  <div className="font-['Plus_Jakarta_Sans:Medium',_sans-serif] font-medium text-[18px] text-center text-neutral-50 group-hover:text-black transition-colors duration-200">
-                    Get Started
-                  </div>
+                  <div className={getStartedTextClass}>Get Started</div>
                 </button>
               </div>
             </div>

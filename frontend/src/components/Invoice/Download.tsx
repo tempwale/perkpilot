@@ -23,33 +23,45 @@ export default function Download() {
           Get paid faster, guaranteed.
         </div>
       </div>
-      <div
-        data-layer="Rectangle 39991"
-        className="Rectangle39991 w-[608px] h-[400px] bg-[#e4e6ff] rounded-2xl"
-      />
-      <div
-        data-layer="Buttons/main"
-        className="ButtonsMain h-[70.28px] px-[46.86px] py-[17.57px] left-[780.29px] top-[164.86px] absolute bg-[#737eff] rounded-[146.42px] flex justify-center items-center gap-[17.57px]"
-      >
+      <div className="relative">
         <div
-          data-layer="download"
-          className="Download w-[35.14px] h-[35.14px] relative overflow-hidden"
+          data-layer="Rectangle 39991"
+          className="Rectangle39991 w-[608px] h-[400px] bg-[#e4e6ff] rounded-2xl"
+        />
+        <button
+          type="button"
+          data-layer="Buttons/main"
+          className="ButtonsMain absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[70.28px] w-[420px] bg-[#737eff] rounded-[146.42px] flex justify-center items-center gap-[17.57px]"
         >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="36"
+            height="36"
+            viewBox="0 0 36 36"
+            fill="none"
+          >
+            <path
+              d="M8.78516 29.2847L26.3558 29.2847"
+              stroke="#FAFAFA"
+              stroke-width="2.19633"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M17.5706 5.85706V23.4277M17.5706 23.4277L22.6954 18.303M17.5706 23.4277L12.4458 18.303"
+              stroke="#FAFAFA"
+              stroke-width="2.19633"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
           <div
-            data-layer="Vector"
-            className="Vector w-[17.57px] h-0 left-[8.79px] top-[29.28px] absolute outline outline-[2.20px] outline-offset-[-1.10px] outline-neutral-50"
-          />
-          <div
-            data-layer="Vector"
-            className="Vector w-[10.25px] h-[17.57px] left-[12.45px] top-[5.86px] absolute outline outline-[2.20px] outline-offset-[-1.10px] outline-neutral-50"
-          />
-        </div>
-        <div
-          data-layer="Download PDF"
-          className="DownloadPdf text-center justify-start text-neutral-50 text-2xl font-medium font-['Plus_Jakarta_Sans'] leading-[35.14px]"
-        >
-          Download PDF
-        </div>
+            data-layer="Download PDF"
+            className="DownloadPdf text-center justify-start text-neutral-50 text-2xl font-medium font-['Plus_Jakarta_Sans'] leading-[35.14px]"
+          >
+            Download PDF
+          </div>
+        </button>
       </div>
     </div>
   );

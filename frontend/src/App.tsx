@@ -10,7 +10,8 @@ import ComparisionsDetailPage from "./pages/ComparisionsDetailPage";
 import BlogsDetailPage from "./pages/BlogsDetailPage";
 import PasswordGeneratorPage from "./pages/PasswordGeneratorPage";
 import InvoiceGeneratorPage from "./pages/InvoiceGeneratorPage";
-import SEOPage from "./pages/SEOPage";
+import ImageScraperPage from "./pages/ImageScraperPage";
+import ToolsPage from "./pages/ToolsPage";
 
 function App() {
   return (
@@ -26,7 +27,8 @@ function App() {
       <Route path="/comparison/:id" element={<ComparisionsDetailPage />} />
       <Route path="/password-generator" element={<PasswordGeneratorPage />} />
       <Route path="/invoice-generator" element={<InvoiceGeneratorPage />} />
-      <Route path="/seo" element={<SEOPage />} />
+      <Route path="/image" element={<ImageScraperPage />} />
+      <Route path="/tools" element={<ToolsPage />} />
 
     </Routes>
   );

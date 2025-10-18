@@ -1,4 +1,4 @@
-export default function invoicesummary() {
+export default function InvoiceSummary() {
   return (
     <div
       data-layer="Frame 2147223662"
@@ -81,7 +81,7 @@ export default function invoicesummary() {
         >
           <div
             data-layer="Description"
-            className="Description w-[126px] justify-start text-zinc-950 text-lg font-medium font-['Plus_Jakarta_Sans'] leading-[27px]"
+            className="Description w-[200px] justify-start text-zinc-950 text-lg font-medium font-['Plus_Jakarta_Sans'] leading-[27px]"
           >
             Description
           </div>
@@ -105,32 +105,66 @@ export default function invoicesummary() {
           </div>
         </div>
         <div
-          data-layer="Frame 2147223663"
-          className="Frame2147223663 self-stretch px-4 py-2 bg-white/5 inline-flex justify-between items-center"
+          data-layer="Frame 2147223664"
+          className="Frame2147223664 self-stretch bg-[#f4f5ff] rounded-2xl inline-flex flex-col justify-start items-start overflow-hidden"
         >
           <div
-            data-layer="Item Description"
-            className="ItemDescription text-right justify-start text-zinc-950 text-base font-normal font-['Plus_Jakarta_Sans'] leading-normal"
+            data-layer="Frame 2147223662"
+            className="Frame2147223662 self-stretch px-4 py-2 bg-white/5 border-b border-white/10 inline-flex justify-between items-center"
           >
-            Item Description
+            <div
+              data-layer="Description"
+              className="Description w-[126px] justify-start text-zinc-950 text-lg font-medium font-['Plus_Jakarta_Sans'] leading-[27px]"
+            >
+              Description
+            </div>
+            <div
+              data-layer="QTY"
+              className="Qty text-right justify-start text-zinc-950 text-base font-normal font-['Plus_Jakarta_Sans'] leading-normal"
+            >
+              QTY
+            </div>
+            <div
+              data-layer="RATE"
+              className="Rate text-right justify-start text-zinc-950 text-base font-normal font-['Plus_Jakarta_Sans'] leading-normal"
+            >
+              RATE
+            </div>
+            <div
+              data-layer="AMOUNT"
+              className="Amount text-right justify-start text-zinc-950 text-base font-normal font-['Plus_Jakarta_Sans'] leading-normal"
+            >
+              AMOUNT
+            </div>
           </div>
           <div
-            data-layer="01"
-            className="text-right justify-start text-zinc-950 text-base font-normal font-['Plus_Jakarta_Sans'] leading-normal"
+            data-layer="Frame 2147223663"
+            className="Frame2147223663 self-stretch px-4 py-2 bg-white/5 inline-flex justify-between items-center"
           >
-            01
-          </div>
-          <div
-            data-layer="$0.00"
-            className="000 text-right justify-start text-zinc-950 text-base font-normal font-['Plus_Jakarta_Sans'] leading-normal"
-          >
-            $0.00
-          </div>
-          <div
-            data-layer="$0.00"
-            className="000 text-right justify-start text-zinc-950 text-base font-normal font-['Plus_Jakarta_Sans'] leading-normal"
-          >
-            $0.00
+            <div
+              data-layer="Item Description"
+              className="ItemDescription text-right justify-start text-zinc-950 text-base font-normal font-['Plus_Jakarta_Sans'] leading-normal"
+            >
+              Item Description
+            </div>
+            <div
+              data-layer="01"
+              className="text-right justify-start text-zinc-950 text-base font-normal font-['Plus_Jakarta_Sans'] leading-normal"
+            >
+              01
+            </div>
+            <div
+              data-layer="$0.00"
+              className="000 text-right justify-start text-zinc-950 text-base font-normal font-['Plus_Jakarta_Sans'] leading-normal"
+            >
+              $0.00
+            </div>
+            <div
+              data-layer="$0.00"
+              className="000 text-right justify-start text-zinc-950 text-base font-normal font-['Plus_Jakarta_Sans'] leading-normal"
+            >
+              $0.00
+            </div>
           </div>
         </div>
       </div>
