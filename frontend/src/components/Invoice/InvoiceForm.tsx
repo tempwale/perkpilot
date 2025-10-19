@@ -1,19 +1,19 @@
 export default function InvoiceForm() {
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-6 px-4 w-full max-w-lg mx-auto">
       <div
-        data-layer="Frame 2147223650"
-        className="Frame2147223650 w-[608px] p-6 bg-white rounded-3xl inline-flex justify-between items-center"
+        data-layer="Frame 2147223654"
+        className="Frame2147223654 self-stretch flex flex-col gap-6"
       >
         <div
           data-layer="Upload Your Logo"
-          className="UploadYourLogo text-center justify-start text-zinc-950 text-xl font-medium font-['Plus_Jakarta_Sans'] leading-loose"
+          className="UploadYourLogo text-left sm:text-center justify-start text-zinc-950 text-base md:text-xl font-medium font-['Plus_Jakarta_Sans'] leading-snug md:leading-loose"
         >
           Upload Your Logo
         </div>
         <div
           data-layer="Buttons/main"
-          className="ButtonsMain h-12 pl-6 pr-10 py-3 rounded-[100px] outline outline-1 outline-offset-[-1px] outline-[#737eff] flex justify-center items-center gap-3"
+          className="ButtonsMain w-full sm:w-auto h-10 sm:h-12 pl-4 pr-6 py-2 rounded-[100px] outline outline-1 outline-offset-[-1px] outline-[#737eff] flex justify-center items-center gap-3"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -25,21 +25,21 @@ export default function InvoiceForm() {
             <path
               d="M6 20.688L18 20.688"
               stroke="#737EFF"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth={1.5}
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               d="M12 16.688V4.68799M12 4.68799L15.5 8.18799M12 4.68799L8.5 8.18799"
               stroke="#737EFF"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth={1.5}
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
           <div
             data-layer="Upload Logo"
-            className="UploadLogo text-center justify-start text-[#737eff] text-base font-medium font-['Plus_Jakarta_Sans'] leading-normal"
+            className="UploadLogo text-center justify-start text-[#737eff] text-sm sm:text-base font-medium font-['Plus_Jakarta_Sans'] leading-normal"
           >
             Upload Logo
           </div>
@@ -47,7 +47,7 @@ export default function InvoiceForm() {
       </div>
       <div
         data-layer="Frame 2147223651"
-        className="Frame2147223651 w-[608px] p-6 bg-white rounded-3xl inline-flex flex-col justify-start items-start gap-4"
+        className="Frame2147223651 self-stretch p-4 md:p-6 bg-white rounded-3xl flex flex-col justify-start items-start gap-4"
       >
         <div
           data-layer="Invoice Details"
@@ -57,11 +57,11 @@ export default function InvoiceForm() {
         </div>
         <div
           data-layer="Frame 2147223652"
-          className="Frame2147223652 self-stretch inline-flex justify-start items-start gap-4"
+          className="Frame2147223652 self-stretch w-full flex flex-col sm:flex-row justify-start items-start gap-4"
         >
           <div
             data-layer="Frame 2147206178"
-            className="Frame2147206178 flex-1 inline-flex flex-col justify-start items-start gap-3"
+            className="Frame2147206178 flex-1 flex flex-col justify-start items-start gap-3"
           >
             <div
               data-layer="Invoice Number"
@@ -71,11 +71,11 @@ export default function InvoiceForm() {
             </div>
             <div
               data-layer="Input"
-              className="Input self-stretch h-14 px-4 py-3 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 inline-flex justify-start items-center gap-3 overflow-hidden"
+              className="Input self-stretch h-12 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 flex justify-start items-center gap-3 overflow-hidden"
             >
               <div
                 data-layer="1"
-                className="flex-1 justify-start text-zinc-950 text-base font-normal font-['Poppins'] leading-normal"
+                className="flex-1 justify-start text-zinc-950 text-sm md:text-base font-normal font-['Poppins'] leading-normal"
               >
                 1
               </div>
@@ -83,7 +83,7 @@ export default function InvoiceForm() {
           </div>
           <div
             data-layer="Frame 2147206179"
-            className="Frame2147206179 flex-1 inline-flex flex-col justify-start items-start gap-3"
+            className="Frame2147206179 flex-1 flex flex-col justify-start items-start gap-3"
           >
             <div
               data-layer="Currency"
@@ -93,11 +93,11 @@ export default function InvoiceForm() {
             </div>
             <div
               data-layer="Input"
-              className="Input self-stretch h-14 px-4 py-3 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 inline-flex justify-between items-center overflow-hidden"
+              className="Input self-stretch h-12 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 flex justify-between items-center overflow-hidden"
             >
               <div
                 data-layer="USD"
-                className="Usd justify-start text-zinc-800 text-base font-normal font-['Poppins'] leading-normal"
+                className="Usd justify-start text-zinc-800 text-sm md:text-base font-normal font-['Poppins'] leading-normal"
               >
                 USD
               </div>
@@ -111,9 +111,9 @@ export default function InvoiceForm() {
                 <path
                   d="M6 9L12 15L18 9"
                   stroke="#09090B"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth={1.5}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </svg>
             </div>
@@ -121,11 +121,11 @@ export default function InvoiceForm() {
         </div>
         <div
           data-layer="Frame 2147223653"
-          className="Frame2147223653 self-stretch inline-flex justify-start items-start gap-4"
+          className="Frame2147223653 self-stretch w-full flex flex-col sm:flex-row justify-start items-start gap-4"
         >
           <div
             data-layer="Frame 2147206178"
-            className="Frame2147206178 flex-1 inline-flex flex-col justify-start items-start gap-3"
+            className="Frame2147206178 flex-1 flex flex-col justify-start items-start gap-3"
           >
             <div
               data-layer="Date"
@@ -135,11 +135,11 @@ export default function InvoiceForm() {
             </div>
             <div
               data-layer="Input"
-              className="Input self-stretch h-14 px-4 py-3 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 inline-flex justify-start items-center gap-3 overflow-hidden"
+              className="Input self-stretch h-12 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 flex justify-start items-center gap-3 overflow-hidden"
             >
               <div
                 data-layer="08/11/2025"
-                className="112025 flex-1 justify-start text-zinc-400 text-base font-normal font-['Poppins'] leading-normal"
+                className="112025 flex-1 justify-start text-zinc-400 text-sm md:text-base font-normal font-['Poppins'] leading-normal"
               >
                 08/11/2025
               </div>
@@ -147,7 +147,7 @@ export default function InvoiceForm() {
           </div>
           <div
             data-layer="Frame 2147206179"
-            className="Frame2147206179 flex-1 inline-flex flex-col justify-start items-start gap-3"
+            className="Frame2147206179 flex-1 flex flex-col justify-start items-start gap-3"
           >
             <div
               data-layer="Due Date"
@@ -157,11 +157,11 @@ export default function InvoiceForm() {
             </div>
             <div
               data-layer="Input"
-              className="Input self-stretch h-14 px-4 py-3 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 inline-flex justify-between items-center overflow-hidden"
+              className="Input self-stretch h-12 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 flex justify-between items-center overflow-hidden"
             >
               <div
                 data-layer="dd/mm/yy"
-                className="DdMmYy justify-start text-zinc-400 text-base font-normal font-['Poppins'] leading-normal"
+                className="DdMmYy justify-start text-zinc-400 text-sm md:text-base font-normal font-['Poppins'] leading-normal"
               >
                 dd/mm/yy
               </div>
@@ -175,30 +175,30 @@ export default function InvoiceForm() {
                 <path
                   d="M15 4V2M15 4V6M15 4H10.5M3 10V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V10H3Z"
                   stroke="#A1A1AA"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth={1.5}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <path
                   d="M3 10V6C3 4.89543 3.89543 4 5 4H7"
                   stroke="#A1A1AA"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth={1.5}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <path
                   d="M7 2V6"
                   stroke="#A1A1AA"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth={1.5}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <path
                   d="M21 10V6C21 4.89543 20.1046 4 19 4H18.5"
                   stroke="#A1A1AA"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth={1.5}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </svg>
             </div>
@@ -206,11 +206,11 @@ export default function InvoiceForm() {
         </div>
         <div
           data-layer="Frame 2147223654"
-          className="Frame2147223654 self-stretch inline-flex justify-start items-start gap-4"
+          className="Frame2147223654 self-stretch w-full flex flex-col sm:flex-row justify-start items-start gap-4"
         >
           <div
             data-layer="Frame 2147206178"
-            className="Frame2147206178 flex-1 inline-flex flex-col justify-start items-start gap-3"
+            className="Frame2147206178 flex-1 flex flex-col justify-start items-start gap-3"
           >
             <div
               data-layer="Payment Terms"
@@ -220,11 +220,11 @@ export default function InvoiceForm() {
             </div>
             <div
               data-layer="Input"
-              className="Input self-stretch h-14 px-4 py-3 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 inline-flex justify-start items-center gap-3 overflow-hidden"
+              className="Input self-stretch h-12 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 flex justify-start items-center gap-3 overflow-hidden"
             >
               <div
                 data-layer="Net 30"
-                className="Net30 flex-1 justify-start text-zinc-400 text-base font-normal font-['Poppins'] leading-normal"
+                className="Net30 flex-1 justify-start text-zinc-400 text-sm md:text-base font-normal font-['Poppins'] leading-normal"
               >
                 Net 30
               </div>
@@ -232,7 +232,7 @@ export default function InvoiceForm() {
           </div>
           <div
             data-layer="Frame 2147206179"
-            className="Frame2147206179 flex-1 inline-flex flex-col justify-start items-start gap-3"
+            className="Frame2147206179 flex-1 flex flex-col justify-start items-start gap-3"
           >
             <div
               data-layer="PO Number"
@@ -242,11 +242,11 @@ export default function InvoiceForm() {
             </div>
             <div
               data-layer="Input"
-              className="Input self-stretch h-14 px-4 py-3 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 inline-flex justify-between items-center overflow-hidden"
+              className="Input self-stretch h-12 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 flex justify-between items-center overflow-hidden"
             >
               <div
                 data-layer="Optional"
-                className="Optional flex-1 justify-start text-zinc-400 text-base font-normal font-['Poppins'] leading-normal"
+                className="Optional flex-1 justify-start text-zinc-400 text-sm md:text-base font-normal font-['Poppins'] leading-normal"
               >
                 Optional
               </div>
@@ -256,7 +256,7 @@ export default function InvoiceForm() {
       </div>
       <div
         data-layer="Frame 2147223652"
-        className="Frame2147223652 self-stretch p-6 bg-white rounded-3xl inline-flex flex-col justify-start items-start gap-4"
+        className="Frame2147223652 self-stretch p-4 md:p-6 bg-white rounded-3xl flex flex-col justify-start items-start gap-4"
       >
         <div
           data-layer="From Your Business"
@@ -266,11 +266,11 @@ export default function InvoiceForm() {
         </div>
         <div
           data-layer="Frame 2147223652"
-          className="Frame2147223652 self-stretch inline-flex justify-start items-start gap-4"
+          className="Frame2147223652 self-stretch w-full flex flex-col sm:flex-row justify-start items-start gap-4"
         >
           <div
             data-layer="Frame 2147206178"
-            className="Frame2147206178 flex-1 inline-flex flex-col justify-start items-start gap-3"
+            className="Frame2147206178 flex-1 flex flex-col justify-start items-start gap-3"
           >
             <div
               data-layer="Business Name"
@@ -280,11 +280,11 @@ export default function InvoiceForm() {
             </div>
             <div
               data-layer="Input"
-              className="Input self-stretch h-14 px-4 py-3 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 inline-flex justify-start items-center gap-3 overflow-hidden"
+              className="Input self-stretch h-12 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 flex justify-start items-center gap-3 overflow-hidden"
             >
               <div
                 data-layer="Your company name"
-                className="YourCompanyName flex-1 justify-start text-zinc-400 text-base font-normal font-['Poppins'] leading-normal"
+                className="YourCompanyName flex-1 justify-start text-zinc-400 text-sm md:text-base font-normal font-['Poppins'] leading-normal"
               >
                 Your company name
               </div>
@@ -293,11 +293,11 @@ export default function InvoiceForm() {
         </div>
         <div
           data-layer="Frame 2147223653"
-          className="Frame2147223653 self-stretch inline-flex justify-start items-start gap-4"
+          className="Frame2147223653 self-stretch w-full flex flex-col sm:flex-row justify-start items-start gap-4"
         >
           <div
             data-layer="Frame 2147206178"
-            className="Frame2147206178 flex-1 inline-flex flex-col justify-start items-start gap-3"
+            className="Frame2147206178 flex-1 flex flex-col justify-start items-start gap-3"
           >
             <div
               data-layer="Email"
@@ -307,7 +307,7 @@ export default function InvoiceForm() {
             </div>
             <div
               data-layer="Input"
-              className="Input self-stretch h-14 px-4 py-3 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 inline-flex justify-start items-center gap-3 overflow-hidden"
+              className="Input self-stretch h-12 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 flex justify-start items-center gap-3 overflow-hidden"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -319,19 +319,19 @@ export default function InvoiceForm() {
                 <path
                   d="M7 9L12 12.5L17 9"
                   stroke="#A1A1AA"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth={1.5}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <path
                   d="M2 17V7C2 5.89543 2.89543 5 4 5H20C21.1046 5 22 5.89543 22 7V17C22 18.1046 21.1046 19 20 19H4C2.89543 19 2 18.1046 2 17Z"
                   stroke="#A1A1AA"
-                  stroke-width="1.5"
+                  strokeWidth={1.5}
                 />
               </svg>
               <div
                 data-layer="Email"
-                className="Email flex-1 justify-start text-zinc-400 text-base font-normal font-['Poppins'] leading-normal"
+                className="Email flex-1 justify-start text-zinc-400 text-sm md:text-base font-normal font-['Poppins'] leading-normal"
               >
                 Email
               </div>
@@ -339,7 +339,7 @@ export default function InvoiceForm() {
           </div>
           <div
             data-layer="Frame 2147206179"
-            className="Frame2147206179 flex-1 inline-flex flex-col justify-start items-start gap-3"
+            className="Frame2147206179 flex-1 flex flex-col justify-start items-start gap-3"
           >
             <div
               data-layer="Phone"
@@ -349,17 +349,17 @@ export default function InvoiceForm() {
             </div>
             <div
               data-layer="Input"
-              className="Input self-stretch h-14 px-4 py-3 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 inline-flex justify-start items-center gap-3 overflow-hidden"
+              className="Input self-stretch h-12 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 flex justify-start items-center gap-3 overflow-hidden"
             >
               <div
                 data-layer="+91"
-                className="91 justify-start text-zinc-400 text-base font-normal font-['Poppins'] leading-normal"
+                className="91 justify-start text-zinc-400 text-sm md:text-base font-normal font-['Poppins'] leading-normal"
               >
                 +91
               </div>
               <div
                 data-layer="0000000000"
-                className="flex-1 justify-start text-zinc-400 text-base font-normal font-['Poppins'] leading-normal"
+                className="flex-1 justify-start text-zinc-400 text-sm md:text-base font-normal font-['Poppins'] leading-normal"
               >
                 0000000000
               </div>
@@ -368,11 +368,11 @@ export default function InvoiceForm() {
         </div>
         <div
           data-layer="Frame 2147223654"
-          className="Frame2147223654 self-stretch inline-flex justify-start items-start gap-4"
+          className="Frame2147223654 self-stretch w-full flex flex-col sm:flex-row justify-start items-start gap-4"
         >
           <div
             data-layer="Frame 2147206178"
-            className="Frame2147206178 flex-1 inline-flex flex-col justify-start items-start gap-3"
+            className="Frame2147206178 flex-1 flex flex-col justify-start items-start gap-3"
           >
             <div
               data-layer="Address"
@@ -382,11 +382,11 @@ export default function InvoiceForm() {
             </div>
             <div
               data-layer="Input"
-              className="Input self-stretch px-4 py-3 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 inline-flex justify-start items-center gap-3 overflow-hidden"
+              className="Input self-stretch px-3 md:px-4 py-2 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 flex justify-start items-center gap-3 overflow-hidden"
             >
               <div
                 data-layer="Detail address here..."
-                className="DetailAddressHere flex-1 justify-start text-zinc-400 text-base font-normal font-['Poppins'] leading-normal"
+                className="DetailAddressHere flex-1 justify-start text-zinc-400 text-sm md:text-base font-normal font-['Poppins'] leading-normal"
               >
                 Detail address here...
                 <br />
@@ -502,11 +502,11 @@ export default function InvoiceForm() {
         </div>
         <div
           data-layer="Frame 2147223654"
-          className="Frame2147223654 self-stretch inline-flex justify-start items-start gap-4"
+          className="Frame2147223654 self-stretch w-full flex flex-col sm:flex-row justify-start items-start gap-4"
         >
           <div
             data-layer="Frame 2147206178"
-            className="Frame2147206178 flex-1 inline-flex flex-col justify-start items-start gap-3"
+            className="Frame2147206178 flex-1 flex flex-col justify-start items-start gap-3"
           >
             <div
               data-layer="Address"
@@ -706,11 +706,11 @@ export default function InvoiceForm() {
               </div>
               <div
                 data-layer="Input"
-                className="Input self-stretch px-4 py-3 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 inline-flex justify-start items-center gap-3 overflow-hidden"
+                className="Input self-stretch px-3 md:px-4 py-2 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 flex justify-start items-center gap-3 overflow-hidden"
               >
                 <div
                   data-layer="Description of item/service"
-                  className="DescriptionOfItemService flex-1 justify-start text-zinc-400 text-base font-normal font-['Poppins'] leading-normal"
+                  className="DescriptionOfItemService flex-1 justify-start text-zinc-400 text-sm md:text-base font-normal font-['Poppins'] leading-normal"
                 >
                   Description of item/service
                   <br />
@@ -720,11 +720,11 @@ export default function InvoiceForm() {
           </div>
           <div
             data-layer="Frame 2147223653"
-            className="Frame2147223653 self-stretch inline-flex justify-start items-start gap-4"
+            className="Frame2147223653 self-stretch w-full flex flex-col sm:flex-row justify-start items-start gap-4"
           >
             <div
               data-layer="Frame 2147206178"
-              className="Frame2147206178 flex-1 inline-flex flex-col justify-start items-start gap-3"
+              className="Frame2147206178 flex-1 flex flex-col justify-start items-start gap-3"
             >
               <div
                 data-layer="Quantity"
@@ -734,11 +734,11 @@ export default function InvoiceForm() {
               </div>
               <div
                 data-layer="Input"
-                className="Input self-stretch h-14 px-4 py-3 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 inline-flex justify-start items-center gap-3 overflow-hidden"
+                className="Input self-stretch h-12 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 flex justify-start items-center gap-3 overflow-hidden"
               >
                 <div
                   data-layer="1"
-                  className="flex-1 justify-start text-zinc-400 text-base font-normal font-['Poppins'] leading-normal"
+                  className="flex-1 justify-start text-zinc-400 text-sm md:text-base font-normal font-['Poppins'] leading-normal"
                 >
                   1
                 </div>
@@ -746,7 +746,7 @@ export default function InvoiceForm() {
             </div>
             <div
               data-layer="Frame 2147206180"
-              className="Frame2147206180 flex-1 inline-flex flex-col justify-start items-start gap-3"
+              className="Frame2147206180 flex-1 flex flex-col justify-start items-start gap-3"
             >
               <div
                 data-layer="Rate"
@@ -756,11 +756,11 @@ export default function InvoiceForm() {
               </div>
               <div
                 data-layer="Input"
-                className="Input self-stretch h-14 px-4 py-3 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 inline-flex justify-start items-center gap-3 overflow-hidden"
+                className="Input self-stretch h-12 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 flex justify-start items-center gap-3 overflow-hidden"
               >
                 <div
                   data-layer="0"
-                  className="flex-1 justify-start text-zinc-400 text-base font-normal font-['Poppins'] leading-normal"
+                  className="flex-1 justify-start text-zinc-400 text-sm md:text-base font-normal font-['Poppins'] leading-normal"
                 >
                   0
                 </div>
@@ -768,7 +768,7 @@ export default function InvoiceForm() {
             </div>
             <div
               data-layer="Frame 2147206179"
-              className="Frame2147206179 flex-1 inline-flex flex-col justify-start items-start gap-3"
+              className="Frame2147206179 flex-1 flex flex-col justify-start items-start gap-3"
             >
               <div
                 data-layer="Amount"
@@ -778,11 +778,11 @@ export default function InvoiceForm() {
               </div>
               <div
                 data-layer="Input"
-                className="Input self-stretch h-14 px-4 py-3 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 inline-flex justify-start items-center gap-3 overflow-hidden"
+                className="Input self-stretch h-12 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 flex justify-start items-center gap-3 overflow-hidden"
               >
                 <div
                   data-layer="0.00"
-                  className="00 flex-1 justify-start text-zinc-400 text-base font-normal font-['Poppins'] leading-normal"
+                  className="00 flex-1 justify-start text-zinc-400 text-sm md:text-base font-normal font-['Poppins'] leading-normal"
                 >
                   0.00
                 </div>
@@ -792,7 +792,7 @@ export default function InvoiceForm() {
         </div>
         <div
           data-layer="Buttons/main"
-          className="ButtonsMain h-12 pl-6 pr-10 py-3 rounded-[100px] outline outline-1 outline-offset-[-1px] outline-[#737eff] inline-flex justify-center items-center gap-3"
+          className="ButtonsMain w-full sm:w-auto h-10 sm:h-12 pl-4 pr-6 py-2 rounded-[100px] outline outline-1 outline-offset-[-1px] outline-[#737eff] flex justify-center items-center gap-3"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -804,14 +804,14 @@ export default function InvoiceForm() {
             <path
               d="M6 12H12M18 12H12M12 12V6M12 12V18"
               stroke="#737EFF"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth={1.5}
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
           <div
             data-layer="Add Item"
-            className="AddItem text-center justify-start text-[#737eff] text-base font-medium font-['Plus_Jakarta_Sans'] leading-normal"
+            className="AddItem text-center justify-start text-[#737eff] text-sm sm:text-base font-medium font-['Plus_Jakarta_Sans'] leading-normal"
           >
             Add Item
           </div>
@@ -819,7 +819,7 @@ export default function InvoiceForm() {
       </div>
       <div
         data-layer="Frame 2147223655"
-        className="Frame2147223655 self-stretch p-6 bg-white rounded-3xl inline-flex flex-col justify-start items-start gap-6"
+        className="Frame2147223655 self-stretch p-4 md:p-6 bg-white rounded-3xl flex flex-col justify-start items-start gap-6"
       >
         <div
           data-layer="Additional Charges"
@@ -833,11 +833,11 @@ export default function InvoiceForm() {
         >
           <div
             data-layer="Frame 2147223653"
-            className="Frame2147223653 self-stretch inline-flex justify-start items-end gap-4"
+            className="Frame2147223653 self-stretch w-full flex flex-col sm:flex-row justify-start items-end gap-4"
           >
             <div
               data-layer="Frame 2147206178"
-              className="Frame2147206178 flex-1 inline-flex flex-col justify-start items-start gap-3"
+              className="Frame2147206178 flex-1 flex flex-col justify-start items-start gap-3"
             >
               <div
                 data-layer="Tax"
@@ -847,11 +847,11 @@ export default function InvoiceForm() {
               </div>
               <div
                 data-layer="Input"
-                className="Input self-stretch h-14 px-4 py-3 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 inline-flex justify-start items-center gap-3 overflow-hidden"
+                className="Input self-stretch h-12 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 flex justify-start items-center gap-3 overflow-hidden"
               >
                 <div
                   data-layer="0"
-                  className="flex-1 justify-start text-zinc-400 text-base font-normal font-['Poppins'] leading-normal"
+                  className="flex-1 justify-start text-zinc-400 text-sm md:text-base font-normal font-['Poppins'] leading-normal"
                 >
                   0
                 </div>
@@ -863,11 +863,11 @@ export default function InvoiceForm() {
             >
               <div
                 data-layer="Input"
-                className="Input h-14 px-4 py-3 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 inline-flex justify-start items-center gap-3 overflow-hidden"
+                className="Input h-12 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 flex justify-start items-center gap-3 overflow-hidden"
               >
                 <div
                   data-layer="%"
-                  className="justify-start text-zinc-950 text-base font-normal font-['Poppins'] leading-normal"
+                  className="justify-start text-zinc-950 text-sm md:text-base font-normal font-['Poppins'] leading-normal"
                 >
                   %
                 </div>
@@ -881,16 +881,16 @@ export default function InvoiceForm() {
                   <path
                     d="M6 9L12 15L18 9"
                     stroke="#09090B"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth={1.5}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                 </svg>
               </div>
             </div>
             <div
               data-layer="Frame 2147206182"
-              className="Frame2147206182 flex-1 inline-flex flex-col justify-start items-start gap-3"
+              className="Frame2147206182 flex-1 flex flex-col justify-start items-start gap-3"
             >
               <div
                 data-layer="Discount"
@@ -900,11 +900,11 @@ export default function InvoiceForm() {
               </div>
               <div
                 data-layer="Input"
-                className="Input self-stretch h-14 px-4 py-3 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 inline-flex justify-start items-center gap-3 overflow-hidden"
+                className="Input self-stretch h-12 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 flex justify-start items-center gap-3 overflow-hidden"
               >
                 <div
                   data-layer="0"
-                  className="flex-1 justify-start text-zinc-400 text-base font-normal font-['Poppins'] leading-normal"
+                  className="flex-1 justify-start text-zinc-400 text-sm md:text-base font-normal font-['Poppins'] leading-normal"
                 >
                   0
                 </div>
@@ -912,15 +912,15 @@ export default function InvoiceForm() {
             </div>
             <div
               data-layer="Frame 2147206181"
-              className="Frame2147206181 inline-flex flex-col justify-start items-start gap-3"
+              className="Frame2147206181 flex flex-col justify-start items-start gap-3"
             >
               <div
                 data-layer="Input"
-                className="Input h-14 px-4 py-3 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 inline-flex justify-start items-center gap-3 overflow-hidden"
+                className="Input h-12 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 flex justify-start items-center gap-3 overflow-hidden"
               >
                 <div
                   data-layer="%"
-                  className="justify-start text-zinc-950 text-base font-normal font-['Poppins'] leading-normal"
+                  className="justify-start text-zinc-950 text-sm md:text-base font-normal font-['Poppins'] leading-normal"
                 >
                   %
                 </div>
@@ -934,9 +934,9 @@ export default function InvoiceForm() {
                   <path
                     d="M6 9L12 15L18 9"
                     stroke="#09090B"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth={1.5}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                 </svg>
               </div>
@@ -973,7 +973,7 @@ export default function InvoiceForm() {
       </div>
       <div
         data-layer="Frame 2147223656"
-        className="Frame2147223656 self-stretch p-6 bg-white rounded-3xl inline-flex flex-col justify-start items-start gap-6"
+        className="Frame2147223656 self-stretch p-4 md:p-6 bg-white rounded-3xl flex flex-col justify-start items-start gap-6"
       >
         <div
           data-layer="Additional Information"
@@ -1001,11 +1001,11 @@ export default function InvoiceForm() {
               </div>
               <div
                 data-layer="Input"
-                className="Input self-stretch h-14 px-4 py-3 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 inline-flex justify-start items-center gap-3 overflow-hidden"
+                className="Input self-stretch h-24 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 flex justify-start items-start gap-3 overflow-hidden"
               >
                 <div
                   data-layer="Any additional notes or information"
-                  className="AnyAdditionalNotesOrInformation flex-1 justify-start text-zinc-400 text-base font-normal font-['Poppins'] leading-normal"
+                  className="AnyAdditionalNotesOrInformation flex-1 justify-start text-zinc-400 text-sm md:text-base font-normal font-['Poppins'] leading-normal"
                 >
                   Any additional notes or information
                 </div>
@@ -1028,11 +1028,11 @@ export default function InvoiceForm() {
               </div>
               <div
                 data-layer="Input"
-                className="Input self-stretch h-14 px-4 py-3 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 inline-flex justify-start items-center gap-3 overflow-hidden"
+                className="Input self-stretch h-24 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 flex justify-start items-start gap-3 overflow-hidden"
               >
                 <div
                   data-layer="Payment terms, late fees, etc."
-                  className="PaymentTermsLateFeesEtc flex-1 justify-start text-zinc-400 text-base font-normal font-['Poppins'] leading-normal"
+                  className="PaymentTermsLateFeesEtc flex-1 justify-start text-zinc-400 text-sm md:text-base font-normal font-['Poppins'] leading-normal"
                 >
                   Payment terms, late fees, etc.
                 </div>

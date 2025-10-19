@@ -13,7 +13,7 @@ export default function InvoiceGeneratorPage() {
   return (
     <div className="w-full min-h-screen pt-20  bg-[#F3F4FF] flex flex-col items-center gap-6">
       <Header forceBlackText={true} /> <InvoiceHeading />
-      <div className="flex flex-row gap-6">
+      <div className="flex flex-col md:flex-row gap-6  ">
         <InvoiceForm />
         <InvoiceSummary />
       </div>
@@ -23,7 +23,6 @@ export default function InvoiceGeneratorPage() {
       <Download />
       <FAQ />
       <CTA />
-      <Footer />
       <Footer />
     </div>
   );

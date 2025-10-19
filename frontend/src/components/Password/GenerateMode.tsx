@@ -11,7 +11,7 @@ export default function GeneratedMode() {
     <div>
       <div
         data-layer="Frame 2147206318"
-        className="Frame2147206318 w-[608px] p-6 bg-white/10 rounded-3xl backdrop-blur-md inline-flex flex-col justify-start items-start gap-6"
+        className="Frame2147206318 w-[400px] md:w-[608px] p-6 bg-white/10 rounded-3xl backdrop-blur-md inline-flex flex-col justify-start items-start gap-6"
       >
         <div
           data-layer="Frame 2147206316"
@@ -19,7 +19,7 @@ export default function GeneratedMode() {
         >
           <div
             data-layer="Generation Mode"
-            className="GenerationMode text-center justify-start text-neutral-50 text-xl font-medium font-['Plus_Jakarta_Sans'] leading-loose"
+            className="GenerationMode text-center justify-start text-neutral-50 text-lg font-medium font-['Plus_Jakarta_Sans'] leading-snug"
           >
             Generation Mode
           </div>
@@ -30,55 +30,55 @@ export default function GeneratedMode() {
         >
           <div
             data-layer="Buttons/main"
-            className="ButtonsMain px-4 py-[11px] bg-neutral-50 rounded-[100px] flex justify-center items-center gap-2"
+            className="ButtonsMain px-4 py-[9px] bg-neutral-50 rounded-[100px] flex justify-center items-center gap-2"
           >
             <div
               data-layer="Random"
-              className="Random text-center justify-start text-zinc-950 text-sm font-medium font-['Plus_Jakarta_Sans'] leading-[21px]"
+              className="Random text-center justify-start text-zinc-950 text-xs font-medium font-['Plus_Jakarta_Sans'] leading-[18px]"
             >
               Random
             </div>
           </div>
           <div
             data-layer="Buttons/main"
-            className="ButtonsMain px-4 py-[11px] rounded-[100px] flex justify-center items-center gap-2"
+            className="ButtonsMain px-4 py-[9px] rounded-[100px] flex justify-center items-center gap-2"
           >
             <div
               data-layer="Smart"
-              className="Smart text-center justify-start text-neutral-50 text-sm font-medium font-['Plus_Jakarta_Sans'] leading-[21px]"
+              className="Smart text-center justify-start text-neutral-50 text-xs font-medium font-['Plus_Jakarta_Sans'] leading-[18px]"
             >
               Smart
             </div>
           </div>
           <div
             data-layer="Buttons/main"
-            className="ButtonsMain px-4 py-[11px] rounded-[100px] flex justify-center items-center gap-2"
+            className="ButtonsMain px-4 py-[9px] rounded-[100px] flex justify-center items-center gap-2"
           >
             <div
               data-layer="Hybrid"
-              className="Hybrid text-center justify-start text-neutral-50 text-sm font-medium font-['Plus_Jakarta_Sans'] leading-[21px]"
+              className="Hybrid text-center justify-start text-neutral-50 text-xs font-medium font-['Plus_Jakarta_Sans'] leading-[18px]"
             >
               Hybrid
             </div>
           </div>
           <div
             data-layer="Buttons/main"
-            className="ButtonsMain px-4 py-[11px] rounded-[100px] flex justify-center items-center gap-2"
+            className="ButtonsMain px-4 py-[9px] rounded-[100px] flex justify-center items-center gap-2"
           >
             <div
               data-layer="Emoji"
-              className="Emoji text-center justify-start text-neutral-50 text-sm font-medium font-['Plus_Jakarta_Sans'] leading-[21px]"
+              className="Emoji text-center justify-start text-neutral-50 text-xs font-medium font-['Plus_Jakarta_Sans'] leading-[18px]"
             >
               Emoji
             </div>
           </div>
           <div
             data-layer="Buttons/main"
-            className="ButtonsMain px-4 py-[11px] rounded-[100px] flex justify-center items-center gap-2"
+            className="ButtonsMain px-4 py-[9px] rounded-[100px] flex justify-center items-center gap-2"
           >
             <div
               data-layer="Pattern"
-              className="Pattern text-center justify-start text-neutral-50 text-sm font-medium font-['Plus_Jakarta_Sans'] leading-[21px]"
+              className="Pattern text-center justify-start text-neutral-50 text-xs font-medium font-['Plus_Jakarta_Sans'] leading-[18px]"
             >
               Pattern
             </div>
@@ -291,7 +291,7 @@ export default function GeneratedMode() {
             >
               <div
                 data-layer="Button"
-                className="Button w-[23.33px] h-[22.67px] px-[41.33px] py-[5.33px] left-[26.67px] top-[2.67px] absolute bg-white rounded-[66.67px]"
+                className="Button w-[23.33px] h-[22.67px] pl-[41.33px] py-[5.33px] left-[26.67px] top-[2.67px] absolute bg-white rounded-[66.67px]"
               />
             </div>
           </div>
@@ -316,7 +316,7 @@ export default function GeneratedMode() {
             >
               <div
                 data-layer="Button"
-                className="Button w-[23.33px] h-[22.67px] px-[41.33px] py-[5.33px] left-[26.67px] top-[2.67px] absolute bg-white rounded-[66.67px]"
+                className="Button w-[23.33px] h-[22.67px] pl-[41.33px] py-[5.33px] left-[26.67px] top-[2.67px] absolute bg-white rounded-[66.67px]"
               />
             </div>
           </div>
@@ -341,7 +341,7 @@ export default function GeneratedMode() {
             >
               <div
                 data-layer="Button"
-                className="Button w-[23.33px] h-[22.67px] px-[41.33px] py-[5.33px] left-[26.67px] top-[2.67px] absolute bg-white rounded-[66.67px]"
+                className="Button w-[23.33px] h-[22.67px] pl-[41.33px] py-[5.33px] left-[26.67px] top-[2.67px] absolute bg-white rounded-[66.67px]"
               />
             </div>
           </div>
@@ -366,7 +366,7 @@ export default function GeneratedMode() {
             >
               <div
                 data-layer="Button"
-                className="Button w-[23.33px] h-[22.67px] px-[41.33px] py-[5.33px] left-[26.67px] top-[2.67px] absolute bg-white rounded-[66.67px]"
+                className="Button w-[23.33px] h-[22.67px] pl-[41.33px]  py-[5.33px] left-[26.67px] top-[2.67px] absolute bg-white rounded-[66.67px]"
               />
             </div>
           </div>

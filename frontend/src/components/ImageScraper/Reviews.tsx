@@ -1,26 +1,22 @@
 export default function Reviews() {
   return (
-    <div className="pt-20">
-      <div
-        data-layer="What Our Users Say"
-        className="WhatOurUsersSay self-stretch text-center justify-start text-zinc-950 text-5xl font-semibold font-['Plus_Jakarta_Sans'] capitalize leading-[60px]"
-      >
-        What Our Users Say
+    <div className="pt-12 w-full">
+      <div className="w-full max-w-[818px] mb-8 md:mb-12 flex flex-col items-center gap-3 md:gap-4">
+        <div className="GetEveryImageIn3Steps text-center justify-start text-zinc-950 text-3xl md:text-4xl lg:text-5xl font-semibold font-['Plus_Jakarta_Sans'] capitalize leading-tight md:leading-[60px]">
+          What Our Users Say{" "}
+        </div>
+        <div className="SimpleFastAndComprehensiveImageExtraction text-center justify-start text-zinc-700 text-base md:text-lg lg:text-xl font-medium font-['Plus_Jakarta_Sans'] leading-relaxed md:leading-loose">
+          Join thousands of website owners who've used our tool regularly.{" "}
+        </div>
       </div>
-      <div
-        data-layer="Join thousands of website owners who've improved their SEO with our free audit tool."
-        className="JoinThousandsOfWebsiteOwnersWhoVeImprovedTheirSeoWithOurFreeAuditTool self-stretch text-center justify-start text-zinc-700 text-lg font-medium font-['Plus_Jakarta_Sans'] leading-[27px]"
-      >
-        Join thousands of website owners who've improved their SEO with our free
-        audit tool.
-      </div>
+
       {/* Reviews horizontal scroller */}
       <div className="pt-10 ">
-        <div className="overflow-x-auto no-scrollbar -mx-4 px-4">
-          <div className="inline-flex gap-6 w-max snap-x snap-mandatory">
+        <div className="overflow-x-auto no-scrollbar mx-4 px-4">
+          <div className="inline-flex gap-6 w-max snap-x snap-mandatory flex md:flex-row flex-col">
             <div
               data-layer="Frame 2147223665"
-              className="Frame2147223665 w-[503px] p-6 bg-white rounded-3xl inline-flex flex-col justify-start items-center gap-4 snap-start flex-shrink-0"
+              className="Frame2147223665 w-[380px] md:w-[503px] p-6 bg-white rounded-3xl inline-flex flex-col justify-start items-center gap-4 snap-start flex-shrink-0"
             >
               <div
                 data-layer="Frame 2147223659"
@@ -28,11 +24,11 @@ export default function Reviews() {
               >
                 <div
                   data-layer="Frame 2147223676"
-                  className="Frame2147223676 flex justify-start items-center gap-4"
+                  className="Frame2147223676 flex justify-start items-center gap-3"
                 >
                   <img
                     data-layer="Ellipse 1"
-                    className="Ellipse1 w-14 h-14 rounded-full"
+                    className="Ellipse1 w-10 h-10 sm:w-14 sm:h-14 rounded-full"
                     src="https://placehold.co/56x56"
                     alt="profile"
                   />
@@ -42,13 +38,13 @@ export default function Reviews() {
                   >
                     <div
                       data-layer="Sarah Johnson"
-                      className="SarahJohnson justify-center text-zinc-950 text-lg font-medium font-['Plus_Jakarta_Sans'] leading-[27px]"
+                      className="SarahJohnson justify-center text-zinc-950 text-sm sm:text-lg font-medium font-['Plus_Jakarta_Sans'] leading-[18px] sm:leading-[27px]"
                     >
                       Sarah Johnson
                     </div>
                     <div
                       data-layer="Marketing Director, TechFlow Solutions"
-                      className="MarketingDirectorTechflowSolutions justify-center text-zinc-700 text-xs font-medium font-['Plus_Jakarta_Sans'] leading-[18px]"
+                      className="MarketingDirectorTechflowSolutions justify-center text-zinc-700 text-xs sm:text-xs font-medium font-['Plus_Jakarta_Sans'] leading-[16px] sm:leading-[18px]"
                     >
                       Marketing Director, TechFlow Solutions
                     </div>
@@ -78,7 +74,7 @@ export default function Reviews() {
                   ))}
                 </div>
               </div>
-              <div className="mt-3 text-zinc-700 text-lg font-medium leading-[27px] text-left">
+              <div className="mt-3 text-zinc-700 text-sm sm:text-lg font-medium leading-[20px] sm:leading-[27px] text-left">
                 "This SEO audit tool found 23 critical issues we didn't even
                 know existed. After implementing their recommendations, our
                 organic traffic increased by 45% in just 3 months!"
@@ -86,27 +82,48 @@ export default function Reviews() {
             </div>
 
             {/* duplicate card as example - remove or map over data in real usage */}
-            <div className="Frame2147223665 w-[503px] p-6 bg-white rounded-3xl inline-flex flex-col justify-start items-center gap-4 snap-start flex-shrink-0">
-              <div className="Frame2147223659 self-stretch inline-flex justify-between items-center">
-                <div className="Frame2147223676 flex justify-start items-center gap-4">
+            <div
+              data-layer="Frame 2147223665"
+              className="Frame2147223665 w-[380px] md:w-[503px] p-6 bg-white rounded-3xl inline-flex flex-col justify-start items-center gap-4 snap-start flex-shrink-0"
+            >
+              <div
+                data-layer="Frame 2147223659"
+                className="Frame2147223659 self-stretch inline-flex justify-between items-center"
+              >
+                <div
+                  data-layer="Frame 2147223676"
+                  className="Frame2147223676 flex justify-start items-center gap-3"
+                >
                   <img
-                    className="Ellipse1 w-14 h-14 rounded-full"
+                    data-layer="Ellipse 1"
+                    className="Ellipse1 w-10 h-10 sm:w-14 sm:h-14 rounded-full"
                     src="https://placehold.co/56x56"
                     alt="profile"
                   />
-                  <div className="Frame2147223658 inline-flex flex-col justify-center items-start gap-1">
-                    <div className="SarahJohnson justify-center text-zinc-950 text-lg font-medium font-['Plus_Jakarta_Sans'] leading-[27px]">
-                      Alex Kim
+                  <div
+                    data-layer="Frame 2147223658"
+                    className="Frame2147223658 inline-flex flex-col justify-center items-start gap-1"
+                  >
+                    <div
+                      data-layer="Sarah Johnson"
+                      className="SarahJohnson justify-center text-zinc-950 text-sm sm:text-lg font-medium font-['Plus_Jakarta_Sans'] leading-[18px] sm:leading-[27px]"
+                    >
+                      Sarah Johnson
                     </div>
-                    <div className="MarketingDirectorTechflowSolutions justify-center text-zinc-700 text-xs font-medium font-['Plus_Jakarta_Sans'] leading-[18px]">
-                      Founder, BrightApps
+                    <div
+                      data-layer="Marketing Director, TechFlow Solutions"
+                      className="MarketingDirectorTechflowSolutions justify-center text-zinc-700 text-xs sm:text-xs font-medium font-['Plus_Jakarta_Sans'] leading-[16px] sm:leading-[18px]"
+                    >
+                      Marketing Director, TechFlow Solutions
                     </div>
                   </div>
                 </div>
                 <div
+                  data-layer="Img - Rated 5 out of 5"
                   className="ImgRated5OutOf5 h-[21px] flex justify-start items-center gap-1"
                   aria-hidden="true"
                 >
+                  {/* Inline SVG star repeated 5 times for crisp rendering */}
                   {Array.from({ length: 5 }).map((_, i) => (
                     <svg
                       key={i}
@@ -125,10 +142,10 @@ export default function Reviews() {
                   ))}
                 </div>
               </div>
-              <div className="mt-3 text-zinc-700 text-lg font-medium leading-[27px] text-left">
-                "A fast, clear audit that highlighted the issues we needed to
-                fix — the recommendations were actionable and easy to
-                implement."
+              <div className="mt-3 text-zinc-700 text-sm sm:text-lg font-medium leading-[20px] sm:leading-[27px] text-left">
+                "This SEO audit tool found 23 critical issues we didn't even
+                know existed. After implementing their recommendations, our
+                organic traffic increased by 45% in just 3 months!"
               </div>
             </div>
           </div>
