@@ -39,7 +39,7 @@ export default function ReviewDetailContent({
           </div>
 
           {/* Right Content - Pricing */}
-          <div className="lg:col-span-1 lg:-mt-[40px]">
+          <div className="lg:col-span-1 lg:-mt-[40px] flex justify-center items-start">
             <PricingSidebar title={reviewData.title} />
           </div>
         </div>

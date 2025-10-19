@@ -145,7 +145,7 @@ export default function RatingsDetails() {
           </div>
 
           {/* Overall Rating Section */}
-          <div className="w-full lg:w-auto flex flex-col items-center lg:items-start gap-4">
+          <div className="w-full  md:pl-50 lg:w-auto flex flex-col items-center lg:items-start gap-4">
             {/* Tooltip */}
             <div className="hidden md:block">
               <Tooltip />
