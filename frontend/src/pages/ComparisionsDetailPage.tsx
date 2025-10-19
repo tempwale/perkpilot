@@ -17,7 +17,7 @@ export default function ComparisionsDetailPage() {
         <Hero className="justify-center items-center" />
       </main>
 
-      <div className="w-full h-[600px]bg-[#040404] lg:bg-gradient-to-t from-black to-[#190845]">
+      <div className="w-full h-[600px] bg-[#040404] lg:bg-gradient-to-t from-black to-[#190845]">
         <ToolsMentioned />
       </div>
 
