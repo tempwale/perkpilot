@@ -27,7 +27,7 @@ export default function ComparisionsDetailPage() {
             {/* overlay that sits above Brief + FeatureComparision */}
             <div className="absolute inset-0 pointer-events-none bg-[#040404] lg:bg-gradient-to-b from-transparent via-[#501bd6]/10 to-transparent opacity-80 mix-blend-screen" />
 
-            <div className="relative z-10 flex flex-col gap-6">
+            <div className="relative z-10 flex flex-col gap-6 pt-10 md:pt-0">
               <Brief />
               <FeatureComparision />
             </div>
