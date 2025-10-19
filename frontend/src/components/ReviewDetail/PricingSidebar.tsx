@@ -6,7 +6,7 @@ export default function PricingSidebar({ title }: PricingSidebarProps) {
   return (
     <div
       data-layer="Frame 2147206174"
-      className="Frame2147206174 w-[397px] p-6 bg-white/10 rounded-3xl outline outline-1 outline-offset-[-1px] outline-white/20 backdrop-blur-md inline-flex flex-col justify-start items-start gap-8"
+      className="Frame2147206174 w-[370px] p-6 bg-white/10 rounded-3xl outline outline-1 outline-offset-[-1px] outline-white/20 backdrop-blur-md inline-flex flex-col justify-start items-start gap-8"
     >
       <div
         data-layer="Pricing"
