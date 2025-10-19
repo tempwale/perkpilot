@@ -2,7 +2,7 @@ export default function CTAFooter() {
   return (
     <div
       data-layer="Frame 2147224676"
-      className="Frame2147224676 w-full px-[100px] py-20 bg-[#737eff] inline-flex flex-col justify-start items-center gap-10"
+      className="Frame2147224676 w-full px-[10px] md:px-[100px] py-20 bg-[#737eff] inline-flex flex-col justify-start items-center gap-10"
     >
       <div
         data-layer="Frame 2147224674"
@@ -24,15 +24,15 @@ export default function CTAFooter() {
       </div>
       <div
         data-layer="Frame 2147224661"
-        className="Frame2147224661 w-[818px] p-6 bg-white rounded-3xl outline outline-1 outline-offset-[-1px] outline-[#737eff]/10 inline-flex flex-col justify-center items-center gap-6"
+        className="Frame2147224661 w-full max-w-[818px] p-6 bg-white rounded-3xl outline outline-1 outline-offset-[-1px] outline-[#737eff]/10 inline-flex flex-col justify-center items-center gap-6"
       >
         <div
           data-layer="Frame 2147224678"
-          className="Frame2147224678 self-stretch inline-flex justify-between items-start"
+          className="Frame2147224678 self-stretch inline-flex flex-row sm:flex-row sm:justify-between items-start gap-3 sm:gap-0"
         >
           <div
             data-layer="Enter your website URL to get started."
-            className="EnterYourWebsiteUrlToGetStarted justify-start text-zinc-950 text-lg font-medium font-['Plus_Jakarta_Sans'] leading-[27px]"
+            className="EnterYourWebsiteUrlToGetStarted w-full sm:w-auto justify-start text-zinc-950 text-base sm:text-lg font-medium font-['Plus_Jakarta_Sans'] leading-[27px]"
           >
             Enter your website URL to get started.
           </div>
@@ -47,34 +47,34 @@ export default function CTAFooter() {
               viewBox="0 0 20 20"
               fill="none"
             >
-              <g clip-path="url(#clip0_606_1042)">
+              <g clipPath="url(#clip0_606_1042)">
                 <path
                   d="M17.6401 6.66663C16.3542 3.72345 13.4174 1.66663 10.0002 1.66663C5.67907 1.66663 2.12611 4.95552 1.70801 9.16663"
                   stroke="#737EFF"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth={1.5}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <path
                   d="M14.1665 6.66667H17.7332C18.0645 6.66667 18.3332 6.39804 18.3332 6.06667V2.5"
                   stroke="#737EFF"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth={1.5}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <path
                   d="M2.40138 13.3334C3.68731 16.2765 6.62411 18.3334 10.0413 18.3334C14.3624 18.3334 17.9154 15.0445 18.3335 10.8334"
                   stroke="#737EFF"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth={1.5}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <path
                   d="M5.87451 13.3333H2.30785C1.97647 13.3333 1.70785 13.602 1.70785 13.9333V17.5"
                   stroke="#737EFF"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth={1.5}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </g>
               <defs>
@@ -87,19 +87,16 @@ export default function CTAFooter() {
         </div>
         <div
           data-layer="Frame 2147224662"
-          className="Frame2147224662 self-stretch inline-flex justify-center items-start gap-4"
+          className="Frame2147224662 self-stretch inline-flex flex-col sm:flex-row sm:justify-between items-stretch gap-4"
         >
           <div
             data-layer="Input"
-            className="Input flex-1 h-14 px-4 py-3 relative bg-white rounded-[100px] outline outline-1 outline-offset-[-0.50px] outline-zinc-100 flex justify-start items-center flex-wrap content-center overflow-hidden"
+            className="Input flex-1 h-14 px-4 py-3 relative bg-white rounded-[100px] outline outline-1 outline-offset-[-0.50px] outline-zinc-100 flex items-center overflow-hidden"
           >
-            <div
-              data-layer="Frame 13"
-              className="Frame13 w-[477px] left-[15.52px] top-[16px] absolute flex justify-start items-center gap-3"
-            >
+            <div className="flex items-center gap-3 w-full">
               <div
                 data-layer="language"
-                className="Language w-6 h-6 relative flex items-center justify-center text-zinc-500"
+                className="Language w-6 h-6 flex items-center justify-center text-zinc-500 flex-shrink-0"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -151,7 +148,7 @@ export default function CTAFooter() {
               >
                 <div
                   data-layer="https://..."
-                  className="Https w-[459.20px] justify-start text-zinc-500 text-base font-normal font-['Poppins'] leading-normal"
+                  className="Https truncate justify-start text-zinc-500 text-base font-normal font-['Poppins'] leading-normal"
                 >
                   https://...
                 </div>
@@ -160,11 +157,11 @@ export default function CTAFooter() {
           </div>
           <div
             data-layer="Buttons/main"
-            className="ButtonsMain self-stretch pl-6 pr-4 py-3 bg-[#737eff] rounded-[100px] flex justify-center items-center gap-3"
+            className="ButtonsMain w-full sm:w-auto px-5 py-3 bg-[#737eff] rounded-[100px] flex justify-center items-center gap-3"
           >
             <div
               data-layer="Extract Images Now"
-              className="ExtractImagesNow text-center justify-start text-neutral-50 text-base font-medium font-['Plus_Jakarta_Sans'] leading-normal"
+              className="ExtractImagesNow text-center justify-start text-neutral-50 text-sm sm:text-base font-medium font-['Plus_Jakarta_Sans'] leading-normal"
             >
               Extract Images Now
             </div>
@@ -178,16 +175,16 @@ export default function CTAFooter() {
               <path
                 d="M9 6L15 12L9 18"
                 stroke="#FAFAFA"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth={1.5}
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
           </div>
         </div>
         <div
           data-layer="Frame 2147224677"
-          className="Frame2147224677 self-stretch inline-flex justify-center items-center gap-4"
+          className="Frame2147224677 self-stretch flex flex-wrap justify-center items-center gap-4"
         >
           <div
             data-layer="Ellipse 6072"

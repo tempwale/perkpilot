@@ -2,7 +2,7 @@ export default function InvoiceSummary() {
   return (
     <div
       data-layer="Frame 2147223662"
-      className="Frame2147223662 w-[609px] h-[486px] p-6 bg-white rounded-3xl inline-flex flex-col justify-start items-start gap-4"
+      className="Frame2147223662 w-[400px] md:w-[609px] h-[486px] p-6 bg-white rounded-3xl inline-flex flex-col justify-start items-start gap-4"
     >
       <div
         data-layer="Frame 2147223661"

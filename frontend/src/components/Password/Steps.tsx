@@ -15,11 +15,11 @@ export default function Steps() {
       >
         <div
           data-layer="Frame 2147206338"
-          className="Frame2147206338 self-stretch relative inline-flex justify-start items-center gap-6 overflow-hidden"
+          className="Frame2147206338 self-stretch relative inline-flex justify-start items-center gap-6 overflow-hidden flex flex-col md:flex-row"
         >
           <div
             data-layer="Frame 2147206337"
-            className="Frame2147206337 w-[608.50px] inline-flex flex-col justify-start items-start gap-5"
+            className="Frame2147206337 w-[400px] md:w-[608.50px] inline-flex flex-col justify-start items-start gap-5"
           >
             <div
               data-layer="You Set the Rules"
@@ -40,11 +40,11 @@ export default function Steps() {
           </div>
           <div
             data-layer="Rectangle 39991"
-            className="Rectangle39991 w-[608px] h-[400px] bg-white/10 rounded-2xl"
+            className="Rectangle39991  w-[400px] md:w-[608px] h-[400px] bg-white/10 rounded-2xl"
           />
           <div
             data-layer="Frame 2147206318"
-            className="Frame2147206318 w-[428.59px] p-[16.92px] left-[722.20px] top-[-100.31px] absolute bg-white/10 rounded-[16.92px] backdrop-blur-[8.46px] inline-flex flex-col justify-start items-start gap-[16.92px]"
+            className="Frame2147206318 hidden md:block w-[428.59px] p-[16.92px] left-[722.20px] top-[-100.31px] absolute bg-white/10 rounded-[16.92px] backdrop-blur-[8.46px] inline-flex flex-col justify-start items-start gap-[16.92px]"
           >
             <div
               data-layer="Frame 2147206316"
@@ -405,15 +405,15 @@ export default function Steps() {
         </div>
         <div
           data-layer="Frame 2147206339"
-          className="Frame2147206339 self-stretch relative inline-flex justify-start items-center gap-6"
+          className="Frame2147206339 self-stretch relative inline-flex justify-start items-center gap-6 flex flex-col md:flex-row flex-col-reverse"
         >
           <div
             data-layer="Rectangle 39991"
-            className="Rectangle39991 w-[608px] h-[400px] bg-white/10 rounded-2xl"
+            className="Rectangle39991  w-[400px] md:w-[608px] h-[400px] bg-white/10 rounded-2xl"
           />
           <div
             data-layer="Frame 2147206337"
-            className="Frame2147206337 w-[608.50px] inline-flex flex-col justify-start items-start gap-5"
+            className="Frame2147206337  w-[400px] md:w-[608.50px] inline-flex flex-col justify-start items-start gap-5"
           >
             <div
               data-layer="AI Instantly Builds a Fortress"
@@ -433,7 +433,9 @@ export default function Steps() {
           </div>
           <div
             data-layer="Frame 2147206333"
-            className="Frame2147206333 w-[469.69px] p-[18.54px] left-[69.15px] top-[77.98px] absolute bg-white/10 rounded-[18.54px] outline outline-[0.77px] outline-offset-[-0.77px] outline-white/10 backdrop-blur-[9.27px] inline-flex flex-col justify-center items-start gap-[18.54px]"
+            className="Frame2147206333 hidden md:block w-[469.69px] p-[18.54px] left-[69.15px] top-[77.98px] absolute
+         bg-white/10 rounded-[18.54px] outline outline-[0.77px] outline-offset-[-0.77px]
+         outline-white/10 backdrop-blur-[9.27px] flex flex-col justify-center items-start gap-[18.54px]"
           >
             <div
               data-layer="Frame 2147206329"
@@ -621,11 +623,11 @@ export default function Steps() {
         </div>
         <div
           data-layer="Frame 2147206340"
-          className="Frame2147206340 self-stretch relative inline-flex justify-start items-center gap-6"
+          className="Frame2147206340 self-stretch relative inline-flex justify-start items-center gap-6 flex flex-col md:flex-row"
         >
           <div
             data-layer="Frame 2147206337"
-            className="Frame2147206337 w-[608.50px] inline-flex flex-col justify-start items-start gap-5"
+            className="Frame2147206337  w-[400px] md:w-[608.50px] inline-flex flex-col justify-start items-start gap-5"
           >
             <div
               data-layer="Protection is Verified in Real-Time"
@@ -661,11 +663,13 @@ export default function Steps() {
           </div>
           <div
             data-layer="Rectangle 39991"
-            className="Rectangle39991 w-[608px] h-[400px] bg-white/10 rounded-2xl"
+            className="Rectangle39991  w-[400px] md:w-[608px] h-[400px] bg-white/10 rounded-2xl"
           />
           <div
             data-layer="Frame 2147206322"
-            className="Frame2147206322 w-[399.94px] p-[15.79px] left-[736.53px] top-[77.49px] absolute bg-white/10 rounded-2xl outline outline-[0.66px] outline-offset-[-0.66px] outline-white/10 backdrop-blur-[7.89px] inline-flex flex-col justify-start items-center gap-[15.79px]"
+            className="Frame2147206322 hidden md:block w-[399.94px] p-[15.79px] left-[736.53px] top-[77.49px] absolute
+             bg-white/10 rounded-2xl outline outline-[0.66px] outline-offset-[-0.66px]
+             outline-white/10 backdrop-blur-[7.89px] flex flex-col justify-start items-center gap-[15.79px]"
           >
             <div
               data-layer="Frame 7"

@@ -72,12 +72,11 @@ const ComparisionsHeading: React.FC<ComparisionsHeadingProps> = ({
   return (
     <div className="flex items-center justify-between w-full">
       {/* Heading */}
-      <div className="flex flex-col gap-3 items-start justify-center">
+      <div className="flex flex-col gap-3 items-start lg:items-center justify-center w-full lg:w-auto">
         <h2
-          className="capitalize"
+          className="capitalize text-left lg:text-center w-full lg:w-auto"
           style={{
             color: "var(--Primary-25, #FAFAFA)",
-            textAlign: "center",
             fontFamily: "Plus Jakarta Sans",
             fontSize: "40px",
             fontStyle: "normal",

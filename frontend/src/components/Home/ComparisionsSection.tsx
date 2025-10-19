@@ -15,7 +15,7 @@ const ComparisionsSection: React.FC = () => {
   };
 
   return (
-    <section className="w-full py-20 px-40">
+    <section className="w-full py-20 px-4 sm:px-6 lg:px-40">
       <motion.div
         className="max-w-7xl mx-auto"
         initial={{ opacity: 0, y: 40 }}

@@ -134,25 +134,33 @@ const Header = ({ forceBlackText = false }: { forceBlackText?: boolean }) => {
           isScrolled
             ? "backdrop-blur-[8px] backdrop-filter bg-[rgba(255,255,255,0.01)]"
             : "bg-transparent"
-        } border-b border-[rgba(255,255,255,0.08)] border-solid box-border flex items-center justify-between px-[20px] lg:px-[100px] py-[24px] fixed top-0 left-0 w-full h-[80px] shrink-0 z-[100] transition-all duration-300`}
+        } border-b border-[rgba(255,255,255,0.08)] border-solid box-border 
+  flex items-center justify-between 
+  px-3 sm:px-4 lg:px-[100px] 
+  py-2 sm:py-3 lg:py-[24px] 
+  fixed top-0 left-0 w-full 
+  max-w-full overflow-hidden 
+  h-[56px] sm:h-[64px] lg:h-[80px] 
+  shrink-0 z-[100] transition-all duration-300`}
         data-name="Header"
-        data-node-id="1:1124"
       >
+        {/* Logo and Brand */}
         {/* Logo and Brand */}
         <Link
           to="/"
           onClick={handleNavClick}
-          className="content-stretch flex gap-[16px] items-center relative shrink-0"
+          className="flex gap-[8px] lg:gap-[16px] items-center relative shrink-0 min-w-0"
           data-node-id="1:1125"
         >
-          <Logo size={40} />
+          <Logo size={28} />
           <div
-            className={`font-['Plus_Jakarta_Sans:Bold',_sans-serif] font-bold leading-[0] relative shrink-0 text-[24px] whitespace-nowrap ${
-              forceBlackText ? "text-black" : "text-neutral-50"
-            }`}
-            data-node-id="1:1130"
+            className={`font-['Plus_Jakarta_Sans:Bold',_sans-serif] font-bold relative shrink-0 
+  text-[15px] sm:text-[17px] lg:text-[24px] 
+  whitespace-nowrap ${forceBlackText ? "text-black" : "text-neutral-50"}`}
           >
-            <p className="leading-[32px]">PerkPilot</p>
+            <p className="leading-[18px] sm:leading-[22px] lg:leading-[32px]">
+              PerkPilot
+            </p>
           </div>
         </Link>
 

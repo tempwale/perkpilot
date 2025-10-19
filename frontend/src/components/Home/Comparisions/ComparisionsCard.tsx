@@ -40,17 +40,17 @@ const ComparisionsCard: React.FC<ComparisionsCardProps> = ({
   );
 
   return (
-    <div className="bg-gradient-to-b from-[#1b132c] to-[#0f0d15] rounded-[24px] p-6 flex flex-col w-full max-w-sm h-full min-h-[299px]">
+    <div className="bg-gradient-to-b from-[#1b132c] to-[#0f0d15] rounded-[24px] p-4 sm:p-6 flex flex-col w-full max-w-sm h-full min-h-[260px]">
       {/* Icons and VS Section */}
       <div className="flex flex-col gap-3 items-center w-full flex-grow">
         {/* Icon Row */}
         <div className="flex items-center">
           {/* App 1 Icon */}
-          <div className="bg-neutral-50 border border-neutral-50 rounded-full p-2.5 w-14 h-14 flex items-center justify-center">
+          <div className="bg-neutral-50 border border-neutral-50 rounded-full p-1.5 sm:p-2.5 w-10 sm:w-14 h-10 sm:h-14 flex items-center justify-center">
             <img
               src={app1Icon}
               alt={app1Name}
-              className="w-8 h-8 object-contain"
+              className="w-6 sm:w-8 h-6 sm:h-8 object-contain"
             />
           </div>
 
@@ -60,9 +60,9 @@ const ComparisionsCard: React.FC<ComparisionsCardProps> = ({
           </div>
 
           {/* VS Badge */}
-          <div className="bg-neutral-50 rounded-full w-8 h-8 flex items-center justify-center">
+          <div className="bg-neutral-50 rounded-full w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center">
             <p
-              className="text-zinc-950 text-sm font-medium"
+              className="text-zinc-950 text-xs sm:text-sm font-medium"
               style={{ fontFamily: "Poppins" }}
             >
               vs
@@ -75,18 +75,18 @@ const ComparisionsCard: React.FC<ComparisionsCardProps> = ({
           </div>
 
           {/* App 2 Icon */}
-          <div className="bg-neutral-50 border border-neutral-50 rounded-full p-2.5 w-14 h-14 flex items-center justify-center">
+          <div className="bg-neutral-50 border border-neutral-50 rounded-full p-1.5 sm:p-2.5 w-10 sm:w-14 h-10 sm:h-14 flex items-center justify-center">
             <img
               src={app2Icon}
               alt={app2Name}
-              className="w-8 h-8 object-contain"
+              className="w-6 sm:w-8 h-6 sm:h-8 object-contain"
             />
           </div>
         </div>
 
         {/* Title */}
         <p
-          className="text-neutral-50 text-xl font-medium text-center leading-8 w-full"
+          className="text-neutral-50 text-lg sm:text-xl font-medium text-center leading-7 sm:leading-8 w-full"
           style={{ fontFamily: "Poppins" }}
         >
           {title}
@@ -96,7 +96,7 @@ const ComparisionsCard: React.FC<ComparisionsCardProps> = ({
         <div className="flex items-center gap-3">
           <DotIcon />
           <p
-            className="text-zinc-300 text-sm font-medium text-center"
+            className="text-zinc-300 text-xs sm:text-sm font-medium text-center"
             style={{ fontFamily: "Poppins" }}
           >
             {subtitle}
@@ -105,7 +105,7 @@ const ComparisionsCard: React.FC<ComparisionsCardProps> = ({
 
         {/* Description */}
         <p
-          className="text-zinc-300 text-sm font-normal text-center w-full"
+          className="text-zinc-300 text-sm sm:text-base font-normal text-center w-full"
           style={{ fontFamily: "Poppins" }}
         >
           {description}
@@ -115,10 +115,10 @@ const ComparisionsCard: React.FC<ComparisionsCardProps> = ({
       {/* CTA Button */}
       <button
         onClick={onViewComparison}
-        className="group bg-gradient-to-b from-[#501bd6] to-[#7f57e2] hover:bg-white hover:from-white hover:to-white rounded-full h-12 flex items-center justify-center px-3 py-2 w-full transition-all duration-200 mt-4"
+        className="group bg-gradient-to-b from-[#501bd6] to-[#7f57e2] hover:bg-white hover:from-white hover:to-white rounded-full h-10 sm:h-12 flex items-center justify-center px-3 py-2 w-full transition-all duration-200 mt-4"
       >
         <p
-          className="text-neutral-50 group-hover:text-black text-base font-normal leading-6 transition-colors duration-200"
+          className="text-neutral-50 group-hover:text-black text-sm sm:text-base font-normal leading-6 transition-colors duration-200"
           style={{ fontFamily: "Poppins" }}
         >
           View Full Comparison
