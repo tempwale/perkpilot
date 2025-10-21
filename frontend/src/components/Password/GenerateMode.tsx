@@ -15,11 +15,11 @@ export default function GeneratedMode() {
       >
         <div
           data-layer="Frame 2147206316"
-          className="Frame2147206316 w-[534px] inline-flex justify-between items-end"
+          className="Frame2147206316 md:w-[534px] inline-flex justify-between items-end"
         >
           <div
             data-layer="Generation Mode"
-            className="GenerationMode text-center justify-start text-neutral-50 text-lg font-medium font-['Plus_Jakarta_Sans'] leading-snug"
+            className="GenerationMode text-center w-gul justify-start text-neutral-50 text-lg font-medium font-['Plus_Jakarta_Sans'] leading-snug"
           >
             Generation Mode
           </div>

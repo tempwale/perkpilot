@@ -7,6 +7,7 @@ import ToolsMentioned from "../components/ComparisionsDetail/ToolsMentioned";
 import BlogModules from "../components/ComparisionsDetail/BlogModules";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import Author from "../components/ComparisionsDetail/Author";
 
 export default function ComparisionsDetailPage() {
   return (
@@ -17,12 +18,12 @@ export default function ComparisionsDetailPage() {
         <Hero className="justify-center items-center" />
       </main>
 
-      <div className="w-full h-[600px] bg-[#040404] lg:bg-gradient-to-t from-black to-[#190845]">
+      <div className="w-full h-[880px] lg:h-[350px] bg-[#040404] lg:bg-gradient-to-t from-black to-[#190845]">
         <ToolsMentioned />
       </div>
 
       <section className="py-20 md:py-40 w-full bg-[#040404] lg:bg-gradient-to-b from-black to-[#190845]">
-        <div className="w-full max-w-[1240px] mx-auto flex flex-col md:flex-row items-start gap-8 px-4 md:px-0">
+        <div className="w-full max-w-[1350px]  flex flex-col mx-auto lg:mx-32 lg:flex-row items-start gap-8 px-4 md:px-0">
           <div className="w-full flex-1 flex flex-col gap-6 relative">
             {/* overlay that sits above Brief + FeatureComparision */}
             <div className="absolute inset-0 pointer-events-none bg-[#040404] lg:bg-gradient-to-b from-transparent via-[#501bd6]/10 to-transparent opacity-80 mix-blend-screen" />
@@ -33,9 +34,11 @@ export default function ComparisionsDetailPage() {
             </div>
 
             <ProsCons />
+
+            <Author />
           </div>
 
-          <aside className="w-full md:w-[400px] lg:w-[480px] flex-shrink-0">
+          <aside className="hidden md:block w-full md:w-[400px] lg:w-[480px] flex-shrink-0">
             <div className="sticky top-24">
               <BlogModules />
             </div>

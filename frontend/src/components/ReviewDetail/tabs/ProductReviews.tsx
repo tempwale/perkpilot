@@ -65,12 +65,28 @@ const ReviewCard = ({
             src={profileImage}
             alt={`${name} profile`}
           />
-          <div className="flex-1 min-w-0 flex flex-col justify-start items-start gap-1">
-            <div className="w-full truncate text-neutral-50 text-base sm:text-lg font-medium font-['Plus_Jakarta_Sans'] leading-6 sm:leading-[27px]">
-              {name}
+          <div className="flex-1 flex-row min-w-0 flex flex-col justify-start items-start gap-1">
+            <div>
+              <div className="w-full truncate text-neutral-50 text-base sm:text-lg font-medium font-['Plus_Jakarta_Sans'] leading-6 sm:leading-[27px]">
+                {name}
+              </div>
+
+              <div className="w-full text-zinc-400 text-xs sm:text-sm font-medium font-['Plus_Jakarta_Sans'] leading-4 sm:leading-[21px] line-clamp-2">
+                {position}
+              </div>
             </div>
-            <div className="w-full text-zinc-400 text-xs sm:text-sm font-medium font-['Plus_Jakarta_Sans'] leading-4 sm:leading-[21px] line-clamp-2">
-              {position}
+            <div className="flex justify-center items-center">
+              <div
+                data-layer="Frame 2147206294"
+                className="h-8 px-3 py-2.5 bg-white/5 rounded-[100px] inline-flex justify-center items-center gap-2.5"
+              >
+                <div
+                  data-layer="2 Months Ago"
+                  className="text-neutral-50 text-xs font-medium font-['Plus_Jakarta_Sans'] leading-[18px]"
+                >
+                  2 Months Ago
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -101,6 +117,38 @@ const ReviewCard = ({
       </div>
       <div className="text-neutral-50 text-sm sm:text-base font-normal font-['Plus_Jakarta_Sans'] leading-5 sm:leading-normal">
         Helpful ({helpfulCount})
+      </div>
+      <div
+        data-layer="Frame 2147206296"
+        className="Frame2147206296 inline-flex justify-start items-center gap-2"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+        >
+          <path
+            d="M16.4724 4L4.1 4C3.76863 4 3.5 4.26863 3.5 4.6L3.5 14.4C3.5 14.7314 3.76863 15 4.1 15H6.86762C7.57015 15 8.22116 15.3686 8.5826 15.971L11.293 20.4884C11.8779 21.4631 13.2554 21.5558 13.9655 20.6681C14.3002 20.2497 14.4081 19.6937 14.2541 19.1804L13.2317 15.7724C13.1162 15.3874 13.4045 15 13.8064 15H18.3815C19.7002 15 20.658 13.746 20.311 12.4738L18.4019 5.47376C18.1646 4.60364 17.3743 4 16.4724 4Z"
+            stroke="#FAFAFA"
+            stroke-width="1.5"
+            stroke-linecap="round"
+          />
+          <path
+            d="M7 4L7 15"
+            stroke="#FAFAFA"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        <div
+          data-layer="Not Helpful ( 20)"
+          className="NotHelpful20 justify-start text-neutral-50 text-base font-normal font-['Plus_Jakarta_Sans'] leading-normal"
+        >
+          Not Helpful ( 20)
+        </div>
       </div>
     </div>
   </div>

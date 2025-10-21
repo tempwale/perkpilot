@@ -11,7 +11,7 @@ export default function ReviewDetailContent({
   reviewData,
 }: ReviewDetailContentProps) {
   return (
-    <div className="relative z-10 px-[20px] md:px-[100px] py-8 md:py-20">
+    <div className="relative z-10 px-[20px] md:px-[135px] py-8 md:py-20">
       <div className="w-full max-w-[1440px] mx-auto">
         {/* Breadcrumb */}
         <Breadcrumb title={reviewData.title} />

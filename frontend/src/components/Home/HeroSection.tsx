@@ -10,14 +10,11 @@ import { UniversalCTAButton } from "../UniversalCTAButton";
 const HeroSection: React.FC = () => {
   return (
     <section
-      className="relative w-full min-h-[80vh] flex flex-col pt-[20px] md:pt-[40px] overflow-hidden px-4 md:px-0"
+      className="relative w-full min-h-[80vh] flex flex-col pt-[20px] md:pt-[40px] px-4 md:px-0"
       style={{
         backgroundColor: "#000000",
       }}
     >
-      {/* Background SVG */}
-      <Background />
-
       {/* Main Content with animation */}
       <motion.div
         className="relative z-10 flex flex-col lg:flex-row items-start justify-between w-full gap-[20px] lg:gap-[8px] lg:pl-0 flex-1"
@@ -93,7 +90,7 @@ const HeroSection: React.FC = () => {
 
       {/* Testimonials Section with animation */}
       <motion.div
-        className="relative z-10 w-full py-[20px] md:py-[40px]"
+        className="relative z-20 w-full py-[20px] md:py-[40px] min-h-[360px]"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
@@ -101,6 +98,8 @@ const HeroSection: React.FC = () => {
       >
         <TestimonialsSection />
       </motion.div>
+      {/* Background SVG */}
+      <Background />
     </section>
   );
 };

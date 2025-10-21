@@ -28,7 +28,7 @@ export default function Breadcrumb({ title }: BreadcrumbProps) {
         >
           Reviews
         </Link>
-        <span className="text-zinc-500">•</span>
+        <span className="text-white">•</span>
         <span
           className="text-zinc-100"
           style={{ fontSize: "14px", lineHeight: "21px" }}

@@ -120,29 +120,33 @@ export default function Hero({
       >
         <div
           data-layer="Frame 2147206180"
-          className="Frame2147206180 inline-flex justify-start items-center gap-4 px-4"
+          className="Frame2147206180 inline-flex justify-start  gap-4 px-4 flex md:flex-row flex-col"
         >
           {/* leading dot before category */}
-          <span
-            aria-hidden
-            className="w-2 h-2 rounded-full bg-zinc-500 inline-block"
-          />
-          <div
-            data-layer="Project Management"
-            className="ProjectManagement justify-start text-zinc-500 text-sm font-medium font-['Plus_Jakarta_Sans'] leading-[21px]"
-          >
-            {category}
+          <div className="flex flex-row justify-start items-center gap-4">
+            <span
+              aria-hidden
+              className="w-2 h-2 rounded-full bg-zinc-500 inline-block "
+            />
+            <div
+              data-layer="Project Management"
+              className="ProjectManagement  text-zinc-500 text-sm font-medium font-['Plus_Jakarta_Sans'] leading-[21px]"
+            >
+              {category}
+            </div>
           </div>
           {/* small circular separator dot */}
-          <span
-            aria-hidden
-            className="w-2 h-2 rounded-full bg-[#F4F4F5] inline-block"
-          />
-          <div
-            data-layer="Notion vs Obsidian vs Roam Research"
-            className="NotionVsObsidianVsRoamResearch justify-start text-zinc-100 text-sm font-medium font-['Plus_Jakarta_Sans'] leading-[21px]"
-          >
-            {breadcrumb}
+          <div className="flex flex-row justify-start items-center gap-4">
+            <span
+              aria-hidden
+              className="w-2 h-2 rounded-full bg-[#F4F4F5] inline-block"
+            />
+            <div
+              data-layer="Notion vs Obsidian vs Roam Research"
+              className="NotionVsObsidianVsRoamResearch justify-start text-zinc-100 text-sm font-medium font-['Plus_Jakarta_Sans'] leading-[21px]"
+            >
+              {breadcrumb}
+            </div>
           </div>
         </div>
 

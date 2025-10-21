@@ -297,9 +297,6 @@ export default function GeneratePassword() {
             </div>
           </div>
           <div className="self-stretch h-8 flex flex-col justify-center items-start gap-2">
-            <div className="self-stretch flex flex-col justify-start items-start gap-1">
-              <div className="w-full h-1.5 bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded" />
-            </div>
             <div className="self-stretch inline-flex justify-between items-start">
               <div className="justify-start text-neutral-50 text-xs font-medium font-['Inter'] leading-[18px]">
                 0%
