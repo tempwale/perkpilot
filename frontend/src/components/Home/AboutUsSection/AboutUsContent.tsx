@@ -11,7 +11,7 @@ const AboutUsContent: React.FC = () => {
       <AboutUsBackground />
 
       {/* Content Container */}
-      <div className="relative flex flex-col gap-4 md:gap-[24px] items-center w-full pt-16 md:pt-70 min-h-[400px] md:min-h-[600px] px-4 md:px-0">
+      <div className="relative flex flex-col gap-4 md:gap-[24px] items-center w-full pt-16 md:pt-70 min-h-[400px] md:min-h-[600px]  md:px-0">
         {/* Multiple Floating App Icons positioned around the content */}
 
         {/* Top center */}
@@ -21,7 +21,7 @@ const AboutUsContent: React.FC = () => {
 
         {/* Top left */}
         <div
-          className="absolute top-[110px] left-[20%]  "
+          className="absolute top-[80px] md:top-[110px] left-[20%]  "
           style={{ animationDelay: "0.5s" }}
         >
           <FloatingAppIcon />
@@ -29,7 +29,7 @@ const AboutUsContent: React.FC = () => {
 
         {/* Top right */}
         <div
-          className="absolute top-[110px] right-[20%] "
+          className="absolute top-[80px] md:top-[110px] right-[20%] "
           style={{ animationDelay: "1s" }}
         >
           <FloatingAppIcon />
@@ -37,7 +37,7 @@ const AboutUsContent: React.FC = () => {
 
         {/* Middle left */}
         <div
-          className="absolute top-[230px] left-[5%]  "
+          className="absolute  top-[150px] md:top-[230px] left-[0%] md:left-[5%]  "
           style={{ animationDelay: "1.5s" }}
         >
           <FloatingAppIcon />
@@ -45,7 +45,7 @@ const AboutUsContent: React.FC = () => {
 
         {/* Middle right */}
         <div
-          className="absolute top-[230px] right-[5%]  "
+          className="absolute top-[150px] md:top-[230px] right-[0%] md:right-[5%]  "
           style={{ animationDelay: "2s" }}
         >
           <FloatingAppIcon />
@@ -68,7 +68,7 @@ const AboutUsContent: React.FC = () => {
         </div>
 
         {/* Main content centered */}
-        <div className="relative z-30 flex flex-col gap-4 md:gap-[24px] items-center max-w-[320px] md:max-w-[600px] lg:max-w-[900px] mx-auto px-4">
+        <div className="relative z-30 flex flex-col gap-4 pt-40 md:gap-[24px] items-center max-w-[320px] md:max-w-[600px] lg:max-w-[900px] mx-0 px-4">
           {/* Badge with discount information */}
           <UniversalBadge
             badgeText="20% - 30%"
