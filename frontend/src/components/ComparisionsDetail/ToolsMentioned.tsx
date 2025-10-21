@@ -5,27 +5,27 @@ export default function ToolsMentioned() {
     // center the content horizontally and make inner frame responsive
     <div
       data-layer="Frame 2147206210"
-      className="Frame2147206210 w-full  flex justify-center px-10"
+      className="Frame2147206210 w-full flex justify-center px-10"
     >
       <div className="flex flex-col gap-4">
         <div
           data-layer="Frame 2147206209"
           className="Frame2147206209 flex flex-col justify-between items-center md:flex-row"
         >
-          <div className="flex flex-row">
+          <div className="flex flex-row pb-5 md:pb-0">
             <div
               data-layer="Tools Mentioned"
-              className="ToolsMentioned justify-start text-zinc-100 text-xl font-medium font-['Poppins'] leading-loose"
+              className="ToolsMentioned self-stretch pt-3 md:pt-0 justify-start w-[150px] md:w-[230px] items-center text-zinc-100 text-base md:text-xl md:font-medium font-['Poppins'] leading-loose"
             >
               Tools Mentioned
             </div>
             <div
               data-layer="Line 5"
-              className="Line5 w-8 h-0 origin-top-left -rotate-90 outline outline-1 outline-offset-[-0.50px] outline-zinc-100 relative top-8 left-4"
+              className="Line5 w-10 md:w-8 h-0 origin-top-left -rotate-90 outline outline-1 outline-offset-[-0.50px] outline-zinc-100 relative top-12 left-3 md:top-8 md:left-4"
             ></div>
             <div
               data-layer="Essential Productive Tools To Enhance Your Workflow"
-              className="EssentialProductiveToolsToEnhanceYourWorkflow justify-start text-zinc-100 text-xl font-normal font-['Poppins'] leading-loose"
+              className="EssentialProductiveToolsToEnhanceYourWorkflow justify-start w-[220px] md:w-full md:pl-4 text-zinc-100 text-base md:text-xl font-normal font-['Poppins'] leading-loose"
             >
               Essential Productive Tools To Enhance Your Workflow
             </div>

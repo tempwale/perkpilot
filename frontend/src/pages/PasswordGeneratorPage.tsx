@@ -13,8 +13,8 @@ export default function PasswordGeneratorPage() {
     <div className="flex flex-col bg-black">
       <Header />
       <PasswordHeading />
-      <div className="w-full px-4">
-        <div className="max-w-5xl mx-auto flex flex-col items-center md:flex-row md:items-start md:justify-center gap-6">
+      <div className="w-full px-4 flex justify-center">
+        <div className="max-w-5xl mx-auto flex flex-col items-center xl:flex-row md:items-start md:justify-center gap-6">
           <GeneratePassword />
           <GenerateMode />
         </div>

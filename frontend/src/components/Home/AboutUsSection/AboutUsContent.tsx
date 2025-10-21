@@ -15,13 +15,13 @@ const AboutUsContent: React.FC = () => {
         {/* Multiple Floating App Icons positioned around the content */}
 
         {/* Top center */}
-        <div className="absolute top-[50px] left-1/2 transform -translate-x-1/2 hidden lg:block ">
+        <div className="absolute top-[50px] left-1/2 transform -translate-x-1/2  ">
           <FloatingAppIcon />
         </div>
 
         {/* Top left */}
         <div
-          className="absolute top-[110px] left-[20%] hidden lg:block "
+          className="absolute top-[110px] left-[20%]  "
           style={{ animationDelay: "0.5s" }}
         >
           <FloatingAppIcon />
@@ -29,7 +29,7 @@ const AboutUsContent: React.FC = () => {
 
         {/* Top right */}
         <div
-          className="absolute top-[110px] right-[20%] hidden lg:block "
+          className="absolute top-[110px] right-[20%] "
           style={{ animationDelay: "1s" }}
         >
           <FloatingAppIcon />
@@ -37,7 +37,7 @@ const AboutUsContent: React.FC = () => {
 
         {/* Middle left */}
         <div
-          className="absolute top-[230px] left-[5%] hidden lg:block "
+          className="absolute top-[230px] left-[5%]  "
           style={{ animationDelay: "1.5s" }}
         >
           <FloatingAppIcon />
@@ -45,7 +45,7 @@ const AboutUsContent: React.FC = () => {
 
         {/* Middle right */}
         <div
-          className="absolute top-[230px] right-[5%] hidden lg:block "
+          className="absolute top-[230px] right-[5%]  "
           style={{ animationDelay: "2s" }}
         >
           <FloatingAppIcon />

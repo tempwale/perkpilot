@@ -7,6 +7,8 @@ import AboutUsContent from "./AboutUsSection/AboutUsContent";
 const AboutUsSection: React.FC = () => {
   return (
     <section className="w-full py-10  relative">
+ 
+
       <motion.div
         className="relative z-10 max-w-[1200px] mx-auto px-[40px]"
         initial={{ opacity: 0, y: 40 }}

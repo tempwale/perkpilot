@@ -120,7 +120,7 @@ export default function Hero({
       >
         <div
           data-layer="Frame 2147206180"
-          className="Frame2147206180 inline-flex justify-start items-center gap-4 px-4 flex md:flex-row flex-col"
+          className="Frame2147206180 inline-flex justify-start  gap-4 px-4 flex md:flex-row flex-col"
         >
           {/* leading dot before category */}
           <div className="flex flex-row justify-start items-center gap-4">

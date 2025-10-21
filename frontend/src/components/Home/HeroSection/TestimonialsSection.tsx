@@ -56,9 +56,8 @@ export const TestimonialsSection: React.FC = () => {
   ];
 
   return (
-    <div className="w-full">
-      {/* Desktop: Centered grid */}
-      <div className="hidden md: block flex items-center justify-between w-full mx-auto px-30 py-20">
+    <div className="w-full overflow-x-auto">
+      <div className="flex flex-row items-center justify-between w-full min-w-[700px] md:min-w-0 mx-auto px-4 md:px-30 py-10 md:py-20 gap-4 md:gap-0">
         {testimonials.map((testimonial, index) => (
           <TestimonialItem key={index} quote={testimonial.quote} />
         ))}

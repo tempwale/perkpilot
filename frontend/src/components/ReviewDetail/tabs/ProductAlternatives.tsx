@@ -35,14 +35,31 @@ const AlternativeCard = ({
   logo,
 }: AlternativeCardProps) => (
   <div className="w-full h-full min-h-[200px] p-4 sm:p-6 lg:p-8 bg-white/5 rounded-2xl sm:rounded-3xl outline outline-1 outline-offset-[-1px] outline-white/10 flex flex-col justify-between items-start gap-4 sm:gap-6 lg:gap-8 transition-all duration-300 hover:bg-white/10 hover:scale-[1.02]">
-    <div className="w-full flex flex-col gap-4">
+    <div className="w-full flex flex-row gap-4 justify-between">
       <div className="flex justify-start items-center gap-3 sm:gap-4">
         <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-neutral-50 rounded-full flex-shrink-0" />
         <div className="flex-1 min-w-0">
-          <div className="text-neutral-50 text-base sm:text-lg lg:text-xl font-medium font-['Plus_Jakarta_Sans'] leading-6 sm:leading-[27px] lg:leading-8 truncate">
-            {name}
+          <div className="flex flex-row gap-1 items-center">
+            <div className="text-neutral-50 text-base text-lg font-medium font-['Plus_Jakarta_Sans'] leading-6 sm:leading-[27px] lg:leading-8 truncate">
+              {name}
+            </div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M15.4183 5.64301C15.2804 5.42265 15.0772 5.25077 14.837 5.15129C14.5968 5.05181 14.3316 5.02969 14.0783 5.08801L12.2803 5.50101C12.096 5.54336 11.9046 5.54336 11.7203 5.50101L9.9223 5.08801C9.66896 5.02969 9.40375 5.05181 9.16357 5.15129C8.9234 5.25077 8.72021 5.42265 8.5823 5.64301L7.6023 7.20701C7.5023 7.36701 7.3673 7.50201 7.2073 7.60301L5.6433 8.58301C5.42331 8.7208 5.25169 8.92366 5.15223 9.16342C5.05278 9.40319 5.03043 9.66797 5.0883 9.92101L5.5013 11.721C5.5435 11.905 5.5435 12.0961 5.5013 12.28L5.0883 14.079C5.03021 14.3322 5.05244 14.5972 5.1519 14.8372C5.25137 15.0771 5.42312 15.2802 5.6433 15.418L7.2073 16.398C7.3673 16.498 7.5023 16.633 7.6033 16.793L8.5833 18.357C8.8653 18.808 9.4033 19.031 9.9223 18.912L11.7203 18.499C11.9046 18.4567 12.096 18.4567 12.2803 18.499L14.0793 18.912C14.3325 18.9701 14.5975 18.9479 14.8375 18.8484C15.0774 18.7489 15.2804 18.5772 15.4183 18.357L16.3983 16.793C16.4983 16.633 16.6333 16.498 16.7933 16.398L18.3583 15.418C18.5785 15.28 18.7502 15.0767 18.8494 14.8365C18.9487 14.5964 18.9707 14.3312 18.9123 14.078L18.5003 12.28C18.4579 12.0957 18.4579 11.9043 18.5003 11.72L18.9133 9.92101C18.9715 9.66792 18.9494 9.403 18.8501 9.16304C18.7508 8.92308 18.5793 8.72 18.3593 8.58201L16.7943 7.60201C16.6345 7.50183 16.4995 7.36679 16.3993 7.20701L15.4183 5.64301ZM14.9153 9.77001C14.9771 9.65628 14.9925 9.52298 14.958 9.39818C14.9236 9.27338 14.8421 9.16679 14.7307 9.10085C14.6193 9.03491 14.4867 9.01476 14.3607 9.04463C14.2347 9.0745 14.1252 9.15206 14.0553 9.26101L11.4403 13.687L9.8613 12.175C9.81445 12.1269 9.7584 12.0887 9.69649 12.0628C9.63457 12.0368 9.56806 12.0236 9.50092 12.0239C9.43378 12.0242 9.36739 12.038 9.3057 12.0645C9.24402 12.091 9.1883 12.1296 9.14188 12.1781C9.09546 12.2267 9.05928 12.284 9.0355 12.3468C9.01173 12.4096 9.00084 12.4765 9.00349 12.5436C9.00614 12.6107 9.02228 12.6766 9.05094 12.7373C9.0796 12.798 9.12019 12.8523 9.1703 12.897L11.2043 14.846C11.2587 14.8981 11.3242 14.9371 11.3959 14.9603C11.4676 14.9835 11.5435 14.9902 11.6181 14.9799C11.6928 14.9697 11.7641 14.9426 11.8268 14.9009C11.8895 14.8592 11.942 14.8039 11.9803 14.739L14.9153 9.77001Z"
+                fill="#FAFAFA"
+              />
+            </svg>
           </div>
-          <div className="text-zinc-400 text-sm sm:text-base font-medium font-['Plus_Jakarta_Sans'] leading-[21px] truncate">
+
+          <div className="text-zinc-400 text-sm  font-medium font-['Plus_Jakarta_Sans'] leading-[21px] truncate">
             {category}
           </div>
         </div>
@@ -51,17 +68,32 @@ const AlternativeCard = ({
       <div className="flex flex-wrap justify-between items-center gap-3">
         <div className="flex items-center gap-1">
           {[...Array(rating)].map((_, index) => (
-            <StarIcon key={index} />
+            <span
+              key={index}
+              className={
+                index === 0 ? "inline-block" : "hidden sm:inline-block"
+              }
+            >
+              <StarIcon />
+            </span>
           ))}
         </div>
-        <div className="text-neutral-50 text-sm sm:text-base font-normal font-['Plus_Jakarta_Sans'] leading-normal whitespace-nowrap">
+        <div
+          className="text-zinc-400
+text-sm
+font-medium
+font-['Plus_Jakarta_Sans']
+leading-[21px]"
+        >
           Reviews ({reviewCount})
         </div>
       </div>
     </div>
-    <div className="w-full flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-      <div className="text-neutral-50 text-lg sm:text-xl lg:text-2xl font-medium font-['Plus_Jakarta_Sans'] leading-7 sm:leading-loose flex-1">
-        {pricing}
+    <div className="w-full flex flex-col  sm:flex-row justify-between items-start sm:items-center gap-4">
+      <div className="w-full sm:w-auto text-center sm:text-left">
+        <div className="text-neutral-50 text-xl font-medium font-['Plus_Jakarta_Sans'] leading-loose">
+          {pricing}
+        </div>
       </div>
       <div className="w-full sm:w-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-3 lg:py-4 bg-white/10 rounded-[100px] flex justify-center items-center hover:bg-white/20 transition-colors duration-200 cursor-pointer">
         <div className="text-neutral-50 text-sm sm:text-base lg:text-lg font-normal font-['Poppins'] leading-normal whitespace-nowrap">

@@ -116,7 +116,7 @@ export default function RatingsDetails() {
   const averageRating = 4.9;
 
   return (
-    <div className="w-full px-[20px] md:px-[100px] py-32">
+    <div className="w-full px-[20px] md:px-[100px] py-16 pb-24">
       <div className="w-full max-w-[1240px] mx-auto">
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start">
           {/* Rating Breakdown Section */}
