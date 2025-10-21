@@ -5,7 +5,7 @@ export default function ToolsMentioned() {
     // center the content horizontally and make inner frame responsive
     <div
       data-layer="Frame 2147206210"
-      className="Frame2147206210 w-full  flex justify-center px-10"
+      className="Frame2147206210 w-full  flex justify-center px-1"
     >
       <div className="flex flex-col gap-4">
         <div
