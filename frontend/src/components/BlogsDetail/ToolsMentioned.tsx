@@ -10,12 +10,12 @@ export default function ToolsMentioned() {
       <div className="flex flex-col gap-4">
         <div
           data-layer="Frame 2147206209"
-          className="Frame2147206209 flex flex-col justify-between items-center md:flex-row"
+          className="Frame2147206209 relative flex flex-col justify-between items-center md:flex-row"
         >
           <div className="flex flex-row pb-5 md:pb-0">
             <div
               data-layer="Tools Mentioned"
-              className="ToolsMentioned self-stretch pt-3 md:pt-0 justify-start w-[150px] md:w-[230px] items-center text-zinc-100 text-base md:text-xl md:font-medium font-['Poppins'] leading-loose"
+              className="ToolsMentioned self-stretch pt-3 md:pt-0 justify-start w-[134px] md:w-[230px] items-center text-zinc-100 text-base md:text-xl md:font-medium font-['Poppins'] leading-loose"
             >
               Tools Mentioned
             </div>
@@ -25,7 +25,7 @@ export default function ToolsMentioned() {
             ></div>
             <div
               data-layer="Essential Productive Tools To Enhance Your Workflow"
-              className="EssentialProductiveToolsToEnhanceYourWorkflow justify-start w-[220px] md:w-full md:pl-4 text-zinc-100 text-base md:text-xl font-normal font-['Poppins'] leading-loose"
+              className="EssentialProductiveToolsToEnhanceYourWorkflow justify-start w-[210px] md:w-full md:pl-4 text-zinc-100 text-base md:text-xl font-normal font-['Poppins'] leading-loose"
             >
               Essential Productive Tools To Enhance Your Workflow
             </div>

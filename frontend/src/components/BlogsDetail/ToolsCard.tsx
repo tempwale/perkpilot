@@ -24,7 +24,7 @@ export default function ToolsCard({
   return (
     <div
       data-layer="Card"
-      className="Card w-full max-w-[614px] lg:w-[614px] p-4 bg-white/10 rounded-3xl outline outline-1 outline-offset-[-1px] outline-white/10 inline-flex justify-start items-center gap-4 flex flex-col lg:flex-row"
+      className="Card w-full lg:w-[614px] p-4 bg-white/10 rounded-3xl outline outline-1 outline-offset-[-1px] outline-white/10 inline-flex justify-start items-center gap-4 flex flex-col lg:flex-row"
     >
       <div className="w-full flex justify-center">
         <div
