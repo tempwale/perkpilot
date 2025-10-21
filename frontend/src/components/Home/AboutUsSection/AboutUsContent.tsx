@@ -37,7 +37,7 @@ const AboutUsContent: React.FC = () => {
 
         {/* Middle left */}
         <div
-          className="absolute  top-[150px] md:top-[230px] left-[0%] md:left-[5%]  "
+          className="absolute  top-[140px] md:top-[230px] left-[0%] md:left-[5%]  "
           style={{ animationDelay: "1.5s" }}
         >
           <FloatingAppIcon />
@@ -45,7 +45,7 @@ const AboutUsContent: React.FC = () => {
 
         {/* Middle right */}
         <div
-          className="absolute top-[150px] md:top-[230px] right-[0%] md:right-[5%]  "
+          className="absolute top-[140px] md:top-[230px] right-[0%] md:right-[5%]  "
           style={{ animationDelay: "2s" }}
         >
           <FloatingAppIcon />
