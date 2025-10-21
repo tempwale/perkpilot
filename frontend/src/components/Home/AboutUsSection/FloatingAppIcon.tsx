@@ -6,7 +6,7 @@ const FloatingAppIcon: React.FC = () => {
     <div className="relative flex flex-col items-center">
       {/* Floating discount badge - positioned above the circular container */}
       <div className="mb-2 bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-full px-[12px] py-[6px] flex items-center justify-center">
-        <span className="font-['Plus_Jakarta_Sans'] font-semibold text-[12px] leading-[18px] text-white whitespace-nowrap">
+        <span className="font-['Plus_Jakarta_Sans'] font-semibold text-[6px] md:text-[12px] leading-[18px] text-white whitespace-nowrap">
           20% OFF
         </span>
       </div>
