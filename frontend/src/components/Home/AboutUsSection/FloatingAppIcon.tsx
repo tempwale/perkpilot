@@ -12,7 +12,7 @@ const FloatingAppIcon: React.FC = () => {
       </div>
 
       {/* Main circular container with app icon */}
-      <div className="relative bg-white border-4 border-[#501bd6] rounded-full w-[116px] h-[116px] flex items-center justify-center overflow-hidden">
+      <div className="relative bg-white border-4 border-[#501bd6] rounded-full w-[50px] h-[50px] lg:w-[116px] lg:h-[116px] flex items-center justify-center overflow-hidden">
         {/* Background gradient elements */}
         <div className="absolute inset-0 overflow-hidden">
           {/* Purple gradient circle */}
