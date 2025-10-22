@@ -183,21 +183,21 @@ export default function ProductReviews() {
       <div className="w-full flex flex-col gap-6">
         <div
           data-layer="Frame 2147223643"
-          className="Frame2147223643 hidden md:inline-flex self-stretch justify-between items-center"
+          className="Frame2147223643 flex flex-row md:inline-flex self-stretch justify-between items-center"
         >
           <div
             data-layer="Product Reviews"
-            className="ProductReviews text-center justify-start text-neutral-50 text-2xl font-medium font-['Plus_Jakarta_Sans'] leading-loose"
+            className="ProductReviews text-center justify-start text-neutral-50 text-xl md:text-2xl font-medium font-['Plus_Jakarta_Sans'] leading-loose"
           >
             Product Reviews
           </div>
           <div
             data-layer="Buttons/main"
-            className="ButtonsMain h-12 px-6 py-4 bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-[100px] flex justify-start items-center gap-3"
+            className="ButtonsMain  h-12 px-6 py-4 bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-[100px] flex justify-start items-center gap-3"
           >
             <div
               data-layer="Write A Review"
-              className="WriteAReview text-center justify-start text-white text-base font-normal font-['Poppins'] leading-normal"
+              className="WriteAReview text-center justify-start text-white text-sm md:text-base font-normal font-['Poppins'] leading-normal"
             >
               Write A Review
             </div>
