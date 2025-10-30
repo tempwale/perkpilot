@@ -26,11 +26,11 @@ export default function CTAReviewDetails() {
             </p>
           </div>
           <div
-            className="content-stretch flex gap-[24px] items-start justify-center relative shrink-0"
+            className="content-stretch flex flex-col md:flex-row gap-[24px] items-start justify-center relative shrink-0"
             data-node-id="201:685"
           >
             <div
-              className="bg-neutral-50 box-border content-stretch flex h-[48px] items-center justify-center px-[32px] py-[8px] relative rounded-[100px] shrink-0"
+              className="bg-neutral-50 box-border content-stretch flex h-[48px] items-center justify-center md:px-[32px] py-[8px] relative rounded-[100px] shrink-0 w-full"
               data-name="All Assets"
               data-node-id="201:686"
             >
