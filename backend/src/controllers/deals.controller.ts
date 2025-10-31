@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
+import mongoose from "mongoose";
 import Deal, { IDeal } from "../models/deal.model";
-
+import DealPage, { IDealPage } from "../models/dealpage.model";
 // GET all deals
 export const getAllDeals = async (_req: Request, res: Response) => {
   try {
@@ -128,7 +129,7 @@ export const updateDeal = async (req: Request, res: Response) => {
     ];
     const filteredData: Partial<IDeal> = {};
     for (const key of allowedFields) {
-      if (key in updatedData) filteredData[key] = updatedData[key];
+      if (key in updatedData) (filteredData as any)[key] = (updatedData as any)[key];
     }
 
     const deal: IDeal | null = await Deal.findByIdAndUpdate(
@@ -156,5 +157,92 @@ export const deleteDeal = async (req: Request, res: Response) => {
     res.json({ message: "Deal deleted successfully" });
   } catch (error) {
     res.status(500).json({ message: "Error deleting deal", error });
+  }
+};
+
+// GET deal page
+export const getDealPage = async (_req: Request, res: Response) => {
+  try {
+    const dealPage: IDealPage | null = await DealPage.findOne().populate(
+      "deals"
+    );
+    if (!dealPage)
+      return res.status(404).json({ message: "Deal page not found" });
+
+    res.json(dealPage);
+  } catch (error) {
+    res.status(400).json({ message: "Error fetching deal page", error });
+  }
+};
+
+// UPDATE deal page
+export const updateDealPage = async (req: Request, res: Response) => {
+  try {
+    const updatedData: Partial<IDealPage> = req.body;
+
+    // Ensure only valid fields are updated
+    const allowedFields: (keyof IDealPage)[] = [
+      "topTagline",
+      "heading",
+      "subheading",
+      "deals",
+    ];
+    const filteredData: Partial<IDealPage> = {};
+    for (const key of allowedFields) {
+      if (key in updatedData) (filteredData as any)[key] = (updatedData as any)[key];
+    }
+
+    // Validate 'deals' if provided: must be an array of valid ObjectId strings
+    if (filteredData.deals !== undefined) {
+      if (!Array.isArray(filteredData.deals)) {
+        return res
+          .status(400)
+          .json({ message: "'deals' must be an array of Deal _id strings" });
+      }
+
+      const invalid = (filteredData.deals as any[]).some(
+        (d) => !mongoose.Types.ObjectId.isValid(String(d))
+      );
+      if (invalid) {
+        return res
+          .status(400)
+          .json({
+            message:
+              "All 'deals' entries must be valid MongoDB ObjectId strings",
+          });
+      }
+
+      // Optionally convert string ids to ObjectId instances before storing
+      filteredData.deals = (filteredData.deals as any[]).map(
+        (d) => new mongoose.Types.ObjectId(String(d))
+      ) as any;
+    }
+
+    // Update the singleton DealPage (no id). Try findOneAndUpdate first.
+    let dealPage: IDealPage | null = await DealPage.findOneAndUpdate(
+      {},
+      filteredData,
+      {
+        new: true,
+        runValidators: true,
+      }
+    ).populate("deals");
+
+    // If no DealPage exists, create one (requires `heading` in filteredData)
+    if (!dealPage) {
+      if (!filteredData.heading) {
+        return res.status(400).json({
+          message:
+            "No DealPage exists — creating one requires the 'heading' field",
+        });
+      }
+
+      const created = await DealPage.create(filteredData as any);
+      dealPage = await DealPage.findById(created._id).populate("deals");
+    }
+
+    res.json(dealPage);
+  } catch (error) {
+    res.status(400).json({ message: "Error updating deal page", error });
   }
 };
