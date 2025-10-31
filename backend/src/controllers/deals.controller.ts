@@ -129,7 +129,8 @@ export const updateDeal = async (req: Request, res: Response) => {
     ];
     const filteredData: Partial<IDeal> = {};
     for (const key of allowedFields) {
-      if (key in updatedData) (filteredData as any)[key] = (updatedData as any)[key];
+      if (key in updatedData)
+        (filteredData as any)[key] = (updatedData as any)[key];
     }
 
     const deal: IDeal | null = await Deal.findByIdAndUpdate(
@@ -189,7 +190,8 @@ export const updateDealPage = async (req: Request, res: Response) => {
     ];
     const filteredData: Partial<IDealPage> = {};
     for (const key of allowedFields) {
-      if (key in updatedData) (filteredData as any)[key] = (updatedData as any)[key];
+      if (key in updatedData)
+        (filteredData as any)[key] = (updatedData as any)[key];
     }
 
     // Validate 'deals' if provided: must be an array of valid ObjectId strings
@@ -204,12 +206,9 @@ export const updateDealPage = async (req: Request, res: Response) => {
         (d) => !mongoose.Types.ObjectId.isValid(String(d))
       );
       if (invalid) {
-        return res
-          .status(400)
-          .json({
-            message:
-              "All 'deals' entries must be valid MongoDB ObjectId strings",
-          });
+        return res.status(400).json({
+          message: "All 'deals' entries must be valid MongoDB ObjectId strings",
+        });
       }
 
       // Optionally convert string ids to ObjectId instances before storing

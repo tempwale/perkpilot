@@ -1,0 +1,50 @@
+[
+  {
+    "title": "Framer",
+    "category": "No-Code Tool",
+    "description": "Every communications experience, Integrated contact center, voice, video, chat, and APIs.",
+    "logoUri": "/logos/framer.png",
+    "verified": true,
+    "tag": "Hot Deal",
+    "features": [
+      "Unlimited Blocks",
+      "Team Collaboration",
+      "Advance Permissions",
+      "Version History"
+    ],
+    "discount": "25% OFF",
+    "savings": "Save Up To $1234"
+  },
+  {
+    "title": "Figma",
+    "category": "Design Tool",
+    "description": "Collaborative interface design tool for teams. Create, prototype, and gather feedback all in one place.",
+    "logoUri": "/logos/figma.png",
+    "verified": true,
+    "tag": "Limited Time",
+    "features": [
+      "Unlimited Files",
+      "Advanced Prototyping",
+      "Team Libraries",
+      "Version Control"
+    ],
+    "discount": "50% OFF",
+    "savings": "Save Up To $2000"
+  },
+  {
+    "title": "Notion",
+    "category": "Productivity Tool",
+    "description": "All-in-one workspace for notes, tasks, wikis, and databases. Organize your work and life.",
+    "logoUri": "/logos/notion.png",
+    "verified": false,
+    "tag": "New Deal",
+    "features": [
+      "Unlimited Pages",
+      "Real-time Collaboration",
+      "Advanced Permissions",
+      "API Access"
+    ],
+    "discount": "40% OFF",
+    "savings": "Save Up To $800"
+  }
+]
