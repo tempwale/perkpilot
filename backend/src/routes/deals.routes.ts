@@ -5,18 +5,26 @@ import {
   createDeal,
   updateDeal,
   deleteDeal,
+  getDealPage,
+  updateDealPage,
 } from "../controllers/deals.controller";
 
 const router = express.Router();
 
+// Deal page routes (specific) - place before param routes to avoid collisions
+router.get("/dealpage", getDealPage);
+router.put("/dealpage", updateDealPage);
+
+// Collection routes
 // GET all deals
 router.get("/", getAllDeals);
 
-// GET a single deal by ID
-router.get("/:id", getDealById);
-
 // POST create a new deal
 router.post("/", createDeal);
+
+// ID-based routes (param) - declared after specific routes
+// GET a single deal by ID
+router.get("/:id", getDealById);
 
 // PUT update an existing deal
 router.put("/:id", updateDeal);
