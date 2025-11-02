@@ -24,7 +24,6 @@ export default function Hero({
   readTime = "• 9 Minute Read",
   socialIcons,
   imageComponent,
-  className,
 }: HeroProps) {
   // Use data from API if available, otherwise fall back to defaults
   const displayTitle = data?.heroHeading || title;

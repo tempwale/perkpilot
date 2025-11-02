@@ -9,7 +9,7 @@ interface ToolsMentionedProps {
   }>;
 }
 
-export default function ToolsMentioned({ data = [] }: ToolsMentionedProps) {
+export default function ToolsMentioned(_props: ToolsMentionedProps) {
   return (
     // center the content horizontally and make inner frame responsive
     <div

@@ -29,7 +29,6 @@ const DEFAULT_MODULES: ModuleItem[] = [
 ];
 
 const BlogModules: React.FC<BlogModulesProps> = ({
-  data,
   modules = DEFAULT_MODULES,
   onChange,
   className = "",
