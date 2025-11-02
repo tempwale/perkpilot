@@ -1,6 +1,22 @@
 import Check from "./Check";
 
-export default function FeatureComparision() {
+interface FeatureComparisonData {
+  sectionTitle: string;
+  featuresHeadline: string;
+  tools: string[];
+  features: any[];
+}
+
+export default function FeatureComparision({
+  data,
+}: {
+  data?: FeatureComparisonData;
+}) {
+  // Use data from API if available
+  const title = data?.featuresHeadline || "Feature Comparison";
+  const tools = data?.tools || ["Tool 1", "Tool 2", "Tool 3"];
+  const features = data?.features || [];
+
   return (
     <div
       data-layer="Frame 2147206227"
@@ -10,7 +26,7 @@ export default function FeatureComparision() {
         data-layer="Feature Comparison"
         className="FeatureComparison self-stretch justify-start text-white text-[40px] font-semibold font-['Plus_Jakarta_Sans'] capitalize leading-[52px]"
       >
-        Feature Comparison
+        {title}
       </div>
 
       {/* Features List as a responsive table */}
@@ -21,53 +37,54 @@ export default function FeatureComparision() {
               <th className="text-zinc-200 text-base font-medium font-['Plus_Jakarta_Sans'] lg:px-4 py-3 ">
                 Feature
               </th>
-              <th className="text-zinc-200 text-base font-medium font-['Plus_Jakarta_Sans']  lg:px-4 py-3 ">
-                Notion
-              </th>
-              <th className="text-zinc-200 text-base font-medium font-['Plus_Jakarta_Sans']  lg:px-4 py-3 ">
-                Obsidian
-              </th>
-              <th className="text-zinc-200 text-base font-medium font-['Plus_Jakarta_Sans']  lg:px-4 py-3 ">
-                Roam Research
-              </th>
+              {tools.map((tool, idx) => (
+                <th
+                  key={idx}
+                  className="text-zinc-200 text-base font-medium font-['Plus_Jakarta_Sans']  lg:px-4 py-3 "
+                >
+                  {tool}
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>
-            {[
-              "Block-based editing",
-              "Database functionality",
-              "Team collaboration",
-              "Offline access",
-              "Graph view",
-              "Bi-directional linking",
-              "Templates",
-              "API access",
-              "Mobile apps",
-              "Real-time sync",
-            ].map((feature, i) => (
-              <tr key={i}>
-                <td className="px-4 py-4 align-top">
-                  <div className="text-zinc-200 text-base font-normal font-['Plus_Jakarta_Sans'] leading-normal">
-                    {feature}
-                  </div>
-                </td>
-                <td className="px-4 py-4 align-middle">
-                  <div className="flex items-center justify-center h-full">
-                    <Check />
-                  </div>
-                </td>
-                <td className="px-4 py-4 align-middle">
-                  <div className="flex items-center justify-center h-full">
-                    <Check />
-                  </div>
-                </td>
-                <td className="px-4 py-4 align-middle">
-                  <div className="flex items-center justify-center h-full">
-                    <Check />
+            {features.length > 0 ? (
+              features.map((feature: any, i: number) => (
+                <tr key={i}>
+                  <td className="px-4 py-4 align-top">
+                    <div className="text-zinc-200 text-base font-normal font-['Plus_Jakarta_Sans'] leading-normal">
+                      {feature.featureName}
+                    </div>
+                  </td>
+                  <td className="px-4 py-4 align-middle">
+                    <div className="flex items-center justify-center h-full">
+                      {feature.tool1Available && <Check />}
+                    </div>
+                  </td>
+                  <td className="px-4 py-4 align-middle">
+                    <div className="flex items-center justify-center h-full">
+                      {feature.tool2Available && <Check />}
+                    </div>
+                  </td>
+                  <td className="px-4 py-4 align-middle">
+                    <div className="flex items-center justify-center h-full">
+                      {feature.tool3Available && <Check />}
+                    </div>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td
+                  colSpan={tools.length + 1}
+                  className="px-4 py-4 text-center"
+                >
+                  <div className="text-zinc-400 text-base font-normal font-['Plus_Jakarta_Sans']">
+                    No features to compare
                   </div>
                 </td>
               </tr>
-            ))}
+            )}
           </tbody>
         </table>
       </div>

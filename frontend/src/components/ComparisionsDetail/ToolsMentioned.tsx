@@ -1,6 +1,15 @@
 import Pick from "../Home/TopPicksSection/Pick";
 
-export default function ToolsMentioned() {
+interface ToolsMentionedProps {
+  data?: Array<{
+    toolName: string;
+    toolLogo: string;
+    toolCategory?: string;
+    isVerified?: boolean;
+  }>;
+}
+
+export default function ToolsMentioned({ data = [] }: ToolsMentionedProps) {
   return (
     // center the content horizontally and make inner frame responsive
     <div

@@ -7,6 +7,7 @@ type Social = {
 };
 
 type Props = {
+  data?: string;
   imageSrc?: string;
   name?: string;
   role?: string;

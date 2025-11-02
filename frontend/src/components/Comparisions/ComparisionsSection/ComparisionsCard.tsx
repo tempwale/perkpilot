@@ -2,11 +2,20 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 interface ComparisionsCardProps {
-  id?: string | number;
-  app1Logo?: React.ReactNode;
-  app2Logo?: React.ReactNode;
-  title?: string;
-  description?: string;
+  id?: string;
+  _id?: string;
+  slug?: string;
+  heroHeading?: string;
+  heroBody?: string;
+  comparisonHeroImage?: string;
+  toolsMentioned?: Array<{
+    toolName: string;
+    toolLogo: string;
+    toolCategory?: string;
+    isVerified?: boolean;
+  }>;
+  blogCategory?: string;
+  readingTime?: string;
   tags?: string[];
   onReadComparison?: () => void;
 }
@@ -33,29 +42,6 @@ const SlackLogo = () => (
     />
   </svg>
 );
-function FramerLogo() {
-  return (
-    <svg
-      width="21"
-      height="32"
-      viewBox="0 0 21 32"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <g clip-path="url(#clip0_1_1900)">
-        <path
-          d="M0 0H21V10.6667H10.5L0 0ZM0 10.6667H10.5L21 21.3333H10.5V32L0 21.3333V10.6667Z"
-          fill="#0D0D11"
-        />
-      </g>
-      <defs>
-        <clipPath id="clip0_1_1900">
-          <rect width="21" height="32" fill="white" />
-        </clipPath>
-      </defs>
-    </svg>
-  );
-}
 
 const LineIcon = () => (
   <div className="h-0 w-4 relative">
@@ -64,23 +50,34 @@ const LineIcon = () => (
 );
 
 const ComparisionsCard: React.FC<ComparisionsCardProps> = ({
-  id = "1",
-  app1Logo = <SlackLogo />, // Replace with your own
-  app2Logo = <FramerLogo />, // Replace with your own
-  title = "Notion vs Obsidian",
-  description = "Deep dive into two of the most popular note-taking apps, comparing features, pricing, and use cases.",
-  tags = ["Productivity", "NotesTaking", "Work"],
+  _id,
+  heroHeading = "Comparison",
+  heroBody = "A detailed comparison of two tools.",
+  toolsMentioned = [],
+
   onReadComparison,
 }) => {
+  // Extract logos from toolsMentioned
+  const app1Logo = toolsMentioned[0]?.toolLogo;
+  const app2Logo = toolsMentioned[1]?.toolLogo;
+
+  // Render logo as <img> if URL, otherwise placeholder
+  const LogoImage: React.FC<{ src?: string }> = ({ src }) =>
+    src ? (
+      <img src={src} alt="tool" className="w-8 h-8 object-contain" />
+    ) : (
+      <SlackLogo />
+    );
+
   return (
-    <div className="w-full lg:w-[608px] p-4 sm:p-6 bg-white/5 rounded-3xl outline outline-1 outline-offset-[-1px] outline-white/10 inline-flex flex-col justify-start items-start gap-6">
+    <div className="w-full lg:w-[608px] h-[400px] p-4 sm:p-6 bg-white/5 rounded-3xl outline outline-1 outline-offset-[-1px] outline-white/10 inline-flex flex-col justify-between items-start gap-6">
       {/* Top Section: Logos and VS */}
       <div className="self-stretch flex flex-col justify-start items-center gap-4">
         <div className="w-full max-w-[28rem] inline-flex justify-center items-center mx-auto px-2">
           {/* App 1 Logo */}
           <div className="w-12 h-12 sm:w-14 sm:h-14 p-1.5 sm:p-2.5 bg-neutral-50 rounded-[100px] outline outline-1 outline-offset-[-1px] outline-neutral-50 flex justify-center items-center gap-2.5">
             <div className="w-8 h-8 sm:w-8 sm:h-8 relative flex items-center justify-center">
-              {app1Logo}
+              <LogoImage src={app1Logo} />
             </div>
           </div>
           {/* Line */}
@@ -94,26 +91,27 @@ const ComparisionsCard: React.FC<ComparisionsCardProps> = ({
           <LineIcon /> {/* App 2 Logo */}
           <div className="w-12 h-12 sm:w-14 sm:h-14 p-1.5 sm:p-2.5 bg-neutral-50 rounded-[100px] outline outline-1 outline-offset-[-1px] outline-neutral-50 flex justify-center items-center gap-2.5">
             <div className="w-8 h-8 sm:w-8 sm:h-8 relative flex items-center justify-center">
-              {app2Logo}
+              <LogoImage src={app2Logo} />
             </div>
           </div>
         </div>
         {/* Title, Description, Tags */}
         <div className="self-stretch flex flex-col justify-start items-center gap-3 px-2">
           <div className="self-stretch text-center text-neutral-50 text-lg sm:text-xl font-medium font-['Plus_Jakarta_Sans'] leading-loose">
-            {title}
+            {heroHeading}
           </div>
           <div className="self-stretch text-center text-zinc-300 text-sm sm:text-base font-normal font-['Plus_Jakarta_Sans'] leading-normal">
-            {description}
+            {heroBody}
           </div>
           <div className="inline-flex justify-center items-center gap-3 flex-wrap">
-            {tags.map((tag, idx) => (
+            {/* Show tool categories as tags */}
+            {toolsMentioned.map((tool, idx) => (
               <div
                 key={idx}
                 className="px-2 py-1 bg-white/10 rounded-[100px] flex justify-center items-center gap-2.5"
               >
                 <div className="text-zinc-200 text-xs font-medium font-['Poppins']">
-                  {tag}
+                  {tool.toolCategory || tool.toolName}
                 </div>
               </div>
             ))}
@@ -122,7 +120,7 @@ const ComparisionsCard: React.FC<ComparisionsCardProps> = ({
       </div>
       {/* CTA Button */}
       <Link
-        to={`/comparison/${id}`}
+        to={`/comparison/${_id}`}
         onClick={() => onReadComparison && onReadComparison()}
         className="self-stretch h-10 sm:h-12 px-3 py-2 bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-[100px] inline-flex justify-center items-center cursor-pointer"
       >

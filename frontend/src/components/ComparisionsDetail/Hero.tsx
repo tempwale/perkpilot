@@ -1,6 +1,8 @@
 import React from "react";
+import type { ToolComparisonBlog } from "../../hooks/useComparisionDetail";
 
 interface HeroProps {
+  data?: ToolComparisonBlog;
   category?: string;
   breadcrumb?: string;
   title?: string;
@@ -13,6 +15,7 @@ interface HeroProps {
 }
 
 export default function Hero({
+  data,
   category = "Project Management",
   breadcrumb = "Notion vs Obsidian vs Roam Research",
   title = "Notion vs obsidian vs roam research",
@@ -21,7 +24,14 @@ export default function Hero({
   readTime = "• 9 Minute Read",
   socialIcons,
   imageComponent,
+  className,
 }: HeroProps) {
+  // Use data from API if available, otherwise fall back to defaults
+  const displayTitle = data?.heroHeading || title;
+  const displayDescription = data?.heroBody || description;
+  const displayReadTime = data?.readingTime
+    ? `• ${data.readingTime}`
+    : readTime;
   // Default SVG icon components
   const XIcon = (
     <svg
@@ -154,14 +164,14 @@ export default function Hero({
           data-layer="Notion vs obsidian vs roam research"
           className="NotionVsObsidiantitle self-stretch justify-start text-neutral-50 text-3xl md:text-4xl lg:text-5xl font-semibold font-['Plus_Jakarta_Sans'] capitalize leading-[1.05]"
         >
-          {title}
+          {displayTitle}
         </div>
 
         <div
           data-layer="This comprasion blogs will help you understand the difference between these three tools and which one suits you the best."
           className="ThisComprasionBlogsWillHelpYouUnderstandTheDifferenceBetweenTheseThreeToolsAndWhichOneSuitsYouTheBest self-stretch justify-start text-zinc-400 text-xl font-medium font-['Plus_Jakarta_Sans'] leading-loose"
         >
-          {description}
+          {displayDescription}
         </div>
 
         <div
@@ -183,7 +193,7 @@ export default function Hero({
               data-layer="9 Minute Read"
               className="MinuteRead text-zinc-500 text-sm font-medium font-['Poppins']"
             >
-              {readTime}
+              {displayReadTime} Read
             </div>
           </div>
 
