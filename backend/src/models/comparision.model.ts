@@ -52,6 +52,7 @@ interface IToolComparisonBlog {
   tipBulbText: string;
   toolsMentioned: ITool[];
   author: string;
+  authorId: Types.ObjectId;
   blogCategory: string;
   readingTime: string;
   toolBlogCards: IBlogSection[];
@@ -344,6 +345,12 @@ const ToolComparisonBlogSchema = new Schema<
       type: String,
       required: [true, "Author is required"],
       trim: true,
+    },
+    authorId: {
+      type: Schema.Types.ObjectId,
+      ref: "Author",
+      required: [true, "Author ID is required"],
+      index: true,
     },
     blogCategory: {
       type: String,

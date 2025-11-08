@@ -5,6 +5,7 @@ import connectDB from "./config/db";
 import dealsRoutes from "./routes/deals.routes";
 import comparisionRouter from "./routes/comparision.routes";
 import reviewsRoutes from "./routes/reviews.routes";
+import authorRoutes from "./routes/author.routes";
 // Load environment variables from .env file
 dotenv.config();
 
@@ -22,6 +23,8 @@ app.use("/api/deals", dealsRoutes);
 app.use("/api/comparisons", comparisionRouter);
 
 app.use("/api/reviews", reviewsRoutes);
+
+app.use("/api/authors", authorRoutes);
 // Health check / default route
 app.get("/", (_req: Request, res: Response) => {
   console.log("API is running...");
