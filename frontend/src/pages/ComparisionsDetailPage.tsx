@@ -92,7 +92,7 @@ export default function ComparisionsDetailPage() {
       </main>
 
       <div className="w-full h-[880px] lg:h-[350px] bg-[#040404] lg:bg-gradient-to-t from-black to-[#190845]">
-        <ToolsMentioned 
+        <ToolsMentioned
           data={comparison.toolsMentioned}
           sectionHeadline={comparison.sectionHeadline}
           tipBulbText={comparison.tipBulbText}
