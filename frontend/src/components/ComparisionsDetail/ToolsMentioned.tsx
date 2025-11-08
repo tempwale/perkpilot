@@ -76,33 +76,50 @@ export default function ToolsMentioned({
           </div>
         </div>
         <div className="flex flex-col items-center gap-4 mt-2 lg:flex-row">
-          <Pick
-            appName="Figma"
-            category="Design"
-            description="Collaborative interface design tool for teams."
-            discountPercentage="25% OFF"
-            savingsAmount="$30 savings"
-            rating="4.8/5.0 Ratings"
-            verified={true}
-          />
-          <Pick
-            appName="Slack"
-            category="Communication"
-            description="Real-time messaging and collaboration platform."
-            discountPercentage="15% OFF"
-            savingsAmount="$20 savings"
-            rating="4.8/5.0 Ratings"
-            verified={false}
-          />
-          <Pick
-            appName="Airtable"
-            category="Database"
-            description="Flexible spreadsheet-database hybrid to organize work."
-            discountPercentage="20% OFF"
-            savingsAmount="$25 savings"
-            rating="4.8/5.0 Ratings"
-            verified={true}
-          />
+          {data && data.length > 0 ? (
+            data.map((tool, index) => (
+              <Pick
+                key={`${tool.toolName}-${index}`}
+                appName={tool.toolName}
+                category={tool.toolCategory || "Tool"}
+                description={`Explore ${tool.toolName} and its features.`}
+                discountPercentage="25% OFF"
+                savingsAmount="$30 savings"
+                rating="4.8/5.0 Ratings"
+                verified={tool.isVerified || false}
+              />
+            ))
+          ) : (
+            <>
+              <Pick
+                appName="Figma"
+                category="Design"
+                description="Collaborative interface design tool for teams."
+                discountPercentage="25% OFF"
+                savingsAmount="$30 savings"
+                rating="4.8/5.0 Ratings"
+                verified={true}
+              />
+              <Pick
+                appName="Slack"
+                category="Communication"
+                description="Real-time messaging and collaboration platform."
+                discountPercentage="15% OFF"
+                savingsAmount="$20 savings"
+                rating="4.8/5.0 Ratings"
+                verified={false}
+              />
+              <Pick
+                appName="Airtable"
+                category="Database"
+                description="Flexible spreadsheet-database hybrid to organize work."
+                discountPercentage="20% OFF"
+                savingsAmount="$25 savings"
+                rating="4.8/5.0 Ratings"
+                verified={true}
+              />
+            </>
+          )}
         </div>
       </div>
     </div>
