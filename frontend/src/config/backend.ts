@@ -21,5 +21,6 @@ export const BACKEND_URL: string = normalizeBackendUrl(rawEnv.VITE_BACKEND_URL);
 export const DEALS_API = `${BACKEND_URL}/api/deals`;
 // Comparisions API endpoint (singular `comparision` to match backend route)
 export const COMPARISIONS_API = `${BACKEND_URL}/api/comparisons`;
+export const AUTHORS_API = `${BACKEND_URL}/api/authors`;
 
 export default BACKEND_URL;

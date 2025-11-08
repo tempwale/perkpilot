@@ -1,6 +1,8 @@
 import Pick from "../Home/TopPicksSection/Pick";
 
 interface ToolsMentionedProps {
+  sectionHeadline?: string;
+  tipBulbText?: string;
   data?: Array<{
     toolName: string;
     toolLogo: string;
@@ -9,7 +11,11 @@ interface ToolsMentionedProps {
   }>;
 }
 
-export default function ToolsMentioned(_props: ToolsMentionedProps) {
+export default function ToolsMentioned({
+  sectionHeadline = "Essential Productive Tools To Enhance Your Workflow",
+  tipBulbText = "Tools with exclusive discounts & cashbacks",
+  data = [],
+}: ToolsMentionedProps) {
   return (
     // center the content horizontally and make inner frame responsive
     <div
@@ -36,7 +42,7 @@ export default function ToolsMentioned(_props: ToolsMentionedProps) {
               data-layer="Essential Productive Tools To Enhance Your Workflow"
               className="EssentialProductiveToolsToEnhanceYourWorkflow justify-start w-[210px] md:w-full md:pl-4 text-zinc-100 text-base md:text-xl font-normal font-['Poppins'] leading-loose"
             >
-              Essential Productive Tools To Enhance Your Workflow
+              {sectionHeadline}
             </div>
           </div>
 
@@ -65,7 +71,7 @@ export default function ToolsMentioned(_props: ToolsMentionedProps) {
               data-layer="Tools with exclusive discounts & cashbacks"
               className="ToolsWithExclusiveDiscountsCashbacks justify-start text-neutral-50 text-sm font-normal font-['Poppins']"
             >
-              Tools with exclusive discounts & cashbacks
+              {tipBulbText}
             </div>
           </div>
         </div>

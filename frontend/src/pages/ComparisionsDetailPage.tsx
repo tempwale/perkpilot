@@ -12,10 +12,12 @@ import Header from "../components/Header";
 import Author from "../components/ComparisionsDetail/Author";
 import fetchComparisonDetail from "../hooks/useComparisionDetail";
 import type { ToolComparisonBlog } from "../hooks/useComparisionDetail";
+import { fetchAuthorById, type Author as AuthorData } from "../hooks/useAuthor";
 
 export default function ComparisionsDetailPage() {
   const { id } = useParams<{ id: string }>();
   const [comparison, setComparison] = useState<ToolComparisonBlog | null>(null);
+  const [author, setAuthor] = useState<AuthorData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -31,6 +33,24 @@ export default function ComparisionsDetailPage() {
         setLoading(true);
         const data = await fetchComparisonDetail(id);
         setComparison(data);
+        console.log("Comparison data:", data);
+        console.log("Author ID from comparison:", data.authorId || data.author);
+
+        // Fetch author if authorId or author field is present
+        const authorIdToFetch = data.authorId || data.author;
+        if (authorIdToFetch) {
+          console.log("Fetching author with ID:", authorIdToFetch);
+          try {
+            const authorData = await fetchAuthorById(authorIdToFetch);
+            setAuthor(authorData);
+            console.log("Fetched author data:", authorData);
+          } catch (authorErr) {
+            console.error("Failed to fetch author:", authorErr);
+            // Don't fail the whole page if author fetch fails
+          }
+        } else {
+          console.log("No authorId found in comparison data");
+        }
       } catch (err: any) {
         setError(err.message || "Failed to fetch comparison");
       } finally {
@@ -72,7 +92,11 @@ export default function ComparisionsDetailPage() {
       </main>
 
       <div className="w-full h-[880px] lg:h-[350px] bg-[#040404] lg:bg-gradient-to-t from-black to-[#190845]">
-        <ToolsMentioned data={comparison.toolsMentioned} />
+        <ToolsMentioned 
+          data={comparison.toolsMentioned}
+          sectionHeadline={comparison.sectionHeadline}
+          tipBulbText={comparison.tipBulbText}
+        />
       </div>
 
       <section className="py-20 md:py-40 w-full bg-[#040404] lg:bg-gradient-to-b from-black to-[#190845]">
@@ -88,7 +112,7 @@ export default function ComparisionsDetailPage() {
 
             <ProsCons data={comparison.prosConsCards} />
 
-            <Author data={comparison.author} />
+            <Author authorData={author || undefined} data={comparison.author} />
           </div>
 
           <aside className="hidden md:block w-full md:w-[400px] lg:w-[480px] flex-shrink-0">

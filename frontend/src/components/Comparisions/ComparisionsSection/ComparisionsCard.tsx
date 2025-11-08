@@ -70,7 +70,7 @@ const ComparisionsCard: React.FC<ComparisionsCardProps> = ({
     );
 
   return (
-    <div className="w-full lg:w-[608px] h-[400px] p-4 sm:p-6 bg-white/5 rounded-3xl outline outline-1 outline-offset-[-1px] outline-white/10 inline-flex flex-col justify-between items-start gap-6">
+    <div className="w-full lg:w-[608px] p-4 sm:p-6 bg-white/5 rounded-3xl outline outline-1 outline-offset-[-1px] outline-white/10 inline-flex flex-col justify-between items-start gap-6">
       {/* Top Section: Logos and VS */}
       <div className="self-stretch flex flex-col justify-start items-center gap-4">
         <div className="w-full max-w-[28rem] inline-flex justify-center items-center mx-auto px-2">
@@ -121,7 +121,10 @@ const ComparisionsCard: React.FC<ComparisionsCardProps> = ({
       {/* CTA Button */}
       <Link
         to={`/comparison/${_id}`}
-        onClick={() => onReadComparison && onReadComparison()}
+        onClick={() => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+          onReadComparison && onReadComparison();
+        }}
         className="self-stretch h-10 sm:h-12 px-3 py-2 bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-[100px] inline-flex justify-center items-center cursor-pointer"
       >
         <div className="text-neutral-50 text-sm sm:text-base font-normal font-['Poppins'] leading-normal">

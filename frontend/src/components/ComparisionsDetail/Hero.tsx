@@ -25,12 +25,33 @@ export default function Hero({
   socialIcons,
   imageComponent,
 }: HeroProps) {
+  // Function to format ISO date to "Friday 7 November 2025" style
+  const formatDate = (isoDate: string): string => {
+    try {
+      const date = new Date(isoDate);
+      const options: Intl.DateTimeFormatOptions = {
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      };
+      return date.toLocaleDateString("en-US", options);
+    } catch {
+      return isoDate;
+    }
+  };
+
   // Use data from API if available, otherwise fall back to defaults
+  const displayImage = data?.comparisonHeroImage || imageComponent;
+  const displayTime = data?.createdAt ? formatDate(data.createdAt) : date;
+  const displayCategory = data?.pageType || category;
+  const displayBreadcrumb = data?.heroHeading || breadcrumb;
   const displayTitle = data?.heroHeading || title;
   const displayDescription = data?.heroBody || description;
   const displayReadTime = data?.readingTime
     ? `• ${data.readingTime}`
     : readTime;
+
   // Default SVG icon components
   const XIcon = (
     <svg
@@ -141,7 +162,7 @@ export default function Hero({
               data-layer="Project Management"
               className="ProjectManagement  text-zinc-500 text-sm font-medium font-['Plus_Jakarta_Sans'] leading-[21px]"
             >
-              {category}
+              {displayCategory}
             </div>
           </div>
           {/* small circular separator dot */}
@@ -154,7 +175,7 @@ export default function Hero({
               data-layer="Notion vs Obsidian vs Roam Research"
               className="NotionVsObsidianVsRoamResearch justify-start text-zinc-100 text-sm font-medium font-['Plus_Jakarta_Sans'] leading-[21px]"
             >
-              {breadcrumb}
+              {displayBreadcrumb}
             </div>
           </div>
         </div>
@@ -185,7 +206,7 @@ export default function Hero({
               data-layer="Thursday 19 June 2025"
               className="Thursday19June2025 justify-start text-zinc-500 text-sm font-medium font-['Poppins'] "
             >
-              {date}
+              {displayTime}
             </div>
 
             <div
@@ -226,8 +247,16 @@ export default function Hero({
         className="Rectangle2825 w-full lg:w-[608px] rounded-3xl border border-white/10 overflow-hidden bg-[#d9d9d9]/10"
       >
         <div className="w-full h-56 md:h-72 lg:h-[400px] flex items-center justify-center">
-          {imageComponent ? (
-            <div className="w-full h-full object-cover">{imageComponent}</div>
+          {displayImage ? (
+            typeof displayImage === "string" ? (
+              <img
+                src={displayImage}
+                alt={displayTitle}
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <div className="w-full h-full object-cover">{displayImage}</div>
+            )
           ) : (
             <div className="w-full h-full bg-gradient-to-b from-white/10 to-[#d9d9d9]/10" />
           )}

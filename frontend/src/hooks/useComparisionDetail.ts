@@ -15,6 +15,7 @@ export interface ToolComparisonBlog {
     isVerified?: boolean;
   }>;
   author: string;
+  authorId: string;
   blogCategory: string;
   readingTime: string;
   toolBlogCards: Array<{
