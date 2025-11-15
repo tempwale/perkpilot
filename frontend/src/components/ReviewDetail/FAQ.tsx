@@ -28,15 +28,35 @@ const DEFAULT_FAQS = [
   },
 ];
 
-export default function FAQ() {
-  const [openId, setOpenId] = useState<string | null>(DEFAULT_FAQS[0].id);
+interface FAQProps {
+  faqs?: Array<{
+    question?: string;
+    answer?: string;
+    _id?: string;
+  }>;
+}
+
+export default function FAQ({ faqs }: FAQProps = {}) {
+  // Transform API FAQs to match component format
+  const formattedFAQs =
+    faqs && faqs.length > 0
+      ? faqs.map((faq, index) => ({
+          id: faq._id || `faq-${index}`,
+          q: faq.question || "",
+          a: faq.answer || "",
+        }))
+      : DEFAULT_FAQS;
+
+  const [openId, setOpenId] = useState<string | null>(
+    formattedFAQs[0]?.id || null
+  );
 
   const toggle = (id: string) => {
     setOpenId((prev) => (prev === id ? null : id));
   };
 
   return (
-       <div className="w-full flex justify-center">
+    <div className="w-full flex justify-center">
       <div
         data-layer="Frame 2147223642"
         className="Frame2147223642 w-full max-w-[818px] inline-flex flex-col justify-start items-center gap-10"
@@ -66,7 +86,7 @@ export default function FAQ() {
             data-layer="Questions"
             className="Questions self-stretch flex flex-col justify-center items-start gap-4 w-full"
           >
-            {DEFAULT_FAQS.map((faq) => {
+            {formattedFAQs.map((faq) => {
               const expanded = openId === faq.id;
               return (
                 <div

@@ -22,5 +22,6 @@ export const DEALS_API = `${BACKEND_URL}/api/deals`;
 // Comparisions API endpoint (singular `comparision` to match backend route)
 export const COMPARISIONS_API = `${BACKEND_URL}/api/comparisons`;
 export const AUTHORS_API = `${BACKEND_URL}/api/authors`;
+export const REVIEWS_API = `${BACKEND_URL}/api/reviews`;
 
 export default BACKEND_URL;

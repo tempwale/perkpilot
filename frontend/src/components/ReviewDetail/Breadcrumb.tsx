@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 
 interface BreadcrumbProps {
-  title: string;
+  productName: string;
 }
 
-export default function Breadcrumb({ title }: BreadcrumbProps) {
+export default function Breadcrumb({ productName }: BreadcrumbProps) {
   return (
     <nav className="mb-6">
       <div
@@ -33,7 +33,7 @@ export default function Breadcrumb({ title }: BreadcrumbProps) {
           className="text-zinc-100"
           style={{ fontSize: "14px", lineHeight: "21px" }}
         >
-          {title}
+          {productName}
         </span>
       </div>
     </nav>

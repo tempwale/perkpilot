@@ -104,8 +104,23 @@ leading-[21px]"
   </div>
 );
 
-export default function ProductAlternatives() {
-  const alternativesData = [
+interface ProductAlternativesProps {
+  alternatives?: Array<{
+    name: string;
+    type?: string;
+    avatarUrl?: string;
+    price?: string;
+    rating?: number;
+    reviewCount?: number;
+    compareNote?: string;
+    _id?: string;
+  }>;
+}
+
+export default function ProductAlternatives({
+  alternatives,
+}: ProductAlternativesProps) {
+  const defaultAlternativesData = [
     {
       name: "Sketch",
       category: "Design Tool",
@@ -155,6 +170,19 @@ export default function ProductAlternatives() {
       buttonText: "Compare With Figma",
     },
   ];
+
+  // Transform API alternatives to component format
+  const alternativesData =
+    alternatives && alternatives.length > 0
+      ? alternatives.map((alt) => ({
+          name: alt.name,
+          category: alt.type || "Tool",
+          rating: alt.rating || 5,
+          reviewCount: alt.reviewCount || 0,
+          pricing: alt.price || "N/A",
+          buttonText: alt.compareNote || "Compare",
+        }))
+      : defaultAlternativesData;
 
   return (
     <div className="w-full h-full">

@@ -14,7 +14,7 @@ export default function ReviewDetailContent({
     <div className="relative z-10 px-[20px] md:px-[135px] py-8 md:py-20">
       <div className="w-full max-w-[1440px] mx-auto">
         {/* Breadcrumb */}
-        <Breadcrumb title={reviewData.title} />
+        <Breadcrumb productName={reviewData.title} />
 
         {/* Main Content Grid - Responsive */}
         <div className="flex flex-col gap-8 lg:grid lg:grid-cols-3 lg:gap-8 mt-8">
@@ -34,13 +34,18 @@ export default function ReviewDetailContent({
                 founded={reviewData.founded}
                 employees={reviewData.employees}
                 headquarters={reviewData.headquarters}
+                userCount={reviewData.userCount}
               />
             </div>
           </div>
 
           {/* Right Content - Pricing */}
           <div className="lg:col-span-1 lg:-mt-[40px] flex justify-center items-start">
-            <PricingSidebar title={reviewData.title} />
+            <PricingSidebar
+              title={reviewData.title}
+              pricing={reviewData.pricing}
+              lastUpdated={reviewData.lastUpdated}
+            />
           </div>
         </div>
       </div>

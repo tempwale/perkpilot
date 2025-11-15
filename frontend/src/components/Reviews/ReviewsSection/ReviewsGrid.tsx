@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import ReviewCard from "./ReviewsCard";
 import Pagination from "./Pagination";
+import { fetchReviews, type Review } from "../../../hooks/useReviews";
 
 // Logo Components
 function FramerLogo() {
@@ -622,16 +623,21 @@ interface ReviewGridProps {
   onGetReview?: (ReviewId: number) => void;
   itemsPerPage?: number;
   showPagination?: boolean;
+  useAPI?: boolean;
 }
 
 export default function ReviewGrid({
   Reviews = sampleReviews,
-
   itemsPerPage = 6,
   showPagination = true,
+  useAPI = false,
 }: ReviewGridProps) {
   const [currentPage, setCurrentPage] = useState(1);
   const [isMobile, setIsMobile] = useState(false);
+  const [apiReviews, setApiReviews] = useState<Review[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [totalPages, setTotalPages] = useState(1);
 
   // Check if mobile on mount and window resize
   useEffect(() => {
@@ -645,6 +651,33 @@ export default function ReviewGrid({
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
+  // Fetch reviews from API
+  useEffect(() => {
+    if (!useAPI) return;
+
+    const loadReviews = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        const effectiveItemsPerPage = isMobile ? 3 : itemsPerPage;
+        const response = await fetchReviews({
+          page: currentPage,
+          limit: effectiveItemsPerPage,
+          sortBy: "-createdAt",
+        });
+        setApiReviews(response.data);
+        setTotalPages(response.pagination.pages);
+      } catch (err: any) {
+        setError(err.message || "Failed to fetch reviews");
+        console.error("Error fetching reviews:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadReviews();
+  }, [useAPI, currentPage, isMobile, itemsPerPage]);
+
   // Reset to page 1 when switching between mobile/desktop
   useEffect(() => {
     setCurrentPage(1);
@@ -653,13 +686,39 @@ export default function ReviewGrid({
   // Calculate items per page based on screen size
   const effectiveItemsPerPage = isMobile ? 3 : itemsPerPage;
 
-  // Calculate pagination
-  const totalPages = Math.ceil(Reviews.length / effectiveItemsPerPage);
+  // Map API reviews to display format
+  const mappedApiReviews = apiReviews.map((review) => ({
+    id: review._id,
+    title: review.productName,
+    category: review.productType || "Tool",
+    description:
+      review.description || review.overview || "No description available",
+    logoComponent: <FramerLogo />,
+    verified: review.verified || false,
+    rating: review.aggregateRating
+      ? `${review.aggregateRating.toFixed(1)}/5.0 Ratings`
+      : review.rating
+      ? `${review.rating.toFixed(1)}/5.0 Ratings`
+      : "No rating",
+    pros: review.pros || [],
+    cons: review.cons || [],
+    planPrice:
+      review.pricing && review.pricing.length > 0
+        ? review.pricing[0].amount
+        : "Contact for pricing",
+  }));
+
+  // Calculate pagination for static data
+  const staticTotalPages = Math.ceil(Reviews.length / effectiveItemsPerPage);
   const startIndex = (currentPage - 1) * effectiveItemsPerPage;
   const endIndex = startIndex + effectiveItemsPerPage;
-  const displayReviews = showPagination
+  const staticDisplayReviews = showPagination
     ? Reviews.slice(startIndex, endIndex)
     : Reviews;
+
+  // Choose which data to display
+  const displayReviews = useAPI ? mappedApiReviews : staticDisplayReviews;
+  const finalTotalPages = useAPI ? totalPages : staticTotalPages;
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -669,44 +728,60 @@ export default function ReviewGrid({
 
   return (
     <div className="w-full">
+      {/* Loading State */}
+      {loading && (
+        <div className="flex justify-center items-center py-20">
+          <p className="text-gray-400">Loading reviews...</p>
+        </div>
+      )}
+
+      {/* Error State */}
+      {error && (
+        <div className="flex justify-center items-center py-20">
+          <p className="text-red-500">{error}</p>
+        </div>
+      )}
+
       {/* Grid Container with animation */}
-      <motion.div
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-7xl mx-auto px-4"
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.7, ease: "easeOut" }}
-      >
-        {displayReviews.map((Review, idx) => (
-          <motion.div
-            key={Review.id}
-            className="flex"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.5, delay: idx * 0.07, ease: "easeOut" }}
-          >
-            <ReviewCard
-              id={Review.id}
-              title={Review.title}
-              category={Review.category}
-              description={Review.description}
-              logoComponent={Review.logoComponent}
-              verified={Review.verified}
-              rating={Review.rating}
-              pros={Review.pros}
-              cons={Review.cons}
-              planPrice={Review.planPrice}
-            />
-          </motion.div>
-        ))}
-      </motion.div>
+      {!loading && !error && (
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-7xl mx-auto px-4"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+        >
+          {displayReviews.map((Review, idx) => (
+            <motion.div
+              key={Review.id}
+              className="flex"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5, delay: idx * 0.07, ease: "easeOut" }}
+            >
+              <ReviewCard
+                id={Review.id}
+                title={Review.title}
+                category={Review.category}
+                description={Review.description}
+                logoComponent={Review.logoComponent}
+                verified={Review.verified}
+                rating={Review.rating}
+                pros={Review.pros}
+                cons={Review.cons}
+                planPrice={Review.planPrice}
+              />
+            </motion.div>
+          ))}
+        </motion.div>
+      )}
 
       {/* Pagination */}
-      {showPagination && totalPages > 1 && (
+      {!loading && !error && showPagination && finalTotalPages > 1 && (
         <Pagination
           currentPage={currentPage}
-          totalPages={totalPages}
+          totalPages={finalTotalPages}
           onPageChange={handlePageChange}
         />
       )}

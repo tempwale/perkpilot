@@ -102,8 +102,22 @@ const Tooltip = () => (
   </div>
 );
 
-export default function RatingsDetails() {
-  const categoryRatings = [
+interface RatingsDetailsProps {
+  ratingCategories?: Array<{
+    category: string;
+    value: number;
+    outOf?: number;
+  }>;
+  aggregateRating?: number;
+  ratingCount?: number;
+}
+
+export default function RatingsDetails({
+  ratingCategories,
+  aggregateRating,
+  ratingCount,
+}: RatingsDetailsProps = {}) {
+  const defaultCategoryRatings = [
     { category: "Ease of Use", rating: 4.8 },
     { category: "Features", rating: 4.5 },
     { category: "Value", rating: 4.2 },
@@ -111,9 +125,17 @@ export default function RatingsDetails() {
     { category: "Reliability", rating: 2.8 },
   ];
 
+  const categoryRatings =
+    ratingCategories && ratingCategories.length > 0
+      ? ratingCategories.map((rc) => ({
+          category: rc.category,
+          rating: rc.value,
+        }))
+      : defaultCategoryRatings;
+
   // Calculate total reviews and average rating
-  const totalReviews = 890;
-  const averageRating = 4.9;
+  const totalReviews = ratingCount || 890;
+  const averageRating = aggregateRating || 4.9;
 
   return (
     <div className="w-full px-[20px] md:px-[100px] py-16 pb-24">

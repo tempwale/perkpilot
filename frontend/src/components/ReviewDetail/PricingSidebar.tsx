@@ -1,8 +1,28 @@
 interface PricingSidebarProps {
   title: string;
+  pricing?: Array<{
+    plan: string;
+    amount: string;
+    note?: string;
+    _id?: string;
+  }>;
+  lastUpdated?: string;
 }
 
-export default function PricingSidebar({ title }: PricingSidebarProps) {
+const defaultPricing = [
+  { plan: "Free", amount: "Free" },
+  { plan: "Professional", amount: "$12/Month" },
+  { plan: "Organization", amount: "$45/Month" },
+  { plan: "Enterprise", amount: "Custom" },
+];
+
+export default function PricingSidebar({
+  title,
+  pricing,
+  lastUpdated = "Oct 2025",
+}: PricingSidebarProps) {
+  const displayPricing =
+    pricing && pricing.length > 0 ? pricing : defaultPricing;
   return (
     <div
       data-layer="Frame 2147206174"
@@ -18,74 +38,26 @@ export default function PricingSidebar({ title }: PricingSidebarProps) {
         data-layer="Frame 2147205595"
         className="Frame2147205595 self-stretch flex flex-col justify-start items-start gap-5"
       >
-        <div
-          data-layer="Frame 2147206190"
-          className="Frame2147206190 self-stretch inline-flex justify-between items-center"
-        >
+        {displayPricing.map((plan, index) => (
           <div
-            data-layer="Free"
-            className="Free justify-start text-neutral-50 text-base font-normal font-['Poppins'] leading-normal"
+            key={index}
+            data-layer={`Frame-${index}`}
+            className="self-stretch inline-flex justify-between items-center"
           >
-            Free
+            <div
+              data-layer={plan.plan}
+              className="justify-start text-neutral-50 text-base font-normal font-['Poppins'] leading-normal"
+            >
+              {plan.plan}
+            </div>
+            <div
+              data-layer={plan.amount}
+              className="justify-start text-neutral-50 text-base font-medium font-['Poppins'] leading-normal"
+            >
+              {plan.amount}
+            </div>
           </div>
-          <div
-            data-layer="Free"
-            className="Free justify-start text-neutral-50 text-base font-medium font-['Poppins'] leading-normal"
-          >
-            Free
-          </div>
-        </div>
-        <div
-          data-layer="Frame 2147206201"
-          className="Frame2147206201 self-stretch inline-flex justify-between items-center"
-        >
-          <div
-            data-layer="Professional"
-            className="Professional justify-start text-neutral-50 text-base font-normal font-['Poppins'] leading-normal"
-          >
-            Professional
-          </div>
-          <div
-            data-layer="$12/Month"
-            className="12Month justify-start text-neutral-50 text-base font-medium font-['Poppins'] leading-normal"
-          >
-            $12/Month
-          </div>
-        </div>
-        <div
-          data-layer="Frame 2147206202"
-          className="Frame2147206202 self-stretch inline-flex justify-between items-center"
-        >
-          <div
-            data-layer="Organization"
-            className="Organization justify-start text-neutral-50 text-base font-normal font-['Poppins'] leading-normal"
-          >
-            Organization
-          </div>
-          <div
-            data-layer="$45/Month"
-            className="45Month justify-start text-neutral-50 text-base font-medium font-['Poppins'] leading-normal"
-          >
-            $45/Month
-          </div>
-        </div>
-        <div
-          data-layer="Frame 2147206203"
-          className="Frame2147206203 self-stretch inline-flex justify-between items-center"
-        >
-          <div
-            data-layer="Enterprise"
-            className="Enterprise justify-start text-neutral-50 text-base font-normal font-['Poppins'] leading-normal"
-          >
-            Enterprise
-          </div>
-          <div
-            data-layer="Custom"
-            className="Custom justify-start text-neutral-50 text-base font-medium font-['Poppins'] leading-normal"
-          >
-            Custom
-          </div>
-        </div>
+        ))}
       </div>
       <div
         data-layer="Frame 2147206205"
@@ -280,7 +252,7 @@ export default function PricingSidebar({ title }: PricingSidebarProps) {
           className="Oct2025 text-center justify-start text-neutral-50 text-base font-normal font-['Plus_Jakarta_Sans'] leading-normal"
         >
           {" "}
-          Oct 2025
+          {lastUpdated}
         </div>
       </div>
     </div>
