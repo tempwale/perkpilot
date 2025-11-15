@@ -2,12 +2,14 @@ interface CompanyStatsProps {
   founded: string;
   employees: string;
   headquarters: string;
+  userCount?: string;
 }
 
 export default function CompanyStats({
   founded,
   employees,
   headquarters,
+  userCount = "4M+",
 }: CompanyStatsProps) {
   return (
     <div className="w-full">
@@ -29,7 +31,7 @@ export default function CompanyStats({
             style={{ fontFamily: "Plus Jakarta Sans" }}
             data-node-id="250:2257"
           >
-            4M+
+            {userCount}
           </p>
         </div>
         <div
@@ -112,7 +114,7 @@ export default function CompanyStats({
             style={{ fontFamily: "Plus Jakarta Sans" }}
             data-node-id="250:2257"
           >
-            4M+
+            {userCount}
           </p>
         </div>
         <div

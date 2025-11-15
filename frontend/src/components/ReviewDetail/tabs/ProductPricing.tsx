@@ -35,8 +35,17 @@ const PricingCard = ({ planName, price, buttonText }: PricingCardProps) => (
   </div>
 );
 
-export default function ProductPricing() {
-  const pricingData = [
+interface ProductPricingProps {
+  pricing?: Array<{
+    plan: string;
+    amount: string;
+    note?: string;
+    _id?: string;
+  }>;
+}
+
+export default function ProductPricing({ pricing }: ProductPricingProps) {
+  const defaultPricingData = [
     {
       planName: "Starter",
       price: "$9/Month",
@@ -58,6 +67,16 @@ export default function ProductPricing() {
       buttonText: "Contact Sales",
     },
   ];
+
+  // Transform API pricing to component format
+  const pricingData =
+    pricing && pricing.length > 0
+      ? pricing.map((p) => ({
+          planName: p.plan,
+          price: p.amount,
+          buttonText: p.note || "Get Started",
+        }))
+      : defaultPricingData;
 
   return (
     <div>

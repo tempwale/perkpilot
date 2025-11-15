@@ -5,9 +5,35 @@ import ProductPricing from "./tabs/ProductPricing";
 import ProductReviews from "./tabs/ProductReviews";
 import ProductAlternatives from "./tabs/ProductAlternatives";
 
+interface NavigationTabsProps {
+  overview?: string;
+  features?: Array<{ title: string; description?: string; _id?: string }>;
+  pricing?: Array<{
+    plan: string;
+    amount: string;
+    note?: string;
+    _id?: string;
+  }>;
+  keyFeatures?: string[];
+  alternatives?: Array<{
+    name: string;
+    type?: string;
+    avatarUrl?: string;
+    price?: string;
+    rating?: number;
+    reviewCount?: number;
+    compareNote?: string;
+    _id?: string;
+  }>;
+}
 
-
-export default function NavigationTabs() {
+export default function NavigationTabs({
+  overview,
+  features,
+  pricing,
+  keyFeatures,
+  alternatives,
+}: NavigationTabsProps) {
   const [activeTab, setActiveTab] = useState("overview");
 
   const tabs = [
@@ -21,18 +47,20 @@ export default function NavigationTabs() {
   const renderTabContent = () => {
     switch (activeTab) {
       case "overview":
-        return <ProductOverview  />;
+        return <ProductOverview overview={overview} />;
       case "features":
-        return <ProductFeatures  />;
+        return (
+          <ProductFeatures features={features} keyFeatures={keyFeatures} />
+        );
       case "pricing":
-        return <ProductPricing />;
+        return <ProductPricing pricing={pricing} />;
       case "reviews":
         return <ProductReviews />;
 
       case "alternatives":
-        return <ProductAlternatives />;
+        return <ProductAlternatives alternatives={alternatives} />;
       default:
-        return <ProductOverview  />;
+        return <ProductOverview overview={overview} />;
     }
   };
 

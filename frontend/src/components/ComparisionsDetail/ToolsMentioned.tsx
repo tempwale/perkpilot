@@ -1,6 +1,21 @@
 import Pick from "../Home/TopPicksSection/Pick";
 
-export default function ToolsMentioned() {
+interface ToolsMentionedProps {
+  sectionHeadline?: string;
+  tipBulbText?: string;
+  data?: Array<{
+    toolName: string;
+    toolLogo: string;
+    toolCategory?: string;
+    isVerified?: boolean;
+  }>;
+}
+
+export default function ToolsMentioned({
+  sectionHeadline = "Essential Productive Tools To Enhance Your Workflow",
+  tipBulbText = "Tools with exclusive discounts & cashbacks",
+  data = [],
+}: ToolsMentionedProps) {
   return (
     // center the content horizontally and make inner frame responsive
     <div
@@ -27,7 +42,7 @@ export default function ToolsMentioned() {
               data-layer="Essential Productive Tools To Enhance Your Workflow"
               className="EssentialProductiveToolsToEnhanceYourWorkflow justify-start w-[210px] md:w-full md:pl-4 text-zinc-100 text-base md:text-xl font-normal font-['Poppins'] leading-loose"
             >
-              Essential Productive Tools To Enhance Your Workflow
+              {sectionHeadline}
             </div>
           </div>
 
@@ -56,38 +71,55 @@ export default function ToolsMentioned() {
               data-layer="Tools with exclusive discounts & cashbacks"
               className="ToolsWithExclusiveDiscountsCashbacks justify-start text-neutral-50 text-sm font-normal font-['Poppins']"
             >
-              Tools with exclusive discounts & cashbacks
+              {tipBulbText}
             </div>
           </div>
         </div>
         <div className="flex flex-col items-center gap-4 mt-2 lg:flex-row">
-          <Pick
-            appName="Figma"
-            category="Design"
-            description="Collaborative interface design tool for teams."
-            discountPercentage="25% OFF"
-            savingsAmount="$30 savings"
-            rating="4.8/5.0 Ratings"
-            verified={true}
-          />
-          <Pick
-            appName="Slack"
-            category="Communication"
-            description="Real-time messaging and collaboration platform."
-            discountPercentage="15% OFF"
-            savingsAmount="$20 savings"
-            rating="4.8/5.0 Ratings"
-            verified={false}
-          />
-          <Pick
-            appName="Airtable"
-            category="Database"
-            description="Flexible spreadsheet-database hybrid to organize work."
-            discountPercentage="20% OFF"
-            savingsAmount="$25 savings"
-            rating="4.8/5.0 Ratings"
-            verified={true}
-          />
+          {data && data.length > 0 ? (
+            data.map((tool, index) => (
+              <Pick
+                key={`${tool.toolName}-${index}`}
+                appName={tool.toolName}
+                category={tool.toolCategory || "Tool"}
+                description={`Explore ${tool.toolName} and its features.`}
+                discountPercentage="25% OFF"
+                savingsAmount="$30 savings"
+                rating="4.8/5.0 Ratings"
+                verified={tool.isVerified || false}
+              />
+            ))
+          ) : (
+            <>
+              <Pick
+                appName="Figma"
+                category="Design"
+                description="Collaborative interface design tool for teams."
+                discountPercentage="25% OFF"
+                savingsAmount="$30 savings"
+                rating="4.8/5.0 Ratings"
+                verified={true}
+              />
+              <Pick
+                appName="Slack"
+                category="Communication"
+                description="Real-time messaging and collaboration platform."
+                discountPercentage="15% OFF"
+                savingsAmount="$20 savings"
+                rating="4.8/5.0 Ratings"
+                verified={false}
+              />
+              <Pick
+                appName="Airtable"
+                category="Database"
+                description="Flexible spreadsheet-database hybrid to organize work."
+                discountPercentage="20% OFF"
+                savingsAmount="$25 savings"
+                rating="4.8/5.0 Ratings"
+                verified={true}
+              />
+            </>
+          )}
         </div>
       </div>
     </div>

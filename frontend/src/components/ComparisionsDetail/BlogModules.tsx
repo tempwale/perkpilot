@@ -6,7 +6,14 @@ type ModuleItem = {
   checked?: boolean;
 };
 
+type BlogCard = {
+  sectionNumber: number;
+  blogTitle: string;
+  blogBody: string;
+};
+
 interface BlogModulesProps {
+  data?: BlogCard[];
   modules?: ModuleItem[];
   onChange?: (modules: ModuleItem[]) => void;
   className?: string;

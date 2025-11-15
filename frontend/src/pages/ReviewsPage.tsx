@@ -63,7 +63,11 @@ export default function ReviewsPage() {
             </motion.div>
           </div>
           <SearchSection />
-          <ReviewsSection />
+          <ReviewsSection
+            useAPI={true}
+            itemsPerPage={6}
+            showPagination={true}
+          />
 
           <Footer />
         </div>
