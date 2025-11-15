@@ -14,8 +14,9 @@ connectDB();
 
 const app = express();
 
-// Middleware to parse JSON requests
-app.use(express.json());
+// Middleware to parse JSON requests with increased limit for large payloads
+app.use(express.json({ limit: "10mb" }));
+app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 app.use(cors());
 // Routes
 app.use("/api/deals", dealsRoutes);

@@ -20,6 +20,24 @@ interface ProductDetailsSectionProps {
     compareNote?: string;
     _id?: string;
   }>;
+  productReviews?: Array<{
+    userName: string;
+    userTitle?: string;
+    userAvatar?: string;
+    date?: string;
+    verified?: boolean;
+    rating: number;
+    reviewText: string;
+    helpful?: number;
+    notHelpful?: number;
+  }>;
+  ratingBreakdown?: {
+    fiveStars?: number;
+    fourStars?: number;
+    threeStars?: number;
+    twoStars?: number;
+    oneStars?: number;
+  };
 }
 
 export default function ProductDetailsSection({
@@ -28,6 +46,8 @@ export default function ProductDetailsSection({
   pricing,
   keyFeatures,
   alternatives,
+  productReviews,
+  ratingBreakdown,
 }: ProductDetailsSectionProps) {
   return (
     <div className="w-full px-[20px] md:px-[100px] py-32">
@@ -38,6 +58,8 @@ export default function ProductDetailsSection({
           pricing={pricing}
           keyFeatures={keyFeatures}
           alternatives={alternatives}
+          productReviews={productReviews}
+          ratingBreakdown={ratingBreakdown}
         />
       </div>
     </div>

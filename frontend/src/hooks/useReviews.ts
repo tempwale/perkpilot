@@ -60,6 +60,24 @@ export interface Review {
     rating?: number;
   }>;
   integrations?: string[];
+  productReviews?: Array<{
+    userName: string;
+    userTitle?: string;
+    userAvatar?: string;
+    date?: string;
+    verified?: boolean;
+    rating: number;
+    reviewText: string;
+    helpful?: number;
+    notHelpful?: number;
+  }>;
+  ratingBreakdown?: {
+    fiveStars?: number;
+    fourStars?: number;
+    threeStars?: number;
+    twoStars?: number;
+    oneStars?: number;
+  };
   createdAt?: string;
   updatedAt?: string;
 }
