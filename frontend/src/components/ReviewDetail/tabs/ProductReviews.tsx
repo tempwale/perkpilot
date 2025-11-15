@@ -5,6 +5,8 @@ interface ReviewCardProps {
   rating: number;
   reviewText: string;
   helpfulCount: number;
+  notHelpfulCount?: number;
+  date?: string;
   isVerified?: boolean;
 }
 
@@ -54,6 +56,8 @@ const ReviewCard = ({
   rating,
   reviewText,
   helpfulCount,
+  notHelpfulCount = 0,
+  date,
   isVerified = false,
 }: ReviewCardProps) => (
   <div className="self-stretch min-h-80 p-4 sm:p-6 md:p-10 bg-white/5 rounded-2xl sm:rounded-3xl shadow-[0px_1px_4px_0px_rgba(12,12,13,0.05)] outline outline-1 outline-offset-[-1px] outline-white/10 flex flex-col justify-center items-start gap-4 sm:gap-6">
@@ -75,19 +79,21 @@ const ReviewCard = ({
                 {position}
               </div>
             </div>
-            <div className="flex justify-center items-center">
-              <div
-                data-layer="Frame 2147206294"
-                className="h-8 px-3 py-2.5 bg-white/5 rounded-[100px] inline-flex justify-center items-center gap-2.5"
-              >
+            {date && (
+              <div className="flex justify-center items-center">
                 <div
-                  data-layer="2 Months Ago"
-                  className="text-neutral-50 text-xs font-medium font-['Plus_Jakarta_Sans'] leading-[18px]"
+                  data-layer="Frame 2147206294"
+                  className="h-8 px-3 py-2.5 bg-white/5 rounded-[100px] inline-flex justify-center items-center gap-2.5"
                 >
-                  2 Months Ago
+                  <div
+                    data-layer="2 Months Ago"
+                    className="text-neutral-50 text-xs font-medium font-['Plus_Jakarta_Sans'] leading-[18px]"
+                  >
+                    {date}
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
         {isVerified && (
@@ -132,30 +138,46 @@ const ReviewCard = ({
           <path
             d="M16.4724 4L4.1 4C3.76863 4 3.5 4.26863 3.5 4.6L3.5 14.4C3.5 14.7314 3.76863 15 4.1 15H6.86762C7.57015 15 8.22116 15.3686 8.5826 15.971L11.293 20.4884C11.8779 21.4631 13.2554 21.5558 13.9655 20.6681C14.3002 20.2497 14.4081 19.6937 14.2541 19.1804L13.2317 15.7724C13.1162 15.3874 13.4045 15 13.8064 15H18.3815C19.7002 15 20.658 13.746 20.311 12.4738L18.4019 5.47376C18.1646 4.60364 17.3743 4 16.4724 4Z"
             stroke="#FAFAFA"
-            stroke-width="1.5"
-            stroke-linecap="round"
+            strokeWidth="1.5"
+            strokeLinecap="round"
           />
           <path
             d="M7 4L7 15"
             stroke="#FAFAFA"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
         </svg>
         <div
           data-layer="Not Helpful ( 20)"
           className="NotHelpful20 justify-start text-neutral-50 text-base font-normal font-['Plus_Jakarta_Sans'] leading-normal"
         >
-          Not Helpful ( 20)
+          Not Helpful ({notHelpfulCount})
         </div>
       </div>
     </div>
   </div>
 );
 
-export default function ProductReviews() {
-  const reviewsData = [
+interface ProductReviewsProps {
+  productReviews?: Array<{
+    userName: string;
+    userTitle?: string;
+    userAvatar?: string;
+    date?: string;
+    verified?: boolean;
+    rating: number;
+    reviewText: string;
+    helpful?: number;
+    notHelpful?: number;
+  }>;
+}
+
+export default function ProductReviews({
+  productReviews,
+}: ProductReviewsProps) {
+  const defaultReviewsData = [
     {
       name: "Adarsh Sahu",
       position: "Freelance designer at Upstartic",
@@ -164,6 +186,8 @@ export default function ProductReviews() {
       reviewText:
         "I have some software that I no long use and wants to give it to someone who really need it and I my self needed some business tools to learn and I earn some too.",
       helpfulCount: 200,
+      notHelpfulCount: 20,
+      date: "2 Months Ago",
       isVerified: true,
     },
     {
@@ -174,9 +198,26 @@ export default function ProductReviews() {
       reviewText:
         "Amazing platform for discovering software deals! I've saved hundreds of dollars on essential business tools. The community is incredibly helpful and the verification system gives me confidence in every purchase.",
       helpfulCount: 150,
+      notHelpfulCount: 20,
+      date: "2 Months Ago",
       isVerified: true,
     },
   ];
+
+  const reviewsData =
+    productReviews && productReviews.length > 0
+      ? productReviews.map((review) => ({
+          name: review.userName,
+          position: review.userTitle || "User",
+          profileImage: review.userAvatar || "https://i.pravatar.cc/150?img=1",
+          rating: review.rating,
+          reviewText: review.reviewText,
+          helpfulCount: review.helpful || 0,
+          notHelpfulCount: review.notHelpful || 0,
+          date: review.date,
+          isVerified: review.verified || false,
+        }))
+      : defaultReviewsData;
 
   return (
     <div>
@@ -212,6 +253,8 @@ export default function ProductReviews() {
             rating={review.rating}
             reviewText={review.reviewText}
             helpfulCount={review.helpfulCount}
+            notHelpfulCount={review.notHelpfulCount}
+            date={review.date}
             isVerified={review.isVerified}
           />
         ))}

@@ -25,6 +25,24 @@ interface NavigationTabsProps {
     compareNote?: string;
     _id?: string;
   }>;
+  productReviews?: Array<{
+    userName: string;
+    userTitle?: string;
+    userAvatar?: string;
+    date?: string;
+    verified?: boolean;
+    rating: number;
+    reviewText: string;
+    helpful?: number;
+    notHelpful?: number;
+  }>;
+  ratingBreakdown?: {
+    fiveStars?: number;
+    fourStars?: number;
+    threeStars?: number;
+    twoStars?: number;
+    oneStars?: number;
+  };
 }
 
 export default function NavigationTabs({
@@ -33,6 +51,7 @@ export default function NavigationTabs({
   pricing,
   keyFeatures,
   alternatives,
+  productReviews,
 }: NavigationTabsProps) {
   const [activeTab, setActiveTab] = useState("overview");
 
@@ -55,7 +74,7 @@ export default function NavigationTabs({
       case "pricing":
         return <ProductPricing pricing={pricing} />;
       case "reviews":
-        return <ProductReviews />;
+        return <ProductReviews productReviews={productReviews} />;
 
       case "alternatives":
         return <ProductAlternatives alternatives={alternatives} />;

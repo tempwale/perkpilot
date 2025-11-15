@@ -82,6 +82,33 @@ const transformApiReview = (review: Review) => {
     upvotes: review.upvotes || 0,
     shareCount: review.shareCount || 0,
     ratingCategories: review.ratingCategories || [],
+    // If productReviews array exists and has data, use it
+    // Otherwise, create a single review from the top-level fields if they exist
+    productReviews:
+      review.productReviews && review.productReviews.length > 0
+        ? review.productReviews
+        : review.userName && review.reviewText && review.rating
+        ? [
+            {
+              userName: review.userName,
+              userTitle: review.userTitle,
+              userAvatar: review.userAvatar,
+              date: review.date,
+              verified: review.verified || false,
+              rating: review.rating,
+              reviewText: review.reviewText,
+              helpful: review.helpful || 0,
+              notHelpful: review.notHelpful || 0,
+            },
+          ]
+        : [],
+    ratingBreakdown: review.ratingBreakdown || {
+      fiveStars: 0,
+      fourStars: 0,
+      threeStars: 0,
+      twoStars: 0,
+      oneStars: 0,
+    },
   };
 };
 
@@ -184,6 +211,8 @@ export default function ReviewDetailPage() {
             pricing={reviewData.pricing}
             keyFeatures={reviewData.keyFeatures}
             alternatives={reviewData.alternatives}
+            productReviews={reviewData.productReviews}
+            ratingBreakdown={reviewData.ratingBreakdown}
           />
           <RatingsDetails
             ratingCategories={reviewData.ratingCategories}
