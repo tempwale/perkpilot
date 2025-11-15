@@ -12,9 +12,10 @@ import PopularIntegrations from "../components/ReviewDetail/PopularIntegrations"
 import CTAReviewDetails from "../components/ReviewDetail/CTAReviewDetails";
 import FAQ from "../components/ReviewDetail/FAQ";
 import { fetchReviewById, type Review } from "../hooks/useReviews";
+import type { TransformedReview } from "../types/review.types";
 
 // Transform API review data to match component structure
-const transformApiReview = (review: Review) => {
+const transformApiReview = (review: Review): TransformedReview => {
   // Default logo component
   const defaultLogoComponent = (
     <svg
@@ -76,7 +77,13 @@ const transformApiReview = (review: Review) => {
         id: `${index + 1}`,
         name,
       })) || [],
-    faqs: review.faqs || [],
+    faqs: (review.faqs || []).filter(
+      (faq): faq is { question: string; answer: string } =>
+        Boolean(faq.question && faq.answer)
+    ).map((faq) => ({
+      question: faq.question!,
+      answer: faq.answer!,
+    })),
     alternatives: review.alternatives || [],
     lastUpdated: review.lastUpdated || new Date().toISOString().split("T")[0],
     upvotes: review.upvotes || 0,
@@ -87,7 +94,7 @@ const transformApiReview = (review: Review) => {
 
 export default function ReviewDetailPage() {
   const { id } = useParams<{ id: string }>();
-  const [reviewData, setReviewData] = useState<any>(null);
+  const [reviewData, setReviewData] = useState<TransformedReview | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const useAPI = true; // Set to true to use API, false for static data
@@ -115,9 +122,9 @@ export default function ReviewDetailPage() {
         // Transform API data to match component structure
         const transformedData = transformApiReview(review);
         setReviewData(transformedData);
-      } catch (err: any) {
+      } catch (err) {
         console.error("Error fetching review:", err);
-        setError(err.message || "Failed to fetch review");
+        setError(err instanceof Error ? err.message : "Failed to fetch review");
       } finally {
         setLoading(false);
       }
@@ -176,7 +183,16 @@ export default function ReviewDetailPage() {
             <div className="hidden md:block">
               <ReviewBackground />
             </div>
-            <ReviewDetailContent reviewData={reviewData} />
+            <ReviewDetailContent
+              reviewData={{
+                ...reviewData,
+                pricing: reviewData.pricing.map((p: { plan: string; amount: string; note?: string }) => ({
+                  tier: p.plan,
+                  price: p.amount,
+                  features: p.note ? [p.note] : undefined,
+                })),
+              }}
+            />
           </div>
           <ProductDetailsSection
             overview={reviewData.fullDescription}

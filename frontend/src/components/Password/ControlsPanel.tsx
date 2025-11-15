@@ -2,7 +2,7 @@ export default function ControlsPanel() {
   return (
     <div
       data-layer="Frame 2147206318"
-      className="Frame2147206318 relative w-[350.59px] p-[15.92px] left-0 top-[-100px] absolute bg-white/10 rounded-[16.92px] backdrop-blur-[8.46px] inline-flex flex-col justify-start items-start gap-[4.92px]"
+      className="Frame2147206318 absolute w-[350.59px] p-[15.92px] left-0 top-[-100px] bg-white/10 rounded-[16.92px] backdrop-blur-[8.46px] flex-col justify-start items-start gap-[4.92px]"
     >
       <div
         data-layer="Frame 2147206316"
@@ -17,7 +17,7 @@ export default function ControlsPanel() {
       </div>
       <div
         data-layer="Frame 2147205832"
-        className="Frame2147205832 self-stretch p-[5.64px] bg-white/10 rounded-[39.48px] outline outline-[0.70px] outline-offset-[-0.70px] outline-white/10 inline-flex justify-between items-start"
+        className="Frame2147205832 self-stretch p-[5.64px] bg-white/10 rounded-[39.48px] outline-[0.70px]-offset-[-0.70px] outline-white/10 inline-flex justify-between items-start"
       >
         <div
           data-layer="Buttons/main"
@@ -111,7 +111,7 @@ export default function ControlsPanel() {
         </div>
         <div
           data-layer="Input"
-          className="Input self-stretch h-[39.48px] pl-[16.92px] pr-[11.28px] py-[8.46px] relative bg-white/10 rounded-lg outline outline-[0.70px] outline-offset-[-0.35px] outline-white/10 inline-flex justify-start items-center flex-wrap content-center overflow-hidden"
+          className="Input self-stretch h-[39.48px] pl-[16.92px] pr-[11.28px] py-[8.46px] relative bg-white/10 rounded-lg outline-[0.70px]-offset-[-0.35px] outline-white/10 inline-flex justify-start items-center flex-wrap content-center overflow-hidden"
         >
           <div
             data-layer="Frame 13"
@@ -157,7 +157,7 @@ export default function ControlsPanel() {
       </div>
       <div
         data-layer="Input"
-        className="Input self-stretch h-[39.48px] px-[11.28px] py-[5.64px] relative bg-white/5 rounded-[70.49px] shadow-[0px_1px_4px_0px_rgba(12,12,13,0.05)] shadow-[0px_1px_4px_0px_rgba(12,12,13,0.10)] outline outline-[0.70px] outline-offset-[-0.70px] outline-white/20 backdrop-blur-[14.10px] inline-flex justify-between items-center flex-wrap content-center overflow-hidden"
+        className="Input self-stretch h-[39.48px] px-[11.28px] py-[5.64px] relative bg-white/5 rounded-[70.49px] shadow-[0px_1px_4px_0px_rgba(12,12,13,0.10)] outline-[0.70px]-offset-[-0.70px] outline-white/20 backdrop-blur-[14.10px] inline-flex justify-between items-center flex-wrap content-center overflow-hidden"
       >
         <div
           data-layer="Frame 13"
@@ -264,7 +264,7 @@ export default function ControlsPanel() {
           </div>
           <div
             data-layer="Button"
-            className="Button w-[37.60px] h-[19.74px] relative bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-[46.99px] outline outline-[0.70px] outline-offset-[-0.70px] outline-[#501bd6] overflow-hidden"
+            className="Button w-[37.60px] h-[19.74px] relative bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-[46.99px] outline-[0.70px]-offset-[-0.70px] outline-[#501bd6] overflow-hidden"
           >
             <div
               data-layer="Button"
@@ -289,7 +289,7 @@ export default function ControlsPanel() {
           </div>
           <div
             data-layer="Button"
-            className="Button w-[37.60px] h-[19.74px] relative bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-[46.99px] outline outline-[0.70px] outline-offset-[-0.70px] outline-[#501bd6] overflow-hidden"
+            className="Button w-[37.60px] h-[19.74px] relative bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-[46.99px] outline-[0.70px]-offset-[-0.70px] outline-[#501bd6] overflow-hidden"
           >
             <div
               data-layer="Button"
@@ -314,7 +314,7 @@ export default function ControlsPanel() {
           </div>
           <div
             data-layer="Button"
-            className="Button w-[37.60px] h-[19.74px] relative bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-[46.99px] outline outline-[0.70px] outline-offset-[-0.70px] outline-[#501bd6] overflow-hidden"
+            className="Button w-[37.60px] h-[19.74px] relative bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-[46.99px] outline-[0.70px]-offset-[-0.70px] outline-[#501bd6] overflow-hidden"
           >
             <div
               data-layer="Button"
@@ -339,7 +339,7 @@ export default function ControlsPanel() {
           </div>
           <div
             data-layer="Button"
-            className="Button w-[37.60px] h-[19.74px] relative bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-[46.99px] outline outline-[0.70px] outline-offset-[-0.70px] outline-[#501bd6] overflow-hidden"
+            className="Button w-[37.60px] h-[19.74px] relative bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-[46.99px] outline-[0.70px]-offset-[-0.70px] outline-[#501bd6] overflow-hidden"
           >
             <div
               data-layer="Button"

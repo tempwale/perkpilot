@@ -48,11 +48,14 @@ export async function fetchDeals(
     throw new Error(
       "Invalid response shape: expected an array of deals or { value: Deal[] }"
     );
-  } catch (err: any) {
-    if (err.name === "AbortError") {
+  } catch (err) {
+    if (err instanceof DOMException && err.name === "AbortError") {
       throw new Error(`Request timed out after ${timeoutMs}ms`);
     }
-    throw err;
+    if (err instanceof Error) {
+      throw err;
+    }
+    throw new Error("An unexpected error occurred while fetching deals");
   }
 }
 

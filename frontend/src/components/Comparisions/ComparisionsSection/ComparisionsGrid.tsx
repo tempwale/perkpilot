@@ -4,10 +4,26 @@ import Pagination from "./Pagination";
 import { motion } from "framer-motion";
 import fetchComparisions from "../../../hooks/useComparisions";
 
+interface ComparisonData {
+  _id: string;
+  slug?: string;
+  heroHeading?: string;
+  heroBody?: string;
+  comparisonHeroImage?: string;
+  toolsMentioned?: Array<{
+    toolName: string;
+    toolLogo: string;
+    toolCategory?: string;
+    isVerified?: boolean;
+  }>;
+  blogCategory?: string;
+  readingTime?: string;
+}
+
 const ComparisionsGrid: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [isMobile, setIsMobile] = useState(false);
-  const [comparisonsData, setComparisonsData] = useState<any[]>([]);
+  const [comparisonsData, setComparisonsData] = useState<ComparisonData[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const showPagination = true;
@@ -19,8 +35,8 @@ const ComparisionsGrid: React.FC = () => {
         setLoading(true);
         const data = await fetchComparisions();
         setComparisonsData(data);
-      } catch (err: any) {
-        setError(err.message || "Failed to fetch comparisions");
+      } catch (err) {
+        setError(err instanceof Error ? err.message : "Failed to fetch comparisions");
         setComparisonsData([]);
       } finally {
         setLoading(false);

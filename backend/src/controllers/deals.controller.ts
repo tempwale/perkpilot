@@ -1,7 +1,9 @@
 import { Request, Response } from "express";
 import mongoose from "mongoose";
-import Deal, { IDeal } from "../models/deal.model";
-import DealPage, { IDealPage } from "../models/dealpage.model";
+import Deal, { IDeal } from '../models/deal.model.js';
+import DealPage, { IDealPage } from '../models/dealpage.model.js';
+import { DealCreateBody } from '../types/index.js';
+
 // GET all deals
 export const getAllDeals = async (_req: Request, res: Response) => {
   try {
@@ -46,7 +48,7 @@ export const createDeal = async (req: Request, res: Response) => {
       secondary_cta_text,
       primary_cta_link,
       secondary_cta_link,
-    } = req.body as any;
+    } = req.body as DealCreateBody;
 
     const title = bodyTitle ?? name;
 
@@ -129,8 +131,9 @@ export const updateDeal = async (req: Request, res: Response) => {
     ];
     const filteredData: Partial<IDeal> = {};
     for (const key of allowedFields) {
-      if (key in updatedData)
-        (filteredData as any)[key] = (updatedData as any)[key];
+      if (key in updatedData) {
+        filteredData[key] = updatedData[key];
+      }
     }
 
     const deal: IDeal | null = await Deal.findByIdAndUpdate(
@@ -190,8 +193,9 @@ export const updateDealPage = async (req: Request, res: Response) => {
     ];
     const filteredData: Partial<IDealPage> = {};
     for (const key of allowedFields) {
-      if (key in updatedData)
-        (filteredData as any)[key] = (updatedData as any)[key];
+      if (key in updatedData) {
+        filteredData[key] = updatedData[key];
+      }
     }
 
     // Validate 'deals' if provided: must be an array of valid ObjectId strings
@@ -202,7 +206,7 @@ export const updateDealPage = async (req: Request, res: Response) => {
           .json({ message: "'deals' must be an array of Deal _id strings" });
       }
 
-      const invalid = (filteredData.deals as any[]).some(
+      const invalid = filteredData.deals.some(
         (d) => !mongoose.Types.ObjectId.isValid(String(d))
       );
       if (invalid) {
@@ -212,9 +216,9 @@ export const updateDealPage = async (req: Request, res: Response) => {
       }
 
       // Optionally convert string ids to ObjectId instances before storing
-      filteredData.deals = (filteredData.deals as any[]).map(
+      filteredData.deals = filteredData.deals.map(
         (d) => new mongoose.Types.ObjectId(String(d))
-      ) as any;
+      );
     }
 
     // Update the singleton DealPage (no id). Try findOneAndUpdate first.
@@ -236,7 +240,7 @@ export const updateDealPage = async (req: Request, res: Response) => {
         });
       }
 
-      const created = await DealPage.create(filteredData as any);
+      const created = await DealPage.create(filteredData);
       dealPage = await DealPage.findById(created._id).populate("deals");
     }
 

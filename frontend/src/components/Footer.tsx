@@ -190,7 +190,7 @@ export default function Footer() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="you@example.com"
-                  className="flex-[1_0_0] bg-transparent border-none outline-none leading-[24px] min-h-px min-w-px text-[16px] text-[rgba(235,239,245,0.56)] placeholder:text-[rgba(235,239,245,0.56)]"
+                  className="flex-[1_0_0] bg-transparent border-none outline-1-none leading-[24px] min-h-px min-w-px text-[16px] text-[rgba(235,239,245,0.56)] placeholder:text-[rgba(235,239,245,0.56)]"
                   required
                 />
               </div>
@@ -341,7 +341,7 @@ export default function Footer() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="you@example.com"
-                  className="flex-[1_0_0] bg-transparent border-none outline-none leading-[24px] min-h-px min-w-px text-[16px] text-[rgba(235,239,245,0.56)] placeholder:text-[rgba(235,239,245,0.56)]"
+                  className="flex-[1_0_0] bg-transparent border-none outline-1-none leading-[24px] min-h-px min-w-px text-[16px] text-[rgba(235,239,245,0.56)] placeholder:text-[rgba(235,239,245,0.56)]"
                   required
                 />
               </div>

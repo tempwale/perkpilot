@@ -23,7 +23,7 @@ export default function ToolsCard({
     <div>
       <div
         data-layer="Frame 2147206160"
-        className="Frame2147206160 w-[300px] h-[340px] p-6 bg-white/5 rounded-3xl outline outline-1 outline-offset-[-1px] outline-white/10 flex flex-col justify-between items-start gap-4"
+        className="Frame2147206160 w-[300px] h-[340px] p-6 bg-white/5 rounded-3xl outline-1 -outline-offset-[-1px] outline-white/10 flex flex-col justify-between items-start gap-4"
       >
         <div
           data-layer="Frame 2147206296"
@@ -35,11 +35,11 @@ export default function ToolsCard({
           >
             {icon ?? (
               <div className="Language w-6 h-6 relative overflow-hidden">
-                <div className="Vector w-5 h-5 left-[2px] top-[2px] absolute outline outline-[1.50px] outline-offset-[-0.75px] outline-neutral-50" />
-                <div className="Vector w-[3px] h-[19.90px] left-[13px] top-[2.05px] absolute outline outline-[1.50px] outline-offset-[-0.75px] outline-neutral-50" />
-                <div className="Vector w-[3px] h-[19.90px] left-[8px] top-[2.05px] absolute outline outline-[1.50px] outline-offset-[-0.75px] outline-neutral-50" />
-                <div className="Vector w-[18.74px] h-0 left-[2.63px] top-[15.50px] absolute outline outline-[1.50px] outline-offset-[-0.75px] outline-neutral-50" />
-                <div className="Vector w-[18.74px] h-0 left-[2.63px] top-[8.50px] absolute outline outline-[1.50px] outline-offset-[-0.75px] outline-neutral-50" />
+                <div className="Vector w-5 h-5 left-[2px] top-[2px] absolute outline-[1.50px] -outline-offset-[-0.75px] outline-1-neutral-50" />
+                <div className="Vector w-[3px] h-[19.90px] left-[13px] top-[2.05px] absolute outline-[1.50px] -outline-offset-[-0.75px] outline-1-neutral-50" />
+                <div className="Vector w-[3px] h-[19.90px] left-[8px] top-[2.05px] absolute outline-[1.50px] -outline-offset-[-0.75px] outline-1-neutral-50" />
+                <div className="Vector w-[18.74px] h-0 left-[2.63px] top-[15.50px] absolute outline-[1.50px] -outline-offset-[-0.75px] outline-1-neutral-50" />
+                <div className="Vector w-[18.74px] h-0 left-[2.63px] top-[8.50px] absolute outline-[1.50px] -outline-offset-[-0.75px] outline-1-neutral-50" />
               </div>
             )}
           </div>
@@ -102,7 +102,7 @@ export default function ToolsCard({
             data-layer="nav-arrow-right"
             className="NavArrowRight w-6 h-6 relative overflow-hidden"
           >
-            <div className="Vector w-1.5 h-3 left-[15px] top-[18px] absolute origin-top-left rotate-180 outline outline-[1.50px] outline-offset-[-0.75px] outline-neutral-50" />
+            <div className="Vector w-1.5 h-3 left-[15px] top-[18px] absolute origin-top-left rotate-180 outline-[1.50px] -outline-offset-[-0.75px] outline-1-neutral-50" />
           </div>
         </button>
       </div>

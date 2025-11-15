@@ -26,7 +26,7 @@ export default function GeneratePassword() {
 
   return (
     <div className="flex flex-col gap-4 sm:gap-6 px-4 sm:px-6">
-      <div className="w-full sm:w-[608px] p-4 sm:p-6 bg-white/10 rounded-2xl sm:rounded-3xl backdrop-blur-md inline-flex flex-col justify-start items-start gap-4 sm:gap-6">
+      <div className="w-full sm:w-[608px] p-4 sm:p-6 bg-white/10 rounded-2xl sm:rounded-3xl backdrop-blur-md flex-col justify-start items-start gap-4 sm:gap-6">
         <div className="w-full sm:w-[560px] inline-flex justify-between items-end">
           <div className="text-center justify-start text-neutral-50 text-lg sm:text-xl font-medium font-['Plus_Jakarta_Sans'] leading-loose">
             Generated Password
@@ -55,7 +55,7 @@ export default function GeneratePassword() {
             />
           </svg>
         </div>
-        <div className="w-full h-12 sm:h-14 px-3 sm:px-4 py-2 relative bg-white/5 rounded-[100px] shadow-[0px_1px_4px_0px_rgba(12,12,13,0.05)] shadow-[0px_1px_4px_0px_rgba(12,12,13,0.10)] outline outline-1 outline-offset-[-1px] outline-white/20 backdrop-blur-[20px] inline-flex justify-between items-center flex-wrap content-center overflow-hidden">
+        <div className="w-full h-12 sm:h-14 px-3 sm:px-4 py-2 relative bg-white/5 rounded-[100px] shadow-[0px_1px_4px_0px_rgba(12,12,13,0.10)] outline-1 -outline-offset-[-1px] outline-white/20 backdrop-blur-[20px] inline-flex justify-between items-center flex-wrap content-center overflow-hidden">
           <div className="left-[12px] sm:left-[16px] top-[12px] sm:top-[16px] absolute flex justify-start items-center gap-3">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -84,12 +84,12 @@ export default function GeneratePassword() {
                 aria-label="generated-password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="bg-transparent outline-none text-zinc-300 text-sm sm:text-base font-normal font-['Plus_Jakarta_Sans'] capitalize leading-normal w-full"
+                className="bg-transparent outline-1-none text-zinc-300 text-sm sm:text-base font-normal font-['Plus_Jakarta_Sans'] capitalize leading-normal w-full"
               />
             </div>
           </div>
         </div>
-        <div className="self-stretch inline-flex flex-row sm:flex-row justify-start items-start gap-3 sm:gap-6 w-full">
+        <div className="self-stretch flex-row sm:flex-row justify-start items-start gap-3 sm:gap-6 w-full">
           <button
             type="button"
             onClick={handleCopy}
@@ -158,7 +158,7 @@ export default function GeneratePassword() {
           </button>
         </div>
       </div>
-      <div className="w-full sm:w-[608px] p-4 sm:p-6 bg-white/10 rounded-2xl outline outline-1 outline-offset-[-1px] outline-white/10 backdrop-blur-md inline-flex justify-start items-center gap-4">
+      <div className="w-full sm:w-[608px] p-4 sm:p-6 bg-white/10 rounded-2xl outline-1 -outline-offset-[-1px] outline-white/10 backdrop-blur-md inline-flex justify-start items-center gap-4">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -182,7 +182,7 @@ export default function GeneratePassword() {
             strokeLinejoin="round"
           />
         </svg>
-        <div className="inline-flex flex-col justify-start items-start gap-2">
+        <div className="flex-col justify-start items-start gap-2">
           <div className="self-stretch justify-start text-white text-sm sm:text-base font-normal font-['Plus_Jakarta_Sans'] leading-normal">
             No Breaches Found
           </div>
@@ -191,7 +191,7 @@ export default function GeneratePassword() {
           </div>
         </div>
       </div>
-      <div className="w-full sm:w-[608px] p-4 sm:p-6 bg-white/10 rounded-2xl sm:rounded-3xl outline outline-1 outline-offset-[-1px] outline-white/10 backdrop-blur-md inline-flex flex-col justify-start items-center gap-4 sm:gap-6">
+      <div className="w-full sm:w-[608px] p-4 sm:p-6 bg-white/10 rounded-2xl sm:rounded-3xl outline-1 -outline-offset-[-1px] outline-white/10 backdrop-blur-md flex-col justify-start items-center gap-4 sm:gap-6">
         <div className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center bg-neutral-50 rounded-[56px] overflow-hidden">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -251,7 +251,7 @@ export default function GeneratePassword() {
             <div className="w-[88%] sm:w-[496.26px] h-1.5 bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded absolute left-0 top-0 z-10" />
           </div>
         </div>
-        <div className="inline-flex flex-wrap justify-center items-start gap-2 sm:gap-3">
+        <div className="flex-wrap justify-center items-start gap-2 sm:gap-3">
           <div className="pl-4 pr-6 py-2 bg-zinc-100/10 rounded-[100px] backdrop-blur-blur flex justify-center items-center gap-3">
             <div className="text-center justify-start text-neutral-50 text-xs sm:text-sm font-medium font-['Plus_Jakarta_Sans']">
               Basic Shield
@@ -269,9 +269,9 @@ export default function GeneratePassword() {
           </div>
         </div>
       </div>
-      <div className="w-full sm:w-[608px] p-4 sm:p-6 bg-white/10 rounded-2xl sm:rounded-3xl outline outline-1 outline-offset-[-1px] outline-white/10 backdrop-blur-md inline-flex flex-col justify-center items-start gap-4 sm:gap-6">
+      <div className="w-full sm:w-[608px] p-4 sm:p-6 bg-white/10 rounded-2xl sm:rounded-3xl outline-1 -outline-offset-[-1px] outline-white/10 backdrop-blur-md flex-col justify-center items-start gap-4 sm:gap-6">
         <div className="w-full sm:w-[560px] flex flex-col justify-start items-center gap-4">
-          <div className="self-stretch inline-flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+          <div className="self-stretch flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
             <div className="flex justify-start items-center gap-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -311,8 +311,8 @@ export default function GeneratePassword() {
             </div>
           </div>
         </div>
-        <div className="self-stretch inline-flex flex-col sm:flex-row justify-start items-center gap-4 sm:gap-6">
-          <div className="flex-1 w-full p-4 bg-white/10 rounded-2xl outline outline-1 outline-offset-[-1px] outline-white/10 inline-flex flex-col justify-start items-start gap-4">
+        <div className="self-stretch flex-col sm:flex-row justify-start items-center gap-4 sm:gap-6">
+          <div className="flex-1 w-full p-4 bg-white/10 rounded-2xl outline-1 -outline-offset-[-1px] outline-white/10 flex-col justify-start items-start gap-4">
             <div className="inline-flex justify-start items-center gap-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -344,7 +344,7 @@ export default function GeneratePassword() {
               755840971 centuries
             </div>
           </div>
-          <div className="flex-1 w-full p-4 bg-white/10 rounded-2xl outline outline-1 outline-offset-[-1px] outline-white/10 inline-flex flex-col justify-start items-start gap-4">
+          <div className="flex-1 w-full p-4 bg-white/10 rounded-2xl outline-1 -outline-offset-[-1px] outline-white/10 flex-col justify-start items-start gap-4">
             <div className="inline-flex justify-start items-center gap-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -367,9 +367,9 @@ export default function GeneratePassword() {
             </div>
           </div>
         </div>
-        <div className="inline-flex flex-col sm:flex-row justify-start items-start sm:items-center gap-3 sm:gap-4">
+        <div className="flex-col sm:flex-row justify-start items-start sm:items-center gap-3 sm:gap-4">
           <div className="w-6 h-6 bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-full flex-shrink-0" />
-          <div className="w-full sm:w-[271px] inline-flex flex-col justify-start items-start gap-2">
+          <div className="w-full sm:w-[271px] flex-col justify-start items-start gap-2">
             <div className="self-stretch justify-start text-neutral-50 text-sm sm:text-base font-normal font-['Plus_Jakarta_Sans'] leading-normal">
               AI Recommendations
             </div>

@@ -261,7 +261,7 @@ export default function SearchBar({
                 onKeyPress={handleKeyPress}
                 onClick={handleInputClick}
                 placeholder={placeholder}
-                className="bg-transparent border-none outline-none w-full placeholder:text-[#D4D4D8] placeholder:capitalize"
+                className="bg-transparent border-none outline-1-none w-full placeholder:text-[#D4D4D8] placeholder:capitalize"
                 style={{
                   color: "var(--Primary-200, #D4D4D8)",
                   fontFamily: '"Plus Jakarta Sans"',

@@ -1,4 +1,5 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
+// { Schema, Model, Document } 
 
 const FeatureSchema = new mongoose.Schema({
   title: { type: String, required: true },
@@ -84,4 +85,6 @@ const ReviewSchema = new mongoose.Schema({
   integrations: [String],
 });
 
-module.exports = mongoose.model("Review", ReviewSchema);
+const Review = mongoose.model("Review", ReviewSchema);
+
+export default Review;

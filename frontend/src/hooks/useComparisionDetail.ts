@@ -27,7 +27,13 @@ export interface ToolComparisonBlog {
     sectionTitle: string;
     featuresHeadline: string;
     tools: string[];
-    features: any[];
+    features: Array<{
+      featureName: string;
+      toolScores: Array<{
+        tool: string;
+        score: number | null;
+      }>;
+    }>;
   };
   prosConsCards: Array<{
     cardNumber: number;
@@ -72,12 +78,15 @@ export async function fetchComparisonDetail(
 
     const data = await res.json();
     return data as ToolComparisonBlog;
-  } catch (err: any) {
+  } catch (err) {
     clearTimeout(timeoutId);
-    if (err.name === "AbortError") {
+    if (err instanceof DOMException && err.name === "AbortError") {
       throw new Error(`Request timed out after ${timeoutMs}ms`);
     }
-    throw err;
+    if (err instanceof Error) {
+      throw err;
+    }
+    throw new Error("An unexpected error occurred while fetching comparison detail");
   }
 }
 

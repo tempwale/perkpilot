@@ -2,11 +2,11 @@ export default function ToolDeal() {
   return (
     <div
       data-layer="Frame 2147206154"
-      className="Frame2147206154 self-stretch p-6 bg-gradient-to-b from-white/10 to-[#eef2fc]/10 rounded-3xl outline outline-1 outline-offset-[-1px] outline-[#ebeef4]/10 inline-flex justify-start items-center gap-6 flex flex-col lg:flex-row"
+      className="Frame2147206154 self-stretch p-6 bg-gradient-to-b from-white/10 to-[#eef2fc]/10 rounded-3xl outline-1 -outline-offset-[-1px] outline-[#ebeef4]/10 flex justify-start items-center gap-6 flex-col lg:flex-row"
     >
       <div
         data-layer="Card"
-        className="Card w-full sm:w-80 px-4 pb-4 bg-white/10 rounded-3xl outline outline-1 outline-[#ebeef4]/10 inline-flex flex-col justify-center items-center gap-4"
+        className="Card w-full sm:w-80 px-4 pb-4 bg-white/10 rounded-3xl outline-1 outline-[#ebeef4]/10 flex-col justify-center items-center gap-4"
       >
         <div
           data-layer="Frame 1321320236"
@@ -45,7 +45,7 @@ export default function ToolDeal() {
               </div>
               <div
                 data-layer="Frame 1321320233"
-                className="Frame1321320233 inline-flex flex-col justify-start items-start gap-1"
+                className="Frame1321320233 flex-col justify-start items-start gap-1"
               >
                 <div
                   data-layer="Frame 2147205849"
@@ -119,7 +119,7 @@ export default function ToolDeal() {
       </div>
       <div
         data-layer="Frame 2147206153"
-        className="Frame2147206153 flex-1 inline-flex flex-col justify-start items-start gap-4"
+        className="Frame2147206153 flex-1 flex-col justify-start items-start gap-4"
       >
         <div
           data-layer="Boost Your Content Output by 10x!"
@@ -129,7 +129,7 @@ export default function ToolDeal() {
         </div>
         <div
           data-layer="Frame 2147206152"
-          className="Frame2147206152 self-stretch inline-flex justify-start items-center gap-4 flex-wrap content-center"
+          className="Frame2147206152 self-stretch flex justify-start items-center gap-4-wrap content-center"
         >
           <div
             data-layer="Container"

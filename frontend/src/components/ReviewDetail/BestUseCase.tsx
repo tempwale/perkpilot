@@ -17,11 +17,11 @@ const UseCaseCard = ({ useCase }: UseCaseCardProps) => {
   return (
     <div
       data-layer="Frame 2147206218"
-      className="Frame2147206218 w-full max-w-[608px] lg:w-[608px] p-6 bg-white/10 rounded-3xl outline outline-1 outline-offset-[-1px] outline-white/10 inline-flex justify-start items-center gap-6"
+      className="Frame2147206218 w-full max-w-[608px] lg:w-[608px] p-6 bg-white/10 rounded-3xl outline-1 -outline-offset-[-1px] outline-white/10 inline-flex justify-start items-center gap-6"
     >
       <div
         data-layer="Frame 2147206217"
-        className="Frame2147206217 flex-1 inline-flex flex-col justify-start items-start gap-4"
+        className="Frame2147206217 flex-1 flex-col justify-start items-start gap-4"
       >
         <div className="self-stretch justify-start text-neutral-50 text-2xl font-medium font-['Plus_Jakarta_Sans'] leading-loose">
           {useCase.title}
@@ -62,7 +62,7 @@ export default function BestUseCase({ useCases = [] }: BestUseCaseProps) {
       <div className="w-full max-w-[1240px] mx-auto">
         <div
           data-layer="Frame 2147206215"
-          className="Frame2147206215 inline-flex flex-col justify-start items-start gap-10"
+          className="Frame2147206215 flex-col justify-start items-start gap-10"
         >
           <div
             data-layer="Best Use Case"

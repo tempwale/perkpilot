@@ -7,7 +7,7 @@ import {
   deleteDeal,
   getDealPage,
   updateDealPage,
-} from "../controllers/deals.controller";
+} from '../controllers/deals.controller.js';
 
 const router = express.Router();
 

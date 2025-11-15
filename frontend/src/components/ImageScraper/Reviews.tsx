@@ -13,10 +13,10 @@ export default function Reviews() {
       {/* Reviews horizontal scroller */}
       <div className="pt-10 ">
         <div className="overflow-x-auto no-scrollbar mx-4 px-4">
-          <div className="inline-flex gap-6 w-max snap-x snap-mandatory flex md:flex-row flex-col">
+          <div className="inline-flex gap-6 w-max snap-x snap-mandatory flex md:flex-col">
             <div
               data-layer="Frame 2147223665"
-              className="Frame2147223665 w-[380px] md:w-[503px] p-6 bg-white rounded-3xl inline-flex flex-col justify-start items-center gap-4 snap-start flex-shrink-0"
+              className="Frame2147223665 w-[380px] md:w-[503px] p-6 bg-white rounded-3xl flex-col justify-start items-center gap-4 snap-start flex-shrink-0"
             >
               <div
                 data-layer="Frame 2147223659"
@@ -34,7 +34,7 @@ export default function Reviews() {
                   />
                   <div
                     data-layer="Frame 2147223658"
-                    className="Frame2147223658 inline-flex flex-col justify-center items-start gap-1"
+                    className="Frame2147223658 flex-col justify-center items-start gap-1"
                   >
                     <div
                       data-layer="Sarah Johnson"
@@ -84,7 +84,7 @@ export default function Reviews() {
             {/* duplicate card as example - remove or map over data in real usage */}
             <div
               data-layer="Frame 2147223665"
-              className="Frame2147223665 w-[380px] md:w-[503px] p-6 bg-white rounded-3xl inline-flex flex-col justify-start items-center gap-4 snap-start flex-shrink-0"
+              className="Frame2147223665 w-[380px] md:w-[503px] p-6 bg-white rounded-3xl flex-col justify-start items-center gap-4 snap-start flex-shrink-0"
             >
               <div
                 data-layer="Frame 2147223659"
@@ -102,7 +102,7 @@ export default function Reviews() {
                   />
                   <div
                     data-layer="Frame 2147223658"
-                    className="Frame2147223658 inline-flex flex-col justify-center items-start gap-1"
+                    className="Frame2147223658 flex-col justify-center items-start gap-1"
                   >
                     <div
                       data-layer="Sarah Johnson"

@@ -19,25 +19,25 @@ export default function InvoiceHeading() {
             >
               <div
                 data-layer="Vector"
-                className="Vector w-0 h-[13.33px] left-[9.33px] top-[8px] absolute origin-top-left -rotate-90 outline outline-[1.50px] outline-offset-[-0.75px] outline-neutral-50"
+                className="Vector w-0 h-[13.33px] left-[9.33px] top-[8px] absolute origin-top-left -rotate-90 outline-[1.50px] -outline-offset-[-0.75px] outline-1-neutral-50"
               />
               <div
                 data-layer="Vector"
-                className="Vector w-0 h-[13.33px] left-[9.33px] top-[12px] absolute origin-top-left -rotate-90 outline outline-[1.50px] outline-offset-[-0.75px] outline-neutral-50"
+                className="Vector w-0 h-[13.33px] left-[9.33px] top-[12px] absolute origin-top-left -rotate-90 outline-[1.50px] -outline-offset-[-0.75px] outline-1-neutral-50"
               />
               <div
                 data-layer="Vector"
-                className="Vector w-0 h-2 left-[12px] top-[22.67px] absolute origin-top-left -rotate-90 outline outline-[1.50px] outline-offset-[-0.75px] outline-neutral-50"
+                className="Vector w-0 h-2 left-[12px] top-[22.67px] absolute origin-top-left -rotate-90 outline-[1.50px] -outline-offset-[-0.75px] outline-1-neutral-50"
               />
               <div
                 data-layer="Vector"
-                className="Vector w-[26.67px] h-[26.67px] left-[2.67px] top-[2.67px] absolute rounded-[0.60px] outline outline-[1.50px] outline-offset-[-0.75px] outline-neutral-50"
+                className="Vector w-[26.67px] h-[26.67px] left-[2.67px] top-[2.67px] absolute rounded-[0.60px] outline-[1.50px] -outline-offset-[-0.75px] outline-1-neutral-50"
               />
             </div>
           </div>
           <div
             data-layer="Frame 2147223647"
-            className="Frame2147223647 w-full sm:w-[249px] inline-flex flex-col justify-start items-start gap-1"
+            className="Frame2147223647 w-full sm:w-[249px] flex-col justify-start items-start gap-1"
           >
             <div
               data-layer="Invoice Generator"
@@ -59,7 +59,7 @@ export default function InvoiceHeading() {
         >
           <div
             data-layer="Buttons/main"
-            className="ButtonsMain w-full sm:w-auto h-12 flex items-center justify-center pl-6 pr-4 py-2 rounded-full outline outline-1 outline-offset-[-1px] outline-[#737eff] gap-3"
+            className="ButtonsMain w-full sm:w-auto h-12 flex items-center justify-center pl-6 pr-4 py-2 rounded-full outline-1 -outline-offset-[-1px] outline-[#737eff] gap-3"
           >
             <div
               data-layer="English US"

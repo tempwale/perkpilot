@@ -107,7 +107,7 @@ const CTASection: React.FC = () => {
                     onChange={handleEmailChange}
                     onKeyPress={handleKeyPress}
                     placeholder="Enter Your Email ID"
-                    className="w-full h-full px-4 py-3 bg-transparent border-none outline-none text-white placeholder-[rgba(255,255,255,0.56)] rounded-full"
+                    className="w-full h-full px-4 py-3 bg-transparent border-none outline-1-none text-white placeholder-[rgba(255,255,255,0.56)] rounded-full"
                     style={{
                       fontFamily: "Poppins",
                       fontSize: "16px",
@@ -148,7 +148,7 @@ const CTASection: React.FC = () => {
                     onChange={handleEmailChange}
                     onKeyPress={handleKeyPress}
                     placeholder="Enter Your Email ID"
-                    className="w-full h-full px-4 py-3 bg-transparent border-none outline-none text-white placeholder-[rgba(255,255,255,0.56)] rounded-full"
+                    className="w-full h-full px-4 py-3 bg-transparent border-none outline-1-none text-white placeholder-[rgba(255,255,255,0.56)] rounded-full"
                     style={{
                       fontFamily: "Poppins",
                       fontSize: "16px",

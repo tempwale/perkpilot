@@ -5,7 +5,7 @@ import {
   updateComparison,
   deleteComparison,
   getAllComparisons,
-} from "../controllers/comparision.controller";
+} from '../controllers/comparision.controller.js';
 
 const router = express.Router();
 
