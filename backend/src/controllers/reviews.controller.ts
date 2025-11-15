@@ -65,21 +65,34 @@ export const createReview = async (req: Request, res: Response) => {
     const payload = req.body;
 
     // Validate required fields
-    if (!payload.productName || !payload.reviewText || !payload.rating) {
+    if (!payload.productName) {
       return res.status(400).json({
-        message: "productName, reviewText, and rating are required",
+        message: "productName is required",
       });
     }
 
-    if (payload.rating < 1 || payload.rating > 5) {
+    // Validate rating if provided
+    if (payload.rating && (payload.rating < 1 || payload.rating > 5)) {
       return res
         .status(400)
         .json({ message: "Rating must be between 1 and 5" });
     }
 
+    // Validate nested productReviews ratings if provided
+    if (payload.productReviews && Array.isArray(payload.productReviews)) {
+      for (const review of payload.productReviews) {
+        if (review.rating && (review.rating < 1 || review.rating > 5)) {
+          return res
+            .status(400)
+            .json({ message: "All review ratings must be between 1 and 5" });
+        }
+      }
+    }
+
     const review = await Review.create(payload);
     res.status(201).json(review);
   } catch (error: any) {
+    console.error("Error creating review:", error);
     res
       .status(400)
       .json({ message: "Error creating review", error: error.message });
@@ -106,15 +119,34 @@ export const updateReview = async (req: Request, res: Response) => {
         .json({ message: "Rating must be between 1 and 5" });
     }
 
+    // Validate nested productReviews ratings if provided
+    if (
+      updatedData.productReviews &&
+      Array.isArray(updatedData.productReviews)
+    ) {
+      for (const review of updatedData.productReviews) {
+        if (review.rating && (review.rating < 1 || review.rating > 5)) {
+          return res
+            .status(400)
+            .json({ message: "All review ratings must be between 1 and 5" });
+        }
+      }
+    }
+
     const review = await Review.findByIdAndUpdate(id, updatedData, {
       new: true,
       runValidators: true,
     });
 
     if (!review) return res.status(404).json({ message: "Review not found" });
+
+    console.log("Review updated successfully:", review._id);
     res.json(review);
-  } catch (error) {
-    res.status(400).json({ message: "Error updating review", error });
+  } catch (error: any) {
+    console.error("Error updating review:", error);
+    res
+      .status(400)
+      .json({ message: "Error updating review", error: error.message });
   }
 };
 
