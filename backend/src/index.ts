@@ -1,11 +1,11 @@
 import express, { Request, Response } from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import connectDB from "./config/db";
-import dealsRoutes from "./routes/deals.routes";
-import comparisionRouter from "./routes/comparision.routes";
-import reviewsRoutes from "./routes/reviews.routes";
-import authorRoutes from "./routes/author.routes";
+import connectDB from './config/db.js';
+import dealsRoutes from './routes/deals.routes.js';
+import comparisionRouter from './routes/comparision.routes.js';
+import reviewsRoutes from './routes/reviews.routes.js';
+import authorRoutes from './routes/author.routes.js';
 // Load environment variables from .env file
 dotenv.config();
 
@@ -32,6 +32,6 @@ app.get("/", (_req: Request, res: Response) => {
   res.status(200).send("API is running...");
 });
 
-app.listen(process.env.PORT || 5000, () => {
-  console.log(`Server is running on port ${process.env.PORT || 5000}`);
+app.listen(process.env.PORT || 5001, () => {
+  console.log(`Server is running on port ${process.env.PORT || 5001}`);
 });

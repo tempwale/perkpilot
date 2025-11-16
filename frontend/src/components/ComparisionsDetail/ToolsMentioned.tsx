@@ -36,7 +36,7 @@ export default function ToolsMentioned({
             </div>
             <div
               data-layer="Line 5"
-              className="Line5 w-10 md:w-8 h-0 origin-top-left -rotate-90 outline outline-1 outline-offset-[-0.50px] outline-zinc-100 relative top-12 left-3 md:top-8 md:left-4"
+              className="Line5 w-10 md:w-8 h-0 origin-top-left -rotate-90 -outline-offset-[-0.50px] outline-1-zinc-100 relative top-12 left-3 md:top-8 md:left-4"
             ></div>
             <div
               data-layer="Essential Productive Tools To Enhance Your Workflow"

@@ -41,14 +41,14 @@ const BlogModules: React.FC<BlogModulesProps> = ({
       if (el) {
         el.scrollIntoView({ behavior: "smooth", block: "start" });
       }
-    } catch (e) {
+    } catch {
       // Ignore SSR errors
     }
   };
 
   return (
     <div className={className}>
-      <div className="w-[397px] p-6 bg-white/10 rounded-3xl outline outline-1 outline-offset-[-1px] outline-[#ebeef4]/10 flex flex-col gap-6 overflow-y-auto max-h-[500px]">
+      <div className="w-[397px] p-6 bg-white/10 rounded-3xl outline-1 -outline-offset-[-1px] outline-[#ebeef4]/10 flex flex-col gap-6 overflow-y-auto max-h-[500px]">
         <div className="text-neutral-50 text-2xl font-medium font-['Plus_Jakarta_Sans'] leading-loose">
           Blog Modules
         </div>

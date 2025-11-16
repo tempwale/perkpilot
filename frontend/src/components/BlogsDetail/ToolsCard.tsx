@@ -24,12 +24,12 @@ export default function ToolsCard({
   return (
     <div
       data-layer="Card"
-      className="Card w-full lg:w-[560px] p-2 sm:p-3 bg-white/10 rounded-3xl outline outline-1 outline-offset-[-1px] outline-white/10 inline-flex justify-start items-center gap-4 flex flex-col lg:flex-row"
+      className="Card w-full lg:w-[560px] p-2 sm:p-3 bg-white/10 rounded-3xl outline-1 -outline-offset-[-1px] outline-white/10 flex justify-start items-center gap-4 flex-col lg:flex-row"
     >
       <div className="w-full flex justify-center">
         <div
           data-layer="Frame 1321320236"
-          className="Frame1321320236 flex-1 inline-flex flex-col justify-start items-start gap-3"
+          className="Frame1321320236 flex-1 flex-col justify-start items-start gap-3"
         >
           <div
             data-layer="Frame 1321320234"
@@ -67,7 +67,7 @@ export default function ToolsCard({
               </div>
               <div
                 data-layer="Frame 1321320233"
-                className="Frame1321320233 inline-flex flex-col justify-start items-start gap-1"
+                className="Frame1321320233 flex-col justify-start items-start gap-1"
               >
                 <div
                   data-layer="Motion"
@@ -121,7 +121,7 @@ export default function ToolsCard({
       </div>
       <div
         data-layer="Filter"
-        className="Filter w-full lg:w-[180px] self-stretch inline-flex flex-row lg:flex-col justify-around items-start gap-3"
+        className="Filter w-full lg:w-[180px] self-stretch flex-row lg:flex-col justify-around items-start gap-3"
       >
         <div
           data-layer="All Assets"

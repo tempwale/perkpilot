@@ -8,7 +8,7 @@ export default function StepOne() {
     >
       <div
         data-layer="Frame 2147206337"
-        className="Frame2147206337 w-[400px] md:w-[608.50px] inline-flex flex-col justify-start items-start gap-5"
+        className="Frame2147206337 w-[400px] md:w-[608.50px] flex-col justify-start items-start gap-5"
       >
         <div
           data-layer="You Set the Rules"

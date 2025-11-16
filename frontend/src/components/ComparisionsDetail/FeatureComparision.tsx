@@ -1,10 +1,21 @@
 import Check from "./Check";
 
+interface Feature {
+  featureName: string;
+  tool1Available?: boolean;
+  tool2Available?: boolean;
+  tool3Available?: boolean;
+  toolScores?: Array<{
+    tool: string;
+    score: number | null;
+  }>;
+}
+
 interface FeatureComparisonData {
   sectionTitle: string;
   featuresHeadline: string;
   tools: string[];
-  features: any[];
+  features: Feature[];
 }
 
 export default function FeatureComparision({
@@ -20,7 +31,7 @@ export default function FeatureComparision({
   return (
     <div
       data-layer="Frame 2147206227"
-      className="Frame2147206227 w-full p-6 bg-white/5 rounded-3xl outline outline-1 outline-offset-[-1px] outline-white/10 inline-flex flex-col justify-start items-start gap-6"
+      className="Frame2147206227 w-full p-6 bg-white/5 rounded-3xl outline-1 -outline-offset-[-1px] outline-white/10 flex-col justify-start items-start gap-6"
     >
       <div
         data-layer="Feature Comparison"
@@ -49,7 +60,7 @@ export default function FeatureComparision({
           </thead>
           <tbody>
             {features.length > 0 ? (
-              features.map((feature: any, i: number) => (
+              features.map((feature, i) => (
                 <tr key={i}>
                   <td className="px-4 py-4 align-top">
                     <div className="text-zinc-200 text-base font-normal font-['Plus_Jakarta_Sans'] leading-normal">

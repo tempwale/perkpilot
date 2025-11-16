@@ -11,7 +11,7 @@ export default function GeneratedMode() {
     <div>
       <div
         data-layer="Frame 2147206318"
-        className="Frame2147206318 w-[400px] md:w-[608px] p-6 bg-white/10 rounded-3xl backdrop-blur-md inline-flex flex-col justify-start items-start gap-6"
+        className="Frame2147206318 w-[400px] md:w-[608px] p-6 bg-white/10 rounded-3xl backdrop-blur-md flex-col justify-start items-start gap-6"
       >
         <div
           data-layer="Frame 2147206316"
@@ -26,7 +26,7 @@ export default function GeneratedMode() {
         </div>
         <div
           data-layer="Frame 2147205832"
-          className="Frame2147205832 self-stretch p-2 bg-white/10 rounded-[56px] outline outline-1 outline-offset-[-1px] outline-white/10 inline-flex justify-between items-start"
+          className="Frame2147205832 self-stretch p-2 bg-white/10 rounded-[56px] -outline-offset-[-1px] outline-white/10 inline-flex justify-between items-start"
         >
           <div
             data-layer="Buttons/main"
@@ -113,7 +113,7 @@ export default function GeneratedMode() {
           </div>
           <div
             data-layer="Input"
-            className="Input self-stretch h-14 pl-6 pr-4 py-3 relative bg-white/10 rounded-xl outline outline-1 outline-offset-[-0.50px] outline-white/10 inline-flex justify-start items-center flex-wrap content-center overflow-hidden"
+            className="Input self-stretch h-14 pl-6 pr-4 py-3 relative bg-white/10 rounded-xl -outline-offset-[-0.50px] outline-white/10 inline-flex justify-start items-center flex-wrap content-center overflow-hidden"
           >
             <div
               data-layer="Frame 13"
@@ -159,7 +159,7 @@ export default function GeneratedMode() {
         </div>
         <div
           data-layer="Input"
-          className="Input self-stretch h-14 px-4 py-2 relative bg-white/5 rounded-[100px] shadow-[0px_1px_4px_0px_rgba(12,12,13,0.05)] shadow-[0px_1px_4px_0px_rgba(12,12,13,0.10)] outline outline-1 outline-offset-[-1px] outline-white/20 backdrop-blur-[20px] inline-flex justify-between items-center flex-wrap content-center overflow-hidden"
+          className="Input self-stretch h-14 px-4 py-2 relative bg-white/5 rounded-[100px] shadow-[0px_1px_4px_0px_rgba(12,12,13,0.10)] -outline-offset-[-1px] outline-white/20 backdrop-blur-[20px] inline-flex justify-between items-center flex-wrap content-center overflow-hidden"
         >
           <div
             data-layer="Frame 13"
@@ -287,7 +287,7 @@ export default function GeneratedMode() {
             </div>
             <div
               data-layer="Button"
-              className="Button w-[53.33px] h-7 relative bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-[66.67px] outline outline-1 outline-offset-[-1px] outline-[#501bd6] overflow-hidden"
+              className="Button w-[53.33px] h-7 relative bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-[66.67px] -outline-offset-[-1px] outline-[#501bd6] overflow-hidden"
             >
               <div
                 data-layer="Button"
@@ -312,7 +312,7 @@ export default function GeneratedMode() {
             </div>
             <div
               data-layer="Button"
-              className="Button w-[53.33px] h-7 relative bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-[66.67px] outline outline-1 outline-offset-[-1px] outline-[#501bd6] overflow-hidden"
+              className="Button w-[53.33px] h-7 relative bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-[66.67px] -outline-offset-[-1px] outline-[#501bd6] overflow-hidden"
             >
               <div
                 data-layer="Button"
@@ -337,7 +337,7 @@ export default function GeneratedMode() {
             </div>
             <div
               data-layer="Button"
-              className="Button w-[53.33px] h-7 relative bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-[66.67px] outline outline-1 outline-offset-[-1px] outline-[#501bd6] overflow-hidden"
+              className="Button w-[53.33px] h-7 relative bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-[66.67px] -outline-offset-[-1px] outline-[#501bd6] overflow-hidden"
             >
               <div
                 data-layer="Button"
@@ -362,7 +362,7 @@ export default function GeneratedMode() {
             </div>
             <div
               data-layer="Button"
-              className="Button w-[53.33px] h-7 relative bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-[66.67px] outline outline-1 outline-offset-[-1px] outline-[#501bd6] overflow-hidden"
+              className="Button w-[53.33px] h-7 relative bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-[66.67px] -outline-offset-[-1px] outline-[#501bd6] overflow-hidden"
             >
               <div
                 data-layer="Button"

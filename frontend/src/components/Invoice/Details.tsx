@@ -2,7 +2,7 @@ export default function Details() {
   return (
     <div
       data-layer="Frame 2147206340"
-      className="Frame2147206340 md:w-[1240.50px] inline-flex flex-col justify-start items-start gap-10"
+      className="Frame2147206340 md:w-[1240.50px] flex-col justify-start items-start gap-10"
     >
       <div
         data-layer="Frame 2147206338"
@@ -11,7 +11,7 @@ export default function Details() {
         {/* Left text section */}
         <div
           data-layer="Frame 2147206337"
-          className="Frame2147206337 w-full md:w-[608.50px] inline-flex flex-col justify-start items-start gap-5 px-4 md:px-0"
+          className="Frame2147206337 w-full md:w-[608.50px] flex-col justify-start items-start gap-5 px-4 md:px-0"
         >
           <div
             data-layer="Input Your Details"
@@ -51,7 +51,7 @@ export default function Details() {
             >
               <div
                 data-layer="Frame 2147206178"
-                className="Frame2147206178 flex-1 inline-flex flex-col justify-start items-start gap-[8.42px]"
+                className="Frame2147206178 flex-1 flex-col justify-start items-start gap-[8.42px]"
               >
                 <div
                   data-layer="Invoice Number"
@@ -61,7 +61,7 @@ export default function Details() {
                 </div>
                 <div
                   data-layer="Input"
-                  className="Input self-stretch h-[39.30px] px-[11.23px] py-[8.42px] rounded-xl outline outline-[0.70px] outline-offset-[-0.35px] outline-zinc-200 inline-flex justify-start items-center gap-[8.42px] overflow-hidden"
+                  className="Input self-stretch h-[39.30px] px-[11.23px] py-[8.42px] rounded-xl outline-[0.70px] -outline-offset-[-0.35px] outline-1-zinc-200 inline-flex justify-start items-center gap-[8.42px] overflow-hidden"
                 >
                   <div
                     data-layer="1"
@@ -73,7 +73,7 @@ export default function Details() {
               </div>
               <div
                 data-layer="Frame 2147206179"
-                className="Frame2147206179 flex-1 inline-flex flex-col justify-start items-start gap-[8.42px]"
+                className="Frame2147206179 flex-1 flex-col justify-start items-start gap-[8.42px]"
               >
                 <div
                   data-layer="Currency"
@@ -83,7 +83,7 @@ export default function Details() {
                 </div>
                 <div
                   data-layer="Input"
-                  className="Input self-stretch h-[39.30px] px-[11.23px] py-[8.42px] rounded-xl outline outline-[0.70px] outline-offset-[-0.35px] outline-zinc-200 inline-flex justify-between items-center overflow-hidden"
+                  className="Input self-stretch h-[39.30px] px-[11.23px] py-[8.42px] rounded-xl outline-[0.70px] -outline-offset-[-0.35px] outline-1-zinc-200 inline-flex justify-between items-center overflow-hidden"
                 >
                   <div
                     data-layer="USD"
@@ -115,7 +115,7 @@ export default function Details() {
             >
               <div
                 data-layer="Frame 2147206178"
-                className="Frame2147206178 flex-1 inline-flex flex-col justify-start items-start gap-[8.42px]"
+                className="Frame2147206178 flex-1 flex-col justify-start items-start gap-[8.42px]"
               >
                 <div
                   data-layer="Date"
@@ -125,7 +125,7 @@ export default function Details() {
                 </div>
                 <div
                   data-layer="Input"
-                  className="Input self-stretch h-[39.30px] px-[11.23px] py-[8.42px] rounded-xl outline outline-[0.70px] outline-offset-[-0.35px] outline-zinc-200 inline-flex justify-start items-center gap-[8.42px] overflow-hidden"
+                  className="Input self-stretch h-[39.30px] px-[11.23px] py-[8.42px] rounded-xl outline-[0.70px] -outline-offset-[-0.35px] outline-1-zinc-200 inline-flex justify-start items-center gap-[8.42px] overflow-hidden"
                 >
                   <div
                     data-layer="08/11/2025"
@@ -137,7 +137,7 @@ export default function Details() {
               </div>
               <div
                 data-layer="Frame 2147206179"
-                className="Frame2147206179 flex-1 inline-flex flex-col justify-start items-start gap-[8.42px]"
+                className="Frame2147206179 flex-1 flex-col justify-start items-start gap-[8.42px]"
               >
                 <div
                   data-layer="Due Date"
@@ -147,7 +147,7 @@ export default function Details() {
                 </div>
                 <div
                   data-layer="Input"
-                  className="Input self-stretch h-[39.30px] px-[11.23px] py-[8.42px] rounded-xl outline outline-[0.70px] outline-offset-[-0.35px] outline-zinc-200 inline-flex justify-between items-center overflow-hidden"
+                  className="Input self-stretch h-[39.30px] px-[11.23px] py-[8.42px] rounded-xl outline-[0.70px] -outline-offset-[-0.35px] outline-1-zinc-200 inline-flex justify-between items-center overflow-hidden"
                 >
                   <div
                     data-layer="dd/mm/yy"
@@ -200,7 +200,7 @@ export default function Details() {
             >
               <div
                 data-layer="Frame 2147206178"
-                className="Frame2147206178 flex-1 inline-flex flex-col justify-start items-start gap-[8.42px]"
+                className="Frame2147206178 flex-1 flex-col justify-start items-start gap-[8.42px]"
               >
                 <div
                   data-layer="Payment Terms"
@@ -210,7 +210,7 @@ export default function Details() {
                 </div>
                 <div
                   data-layer="Input"
-                  className="Input self-stretch h-[39.30px] px-[11.23px] py-[8.42px] rounded-xl outline outline-[0.70px] outline-offset-[-0.35px] outline-zinc-200 inline-flex justify-start items-center gap-[8.42px] overflow-hidden"
+                  className="Input self-stretch h-[39.30px] px-[11.23px] py-[8.42px] rounded-xl outline-[0.70px] -outline-offset-[-0.35px] outline-1-zinc-200 inline-flex justify-start items-center gap-[8.42px] overflow-hidden"
                 >
                   <div
                     data-layer="Net 30"
@@ -222,7 +222,7 @@ export default function Details() {
               </div>
               <div
                 data-layer="Frame 2147206179"
-                className="Frame2147206179 flex-1 inline-flex flex-col justify-start items-start gap-[8.42px]"
+                className="Frame2147206179 flex-1 flex-col justify-start items-start gap-[8.42px]"
               >
                 <div
                   data-layer="PO Number"
@@ -232,7 +232,7 @@ export default function Details() {
                 </div>
                 <div
                   data-layer="Input"
-                  className="Input self-stretch h-[39.30px] px-[11.23px] py-[8.42px] rounded-xl outline outline-[0.70px] outline-offset-[-0.35px] outline-zinc-200 inline-flex justify-between items-center overflow-hidden"
+                  className="Input self-stretch h-[39.30px] px-[11.23px] py-[8.42px] rounded-xl outline-[0.70px] -outline-offset-[-0.35px] outline-1-zinc-200 inline-flex justify-between items-center overflow-hidden"
                 >
                   <div
                     data-layer="Optional"

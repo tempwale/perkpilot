@@ -2,9 +2,25 @@ import Breadcrumb from "./Breadcrumb";
 import ProductHeader from "./ProductHeader";
 import CompanyStats from "./CompanyStats";
 import PricingSidebar from "./PricingSidebar";
+import type { ReactNode } from "react";
+
+interface ReviewData {
+  title: string;
+  logoComponent: ReactNode;
+  category: string;
+  shortDescription: string;
+  rating: string;
+  totalReviews: number;
+  founded: string;
+  employees: string;
+  headquarters: string;
+  userCount: string | number;
+  pricing: Array<{ tier?: string; price?: number | string; features?: string[] }>;
+  lastUpdated: string;
+}
 
 interface ReviewDetailContentProps {
-  reviewData: any;
+  reviewData: ReviewData;
 }
 
 export default function ReviewDetailContent({
@@ -34,7 +50,7 @@ export default function ReviewDetailContent({
                 founded={reviewData.founded}
                 employees={reviewData.employees}
                 headquarters={reviewData.headquarters}
-                userCount={reviewData.userCount}
+                userCount={typeof reviewData.userCount === 'number' ? reviewData.userCount.toString() : reviewData.userCount}
               />
             </div>
           </div>
@@ -43,7 +59,11 @@ export default function ReviewDetailContent({
           <div className="lg:col-span-1 lg:-mt-[40px] flex justify-center items-start">
             <PricingSidebar
               title={reviewData.title}
-              pricing={reviewData.pricing}
+              pricing={reviewData.pricing.map((p) => ({
+                plan: p.tier || '',
+                amount: typeof p.price === 'number' ? p.price.toString() : p.price || '',
+                note: p.features?.join(', '),
+              }))}
               lastUpdated={reviewData.lastUpdated}
             />
           </div>

@@ -34,7 +34,7 @@ const AlternativeCard = ({
   buttonText,
   logo,
 }: AlternativeCardProps) => (
-  <div className="w-full h-full min-h-[200px] p-4 sm:p-6 lg:p-8 bg-white/5 rounded-2xl sm:rounded-3xl outline outline-1 outline-offset-[-1px] outline-white/10 flex flex-col justify-between items-start gap-4 sm:gap-6 lg:gap-8 transition-all duration-300 hover:bg-white/10 hover:scale-[1.02]">
+  <div className="w-full h-full min-h-[200px] p-4 sm:p-6 lg:p-8 bg-white/5 rounded-2xl sm:rounded-3xl outline-1 -outline-offset-[-1px] outline-white/10 flex flex-col justify-between items-start gap-4 sm:gap-6 lg:gap-8 transition-all duration-300 hover:bg-white/10 hover:scale-[1.02]">
     <div className="w-full flex flex-row gap-4 justify-between">
       <div className="flex justify-start items-center gap-3 sm:gap-4">
         <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-neutral-50 rounded-full flex-shrink-0" />

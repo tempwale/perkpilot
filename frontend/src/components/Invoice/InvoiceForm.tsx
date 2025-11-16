@@ -13,7 +13,7 @@ export default function InvoiceForm() {
         </div>
         <div
           data-layer="Buttons/main"
-          className="ButtonsMain w-full sm:w-auto h-10 sm:h-12 pl-4 pr-6 py-2 rounded-[100px] outline outline-1 outline-offset-[-1px] outline-[#737eff] flex justify-center items-center gap-3"
+          className="ButtonsMain w-full sm:w-auto h-10 sm:h-12 pl-4 pr-6 py-2 rounded-[100px] outline-1 -outline-offset-[-1px] outline-[#737eff] flex justify-center items-center gap-3"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -71,7 +71,7 @@ export default function InvoiceForm() {
             </div>
             <div
               data-layer="Input"
-              className="Input self-stretch h-12 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 flex justify-start items-center gap-3 overflow-hidden"
+              className="Input self-stretch h-12 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline-1 -outline-offset-[-0.50px] outline-1-zinc-200 flex justify-start items-center gap-3 overflow-hidden"
             >
               <div
                 data-layer="1"
@@ -93,7 +93,7 @@ export default function InvoiceForm() {
             </div>
             <div
               data-layer="Input"
-              className="Input self-stretch h-12 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 flex justify-between items-center overflow-hidden"
+              className="Input self-stretch h-12 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline-1 -outline-offset-[-0.50px] outline-1-zinc-200 flex justify-between items-center overflow-hidden"
             >
               <div
                 data-layer="USD"
@@ -135,7 +135,7 @@ export default function InvoiceForm() {
             </div>
             <div
               data-layer="Input"
-              className="Input self-stretch h-12 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 flex justify-start items-center gap-3 overflow-hidden"
+              className="Input self-stretch h-12 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline-1 -outline-offset-[-0.50px] outline-1-zinc-200 flex justify-start items-center gap-3 overflow-hidden"
             >
               <div
                 data-layer="08/11/2025"
@@ -157,7 +157,7 @@ export default function InvoiceForm() {
             </div>
             <div
               data-layer="Input"
-              className="Input self-stretch h-12 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 flex justify-between items-center overflow-hidden"
+              className="Input self-stretch h-12 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline-1 -outline-offset-[-0.50px] outline-1-zinc-200 flex justify-between items-center overflow-hidden"
             >
               <div
                 data-layer="dd/mm/yy"
@@ -220,7 +220,7 @@ export default function InvoiceForm() {
             </div>
             <div
               data-layer="Input"
-              className="Input self-stretch h-12 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 flex justify-start items-center gap-3 overflow-hidden"
+              className="Input self-stretch h-12 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline-1 -outline-offset-[-0.50px] outline-1-zinc-200 flex justify-start items-center gap-3 overflow-hidden"
             >
               <div
                 data-layer="Net 30"
@@ -242,7 +242,7 @@ export default function InvoiceForm() {
             </div>
             <div
               data-layer="Input"
-              className="Input self-stretch h-12 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 flex justify-between items-center overflow-hidden"
+              className="Input self-stretch h-12 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline-1 -outline-offset-[-0.50px] outline-1-zinc-200 flex justify-between items-center overflow-hidden"
             >
               <div
                 data-layer="Optional"
@@ -280,7 +280,7 @@ export default function InvoiceForm() {
             </div>
             <div
               data-layer="Input"
-              className="Input self-stretch h-12 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 flex justify-start items-center gap-3 overflow-hidden"
+              className="Input self-stretch h-12 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline-1 -outline-offset-[-0.50px] outline-1-zinc-200 flex justify-start items-center gap-3 overflow-hidden"
             >
               <div
                 data-layer="Your company name"
@@ -307,7 +307,7 @@ export default function InvoiceForm() {
             </div>
             <div
               data-layer="Input"
-              className="Input self-stretch h-12 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 flex justify-start items-center gap-3 overflow-hidden"
+              className="Input self-stretch h-12 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline-1 -outline-offset-[-0.50px] outline-1-zinc-200 flex justify-start items-center gap-3 overflow-hidden"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -349,7 +349,7 @@ export default function InvoiceForm() {
             </div>
             <div
               data-layer="Input"
-              className="Input self-stretch h-12 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 flex justify-start items-center gap-3 overflow-hidden"
+              className="Input self-stretch h-12 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline-1 -outline-offset-[-0.50px] outline-1-zinc-200 flex justify-start items-center gap-3 overflow-hidden"
             >
               <div
                 data-layer="+91"
@@ -382,7 +382,7 @@ export default function InvoiceForm() {
             </div>
             <div
               data-layer="Input"
-              className="Input self-stretch px-3 md:px-4 py-2 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 flex justify-start items-center gap-3 overflow-hidden"
+              className="Input self-stretch px-3 md:px-4 py-2 rounded-2xl outline-1 -outline-offset-[-0.50px] outline-1-zinc-200 flex justify-start items-center gap-3 overflow-hidden"
             >
               <div
                 data-layer="Detail address here..."
@@ -397,7 +397,7 @@ export default function InvoiceForm() {
       </div>
       <div
         data-layer="Frame 2147223653"
-        className="Frame2147223653 self-stretch p-6 bg-white rounded-3xl inline-flex flex-col justify-start items-start gap-4"
+        className="Frame2147223653 self-stretch p-6 bg-white rounded-3xl flex-col justify-start items-start gap-4"
       >
         <div
           data-layer="Bill To Client"
@@ -411,7 +411,7 @@ export default function InvoiceForm() {
         >
           <div
             data-layer="Frame 2147206178"
-            className="Frame2147206178 flex-1 inline-flex flex-col justify-start items-start gap-3"
+            className="Frame2147206178 flex-1 flex-col justify-start items-start gap-3"
           >
             <div
               data-layer="Client Name"
@@ -421,7 +421,7 @@ export default function InvoiceForm() {
             </div>
             <div
               data-layer="Input"
-              className="Input self-stretch h-14 px-4 py-3 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 inline-flex justify-start items-center gap-3 overflow-hidden"
+              className="Input self-stretch h-14 px-4 py-3 rounded-2xl outline-1 -outline-offset-[-0.50px] outline-1-zinc-200 inline-flex justify-start items-center gap-3 overflow-hidden"
             >
               <div
                 data-layer="Client company name"
@@ -438,7 +438,7 @@ export default function InvoiceForm() {
         >
           <div
             data-layer="Frame 2147206178"
-            className="Frame2147206178 flex-1 inline-flex flex-col justify-start items-start gap-3"
+            className="Frame2147206178 flex-1 flex-col justify-start items-start gap-3"
           >
             <div
               data-layer="Email"
@@ -448,7 +448,7 @@ export default function InvoiceForm() {
             </div>
             <div
               data-layer="Input"
-              className="Input self-stretch h-14 px-4 py-3 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 inline-flex justify-start items-center gap-3 overflow-hidden"
+              className="Input self-stretch h-14 px-4 py-3 rounded-2xl outline-1 -outline-offset-[-0.50px] outline-1-zinc-200 inline-flex justify-start items-center gap-3 overflow-hidden"
             >
               <div
                 data-layer="mail"
@@ -456,11 +456,11 @@ export default function InvoiceForm() {
               >
                 <div
                   data-layer="Vector"
-                  className="Vector w-[3.50px] h-2.5 left-[7px] top-[12.50px] absolute origin-top-left -rotate-90 outline outline-[1.50px] outline-offset-[-0.75px] outline-zinc-400"
+                  className="Vector w-[3.50px] h-2.5 left-[7px] top-[12.50px] absolute origin-top-left -rotate-90 outline-[1.50px] -outline-offset-[-0.75px] outline-1-zinc-400"
                 />
                 <div
                   data-layer="Vector"
-                  className="Vector w-5 h-3.5 left-[2px] top-[5px] absolute rounded-sm outline outline-[1.50px] outline-offset-[-0.75px] outline-zinc-400"
+                  className="Vector w-5 h-3.5 left-[2px] top-[5px] absolute rounded-sm outline-[1.50px] -outline-offset-[-0.75px] outline-1-zinc-400"
                 />
               </div>
               <div
@@ -473,7 +473,7 @@ export default function InvoiceForm() {
           </div>
           <div
             data-layer="Frame 2147206179"
-            className="Frame2147206179 flex-1 inline-flex flex-col justify-start items-start gap-3"
+            className="Frame2147206179 flex-1 flex-col justify-start items-start gap-3"
           >
             <div
               data-layer="Phone"
@@ -483,7 +483,7 @@ export default function InvoiceForm() {
             </div>
             <div
               data-layer="Input"
-              className="Input self-stretch h-14 px-4 py-3 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 inline-flex justify-start items-center gap-3 overflow-hidden"
+              className="Input self-stretch h-14 px-4 py-3 rounded-2xl outline-1 -outline-offset-[-0.50px] outline-1-zinc-200 inline-flex justify-start items-center gap-3 overflow-hidden"
             >
               <div
                 data-layer="+91"
@@ -516,7 +516,7 @@ export default function InvoiceForm() {
             </div>
             <div
               data-layer="Input"
-              className="Input self-stretch px-4 py-3 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 inline-flex justify-start items-center gap-3 overflow-hidden"
+              className="Input self-stretch px-4 py-3 rounded-2xl outline-1 -outline-offset-[-0.50px] outline-1-zinc-200 inline-flex justify-start items-center gap-3 overflow-hidden"
             >
               <div
                 data-layer="Detail address here..."
@@ -531,7 +531,7 @@ export default function InvoiceForm() {
       </div>
       <div
         data-layer="Frame 2147223653"
-        className="Frame2147223653 self-stretch p-6 bg-white rounded-3xl inline-flex flex-col justify-start items-start gap-4"
+        className="Frame2147223653 self-stretch p-6 bg-white rounded-3xl flex-col justify-start items-start gap-4"
       >
         <div
           data-layer="Bill To Client"
@@ -545,7 +545,7 @@ export default function InvoiceForm() {
         >
           <div
             data-layer="Frame 2147206178"
-            className="Frame2147206178 flex-1 inline-flex flex-col justify-start items-start gap-3"
+            className="Frame2147206178 flex-1 flex-col justify-start items-start gap-3"
           >
             <div
               data-layer="Client Name"
@@ -555,7 +555,7 @@ export default function InvoiceForm() {
             </div>
             <div
               data-layer="Input"
-              className="Input self-stretch h-14 px-4 py-3 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 inline-flex justify-start items-center gap-3 overflow-hidden"
+              className="Input self-stretch h-14 px-4 py-3 rounded-2xl outline-1 -outline-offset-[-0.50px] outline-1-zinc-200 inline-flex justify-start items-center gap-3 overflow-hidden"
             >
               <div
                 data-layer="Client company name"
@@ -572,7 +572,7 @@ export default function InvoiceForm() {
         >
           <div
             data-layer="Frame 2147206178"
-            className="Frame2147206178 flex-1 inline-flex flex-col justify-start items-start gap-3"
+            className="Frame2147206178 flex-1 flex-col justify-start items-start gap-3"
           >
             <div
               data-layer="Email"
@@ -582,7 +582,7 @@ export default function InvoiceForm() {
             </div>
             <div
               data-layer="Input"
-              className="Input self-stretch h-14 px-4 py-3 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 inline-flex justify-start items-center gap-3 overflow-hidden"
+              className="Input self-stretch h-14 px-4 py-3 rounded-2xl outline-1 -outline-offset-[-0.50px] outline-1-zinc-200 inline-flex justify-start items-center gap-3 overflow-hidden"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -614,7 +614,7 @@ export default function InvoiceForm() {
           </div>
           <div
             data-layer="Frame 2147206179"
-            className="Frame2147206179 flex-1 inline-flex flex-col justify-start items-start gap-3"
+            className="Frame2147206179 flex-1 flex-col justify-start items-start gap-3"
           >
             <div
               data-layer="Phone"
@@ -624,7 +624,7 @@ export default function InvoiceForm() {
             </div>
             <div
               data-layer="Input"
-              className="Input self-stretch h-14 px-4 py-3 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 inline-flex justify-start items-center gap-3 overflow-hidden"
+              className="Input self-stretch h-14 px-4 py-3 rounded-2xl outline-1 -outline-offset-[-0.50px] outline-1-zinc-200 inline-flex justify-start items-center gap-3 overflow-hidden"
             >
               <div
                 data-layer="+91"
@@ -647,7 +647,7 @@ export default function InvoiceForm() {
         >
           <div
             data-layer="Frame 2147206178"
-            className="Frame2147206178 flex-1 inline-flex flex-col justify-start items-start gap-3"
+            className="Frame2147206178 flex-1 flex-col justify-start items-start gap-3"
           >
             <div
               data-layer="Address"
@@ -657,7 +657,7 @@ export default function InvoiceForm() {
             </div>
             <div
               data-layer="Input"
-              className="Input self-stretch px-4 py-3 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 inline-flex justify-start items-center gap-3 overflow-hidden"
+              className="Input self-stretch px-4 py-3 rounded-2xl outline-1 -outline-offset-[-0.50px] outline-1-zinc-200 inline-flex justify-start items-center gap-3 overflow-hidden"
             >
               <div
                 data-layer="Detail address here..."
@@ -672,7 +672,7 @@ export default function InvoiceForm() {
       </div>
       <div
         data-layer="Frame 2147223654"
-        className="Frame2147223654 self-stretch p-6 bg-white rounded-3xl inline-flex flex-col justify-start items-start gap-6"
+        className="Frame2147223654 self-stretch p-6 bg-white rounded-3xl flex-col justify-start items-start gap-6"
       >
         <div
           data-layer="Items"
@@ -696,7 +696,7 @@ export default function InvoiceForm() {
           >
             <div
               data-layer="Frame 2147206178"
-              className="Frame2147206178 flex-1 inline-flex flex-col justify-start items-start gap-3"
+              className="Frame2147206178 flex-1 flex-col justify-start items-start gap-3"
             >
               <div
                 data-layer="Description"
@@ -706,7 +706,7 @@ export default function InvoiceForm() {
               </div>
               <div
                 data-layer="Input"
-                className="Input self-stretch px-3 md:px-4 py-2 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 flex justify-start items-center gap-3 overflow-hidden"
+                className="Input self-stretch px-3 md:px-4 py-2 rounded-2xl outline-1 -outline-offset-[-0.50px] outline-1-zinc-200 flex justify-start items-center gap-3 overflow-hidden"
               >
                 <div
                   data-layer="Description of item/service"
@@ -734,7 +734,7 @@ export default function InvoiceForm() {
               </div>
               <div
                 data-layer="Input"
-                className="Input self-stretch h-12 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 flex justify-start items-center gap-3 overflow-hidden"
+                className="Input self-stretch h-12 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline-1 -outline-offset-[-0.50px] outline-1-zinc-200 flex justify-start items-center gap-3 overflow-hidden"
               >
                 <div
                   data-layer="1"
@@ -756,7 +756,7 @@ export default function InvoiceForm() {
               </div>
               <div
                 data-layer="Input"
-                className="Input self-stretch h-12 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 flex justify-start items-center gap-3 overflow-hidden"
+                className="Input self-stretch h-12 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline-1 -outline-offset-[-0.50px] outline-1-zinc-200 flex justify-start items-center gap-3 overflow-hidden"
               >
                 <div
                   data-layer="0"
@@ -778,7 +778,7 @@ export default function InvoiceForm() {
               </div>
               <div
                 data-layer="Input"
-                className="Input self-stretch h-12 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 flex justify-start items-center gap-3 overflow-hidden"
+                className="Input self-stretch h-12 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline-1 -outline-offset-[-0.50px] outline-1-zinc-200 flex justify-start items-center gap-3 overflow-hidden"
               >
                 <div
                   data-layer="0.00"
@@ -792,7 +792,7 @@ export default function InvoiceForm() {
         </div>
         <div
           data-layer="Buttons/main"
-          className="ButtonsMain w-full sm:w-auto h-10 sm:h-12 pl-4 pr-6 py-2 rounded-[100px] outline outline-1 outline-offset-[-1px] outline-[#737eff] flex justify-center items-center gap-3"
+          className="ButtonsMain w-full sm:w-auto h-10 sm:h-12 pl-4 pr-6 py-2 rounded-[100px] outline-1 -outline-offset-[-1px] outline-[#737eff] flex justify-center items-center gap-3"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -847,7 +847,7 @@ export default function InvoiceForm() {
               </div>
               <div
                 data-layer="Input"
-                className="Input self-stretch h-12 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 flex justify-start items-center gap-3 overflow-hidden"
+                className="Input self-stretch h-12 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline-1 -outline-offset-[-0.50px] outline-1-zinc-200 flex justify-start items-center gap-3 overflow-hidden"
               >
                 <div
                   data-layer="0"
@@ -859,11 +859,11 @@ export default function InvoiceForm() {
             </div>
             <div
               data-layer="Frame 2147206183"
-              className="Frame2147206183 inline-flex flex-col justify-start items-start gap-3"
+              className="Frame2147206183 flex-col justify-start items-start gap-3"
             >
               <div
                 data-layer="Input"
-                className="Input h-12 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 flex justify-start items-center gap-3 overflow-hidden"
+                className="Input h-12 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline-1 -outline-offset-[-0.50px] outline-1-zinc-200 flex justify-start items-center gap-3 overflow-hidden"
               >
                 <div
                   data-layer="%"
@@ -900,7 +900,7 @@ export default function InvoiceForm() {
               </div>
               <div
                 data-layer="Input"
-                className="Input self-stretch h-12 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 flex justify-start items-center gap-3 overflow-hidden"
+                className="Input self-stretch h-12 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline-1 -outline-offset-[-0.50px] outline-1-zinc-200 flex justify-start items-center gap-3 overflow-hidden"
               >
                 <div
                   data-layer="0"
@@ -916,7 +916,7 @@ export default function InvoiceForm() {
             >
               <div
                 data-layer="Input"
-                className="Input h-12 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 flex justify-start items-center gap-3 overflow-hidden"
+                className="Input h-12 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline-1 -outline-offset-[-0.50px] outline-1-zinc-200 flex justify-start items-center gap-3 overflow-hidden"
               >
                 <div
                   data-layer="%"
@@ -948,7 +948,7 @@ export default function InvoiceForm() {
           >
             <div
               data-layer="Frame 2147206178"
-              className="Frame2147206178 flex-1 inline-flex flex-col justify-start items-start gap-3"
+              className="Frame2147206178 flex-1 flex-col justify-start items-start gap-3"
             >
               <div
                 data-layer="Shipping"
@@ -958,7 +958,7 @@ export default function InvoiceForm() {
               </div>
               <div
                 data-layer="Input"
-                className="Input self-stretch h-14 px-4 py-3 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 inline-flex justify-start items-center gap-3 overflow-hidden"
+                className="Input self-stretch h-14 px-4 py-3 rounded-2xl outline-1 -outline-offset-[-0.50px] outline-1-zinc-200 inline-flex justify-start items-center gap-3 overflow-hidden"
               >
                 <div
                   data-layer="0"
@@ -991,7 +991,7 @@ export default function InvoiceForm() {
           >
             <div
               data-layer="Frame 2147206178"
-              className="Frame2147206178 flex-1 inline-flex flex-col justify-start items-start gap-3"
+              className="Frame2147206178 flex-1 flex-col justify-start items-start gap-3"
             >
               <div
                 data-layer="Notes"
@@ -1001,7 +1001,7 @@ export default function InvoiceForm() {
               </div>
               <div
                 data-layer="Input"
-                className="Input self-stretch h-24 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 flex justify-start items-start gap-3 overflow-hidden"
+                className="Input self-stretch h-24 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline-1 -outline-offset-[-0.50px] outline-1-zinc-200 flex justify-start items-start gap-3 overflow-hidden"
               >
                 <div
                   data-layer="Any additional notes or information"
@@ -1018,7 +1018,7 @@ export default function InvoiceForm() {
           >
             <div
               data-layer="Frame 2147206178"
-              className="Frame2147206178 flex-1 inline-flex flex-col justify-start items-start gap-3"
+              className="Frame2147206178 flex-1 flex-col justify-start items-start gap-3"
             >
               <div
                 data-layer="Terms & Conditions"
@@ -1028,7 +1028,7 @@ export default function InvoiceForm() {
               </div>
               <div
                 data-layer="Input"
-                className="Input self-stretch h-24 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline outline-1 outline-offset-[-0.50px] outline-zinc-200 flex justify-start items-start gap-3 overflow-hidden"
+                className="Input self-stretch h-24 md:h-14 px-3 md:px-4 py-2 rounded-2xl outline-1 -outline-offset-[-0.50px] outline-1-zinc-200 flex justify-start items-start gap-3 overflow-hidden"
               >
                 <div
                   data-layer="Payment terms, late fees, etc."
@@ -1041,7 +1041,7 @@ export default function InvoiceForm() {
           </div>
           <div
             data-layer="Buttons/main"
-            className="ButtonsMain h-12 pl-6 pr-10 py-3 rounded-[100px] outline outline-1 outline-offset-[-1px] outline-[#737eff] inline-flex justify-center items-center gap-3"
+            className="ButtonsMain h-12 pl-6 pr-10 py-3 rounded-[100px] outline-1 -outline-offset-[-1px] outline-[#737eff] inline-flex justify-center items-center gap-3"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

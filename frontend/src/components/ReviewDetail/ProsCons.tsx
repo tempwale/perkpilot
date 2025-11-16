@@ -19,7 +19,7 @@ const ProsCard = ({ pros }: { pros: ProItem[] }) => {
   return (
     <div
       data-layer="Frame 2147206213"
-      className="Frame2147206213 w-full max-w-[608px] p-4 md:p-6 bg-white/10 rounded-3xl outline outline-1 outline-offset-[-1px] outline-white/10 inline-flex flex-col justify-start items-start gap-6 md:gap-10"
+      className="Frame2147206213 w-full max-w-[608px] p-4 md:p-6 bg-white/10 rounded-3xl outline-1 -outline-offset-[-1px] outline-white/10 flex-col justify-start items-start gap-6 md:gap-10"
     >
       <div
         data-layer="Pros"
@@ -68,7 +68,7 @@ const ConsCard = ({ cons }: { cons: ConItem[] }) => {
   return (
     <div
       data-layer="Frame 2147206214"
-      className="Frame2147206214 w-full max-w-[608px] p-4 md:p-6 bg-white/10 rounded-3xl outline outline-1 outline-offset-[-1px] outline-white/10 inline-flex flex-col justify-start items-start gap-6 md:gap-10"
+      className="Frame2147206214 w-full max-w-[608px] p-4 md:p-6 bg-white/10 rounded-3xl outline-1 -outline-offset-[-1px] outline-white/10 flex-col justify-start items-start gap-6 md:gap-10"
     >
       <div
         data-layer="Cons"

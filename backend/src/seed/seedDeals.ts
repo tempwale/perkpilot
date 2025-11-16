@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import Deal from "../models/deal.model"; // adjust path if needed
+import Deal from '../models/deal.model.js'; // adjust path if needed
 
 // Sample deals with logo URIs instead of React components
 const sampleDeals = [

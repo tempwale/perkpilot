@@ -6,7 +6,7 @@ export default function Discover() {
     >
       <div
         data-layer="Frame 2147224670"
-        className="Frame2147224670 w-full max-w-[1020px] mx-auto mb-8 md:mb-12 inline-flex flex-col justify-start items-center gap-3 md:gap-[17px]"
+        className="Frame2147224670 w-full max-w-[1020px] mx-auto mb-8 md:mb-12 flex-col justify-start items-center gap-3 md:gap-[17px]"
       >
         <div
           data-layer="Why Choose Deep Image Extractor"
@@ -27,7 +27,7 @@ export default function Discover() {
         {/* Card 1 */}
         <div
           data-layer="Card"
-          className="Card w-full p-5 md:p-6 bg-white rounded-2xl md:rounded-3xl outline outline-1 outline-offset-[-1px] outline-zinc-100 inline-flex flex-col justify-start items-start gap-3 md:gap-4"
+          className="Card w-full p-5 md:p-6 bg-white rounded-2xl md:rounded-3xl outline-1 -outline-offset-[-1px] outline-1-zinc-100 flex-col justify-start items-start gap-3 md:gap-4"
         >
           <div
             data-layer="iconoir:pc-check"
@@ -92,7 +92,7 @@ export default function Discover() {
         {/* Card 2 */}
         <div
           data-layer="Card"
-          className="Card w-full p-5 md:p-6 bg-white rounded-2xl md:rounded-3xl outline outline-1 outline-offset-[-1px] outline-zinc-100 inline-flex flex-col justify-start items-start gap-3 md:gap-4"
+          className="Card w-full p-5 md:p-6 bg-white rounded-2xl md:rounded-3xl outline-1 -outline-offset-[-1px] outline-1-zinc-100 flex-col justify-start items-start gap-3 md:gap-4"
         >
           <div
             data-layer="iconoir:pc-check"
@@ -164,7 +164,7 @@ export default function Discover() {
         {/* Card 3 */}
         <div
           data-layer="Card"
-          className="Card w-full p-5 md:p-6 bg-white rounded-2xl md:rounded-3xl outline outline-1 outline-offset-[-1px] outline-zinc-100 inline-flex flex-col justify-start items-start gap-3 md:gap-4"
+          className="Card w-full p-5 md:p-6 bg-white rounded-2xl md:rounded-3xl outline-1 -outline-offset-[-1px] outline-1-zinc-100 flex-col justify-start items-start gap-3 md:gap-4"
         >
           <div
             data-layer="iconoir:pc-check"
@@ -228,7 +228,7 @@ export default function Discover() {
         {/* Card 4 */}
         <div
           data-layer="Card"
-          className="Card w-full p-5 md:p-6 bg-white rounded-2xl md:rounded-3xl outline outline-1 outline-offset-[-1px] outline-zinc-100 inline-flex flex-col justify-start items-start gap-3 md:gap-4"
+          className="Card w-full p-5 md:p-6 bg-white rounded-2xl md:rounded-3xl outline-1 -outline-offset-[-1px] outline-1-zinc-100 flex-col justify-start items-start gap-3 md:gap-4"
         >
           <div
             data-layer="iconoir:pc-check"
@@ -286,7 +286,7 @@ export default function Discover() {
         {/* Card 5 */}
         <div
           data-layer="Card"
-          className="Card w-full p-5 md:p-6 bg-white rounded-2xl md:rounded-3xl outline outline-1 outline-offset-[-1px] outline-zinc-100 inline-flex flex-col justify-start items-start gap-3 md:gap-4"
+          className="Card w-full p-5 md:p-6 bg-white rounded-2xl md:rounded-3xl outline-1 -outline-offset-[-1px] outline-1-zinc-100 flex-col justify-start items-start gap-3 md:gap-4"
         >
           <div
             data-layer="iconoir:pc-check"
@@ -333,7 +333,7 @@ export default function Discover() {
         {/* Card 6 */}
         <div
           data-layer="Card"
-          className="Card w-full p-5 md:p-6 bg-white rounded-2xl md:rounded-3xl outline outline-1 outline-offset-[-1px] outline-zinc-100 inline-flex flex-col justify-start items-start gap-3 md:gap-4"
+          className="Card w-full p-5 md:p-6 bg-white rounded-2xl md:rounded-3xl outline-1 -outline-offset-[-1px] outline-1-zinc-100 flex-col justify-start items-start gap-3 md:gap-4"
         >
           <div
             data-layer="iconoir:pc-check"

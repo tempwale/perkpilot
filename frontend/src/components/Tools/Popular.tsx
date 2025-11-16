@@ -16,7 +16,7 @@ export default function Popular() {
         <div className="w-full">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
             {/* Card 1 */}
-            <div className="p-4 sm:p-6 bg-white/5 rounded-3xl outline outline-1 outline-offset-[-1px] outline-white/10 flex flex-col justify-start items-start gap-4">
+            <div className="p-4 sm:p-6 bg-white/5 rounded-3xl outline-1 -outline-offset-[-1px] outline-white/10 flex flex-col justify-start items-start gap-4">
               <div className="w-12 h-12 p-0.5 bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-[100px] inline-flex justify-center items-center gap-2.5 overflow-hidden">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -75,7 +75,7 @@ export default function Popular() {
             </div>
 
             {/* Card 2 */}
-            <div className="p-4 sm:p-6 bg-white/5 rounded-3xl outline outline-1 outline-offset-[-1px] outline-white/10 flex flex-col justify-start items-start gap-4">
+            <div className="p-4 sm:p-6 bg-white/5 rounded-3xl outline-1 -outline-offset-[-1px] outline-white/10 flex flex-col justify-start items-start gap-4">
               <div className="w-12 h-12 p-0.5 bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-[100px] inline-flex justify-center items-center gap-2.5 overflow-hidden">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -127,7 +127,7 @@ export default function Popular() {
             </div>
 
             {/* Card 3 */}
-            <div className="p-4 sm:p-6 bg-white/5 rounded-3xl outline outline-1 outline-offset-[-1px] outline-white/10 flex flex-col justify-start items-start gap-4">
+            <div className="p-4 sm:p-6 bg-white/5 rounded-3xl outline-1 -outline-offset-[-1px] outline-white/10 flex flex-col justify-start items-start gap-4">
               <div className="w-12 h-12 p-0.5 bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-[100px] inline-flex justify-center items-center gap-2.5 overflow-hidden">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

@@ -7,15 +7,15 @@ export default function HowItWorks() {
       {/* Decorative Lines - Hidden on mobile */}
       <div
         data-layer="Line 6"
-        className="Line6 w-[19.48px] h-0 left-[940.30px] top-[2.84px] absolute origin-top-left rotate-[100.10deg] outline outline-2 outline-offset-[-1px] outline-[#737eff] hidden lg:block"
+        className="Line6 w-[19.48px] h-0 left-[940.30px] top-[2.84px] absolute origin-top-left rotate-[100.10deg] outline-1 outline-2 -outline-offset-[-1px] outline-[#737eff] hidden lg:block"
       ></div>
       <div
         data-layer="Line 7"
-        className="Line7 w-[21.42px] h-0 left-[956.79px] top-[14.91px] absolute origin-top-left rotate-[130.49deg] outline outline-2 outline-offset-[-1px] outline-[#737eff] hidden lg:block"
+        className="Line7 w-[21.42px] h-0 left-[956.79px] top-[14.91px] absolute origin-top-left rotate-[130.49deg] outline-1 outline-2 -outline-offset-[-1px] outline-[#737eff] hidden lg:block"
       ></div>
       <div
         data-layer="Line 8"
-        className="Line8 w-[20.92px] h-0 left-[965.03px] top-[33.68px] absolute origin-top-left rotate-[157.65deg] outline outline-2 outline-offset-[-1px] outline-[#737eff] hidden lg:block"
+        className="Line8 w-[20.92px] h-0 left-[965.03px] top-[33.68px] absolute origin-top-left rotate-[157.65deg] outline-1 outline-2 -outline-offset-[-1px] outline-[#737eff] hidden lg:block"
       ></div>
 
       {/* Header Section */}
@@ -42,7 +42,7 @@ export default function HowItWorks() {
         {/* Card 1 */}
         <div
           data-layer="Card"
-          className="Card w-full p-5 md:p-6 bg-white rounded-2xl md:rounded-3xl outline outline-1 outline-offset-[-1px] outline-zinc-100 inline-flex flex-col justify-start items-start gap-3 md:gap-4"
+          className="Card w-full p-5 md:p-6 bg-white rounded-2xl md:rounded-3xl outline-1 -outline-offset-[-1px] outline-1-zinc-100 flex-col justify-start items-start gap-3 md:gap-4"
         >
           <div
             data-layer="iconoir:pc-check"
@@ -93,7 +93,7 @@ export default function HowItWorks() {
         {/* Card 2 */}
         <div
           data-layer="Card"
-          className="Card w-full p-5 md:p-6 bg-white rounded-2xl md:rounded-3xl outline outline-1 outline-offset-[-1px] outline-zinc-100 inline-flex flex-col justify-start items-start gap-3 md:gap-4"
+          className="Card w-full p-5 md:p-6 bg-white rounded-2xl md:rounded-3xl outline-1 -outline-offset-[-1px] outline-1-zinc-100 flex-col justify-start items-start gap-3 md:gap-4"
         >
           <div
             data-layer="iconoir:pc-check"
@@ -158,7 +158,7 @@ export default function HowItWorks() {
         {/* Card 3 */}
         <div
           data-layer="Card"
-          className="Card w-full p-5 md:p-6 bg-white rounded-2xl md:rounded-3xl outline outline-1 outline-offset-[-1px] outline-zinc-100 inline-flex flex-col justify-start items-start gap-3 md:gap-4"
+          className="Card w-full p-5 md:p-6 bg-white rounded-2xl md:rounded-3xl outline-1 -outline-offset-[-1px] outline-1-zinc-100 flex-col justify-start items-start gap-3 md:gap-4"
         >
           <div
             data-layer="iconoir:pc-check"

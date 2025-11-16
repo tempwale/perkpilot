@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import mongoose from "mongoose";
-const Review = require("../models/reviews.model");
+import Review from '../models/reviews.model.js';
+import { ReviewQueryParams, MongoRegexFilter } from '../types/index.js';
 
 // GET all reviews with pagination and filtering
 export const getAllReviews = async (req: Request, res: Response) => {
@@ -10,13 +11,13 @@ export const getAllReviews = async (req: Request, res: Response) => {
       limit = 20,
       productName,
       sortBy = "-createdAt",
-    } = req.query as any;
+    } = req.query as ReviewQueryParams;
 
     const pageNum = Math.max(Number(page) || 1, 1);
     const limitNum = Math.max(Number(limit) || 20, 1);
     const skip = (pageNum - 1) * limitNum;
 
-    const filter: Record<string, any> = {};
+    const filter: Record<string, MongoRegexFilter> = {};
     if (productName) {
       filter.productName = { $regex: productName, $options: "i" };
     }
@@ -91,11 +92,11 @@ export const createReview = async (req: Request, res: Response) => {
 
     const review = await Review.create(payload);
     res.status(201).json(review);
-  } catch (error: any) {
-    console.error("Error creating review:", error);
+  } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : String(error);
     res
       .status(400)
-      .json({ message: "Error creating review", error: error.message });
+      .json({ message: "Error creating review", error: errorMessage });
   }
 };
 
@@ -142,11 +143,12 @@ export const updateReview = async (req: Request, res: Response) => {
 
     console.log("Review updated successfully:", review._id);
     res.json(review);
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Error updating review:", error);
+    const errorMessage = error instanceof Error ? error.message : String(error);
     res
       .status(400)
-      .json({ message: "Error updating review", error: error.message });
+      .json({ message: "Error updating review", error: errorMessage });
   }
 };
 

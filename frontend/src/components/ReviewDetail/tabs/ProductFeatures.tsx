@@ -43,17 +43,17 @@ export default function ProductFeatures({
   return (
     <div
       data-layer="Frame 2147206296"
-      className="Frame2147206296 w-full inline-flex flex-col justify-start items-end gap-6 "
+      className="Frame2147206296 w-full flex-col justify-start items-end gap-6 "
     >
       {displayFeatures.map((feature, index) => (
         <div
           key={feature._id || index}
           data-layer="Frame 2147206310"
-          className="Frame2147206310 self-stretch px-6 py-4 bg-white/10 rounded-3xl outline outline-1 outline-offset-[-1px] outline-white/10 inline-flex justify-between items-center"
+          className="Frame2147206310 self-stretch px-6 py-4 bg-white/10 rounded-3xl outline-1 -outline-offset-[-1px] outline-white/10 inline-flex justify-between items-center"
         >
           <div
             data-layer="Frame 2147206309"
-            className="Frame2147206309 w-full inline-flex flex-col justify-start items-start gap-3"
+            className="Frame2147206309 w-full flex-col justify-start items-start gap-3"
           >
             <div
               data-layer="Real-time collaboration"
@@ -80,15 +80,15 @@ export default function ProductFeatures({
             >
               <div
                 data-layer="Vector"
-                className="Vector w-2.5 h-1.5 left-[2px] top-[16.67px] absolute rounded-[0.60px] outline outline-[1.50px] outline-offset-[-0.75px] outline-black"
+                className="Vector w-2.5 h-1.5 left-[2px] top-[16.67px] absolute rounded-[0.60px] outline-[1.50px] -outline-offset-[-0.75px] outline-1-black"
               />
               <div
                 data-layer="Vector"
-                className="Vector w-[5.33px] h-[5.33px] left-[16px] top-[9.33px] absolute outline outline-[1.50px] outline-offset-[-0.75px] outline-black"
+                className="Vector w-[5.33px] h-[5.33px] left-[16px] top-[9.33px] absolute outline-[1.50px] -outline-offset-[-0.75px] outline-1-black"
               />
               <div
                 data-layer="Vector"
-                className="Vector w-5 h-[13.33px] left-[9.33px] top-[9.33px] absolute rounded-[0.60px] outline outline-[1.50px] outline-offset-[-0.75px] outline-black"
+                className="Vector w-5 h-[13.33px] left-[9.33px] top-[9.33px] absolute rounded-[0.60px] outline-[1.50px] -outline-offset-[-0.75px] outline-1-black"
               />
             </div>
           </div>

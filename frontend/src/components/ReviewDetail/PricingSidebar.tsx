@@ -26,7 +26,7 @@ export default function PricingSidebar({
   return (
     <div
       data-layer="Frame 2147206174"
-      className="Frame2147206174 w-[370px] p-6 bg-white/10 rounded-3xl outline outline-1 outline-offset-[-1px] outline-white/20 backdrop-blur-md inline-flex flex-col justify-start items-start gap-8"
+      className="Frame2147206174 w-[370px] p-6 bg-white/10 rounded-3xl -outline-offset-[-1px] outline-white/20 backdrop-blur-md flex-col justify-start items-start gap-8"
     >
       <div
         data-layer="Pricing"
@@ -65,7 +65,7 @@ export default function PricingSidebar({
       >
         <div
           data-layer="Buttons/main"
-          className="ButtonsMain self-stretch h-12 px-8 py-3 bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-[100px] outline outline-1 outline-offset-[-1px] outline-neutral-50/10 backdrop-blur-sm inline-flex justify-center items-center gap-3"
+          className="ButtonsMain self-stretch h-12 px-8 py-3 bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-[100px] -outline-offset-[-1px] outline-1-neutral-50/10 backdrop-blur-sm inline-flex justify-center items-center gap-3"
         >
           <div
             data-layer="Try Figma For Free"
@@ -101,7 +101,7 @@ export default function PricingSidebar({
         >
           <div
             data-layer="Buttons/main"
-            className="ButtonsMain flex-1 h-12 px-8 py-3 bg-white/10 rounded-[100px] outline outline-1 outline-offset-[-1px] outline-zinc-100/10 backdrop-blur-sm flex justify-center items-center gap-3"
+            className="ButtonsMain flex-1 h-12 px-8 py-3 bg-white/10 rounded-[100px] -outline-offset-[-1px] outline-1-zinc-100/10 backdrop-blur-sm flex justify-center items-center gap-3"
           >
             <div
               data-layer="Upvote"
@@ -140,7 +140,7 @@ export default function PricingSidebar({
           </div>
           <div
             data-layer="Buttons/main"
-            className="ButtonsMain flex-1 h-12 px-8 py-3 bg-white/10 rounded-[100px] outline outline-1 outline-offset-[-1px] outline-zinc-100/10 backdrop-blur-sm flex justify-center items-center gap-3"
+            className="ButtonsMain flex-1 h-12 px-8 py-3 bg-white/10 rounded-[100px] -outline-offset-[-1px] outline-1-zinc-100/10 backdrop-blur-sm flex justify-center items-center gap-3"
           >
             <div
               data-layer="Share"

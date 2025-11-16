@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import mongoose from "mongoose";
-import Author from "../models/author.model";
+import Author from '../models/author.model.js';
+import { AuthorQueryParams, MongoRegexFilter } from '../types/index.js';
 
 // GET all authors with pagination and filtering
 export const getAllAuthors = async (req: Request, res: Response) => {
@@ -11,13 +12,13 @@ export const getAllAuthors = async (req: Request, res: Response) => {
       authorName,
       authorIndustry,
       sortBy = "-createdAt",
-    } = req.query as any;
+    } = req.query as AuthorQueryParams;
 
     const pageNum = Math.max(Number(page) || 1, 1);
     const limitNum = Math.max(Number(limit) || 20, 1);
     const skip = (pageNum - 1) * limitNum;
 
-    const filter: Record<string, any> = {};
+    const filter: Record<string, MongoRegexFilter> = {};
     if (authorName) {
       filter.authorName = { $regex: authorName, $options: "i" };
     }
@@ -84,10 +85,11 @@ export const createAuthor = async (req: Request, res: Response) => {
 
     const author = await Author.create(payload);
     res.status(201).json(author);
-  } catch (error: any) {
+  } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : String(error);
     res
       .status(400)
-      .json({ message: "Error creating author", error: error.message });
+      .json({ message: "Error creating author", error: errorMessage });
   }
 };
 

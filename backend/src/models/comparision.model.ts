@@ -1,4 +1,5 @@
 import mongoose, { Schema, Model, HydratedDocument, Types } from "mongoose";
+import { ComparisonFilter } from '../types/index.js';
 
 // ============ Type Definitions ============
 
@@ -74,9 +75,9 @@ interface IToolComparisonBlogMethods {
 
 // Static methods interface
 interface IToolComparisonBlogModel
-  extends Model<IToolComparisonBlog, {}, IToolComparisonBlogMethods> {
+  extends Model<IToolComparisonBlog, Record<string, never>, IToolComparisonBlogMethods> {
   findPublished(
-    filter?: Record<string, any>
+    filter?: ComparisonFilter
   ): Promise<
     HydratedDocument<IToolComparisonBlog, IToolComparisonBlogMethods>[]
   >;
@@ -456,7 +457,7 @@ const ToolComparisonBlogSchema = new Schema<
     },
     // ============ Static Methods ============
     statics: {
-      findPublished(filter: Record<string, any> = {}) {
+      findPublished(filter: ComparisonFilter = {}) {
         return this.find({ ...filter, isPublished: true })
           .sort({ createdAt: -1 })
           .exec();

@@ -6,7 +6,7 @@ interface OverallRatingProps {
 const OverallRating = ({ rating, totalReviews }: OverallRatingProps) => (
   <div
     data-layer="Frame 2147206184"
-    className="Frame2147206184 w-full md:w-[187px] inline-flex flex-col justify-center items-center gap-4"
+    className="Frame2147206184 w-full md:w-[187px] flex-col justify-center items-center gap-4"
   >
     <div
       data-layer="4.9"
@@ -77,7 +77,7 @@ const CategoryRatingBar = ({
 const Tooltip = () => (
   <div
     data-layer="Tooltip"
-    className="Tooltip px-4 py-3 relative bg-white/10 rounded-2xl backdrop-blur-md inline-flex flex-col justify-start items-center gap-2"
+    className="Tooltip px-4 py-3 relative bg-white/10 rounded-2xl backdrop-blur-md flex-col justify-start items-center gap-2"
   >
     <div
       data-layer="Beak"
@@ -144,7 +144,7 @@ export default function RatingsDetails({
           {/* Rating Breakdown Section */}
           <div
             data-layer="Frame 2147206212"
-            className="Frame2147206212 w-full lg:flex-1 max-w-full lg:max-w-[608px] inline-flex flex-col justify-start items-start gap-6 lg:gap-10"
+            className="Frame2147206212 w-full lg:flex-1 max-w-full lg:max-w-[608px] flex-col justify-start items-start gap-6 lg:gap-10"
           >
             <div
               data-layer="Rating Breakdown"

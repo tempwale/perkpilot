@@ -103,7 +103,7 @@ interface UniversalCTAButtonProps {
   // Icon type or custom icon element
   icon?: CTAIconType | React.ReactNode;
   // Button variants
-  variant?: "primary" | "secondary" | "outline" | "ghost" | "custom";
+  variant?: "primary" | "secondary" | "outline-1" | "ghost" | "custom";
   // Size variants
   size?: "sm" | "md" | "lg";
   // Custom styling
@@ -166,7 +166,7 @@ export const UniversalCTAButton: React.FC<UniversalCTAButtonProps> = ({
   // Variant configurations - Updated with exact Figma styling
   const variantConfig = {
     primary: {
-      background: "bg-gradient-to-b from-[#501BD6] to-[#7F57E2]",
+      background: "bg-linear-to-b from-[#501BD6] to-[#7F57E2]",
       border: "border-[rgba(250,250,250,0.08)]",
       textColor: "text-white group-hover:text-black",
       iconBg: "bg-white group-hover:bg-black",
@@ -175,7 +175,7 @@ export const UniversalCTAButton: React.FC<UniversalCTAButtonProps> = ({
       shadow: "shadow-[0px_1px_4px_0px_rgba(12,12,13,0.05)]",
     },
     secondary: {
-      background: "bg-gradient-to-b from-[#6B7280] to-[#4B5563]",
+      background: "bg-linear-to-b from-[#6B7280] to-[#4B5563]",
       border: "border-[rgba(250,250,250,0.08)]",
       textColor: "text-white group-hover:text-black",
       iconBg: "bg-white group-hover:bg-black",
@@ -183,7 +183,7 @@ export const UniversalCTAButton: React.FC<UniversalCTAButtonProps> = ({
       hover: "hover:bg-white hover:from-white hover:to-white",
       shadow: "shadow-[0px_1px_4px_0px_rgba(12,12,13,0.05)]",
     },
-    outline: {
+    "outline-1": {
       background: "bg-transparent",
       border: "border-[rgba(250,250,250,0.2)]",
       textColor: "text-white",
@@ -203,8 +203,8 @@ export const UniversalCTAButton: React.FC<UniversalCTAButtonProps> = ({
     },
     custom: {
       background: customGradient
-        ? `bg-gradient-to-b from-[${customGradient.from}] to-[${customGradient.to}]`
-        : "bg-gradient-to-b from-[#501BD6] to-[#7F57E2]",
+        ? `bg-linear-to-b from-[${customGradient.from}] to-[${customGradient.to}]`
+        : "bg-linear-to-b from-[#501BD6] to-[#7F57E2]",
       border: "border-[rgba(250,250,250,0.08)]",
       textColor: "text-white group-hover:text-black",
       iconBg: "bg-white group-hover:bg-black",

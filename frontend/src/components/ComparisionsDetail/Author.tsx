@@ -164,7 +164,7 @@ export default function Author({
   return (
     <div
       data-layer="Frame 2147206154"
-      className="Frame2147206154 h-[800px] md:h-[257px] p-4 bg-white/10 rounded-3xl outline outline-1 outline-offset-[-1px] outline-white/10 inline-flex justify-start items-start gap-6 flex flex-col md:flex-row"
+      className="Frame2147206154 h-[800px] md:h-[257px] p-4 bg-white/10 rounded-3xl outline-1 -outline-offset-[-1px] outline-white/10 flex justify-start items-start gap-6 flex-col md:flex-row"
     >
       <img
         data-layer="Rectangle 39982"
@@ -174,7 +174,7 @@ export default function Author({
       />
       <div
         data-layer="Frame 2147206153"
-        className="Frame2147206153 flex-1 inline-flex flex-col justify-start items-start gap-4"
+        className="Frame2147206153 flex-1 flex-col justify-start items-start gap-4"
       >
         <div
           data-layer="About the Author"
@@ -184,7 +184,7 @@ export default function Author({
         </div>
         <div
           data-layer="Frame 2147206152"
-          className="Frame2147206152 self-stretch inline-flex gap-5 md:gap-4 flex-col md:flex-row items-start md:items-center content-center"
+          className="Frame2147206152 self-stretch flex gap-5 md:gap-4-col md:flex-row items-start md:items-center content-center"
         >
           <div
             data-layer="John Doe"

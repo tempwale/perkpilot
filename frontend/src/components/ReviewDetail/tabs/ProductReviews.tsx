@@ -60,7 +60,7 @@ const ReviewCard = ({
   date,
   isVerified = false,
 }: ReviewCardProps) => (
-  <div className="self-stretch min-h-80 p-4 sm:p-6 md:p-10 bg-white/5 rounded-2xl sm:rounded-3xl shadow-[0px_1px_4px_0px_rgba(12,12,13,0.05)] outline outline-1 outline-offset-[-1px] outline-white/10 flex flex-col justify-center items-start gap-4 sm:gap-6">
+  <div className="self-stretch min-h-80 p-4 sm:p-6 md:p-10 bg-white/5 rounded-2xl sm:rounded-3xl shadow-[0px_1px_4px_0px_rgba(12,12,13,0.05)] -outline-offset-[-1px] outline-white/10 flex flex-col justify-center items-start gap-4 sm:gap-6">
     <div className="self-stretch flex flex-col justify-start items-start gap-4 sm:gap-6">
       <div className="w-full flex flex-col sm:flex-row justify-start items-start sm:items-center gap-3 sm:gap-4">
         <div className="flex items-center gap-3 sm:gap-4 flex-1">
@@ -69,7 +69,7 @@ const ReviewCard = ({
             src={profileImage}
             alt={`${name} profile`}
           />
-          <div className="flex-1 flex-row min-w-0 flex flex-col justify-start items-start gap-1">
+          <div className="flex-1 flex-col min-w-0 flex justify-start items-start gap-1">
             <div>
               <div className="w-full truncate text-neutral-50 text-base sm:text-lg font-medium font-['Plus_Jakarta_Sans'] leading-6 sm:leading-[27px]">
                 {name}
@@ -97,7 +97,7 @@ const ReviewCard = ({
           </div>
         </div>
         {isVerified && (
-          <div className="h-7 sm:h-8 px-2 sm:px-3 py-1.5 sm:py-2.5 rounded-full sm:rounded-[100px] outline outline-1 outline-offset-[-1px] outline-[#501bd6] flex justify-center items-center gap-2 flex-shrink-0">
+          <div className="h-7 sm:h-8 px-2 sm:px-3 py-1.5 sm:py-2.5 rounded-full sm:rounded-[100px] -outline-offset-[-1px] outline-[#501bd6] flex justify-center items-center gap-2 flex-shrink-0">
             <div className="text-neutral-50 text-xs font-medium font-['Plus_Jakarta_Sans'] leading-4 sm:leading-[18px] whitespace-nowrap">
               Verified
             </div>

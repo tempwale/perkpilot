@@ -13,7 +13,7 @@ export default function ToggleRow({ label, children }: Props) {
           {label}
         </div>
       </div>
-      <div className="Button w-[37.60px] h-[19.74px] relative bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-[46.99px] outline outline-[0.70px] outline-offset-[-0.70px] outline-[#501bd6] overflow-hidden">
+      <div className="Button w-[37.60px] h-[19.74px] relative bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-[46.99px] outline-[0.70px]-offset-[-0.70px] outline-[#501bd6] overflow-hidden">
         <div className="Button w-[16.45px] h-4 px-[29.14px] py-[3.76px] left-[18.80px] top-[1.88px] absolute bg-white rounded-[46.99px]" />
       </div>
       {children}

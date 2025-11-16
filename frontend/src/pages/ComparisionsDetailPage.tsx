@@ -51,8 +51,8 @@ export default function ComparisionsDetailPage() {
         } else {
           console.log("No authorId found in comparison data");
         }
-      } catch (err: any) {
-        setError(err.message || "Failed to fetch comparison");
+      } catch (err) {
+        setError(err instanceof Error ? err.message : "Failed to fetch comparison");
       } finally {
         setLoading(false);
       }
