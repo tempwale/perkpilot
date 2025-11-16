@@ -1,4 +1,5 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
+import type { IReview } from "../types/review.types.js";
 
 const FeatureSchema = new mongoose.Schema({
   title: { type: String, required: true },
@@ -38,50 +39,78 @@ const FAQSchema = new mongoose.Schema({
   answer: { type: String },
 });
 
-const ReviewSchema = new mongoose.Schema({
-  // Reviewer's details
-  userName: { type: String },
+// Individual user review nested within a product review
+const UserReviewSchema = new mongoose.Schema({
+  userName: { type: String, required: true },
   userTitle: { type: String },
   userAvatar: { type: String },
   date: { type: String },
   verified: { type: Boolean, default: false },
-
-  // Review data
-  reviewText: { type: String },
-  rating: { type: Number, min: 1, max: 5 },
+  rating: { type: Number, required: true, min: 1, max: 5 },
+  reviewText: { type: String, required: true },
   helpful: { type: Number, default: 0 },
   notHelpful: { type: Number, default: 0 },
-
-  // Product-specific review context
-  productName: { type: String, required: true },
-  productType: { type: String },
-  avatarUrl: { type: String },
-  description: { type: String },
-  overview: { type: String },
-
-  features: [FeatureSchema],
-  pricing: [PricingSchema],
-  alternatives: [AlternativeSchema],
-  userCount: { type: String },
-  foundedYear: { type: Number },
-  employeeRange: { type: String },
-  headquarters: { type: String },
-  lastUpdated: { type: String },
-  upvotes: { type: Number, default: 0 },
-  shareCount: { type: Number, default: 0 },
-
-  // Ratings breakdown and review stats
-  aggregateRating: { type: Number },
-  ratingCount: { type: Number },
-  ratingCategories: [RatingCategorySchema],
-
-  // Pros and cons
-  pros: [{ type: String }],
-  cons: [{ type: String }],
-
-  faqs: [FAQSchema],
-  useCases: [UseCaseSchema],
-  integrations: [String],
 });
 
-module.exports = mongoose.model("Review", ReviewSchema);
+const ReviewSchema = new mongoose.Schema(
+  {
+    // Reviewer's details (for backward compatibility - main reviewer)
+    userName: { type: String },
+    userTitle: { type: String },
+    userAvatar: { type: String },
+    date: { type: String },
+    verified: { type: Boolean, default: false },
+
+    // Review data (for backward compatibility - main review)
+    reviewText: { type: String },
+    rating: { type: Number, min: 1, max: 5 },
+    helpful: { type: Number, default: 0 },
+    notHelpful: { type: Number, default: 0 },
+
+    // Product-specific review context
+    productName: { type: String, required: true },
+    productType: { type: String },
+    avatarUrl: { type: String },
+    description: { type: String },
+    overview: { type: String },
+
+    features: [FeatureSchema],
+    pricing: [PricingSchema],
+    alternatives: [AlternativeSchema],
+    userCount: { type: String },
+    foundedYear: { type: Number },
+    employeeRange: { type: String },
+    headquarters: { type: String },
+    lastUpdated: { type: String },
+    upvotes: { type: Number, default: 0 },
+    shareCount: { type: Number, default: 0 },
+
+    // Ratings breakdown and review stats
+    aggregateRating: { type: Number },
+    ratingCount: { type: Number },
+    ratingCategories: [RatingCategorySchema],
+
+    // Pros and cons
+    pros: [{ type: String }],
+    cons: [{ type: String }],
+
+    faqs: [FAQSchema],
+    useCases: [UseCaseSchema],
+    integrations: [String],
+
+    // Product reviews collection - individual user reviews for this product
+    productReviews: [UserReviewSchema],
+
+    // Rating breakdown statistics
+    ratingBreakdown: {
+      fiveStars: { type: Number, default: 0 },
+      fourStars: { type: Number, default: 0 },
+      threeStars: { type: Number, default: 0 },
+      twoStars: { type: Number, default: 0 },
+      oneStars: { type: Number, default: 0 },
+    },
+  },
+  { timestamps: true }
+);
+
+export default mongoose.model<IReview>("Review", ReviewSchema);

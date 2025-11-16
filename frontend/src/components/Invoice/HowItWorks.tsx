@@ -4,7 +4,7 @@ export default function HowItWorks() {
   return (
     <div
       data-layer="Frame 2147206152"
-      className="Frame2147206152 self-stretch inline-flex flex-col justify-start items-center gap-6"
+      className="Frame2147206152 self-stretch flex-col justify-start items-center gap-6"
     >
       <div
         data-layer="Buttons/main"

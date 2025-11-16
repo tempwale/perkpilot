@@ -2,7 +2,7 @@ export default function StepTwo() {
   return (
     <div
       data-layer="Frame 2147206339"
-      className="Frame2147206339 self-stretch relative inline-flex justify-start items-center gap-6 flex flex-col md:flex-row flex-col-reverse"
+      className="Frame2147206339 self-stretch relative flex justify-start items-center gap-6 flex-col md:flex-col-reverse"
     >
       <div
         data-layer="Rectangle 39991"
@@ -10,7 +10,7 @@ export default function StepTwo() {
       >
         <div
           data-layer="Frame 2147206333"
-          className="Frame2147206333 w-[350.69px] p-[18.54px] bg-white/10 rounded-[18.54px] outline outline-[0.77px] outline-offset-[-0.77px] outline-white/10 backdrop-blur-[9.27px] inline-flex flex-col justify-center items-start gap-[18.54px] mx-auto"
+          className="Frame2147206333 w-[350.69px] p-[18.54px] bg-white/10 rounded-[18.54px] outline-[0.77px] -outline-offset-[-0.77px] outline-white/10 backdrop-blur-[9.27px] flex-col justify-center items-start gap-[18.54px] mx-auto"
         >
           <div
             data-layer="Frame 2147206329"
@@ -91,7 +91,7 @@ export default function StepTwo() {
           >
             <div
               data-layer="Frame 2147206331"
-              className="Frame2147206331 flex-1 p-[12.36px] bg-white/10 rounded-xl outline outline-[0.77px] outline-offset-[-0.77px] outline-white/10 inline-flex flex-col justify-start items-start gap-[12.36px]"
+              className="Frame2147206331 flex-1 p-[12.36px] bg-white/10 rounded-xl outline-[0.77px] -outline-offset-[-0.77px] outline-white/10 flex-col justify-start items-start gap-[12.36px]"
             >
               <div
                 data-layer="Frame 2147206330"
@@ -135,7 +135,7 @@ export default function StepTwo() {
             </div>
             <div
               data-layer="Frame 2147206332"
-              className="Frame2147206332 flex-1 p-[12.36px] bg-white/10 rounded-xl outline outline-[0.77px] outline-offset-[-0.77px] outline-white/10 inline-flex flex-col justify-start items-start gap-[12.36px]"
+              className="Frame2147206332 flex-1 p-[12.36px] bg-white/10 rounded-xl outline-[0.77px] -outline-offset-[-0.77px] outline-white/10 flex-col justify-start items-start gap-[12.36px]"
             >
               <div
                 data-layer="Frame 2147206330"
@@ -178,7 +178,7 @@ export default function StepTwo() {
             />
             <div
               data-layer="Frame 2147206335"
-              className="Frame2147206335 w-[209.35px] inline-flex flex-col justify-start items-start gap-[6.18px]"
+              className="Frame2147206335 w-[209.35px] flex-col justify-start items-start gap-[6.18px]"
             >
               <div
                 data-layer="AI Recommendations"
@@ -198,7 +198,7 @@ export default function StepTwo() {
       </div>
       <div
         data-layer="Frame 2147206337"
-        className="Frame2147206337  w-[400px] md:w-[608.50px] inline-flex flex-col justify-start items-start gap-5"
+        className="Frame2147206337  w-[400px] md:w-[608.50px] flex-col justify-start items-start gap-5"
       >
         <div
           data-layer="AI Instantly Builds a Fortress"

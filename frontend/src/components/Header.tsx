@@ -120,7 +120,7 @@ const Header = ({ forceBlackText = false }: { forceBlackText?: boolean }) => {
     } ${gradient} leading-[0] relative shrink-0 ${sizeCls} text-center whitespace-nowrap hover:from-[#fafafa] hover:to-[#949494] transition-all`;
   };
 
-  const makeLinkStyle = (_path?: string) =>
+  const makeLinkStyle = () =>
     forceBlackText ? undefined : { WebkitTextFillColor: "transparent" };
 
   const getStartedTextClass = forceBlackText
@@ -178,7 +178,7 @@ const Header = ({ forceBlackText = false }: { forceBlackText?: boolean }) => {
               onClick={handleNavClick}
               className={makeLinkClass("/")}
               data-node-id="1:1134"
-              style={makeLinkStyle("/")}
+              style={makeLinkStyle()}
             >
               <p className="leading-[32px]">Home</p>
             </Link>
@@ -187,7 +187,7 @@ const Header = ({ forceBlackText = false }: { forceBlackText?: boolean }) => {
               onClick={handleNavClick}
               className={makeLinkClass("/reviews")}
               data-node-id="1:1135"
-              style={makeLinkStyle("/reviews")}
+              style={makeLinkStyle()}
             >
               <p className="leading-[24px]">Reviews</p>
             </Link>
@@ -196,7 +196,7 @@ const Header = ({ forceBlackText = false }: { forceBlackText?: boolean }) => {
               onClick={handleNavClick}
               className={makeLinkClass("/comparisons")}
               data-node-id="1:1136"
-              style={makeLinkStyle("/comparisons")}
+              style={makeLinkStyle()}
             >
               <p className="leading-[24px]">Comparisons</p>
             </Link>
@@ -205,7 +205,7 @@ const Header = ({ forceBlackText = false }: { forceBlackText?: boolean }) => {
               onClick={handleNavClick}
               className={makeLinkClass("/deals")}
               data-node-id="1:1137"
-              style={makeLinkStyle("/deals")}
+              style={makeLinkStyle()}
             >
               <p className="leading-[24px]">Deals</p>
             </Link>
@@ -214,7 +214,7 @@ const Header = ({ forceBlackText = false }: { forceBlackText?: boolean }) => {
               onClick={handleNavClick}
               className={makeLinkClass("/blogs")}
               data-node-id="1:1138"
-              style={makeLinkStyle("/blogs")}
+              style={makeLinkStyle()}
             >
               <p className="leading-[24px]">Blogs</p>
             </Link>
@@ -266,7 +266,7 @@ const Header = ({ forceBlackText = false }: { forceBlackText?: boolean }) => {
                   "/",
                   false
                 )} border-b border-[rgba(255,255,255,0.08)]`}
-                style={makeLinkStyle("/")}
+                style={makeLinkStyle()}
               >
                 Home
               </Link>
@@ -279,7 +279,7 @@ const Header = ({ forceBlackText = false }: { forceBlackText?: boolean }) => {
                   "/reviews",
                   false
                 )} border-b border-[rgba(255,255,255,0.08)]`}
-                style={makeLinkStyle("/reviews")}
+                style={makeLinkStyle()}
               >
                 Reviews
               </Link>
@@ -292,7 +292,7 @@ const Header = ({ forceBlackText = false }: { forceBlackText?: boolean }) => {
                   "/comparisons",
                   false
                 )} border-b border-[rgba(255,255,255,0.08)]`}
-                style={makeLinkStyle("/comparisons")}
+                style={makeLinkStyle()}
               >
                 Comparisons
               </Link>
@@ -305,7 +305,7 @@ const Header = ({ forceBlackText = false }: { forceBlackText?: boolean }) => {
                   "/deals",
                   false
                 )} border-b border-[rgba(255,255,255,0.08)]`}
-                style={makeLinkStyle("/deals")}
+                style={makeLinkStyle()}
               >
                 Deals
               </Link>
@@ -318,7 +318,7 @@ const Header = ({ forceBlackText = false }: { forceBlackText?: boolean }) => {
                   "/blogs",
                   false
                 )} border-b border-[rgba(255,255,255,0.08)]`}
-                style={makeLinkStyle("/blogs")}
+                style={makeLinkStyle()}
               >
                 Blogs
               </Link>

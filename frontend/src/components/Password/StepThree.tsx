@@ -2,11 +2,11 @@ export default function StepThree() {
   return (
     <div
       data-layer="Frame 2147206340"
-      className="Frame2147206340 self-stretch relative inline-flex justify-start items-center gap-6 flex flex-col lg:flex-row"
+      className="Frame2147206340 self-stretch relative flex justify-start items-center gap-6 flex-col lg:flex-row"
     >
       <div
         data-layer="Frame 2147206337"
-        className="Frame2147206337  w-[400px] md:w-[608.50px] inline-flex flex-col justify-start items-start gap-5"
+        className="Frame2147206337  w-[400px] md:w-[608.50px] flex-col justify-start items-start gap-5"
       >
         <div
           data-layer="Protection is Verified in Real-Time"
@@ -46,7 +46,7 @@ export default function StepThree() {
       >
         <div
           data-layer="Frame 2147206322"
-          className="Frame2147206322 w-[350.94px] p-[15.79px] bg-white/10 rounded-2xl outline outline-[0.66px] outline-offset-[-0.66px] outline-white/10 backdrop-blur-[7.89px] inline-flex flex-col justify-start items-center gap-[15.79px] mx-auto"
+          className="Frame2147206322 w-[350.94px] p-[15.79px] bg-white/10 rounded-2xl outline-[0.66px]-offset-[-0.66px] outline-white/10 backdrop-blur-[7.89px] flex-col justify-start items-center gap-[15.79px] mx-auto"
         >
           <div
             data-layer="Frame 7"
@@ -66,16 +66,16 @@ export default function StepThree() {
                 <path
                   d="M10.0861 6.1394L7.89343 10.5247H10.5246H13.1557L10.9631 14.9099"
                   stroke="#FAFAFA"
-                  stroke-width="0.986683"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="0.986683"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <path
                   d="M4.38521 15.787L2.71708 4.1101C2.66847 3.76984 2.8902 3.45068 3.22573 3.37611L10.2392 1.81757C10.4271 1.7758 10.622 1.7758 10.81 1.81757L17.8234 3.37611C18.1589 3.45068 18.3807 3.76984 18.3321 4.11011L16.6639 15.787C16.6019 16.2211 16.2254 18.8567 10.5246 18.8567C4.82373 18.8567 4.44722 16.2211 4.38521 15.787Z"
                   stroke="#FAFAFA"
-                  stroke-width="0.986683"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="0.986683"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </svg>
             </div>
@@ -87,10 +87,10 @@ export default function StepThree() {
             Maximum Protection Achieved!
           </div>
           <div
-            data-layer="Security Level 4/4"
+            data-layer="Security Level 4/4"
             className="SecurityLevel44 justify-start text-zinc-300 text-[10.52px] font-normal font-['Plus_Jakarta_Sans'] leading-none"
           >
-            Security Level 4/4
+            Security Level 4/4
           </div>
           <div
             data-layer="Frame 1171275912"

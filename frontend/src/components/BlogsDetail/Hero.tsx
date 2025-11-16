@@ -116,11 +116,11 @@ export default function Hero({
     >
       <div
         data-layer="Frame 2147206224"
-        className="Frame2147206224 w-full lg:w-[608px] inline-flex flex-col justify-start items-start gap-6"
+        className="Frame2147206224 w-full lg:w-[608px] flex-col justify-start items-start gap-6"
       >
         <div
           data-layer="Frame 2147206180"
-          className="Frame2147206180 inline-flex justify-start  gap-4 px-4 flex md:flex-row flex-col"
+          className="Frame2147206180 flex justify-start  gap-4 px-4 md:flex-col"
         >
           {/* leading dot before category */}
           <div className="flex flex-row justify-start items-center gap-4">

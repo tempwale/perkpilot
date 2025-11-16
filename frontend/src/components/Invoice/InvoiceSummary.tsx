@@ -2,7 +2,7 @@ export default function InvoiceSummary() {
   return (
     <div
       data-layer="Frame 2147223662"
-      className="Frame2147223662 w-[400px] md:w-[609px] h-[486px] p-6 bg-white rounded-3xl inline-flex flex-col justify-start items-start gap-4"
+      className="Frame2147223662 w-[400px] md:w-[609px] h-[486px] p-6 bg-white rounded-3xl flex-col justify-start items-start gap-4"
     >
       <div
         data-layer="Frame 2147223661"
@@ -10,7 +10,7 @@ export default function InvoiceSummary() {
       >
         <div
           data-layer="Frame 2147223657"
-          className="Frame2147223657 h-14 px-10 py-2.5 rounded-[100px] outline outline-1 outline-offset-[-0.50px] outline-[#737eff] flex justify-center items-center gap-2.5"
+          className="Frame2147223657 h-14 px-10 py-2.5 rounded-[100px] outline-1 -outline-offset-[-0.50px] outline-[#737eff] flex justify-center items-center gap-2.5"
         >
           <div
             data-layer="Your Logo"
@@ -21,7 +21,7 @@ export default function InvoiceSummary() {
         </div>
         <div
           data-layer="Frame 2147223658"
-          className="Frame2147223658 w-[85px] inline-flex flex-col justify-center items-end gap-2"
+          className="Frame2147223658 w-[85px] flex-col justify-center items-end gap-2"
         >
           <div
             data-layer="Invoice"
@@ -106,7 +106,7 @@ export default function InvoiceSummary() {
         </div>
         <div
           data-layer="Frame 2147223664"
-          className="Frame2147223664 self-stretch bg-[#f4f5ff] rounded-2xl inline-flex flex-col justify-start items-start overflow-hidden"
+          className="Frame2147223664 self-stretch bg-[#f4f5ff] rounded-2xl flex-col justify-start items-start overflow-hidden"
         >
           <div
             data-layer="Frame 2147223662"

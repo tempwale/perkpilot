@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import mongoose from "mongoose";
-const Review = require("../models/reviews.model");
+import Review from '../models/reviews.model.js';
+import { ReviewQueryParams, MongoRegexFilter } from '../types/index.js';
 
 // GET all reviews with pagination and filtering
 export const getAllReviews = async (req: Request, res: Response) => {
@@ -10,13 +11,13 @@ export const getAllReviews = async (req: Request, res: Response) => {
       limit = 20,
       productName,
       sortBy = "-createdAt",
-    } = req.query as any;
+    } = req.query as ReviewQueryParams;
 
     const pageNum = Math.max(Number(page) || 1, 1);
     const limitNum = Math.max(Number(limit) || 20, 1);
     const skip = (pageNum - 1) * limitNum;
 
-    const filter: Record<string, any> = {};
+    const filter: Record<string, MongoRegexFilter> = {};
     if (productName) {
       filter.productName = { $regex: productName, $options: "i" };
     }
@@ -65,24 +66,37 @@ export const createReview = async (req: Request, res: Response) => {
     const payload = req.body;
 
     // Validate required fields
-    if (!payload.productName || !payload.reviewText || !payload.rating) {
+    if (!payload.productName) {
       return res.status(400).json({
-        message: "productName, reviewText, and rating are required",
+        message: "productName is required",
       });
     }
 
-    if (payload.rating < 1 || payload.rating > 5) {
+    // Validate rating if provided
+    if (payload.rating && (payload.rating < 1 || payload.rating > 5)) {
       return res
         .status(400)
         .json({ message: "Rating must be between 1 and 5" });
     }
 
+    // Validate nested productReviews ratings if provided
+    if (payload.productReviews && Array.isArray(payload.productReviews)) {
+      for (const review of payload.productReviews) {
+        if (review.rating && (review.rating < 1 || review.rating > 5)) {
+          return res
+            .status(400)
+            .json({ message: "All review ratings must be between 1 and 5" });
+        }
+      }
+    }
+
     const review = await Review.create(payload);
     res.status(201).json(review);
-  } catch (error: any) {
+  } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : String(error);
     res
       .status(400)
-      .json({ message: "Error creating review", error: error.message });
+      .json({ message: "Error creating review", error: errorMessage });
   }
 };
 
@@ -106,15 +120,35 @@ export const updateReview = async (req: Request, res: Response) => {
         .json({ message: "Rating must be between 1 and 5" });
     }
 
+    // Validate nested productReviews ratings if provided
+    if (
+      updatedData.productReviews &&
+      Array.isArray(updatedData.productReviews)
+    ) {
+      for (const review of updatedData.productReviews) {
+        if (review.rating && (review.rating < 1 || review.rating > 5)) {
+          return res
+            .status(400)
+            .json({ message: "All review ratings must be between 1 and 5" });
+        }
+      }
+    }
+
     const review = await Review.findByIdAndUpdate(id, updatedData, {
       new: true,
       runValidators: true,
     });
 
     if (!review) return res.status(404).json({ message: "Review not found" });
+
+    console.log("Review updated successfully:", review._id);
     res.json(review);
-  } catch (error) {
-    res.status(400).json({ message: "Error updating review", error });
+  } catch (error: unknown) {
+    console.error("Error updating review:", error);
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    res
+      .status(400)
+      .json({ message: "Error updating review", error: errorMessage });
   }
 };
 

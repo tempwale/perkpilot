@@ -3,14 +3,15 @@ import mongoose from "mongoose";
 import ToolComparisonBlog, {
   IToolComparisonBlog,
   ToolComparisonBlogDocument,
-} from "../models/comparision.model";
+} from '../models/comparision.model.js';
+import { ComparisonQueryParams, MongoTextSearchFilter } from '../types/index.js';
 
 // GET all comparisons
 export const getAllComparisons = async (req: Request, res: Response) => {
   try {
-    const { published, limit, page, q } = req.query as any;
+    const { published, limit, page, q } = req.query as ComparisonQueryParams;
 
-    const filter: Record<string, any> = {};
+    const filter: Record<string, boolean | MongoTextSearchFilter> = {};
     if (published !== undefined) filter.isPublished = published === "true";
     if (q) {
       // simple text search across indexed text fields
@@ -55,7 +56,7 @@ export const createComparison = async (req: Request, res: Response) => {
     const payload: Partial<IToolComparisonBlog> = req.body;
 
     // Create using model so mongoose validators run
-    const created = await ToolComparisonBlog.create(payload as any);
+    const created = await ToolComparisonBlog.create(payload);
     res.status(201).json(created);
   } catch (error) {
     res.status(400).json({ message: "Error creating comparison", error });

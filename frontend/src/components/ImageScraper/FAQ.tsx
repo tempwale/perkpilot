@@ -38,7 +38,7 @@ export default function FAQ() {
     <div className="w-full flex flex-col justify-center items-center mt-20 mb-20">
       <div
         data-layer="Frame 2147223642"
-        className="Frame2147223642 w-full max-w-[818px] inline-flex flex-col justify-start items-center gap-10"
+        className="Frame2147223642 w-full max-w-[818px] flex-col justify-start items-center gap-10"
       >
         <div
           data-layer="Frame 2147206341"

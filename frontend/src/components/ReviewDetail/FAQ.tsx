@@ -59,7 +59,7 @@ export default function FAQ({ faqs }: FAQProps = {}) {
     <div className="w-full flex justify-center">
       <div
         data-layer="Frame 2147223642"
-        className="Frame2147223642 w-full max-w-[818px] inline-flex flex-col justify-start items-center gap-10"
+        className="Frame2147223642 w-full max-w-[818px] flex-col justify-start items-center gap-10"
       >
         <div
           data-layer="Frame 2147206341"

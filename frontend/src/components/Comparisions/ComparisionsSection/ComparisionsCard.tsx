@@ -70,26 +70,26 @@ const ComparisionsCard: React.FC<ComparisionsCardProps> = ({
     );
 
   return (
-    <div className="w-full lg:w-[608px] p-4 sm:p-6 bg-white/5 rounded-3xl outline outline-1 outline-offset-[-1px] outline-white/10 inline-flex flex-col justify-between items-start gap-6">
+    <div className="w-full lg:w-[608px] p-4 sm:p-6 bg-white/5 rounded-3xl -outline-offset-[-1px] outline-white/10 flex-col justify-between items-start gap-6">
       {/* Top Section: Logos and VS */}
       <div className="self-stretch flex flex-col justify-start items-center gap-4">
         <div className="w-full max-w-[28rem] inline-flex justify-center items-center mx-auto px-2">
           {/* App 1 Logo */}
-          <div className="w-12 h-12 sm:w-14 sm:h-14 p-1.5 sm:p-2.5 bg-neutral-50 rounded-[100px] outline outline-1 outline-offset-[-1px] outline-neutral-50 flex justify-center items-center gap-2.5">
+          <div className="w-12 h-12 sm:w-14 sm:h-14 p-1.5 sm:p-2.5 bg-neutral-50 rounded-[100px] -outline-offset-[-1px] outline-1-neutral-50 flex justify-center items-center gap-2.5">
             <div className="w-8 h-8 sm:w-8 sm:h-8 relative flex items-center justify-center">
               <LogoImage src={app1Logo} />
             </div>
           </div>
           {/* Line */}
           <LineIcon /> {/* VS Badge */}
-          <div className="w-7 h-7 sm:w-8 sm:h-8 p-1.5 bg-neutral-50 rounded-[100px] inline-flex flex-col justify-center items-center gap-2.5">
+          <div className="w-7 h-7 sm:w-8 sm:h-8 p-1.5 bg-neutral-50 rounded-[100px] flex-col justify-center items-center gap-2.5">
             <div className="text-center text-zinc-950 text-xs sm:text-sm font-medium font-['Poppins']">
               vs
             </div>
           </div>
           {/* Line */}
           <LineIcon /> {/* App 2 Logo */}
-          <div className="w-12 h-12 sm:w-14 sm:h-14 p-1.5 sm:p-2.5 bg-neutral-50 rounded-[100px] outline outline-1 outline-offset-[-1px] outline-neutral-50 flex justify-center items-center gap-2.5">
+          <div className="w-12 h-12 sm:w-14 sm:h-14 p-1.5 sm:p-2.5 bg-neutral-50 rounded-[100px] -outline-offset-[-1px] outline-1-neutral-50 flex justify-center items-center gap-2.5">
             <div className="w-8 h-8 sm:w-8 sm:h-8 relative flex items-center justify-center">
               <LogoImage src={app2Logo} />
             </div>
@@ -123,7 +123,9 @@ const ComparisionsCard: React.FC<ComparisionsCardProps> = ({
         to={`/comparison/${_id}`}
         onClick={() => {
           window.scrollTo({ top: 0, behavior: "smooth" });
-          onReadComparison && onReadComparison();
+          if (onReadComparison) {
+            onReadComparison();
+          }
         }}
         className="self-stretch h-10 sm:h-12 px-3 py-2 bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-[100px] inline-flex justify-center items-center cursor-pointer"
       >

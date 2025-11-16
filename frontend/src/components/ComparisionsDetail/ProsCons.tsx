@@ -20,7 +20,7 @@ export function ProsConsTable({ card }: { card?: ProsConsCard }) {
   return (
     <div
       data-layer="Frame 2147206213"
-      className="Frame2147206213 self-stretch p-4 bg-white/10 rounded-3xl outline outline-1 outline-offset-[-1px] outline-white/10 inline-flex flex-col justify-start items-start gap-6"
+      className="Frame2147206213 self-stretch p-4 bg-white/10 rounded-3xl outline-1 -outline-offset-[-1px] outline-white/10 flex-col justify-start items-start gap-6"
     >
       <div
         data-layer="Pros"

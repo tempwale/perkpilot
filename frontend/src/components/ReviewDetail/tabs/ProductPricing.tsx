@@ -7,7 +7,7 @@ interface PricingCardProps {
 const PricingCard = ({ planName, price, buttonText }: PricingCardProps) => (
   <div
     data-layer="Frame 2147206305"
-    className="Frame2147206305 w-[400px] md:w-[292px] p-6 bg-white/5 rounded-3xl outline outline-1 outline-offset-[-1px] outline-white/10 inline-flex flex-col justify-start items-center gap-6"
+    className="Frame2147206305 w-[400px] md:w-[292px] p-6 bg-white/5 rounded-3xl -outline-offset-[-1px] outline-white/10 flex-col justify-start items-center gap-6"
   >
     <div
       data-layer="Professional"

@@ -2,7 +2,7 @@ export default function CTAFooter() {
   return (
     <div
       data-layer="Frame 2147224676"
-      className="Frame2147224676 w-full px-[10px] md:px-[100px] py-20 bg-[#737eff] inline-flex flex-col justify-start items-center gap-10"
+      className="Frame2147224676 w-full px-[10px] md:px-[100px] py-20 bg-[#737eff] flex-col justify-start items-center gap-10"
     >
       <div
         data-layer="Frame 2147224674"
@@ -24,11 +24,11 @@ export default function CTAFooter() {
       </div>
       <div
         data-layer="Frame 2147224661"
-        className="Frame2147224661 w-full max-w-[818px] p-6 bg-white rounded-3xl outline outline-1 outline-offset-[-1px] outline-[#737eff]/10 inline-flex flex-col justify-center items-center gap-6"
+        className="Frame2147224661 w-full max-w-[818px] p-6 bg-white rounded-3xl outline-1 -outline-offset-[-1px] outline-[#737eff]/10 flex-col justify-center items-center gap-6"
       >
         <div
           data-layer="Frame 2147224678"
-          className="Frame2147224678 self-stretch inline-flex flex-row sm:flex-row sm:justify-between items-start gap-3 sm:gap-0"
+          className="Frame2147224678 self-stretch flex-row sm:flex-row sm:justify-between items-start gap-3 sm:gap-0"
         >
           <div
             data-layer="Enter your website URL to get started."
@@ -87,11 +87,11 @@ export default function CTAFooter() {
         </div>
         <div
           data-layer="Frame 2147224662"
-          className="Frame2147224662 self-stretch inline-flex flex-col sm:flex-row sm:justify-between items-stretch gap-4"
+          className="Frame2147224662 self-stretch flex-col sm:flex-row sm:justify-between items-stretch gap-4"
         >
           <div
             data-layer="Input"
-            className="Input flex-1 h-14 px-4 py-3 relative bg-white rounded-[100px] outline outline-1 outline-offset-[-0.50px] outline-zinc-100 flex items-center overflow-hidden"
+            className="Input flex-1 h-14 px-4 py-3 relative bg-white rounded-[100px] outline-1 -outline-offset-[-0.50px] outline-1-zinc-100 flex items-center overflow-hidden"
           >
             <div className="flex items-center gap-3 w-full">
               <div

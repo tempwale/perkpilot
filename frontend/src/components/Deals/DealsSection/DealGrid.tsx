@@ -70,9 +70,9 @@ export default function DealGrid({
         if (!mounted) return;
         // cast minimal Deal[] into UIDeal[] for UI mapping (safe: fields are optional)
         setApiDeals(data as UIDeal[]);
-      } catch (e: any) {
+      } catch (e) {
         console.error("fetchDeals error", e);
-        if (mounted) setFetchError(e.message || String(e));
+        if (mounted) setFetchError(e instanceof Error ? e.message : String(e));
       } finally {
         if (mounted) setLoading(false);
       }

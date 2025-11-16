@@ -44,3 +44,4 @@ pids/
 # Optional: Docker
 docker-compose.override.yml
 .env.docker
+.claude

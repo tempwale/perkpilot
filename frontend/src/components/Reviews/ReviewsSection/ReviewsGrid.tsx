@@ -667,8 +667,8 @@ export default function ReviewGrid({
         });
         setApiReviews(response.data);
         setTotalPages(response.pagination.pages);
-      } catch (err: any) {
-        setError(err.message || "Failed to fetch reviews");
+      } catch (err) {
+        setError(err instanceof Error ? err.message : "Failed to fetch reviews");
         console.error("Error fetching reviews:", err);
       } finally {
         setLoading(false);

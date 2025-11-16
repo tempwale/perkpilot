@@ -32,7 +32,7 @@ export default function PopularIntegrations({
       <div className="w-full max-w-[1240px] mx-auto">
         <div
           data-layer="Frame 2147206216"
-          className="Frame2147206216 inline-flex flex-col justify-start items-start gap-10"
+          className="Frame2147206216 flex-col justify-start items-start gap-10"
         >
           <div
             data-layer="Popular Integrations"

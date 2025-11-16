@@ -1,6 +1,15 @@
 // Centralized backend URL configuration.
 // Uses Vite env var VITE_BACKEND_URL when available, otherwise falls back to localhost.
-const rawEnv = (import.meta as any)?.env || {};
+interface ImportMetaEnv {
+  readonly VITE_BACKEND_URL?: string;
+  [key: string]: string | boolean | undefined;
+}
+
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
+}
+
+const rawEnv = (import.meta as ImportMeta)?.env || {};
 
 // Ensure the backend URL is absolute. If VITE_BACKEND_URL is provided without a
 // scheme (for example `perkpilot-production-58f9.up.railway.app`), browsers
@@ -9,7 +18,7 @@ const rawEnv = (import.meta as any)?.env || {};
 // To avoid that, normalize the URL here by prepending `https://` when a
 // scheme is missing and strip trailing slashes.
 function normalizeBackendUrl(url?: string): string {
-  const fallback = "http://localhost:5000";
+  const fallback = "http://localhost:5002";
   if (!url) return fallback;
   const trimmed = String(url).trim().replace(/\/+$/g, "");
   if (/^https?:\/\//i.test(trimmed)) return trimmed;
