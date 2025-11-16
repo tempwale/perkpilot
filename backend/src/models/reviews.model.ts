@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-// { Schema, Model, Document } 
+import type { IReview } from "../types/review.types.js";
 
 const FeatureSchema = new mongoose.Schema({
   title: { type: String, required: true },
@@ -113,4 +113,4 @@ const ReviewSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Review", ReviewSchema);
+export default mongoose.model<IReview>("Review", ReviewSchema);

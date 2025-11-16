@@ -143,11 +143,12 @@ export const updateReview = async (req: Request, res: Response) => {
 
     console.log("Review updated successfully:", review._id);
     res.json(review);
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Error updating review:", error);
+    const errorMessage = error instanceof Error ? error.message : String(error);
     res
       .status(400)
-      .json({ message: "Error updating review", error: error.message });
+      .json({ message: "Error updating review", error: errorMessage });
   }
 };
 
