@@ -1,8 +1,18 @@
 import ToolsCard from "./ToolsCard";
+import type { BlogTool } from "../../types/blogs.types";
 
-export default function ToolsMentioned() {
+interface ToolsMentionedProps {
+  sectionHeadline?: string;
+  tipBulbText?: string;
+  tools?: BlogTool[];
+}
+
+export default function ToolsMentioned({
+  sectionHeadline = "Essential Productive Tools To Enhance Your Workflow",
+  tipBulbText = "Tools with exclusive discounts & cashbacks",
+  tools = [],
+}: ToolsMentionedProps) {
   return (
-    // center the content horizontally and make inner frame responsive
     <div
       data-layer="Frame 2147206210"
       className="Frame2147206210 w-full  flex justify-center px-1"
@@ -27,7 +37,7 @@ export default function ToolsMentioned() {
               data-layer="Essential Productive Tools To Enhance Your Workflow"
               className="EssentialProductiveToolsToEnhanceYourWorkflow justify-start w-[210px] md:w-full md:pl-4 text-zinc-100 text-base md:text-xl font-normal font-['Poppins'] leading-loose"
             >
-              Essential Productive Tools To Enhance Your Workflow
+              {sectionHeadline}
             </div>
           </div>
 
@@ -56,13 +66,27 @@ export default function ToolsMentioned() {
               data-layer="Tools with exclusive discounts & cashbacks"
               className="ToolsWithExclusiveDiscountsCashbacks justify-start text-neutral-50 text-sm font-normal font-['Poppins']"
             >
-              Tools with exclusive discounts & cashbacks
+              {tipBulbText}
             </div>
           </div>
         </div>
         <div className="flex flex-col items-center gap-4 mt-2 xl:flex-row lg:justify-center w-full">
+          {tools.length > 0 ? (
+            tools.map((tool, idx) => (
+              <ToolsCard
+                key={idx}
+                toolName={tool.toolName}
+                toolCategory={tool.toolCategory}
+                toolLogo={tool.toolLogo}
+                isVerified={tool.isVerified}
+              />
+            ))
+          ) : (
+            <>
           <ToolsCard />
           <ToolsCard />
+            </>
+          )}
         </div>
       </div>
     </div>
