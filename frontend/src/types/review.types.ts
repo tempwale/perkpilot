@@ -23,7 +23,12 @@ export interface TransformedReview {
   pricing: Array<{ plan: string; amount: string; note?: string }>;
   screenshots: never[];
   videoUrl: string;
-  bestUseCases: Array<{ id: string; title: string; description: string; rating: number }>;
+  bestUseCases: Array<{
+    id: string;
+    title: string;
+    description: string;
+    rating: number;
+  }>;
   integrations: Array<{ id: string; name: string }>;
   faqs: Array<{ question: string; answer: string }>;
   alternatives: Array<{
@@ -39,5 +44,22 @@ export interface TransformedReview {
   upvotes: number;
   shareCount: number;
   ratingCategories: Array<{ category: string; value: number; outOf?: number }>;
+  productReviews: Array<{
+    userName: string;
+    userTitle?: string;
+    userAvatar?: string;
+    date?: string;
+    verified?: boolean;
+    rating: number;
+    reviewText: string;
+    helpful?: number;
+    notHelpful?: number;
+  }>;
+  ratingBreakdown: {
+    fiveStars?: number;
+    fourStars?: number;
+    threeStars?: number;
+    twoStars?: number;
+    oneStars?: number;
+  };
 }
-
