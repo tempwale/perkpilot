@@ -22,6 +22,15 @@ export interface ReviewQueryParams {
   sortBy?: string;
 }
 
+export interface BlogQueryParams {
+  page?: string | number;
+  limit?: string | number;
+  category?: string;
+  published?: string | boolean;
+  q?: string;
+  sortBy?: string;
+}
+
 // ============ Request Body Types ============
 
 export interface DealCreateBody {
