@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import Background from "../components/Background";
 import BlogsSection from "../components/Blogs/BlogsSection";
 import SearchSection from "../components/Blogs/SearchSection";
@@ -5,8 +6,70 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { UniversalBadge } from "../components/UniversalBadge";
 import { motion } from "framer-motion";
+import { BLOGPAGE_API } from "../config/backend";
+
+interface BlogPageSettings {
+  status: "live" | "maintenance";
+  topTagline: string;
+  mainHeadline: string;
+  subHeadline: string;
+  tags: string[];
+}
 
 export default function BlogsPage() {
+  const [settings, setSettings] = useState<BlogPageSettings>({
+    status: "live",
+    topTagline: "",
+    mainHeadline: "Software Blogs",
+    subHeadline: "In-depth reviews, comparisons, and insights about the latest software tools and productivity solutions.",
+    tags: [],
+  });
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchBlogPageSettings = async (): Promise<void> => {
+      try {
+        const response = await fetch(BLOGPAGE_API);
+        if (!response.ok) {
+          throw new Error(`Failed to fetch blog page settings: ${response.status}`);
+        }
+        const data = await response.json();
+        setSettings({
+          status: data.status || "live",
+          topTagline: data.topTagline || "",
+          mainHeadline: data.mainHeadline || "Software Blogs",
+          subHeadline: data.subHeadline || "In-depth reviews, comparisons, and insights about the latest software tools and productivity solutions.",
+          tags: data.tags || [],
+        });
+      } catch (error) {
+        console.error("Error fetching blog page settings:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    void fetchBlogPageSettings();
+  }, []);
+
+  if (settings.status === "maintenance") {
+    return (
+      <div className="min-h-screen bg-black flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold text-white mb-4">Under Maintenance</h1>
+          <p className="text-zinc-400">We're currently updating the blog page. Please check back soon!</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-black flex items-center justify-center">
+        <div className="text-white text-lg">Loading...</div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-black">
       <div className="max-w-full">
@@ -26,14 +89,16 @@ export default function BlogsPage() {
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.7, ease: "easeOut" }}
             >
-              <UniversalBadge
-                badgeText="#1 Platform"
-                secondaryText="For Expert Insights"
-                icon="electric"
-                className=""
-                variant="primary"
-                size="md"
-              />
+              {settings.topTagline && (
+                <UniversalBadge
+                  badgeText="#1 Platform"
+                  secondaryText={settings.topTagline}
+                  icon="electric"
+                  className=""
+                  variant="primary"
+                  size="md"
+                />
+              )}
 
               {/* Main Heading with animation */}
               <motion.h1
@@ -44,22 +109,21 @@ export default function BlogsPage() {
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
               >
-                Software Blogs
+                {settings.mainHeadline}
               </motion.h1>
 
               {/* Description with animation */}
-              <motion.div
-                className="font-medium leading-[32px] relative shrink-0 text-[20px] text-center text-zinc-400 max-w-[818px] whitespace-pre-wrap"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.6, delay: 0.35, ease: "easeOut" }}
-              >
-                <p className="mb-0">
-                  In-depth reviews, comparisons, and insights about the latest
-                  software tools and productivity solutions.
-                </p>
-              </motion.div>
+              {settings.subHeadline && (
+                <motion.div
+                  className="font-medium leading-[32px] relative shrink-0 text-[20px] text-center text-zinc-400 max-w-[818px] whitespace-pre-wrap"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.6, delay: 0.35, ease: "easeOut" }}
+                >
+                  <p className="mb-0">{settings.subHeadline}</p>
+                </motion.div>
+              )}
             </motion.div>
           </div>
           <SearchSection />
