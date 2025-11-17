@@ -1,12 +1,14 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 
 type ModuleItem = {
   id: string;
   label: string;
+  benefits?: string[];
   checked?: boolean;
 };
 
 interface BlogModulesProps {
+  title?: string;
   modules?: ModuleItem[];
   onChange?: (modules: ModuleItem[]) => void;
   className?: string;
@@ -21,14 +23,50 @@ const DEFAULT_MODULES: ModuleItem[] = [
   { id: "conclusion", label: "Conclusion", checked: false },
 ];
 
+const slugify = (text: string): string =>
+  text
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+
 const BlogModules: React.FC<BlogModulesProps> = ({
+  title = "Blog Modules",
   modules = DEFAULT_MODULES,
   onChange,
   className = "",
 }) => {
-  const [items, setItems] = useState<ModuleItem[]>(
-    useMemo(() => modules.map((m) => ({ ...m })), [modules])
-  );
+  const normalizedModules = useMemo<ModuleItem[]>(() => {
+    if (!modules || modules.length === 0) {
+      return DEFAULT_MODULES;
+    }
+
+    const singleWithBenefits =
+      modules.length === 1 && (modules[0]?.benefits?.length ?? 0) > 0;
+
+    if (singleWithBenefits) {
+      const benefits = modules[0]?.benefits ?? [];
+      return benefits
+        .filter((benefit): benefit is string => Boolean(benefit?.trim()))
+        .map((benefit, idx) => ({
+          id: slugify(benefit) || `module-${idx}`,
+          label: benefit.trim(),
+          checked: idx === 0,
+        }));
+    }
+
+    return modules.map((m, idx) => ({
+      id: m.id || `module-${idx}`,
+      label: m.label || `Module ${idx + 1}`,
+      checked: m.checked ?? idx === 0,
+    }));
+  }, [modules]);
+
+  const [items, setItems] = useState<ModuleItem[]>(normalizedModules);
+
+  useEffect(() => {
+    setItems(normalizedModules);
+  }, [normalizedModules]);
 
   const select = (id: string) => {
     const updated = items.map((it) => ({ ...it, checked: it.id === id }));
@@ -50,7 +88,7 @@ const BlogModules: React.FC<BlogModulesProps> = ({
     <div className={className}>
       <div className="w-[397px] p-6 bg-white/10 rounded-3xl outline-1 -outline-offset-[-1px] outline-[#ebeef4]/10 flex flex-col gap-6 overflow-y-auto max-h-[500px]">
         <div className="text-neutral-50 text-2xl font-medium font-['Plus_Jakarta_Sans'] leading-loose">
-          Blog Modules
+          {modules[0]?.label || title}
         </div>
 
         <div className="flex flex-col gap-4">
