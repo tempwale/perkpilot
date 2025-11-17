@@ -50,9 +50,20 @@ export const getAllBlogs = async (req: Request, res: Response): Promise<void> =>
       ] as unknown;
     }
 
+    const sortCriteria: Record<string, 1 | -1> = {
+      blogIsFeatured: -1,
+    };
+
+    if (sortBy.startsWith("-")) {
+      const field = sortBy.substring(1);
+      sortCriteria[field] = -1;
+    } else {
+      sortCriteria[sortBy] = 1;
+    }
+
     const blogs = await Blog.find(filter)
       .populate("blogAuthor", "authorName authorTitle authorImageURL")
-      .sort(sortBy)
+      .sort(sortCriteria)
       .skip(skip)
       .limit(limitNum)
       .exec();
