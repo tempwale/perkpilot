@@ -70,6 +70,7 @@ export interface IBlog extends Document, IBlogMethods {
   // Publishing
   blogSlug: string;
   blogIsPublished: boolean;
+  blogIsFeatured?: boolean;
   blogViewCount: number;
 
   // Timestamps
@@ -314,6 +315,11 @@ const BlogSchema = new Schema<IBlog, IBlogModel, IBlogMethods>(
       default: false,
       index: true,
     },
+    blogIsFeatured: {
+      type: Boolean,
+      default: false,
+      index: true,
+    },
     blogViewCount: {
       type: Number,
       default: 0,
@@ -331,6 +337,7 @@ const BlogSchema = new Schema<IBlog, IBlogModel, IBlogMethods>(
 BlogSchema.index({ blogSlug: 1 });
 BlogSchema.index({ blogCategory: 1, blogIsPublished: 1 });
 BlogSchema.index({ blogIsPublished: 1, createdAt: -1 });
+BlogSchema.index({ blogIsFeatured: 1, createdAt: -1 });
 
 // ============ Instance Methods ============
 
