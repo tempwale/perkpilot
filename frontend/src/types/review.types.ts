@@ -49,17 +49,17 @@ export interface TransformedReview {
     userTitle?: string;
     userAvatar?: string;
     date?: string;
-    verified: boolean;
+    verified?: boolean;
     rating: number;
     reviewText: string;
-    helpful: number;
-    notHelpful: number;
+    helpful?: number;
+    notHelpful?: number;
   }>;
   ratingBreakdown: {
-    fiveStars: number;
-    fourStars: number;
-    threeStars: number;
-    twoStars: number;
-    oneStars: number;
+    fiveStars?: number;
+    fourStars?: number;
+    threeStars?: number;
+    twoStars?: number;
+    oneStars?: number;
   };
 }
