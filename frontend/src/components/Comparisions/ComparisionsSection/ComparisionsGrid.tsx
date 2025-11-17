@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import fetchComparisions from "../../../hooks/useComparisions";
 
 interface ComparisonData {
-  _id: string;
+  _id?: string;
   slug?: string;
   heroHeading?: string;
   heroBody?: string;
@@ -36,7 +36,9 @@ const ComparisionsGrid: React.FC = () => {
         const data = await fetchComparisions();
         setComparisonsData(data);
       } catch (err) {
-        setError(err instanceof Error ? err.message : "Failed to fetch comparisions");
+        setError(
+          err instanceof Error ? err.message : "Failed to fetch comparisions"
+        );
         setComparisonsData([]);
       } finally {
         setLoading(false);
