@@ -6,9 +6,15 @@ import {
   createBlog,
   updateBlog,
   deleteBlog,
+  getBlogPage,
+  updateBlogPage,
 } from "../controllers/blogs.controller.js";
 
 const router = express.Router();
+
+// Blog page routes
+router.get("/blogpage", getBlogPage);
+router.put("/blogpage", updateBlogPage);
 
 // Collection routes
 // GET all blogs with pagination and filtering

@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import mongoose from "mongoose";
 import Blog from "../models/blogs.model.js";
+import BlogPage, { IBlogPage } from "../models/blogpage.model.js";
 import { BlogQueryParams, MongoRegexFilter } from "../types/index.js";
 import type { IBlog } from "../models/blogs.model.js";
 
@@ -274,6 +275,94 @@ export const deleteBlog = async (req: Request, res: Response): Promise<void> => 
   }
 };
 
+
+export const getBlogPage = async (_req: Request, res: Response): Promise<void> => {
+  try {
+    const blogPage: IBlogPage | null = await BlogPage.findOne();
+    if (!blogPage) {
+      res.json({
+        status: "live",
+        topTagline: "",
+        mainHeadline: "Software Blogs",
+        subHeadline: "In-depth reviews, comparisons, and insights about the latest software tools and productivity solutions.",
+        tags: [],
+      });
+      return;
+    }
+
+    res.json(blogPage);
+  } catch (error: unknown) {
+    console.error("Error fetching blog page:", error);
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    res.status(400).json({ message: "Error fetching blog page", error: errorMessage });
+  }
+};
+
+
+export const updateBlogPage = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const updatedData: Partial<IBlogPage> = req.body;
+    const allowedFields: (keyof IBlogPage)[] = [
+      "status",
+      "topTagline",
+      "mainHeadline",
+      "subHeadline",
+      "tags",
+    ];
+    const filteredData: Partial<IBlogPage> = {};
+    for (const key of allowedFields) {
+      if (key in updatedData) {
+        filteredData[key] = updatedData[key];
+      }
+    }
+
+    if (filteredData.status !== undefined) {
+      if (filteredData.status !== "live" && filteredData.status !== "maintenance") {
+        res.status(400).json({
+          message: "Status must be either 'live' or 'maintenance'",
+        });
+        return;
+      }
+    }
+
+    if (filteredData.tags !== undefined) {
+      if (!Array.isArray(filteredData.tags)) {
+        res.status(400).json({ message: "'tags' must be an array of strings" });
+        return;
+      }
+      filteredData.tags = filteredData.tags.map((tag) => String(tag).trim()).filter((tag) => tag.length > 0);
+    }
+
+    let blogPage: IBlogPage | null = await BlogPage.findOneAndUpdate(
+      {},
+      filteredData,
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+
+    // If no BlogPage exists, create one (requires `mainHeadline` in filteredData)
+    if (!blogPage) {
+      if (!filteredData.mainHeadline) {
+        res.status(400).json({
+          message:
+            "No BlogPage exists — creating one requires the 'mainHeadline' field",
+        });
+        return;
+      }
+
+      blogPage = await BlogPage.create(filteredData);
+    }
+
+    res.json(blogPage);
+  } catch (error: unknown) {
+    console.error("Error updating blog page:", error);
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    res.status(400).json({ message: "Error updating blog page", error: errorMessage });
+  }
+};
+
 export default {
   getAllBlogs,
   getBlogById,
@@ -281,5 +370,7 @@ export default {
   createBlog,
   updateBlog,
   deleteBlog,
+  getBlogPage,
+  updateBlogPage,
 };
 
