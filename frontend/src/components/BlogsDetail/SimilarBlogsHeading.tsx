@@ -1,11 +1,13 @@
 import React from "react";
 
 interface SimilarBlogsHeading {
+  title?: string;
   onPrevious?: () => void;
   onNext?: () => void;
 }
 
 const SimilarBlogsHeading: React.FC<SimilarBlogsHeading> = ({
+  title = "Similar Blogs",
   onPrevious,
   onNext,
 }) => {
@@ -86,7 +88,7 @@ const SimilarBlogsHeading: React.FC<SimilarBlogsHeading> = ({
             textTransform: "capitalize",
           }}
         >
-          Similar Blogs{" "}
+          {title}{" "}
         </h2>
       </div>
 

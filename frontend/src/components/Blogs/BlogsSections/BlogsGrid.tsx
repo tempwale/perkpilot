@@ -2,144 +2,44 @@ import React, { useState, useEffect } from "react";
 import BlogsCard from "./BlogsCard";
 import Pagination from "./Pagination";
 import { motion } from "framer-motion";
+import { fetchBlogs} from "../../../hooks/useBlogs";
+import { type Blog } from "../../../types/blogs.types";
 
-const blogsData = [
-  {
-    imageUrl: "",
-    featured: true,
-    views: 1234,
-    title: "The Ultimate Remote Work Stack For 2025",
-    description:
-      "From just a startup idea to getting 1000s of customers every month and getting loved by globally users like our latest feature about SaaS financing for struggling startups.",
-    tags: ["SaaS", "Founders", "Marketplace"],
-    readTime: "2 Minute Read",
-    date: "27/06/2025",
-  },
-  {
-    imageUrl: "",
-    featured: true,
-    views: 567,
-    title: "How to Build a SaaS MVP in 2025",
-    description:
-      "A step-by-step guide to launching your SaaS MVP and getting your first users.",
-    tags: ["SaaS", "MVP", "Startups"],
-    readTime: "3 Minute Read",
-    date: "01/07/2025",
-  },
-  {
-    imageUrl: "",
-    featured: true,
-    views: 890,
-    title: "Remote Team Management Tools Compared",
-    description: "We compare the best tools for managing remote teams in 2025.",
-    tags: ["Remote", "Management", "Tools"],
-    readTime: "4 Minute Read",
-    date: "15/08/2025",
-  },
-  {
-    imageUrl: "",
-    featured: false,
-    views: 321,
-    title: "Design Systems for SaaS Products",
-    description: "Why every SaaS needs a design system and how to build one.",
-    tags: ["Design", "SaaS", "UI/UX"],
-    readTime: "5 Minute Read",
-    date: "22/09/2025",
-  },
-  {
-    imageUrl: "",
-    featured: false,
-    views: 222,
-    title: "Marketing Automation Trends 2025",
-    description: "The latest trends in marketing automation for SaaS founders.",
-    tags: ["Marketing", "Automation", "Trends"],
-    readTime: "2 Minute Read",
-    date: "30/09/2025",
-  },
-  {
-    imageUrl: "",
-    featured: false,
-    views: 999,
-    title: "How to Fundraise for Your SaaS Startup",
-    description: "Tips and tricks for raising capital in 2025.",
-    tags: ["Fundraising", "SaaS", "Startups"],
-    readTime: "6 Minute Read",
-    date: "05/10/2025",
-  },
-  {
-    imageUrl: "",
-    featured: false,
-    views: 764,
-    title: "The Future of AI in SaaS Applications",
-    description:
-      "Exploring how artificial intelligence is transforming SaaS platforms in 2025.",
-    tags: ["AI", "SaaS", "Innovation"],
-    readTime: "4 Minute Read",
-    date: "12/10/2025",
-  },
-  {
-    imageUrl: "",
-    featured: false,
-    views: 645,
-    title: "Building Customer Loyalty with SaaS Communities",
-    description:
-      "How to foster loyal customers through active online communities and engagement.",
-    tags: ["Customer Success", "Community", "Retention"],
-    readTime: "3 Minute Read",
-    date: "18/10/2025",
-  },
-  {
-    imageUrl: "",
-    featured: false,
-    views: 812,
-    title: "Top 10 SaaS Security Best Practices for 2025",
-    description:
-      "Learn how to secure your SaaS product and protect customer data.",
-    tags: ["Security", "SaaS", "Compliance"],
-    readTime: "5 Minute Read",
-    date: "23/10/2025",
-  },
-  {
-    imageUrl: "",
-    featured: false,
-    views: 503,
-    title: "Why UI/UX Design is the Heart of SaaS Growth",
-    description:
-      "Design that converts — how great UX drives better SaaS retention and growth.",
-    tags: ["Design", "UI/UX", "SaaS"],
-    readTime: "3 Minute Read",
-    date: "27/10/2025",
-  },
-  {
-    imageUrl: "",
-    featured: false,
-    views: 1102,
-    title: "Scaling Your SaaS from 100 to 10,000 Users",
-    description:
-      "The strategies high-growth SaaS founders use to scale effectively.",
-    tags: ["Scaling", "Growth", "SaaS"],
-    readTime: "7 Minute Read",
-    date: "01/11/2025",
-  },
-  {
-    imageUrl: "",
-    featured: true,
-    views: 1450,
-    title: "Inside the 2025 SaaS Startup Playbook",
-    description:
-      "From idea validation to post-launch growth — the ultimate guide for SaaS founders in 2025.",
-    tags: ["Playbook", "Startups", "SaaS"],
-    readTime: "8 Minute Read",
-    date: "05/11/2025",
-  },
-];
+const formatDate = (date?: string | Date): string => {
+  if (!date) return "";
+  const d = new Date(date);
+  if (isNaN(d.getTime())) return "";
+  return d.toLocaleDateString("en-GB", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  });
+};
+
+
+const transformBlog = (blog: Blog) => ({
+  id: blog._id || blog.id || "",
+  slug: blog.blogSlug, 
+  imageUrl: blog.blogHeroImage || "",
+  featured: blog.blogIsFeatured ?? false,
+  views: blog.blogViewCount ?? 0,
+  title: blog.blogHeading || "",
+  description: blog.blogBody || "",
+  tags: blog.blogCategory ? [blog.blogCategory] : [],
+  readTime: blog.blogReadingTime || "",
+  date: formatDate(blog.createdAt),
+});
 
 const BlogsGrid: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [isMobile, setIsMobile] = useState(false);
+  const [blogs, setBlogs] = useState<Blog[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [totalPages, setTotalPages] = useState(1);
   const showPagination = true;
 
-  // Responsive check
+
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
     checkMobile();
@@ -147,24 +47,80 @@ const BlogsGrid: React.FC = () => {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  // Reset to page 1 when switching between mobile/desktop
+
+  useEffect(() => {
+    const loadBlogs = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        const response = await fetchBlogs({
+          page: currentPage,
+          limit: isMobile ? 3 : 6,
+          published: true,
+          sortBy: "-createdAt",
+        });
+        setBlogs(response.data);
+        setTotalPages(response.pagination.pages);
+      } catch (err) {
+        console.error("Error fetching blogs:", err);
+        setError(err instanceof Error ? err.message : "Failed to load blogs");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    void loadBlogs();
+  }, [currentPage, isMobile]);
+
   useEffect(() => {
     setCurrentPage(1);
   }, [isMobile]);
-
-  // 3 rows per page: 6 cards desktop, 3 cards mobile
-  const itemsPerPage = isMobile ? 3 : 6;
-  const totalPages = Math.ceil(blogsData.length / itemsPerPage);
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const displayBlogs = showPagination
-    ? blogsData.slice(startIndex, endIndex)
-    : blogsData;
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
+  // Sort blogs: featured first, then by date (newest first)
+  const sortedBlogs = [...blogs].sort((a, b) => {
+    const aFeatured = a.blogIsFeatured ?? false;
+    const bFeatured = b.blogIsFeatured ?? false;
+    
+    // Featured blogs come first
+    if (aFeatured && !bFeatured) return -1;
+    if (!aFeatured && bFeatured) return 1;
+    
+    // Both featured or both not featured - sort by date (newest first)
+    const aDate = a.createdAt ? new Date(a.createdAt).getTime() : 0;
+    const bDate = b.createdAt ? new Date(b.createdAt).getTime() : 0;
+    return bDate - aDate;
+  });
+
+  const displayBlogs = sortedBlogs.map(transformBlog);
+
+  if (loading) {
+    return (
+      <div className="w-full flex flex-col items-center gap-8 pb-20">
+        <div className="text-zinc-400">Loading blogs...</div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="w-full flex flex-col items-center gap-8 pb-20">
+        <div className="text-red-400">Error: {error}</div>
+      </div>
+    );
+  }
+
+  if (displayBlogs.length === 0) {
+    return (
+      <div className="w-full flex flex-col items-center gap-8 pb-20">
+        <div className="text-zinc-400">No blogs found.</div>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full flex flex-col items-center gap-8 pb-20">
@@ -178,7 +134,7 @@ const BlogsGrid: React.FC = () => {
       >
         {displayBlogs.map((blog, idx) => (
           <motion.div
-            key={idx}
+            key={blog.id || idx}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}

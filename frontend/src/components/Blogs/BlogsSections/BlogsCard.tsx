@@ -37,6 +37,7 @@ const ArrowUpIcon = () => (
 
 interface BlogsCardProps {
   id?: string;
+  slug?: string;
   imageUrl?: string;
   featured?: boolean;
   views?: number | string;
@@ -49,6 +50,7 @@ interface BlogsCardProps {
 
 const BlogsCard: React.FC<BlogsCardProps> = ({
   id = "blog-1",
+  slug,
   imageUrl = "",
   featured = true,
   views = 1234,
@@ -60,7 +62,7 @@ const BlogsCard: React.FC<BlogsCardProps> = ({
 }) => {
   return (
     <Link
-      to={`/blog/${id}`}
+      to={`/blog/${slug ?? id}`}
       className="w-full lg:w-[608px] p-6 bg-white/5 rounded-3xl shadow-[0px_1px_4px_0px_rgba(12,12,13,0.05)] -outline-offset-[-1px] outline-white/10 flex-col justify-center items-start gap-6"
     >
       {/* Image Section */}

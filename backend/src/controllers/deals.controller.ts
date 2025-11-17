@@ -29,8 +29,6 @@ export const getDealById = async (req: Request, res: Response) => {
 // CREATE new deal
 export const createDeal = async (req: Request, res: Response) => {
   try {
-    // Accept both frontend shapes: { title } or { name },
-    // and numeric fields like discountPercentage / savingsAmount in addition to string discount/savings.
     const {
       title: bodyTitle,
       name,

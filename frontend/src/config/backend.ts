@@ -33,5 +33,7 @@ export const COMPARISIONS_API = `${BACKEND_URL}/api/comparisons`;
 export const AUTHORS_API = `${BACKEND_URL}/api/authors`;
 export const REVIEWS_API = `${BACKEND_URL}/api/reviews`;
 export const BLOGS_API = `${BACKEND_URL}/api/blogs`;
+// Blog page settings API endpoint
+export const BLOGPAGE_API = `${BACKEND_URL}/api/blogs/blogpage`;
 
 export default BACKEND_URL;
