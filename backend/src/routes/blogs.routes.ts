@@ -28,6 +28,9 @@ router.get("/:id", getBlogById);
 // PUT update an existing blog
 router.put("/:id", updateBlog);
 
+// PATCH update blog fields (e.g., featured toggle)
+router.patch("/:id", updateBlog);
+
 // DELETE a blog
 router.delete("/:id", deleteBlog);
 

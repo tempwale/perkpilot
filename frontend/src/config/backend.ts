@@ -32,5 +32,6 @@ export const DEALS_API = `${BACKEND_URL}/api/deals`;
 export const COMPARISIONS_API = `${BACKEND_URL}/api/comparisons`;
 export const AUTHORS_API = `${BACKEND_URL}/api/authors`;
 export const REVIEWS_API = `${BACKEND_URL}/api/reviews`;
+export const BLOGS_API = `${BACKEND_URL}/api/blogs`;
 
 export default BACKEND_URL;
