@@ -4,7 +4,7 @@ export interface IDealPage extends Document {
   topTagline?: string;
   heading: string;
   subheading?: string;
-  // Exactly six deal ObjectId references
+  status?: "live" | "maintenance";
   deals: mongoose.Types.ObjectId[];
   createdAt: Date;
   updatedAt: Date;
@@ -25,15 +25,14 @@ const dealPageSchema = new Schema<IDealPage>(
       type: String,
       default: null,
     },
+    status: {
+      type: String,
+      enum: ["live", "maintenance"],
+      default: "live",
+    },
     deals: {
       type: [{ type: Schema.Types.ObjectId, ref: "Deal" }],
-      validate: {
-        validator: function (v: mongoose.Types.ObjectId[]) {
-          return Array.isArray(v) && v.length === 6;
-        },
-        message: "`deals` must be an array containing exactly 6 deal IDs",
-      },
-      required: [true, "deals array is required and must contain 6 IDs"],
+      default: [],
     },
   },
   { timestamps: true }

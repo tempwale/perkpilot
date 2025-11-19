@@ -8,6 +8,7 @@ interface PickProps {
   savingsAmount: string;
   rating: string;
   verified?: boolean;
+  redeemUrl?: string;
 }
 
 const Pick: React.FC<PickProps> = ({
@@ -18,6 +19,7 @@ const Pick: React.FC<PickProps> = ({
   savingsAmount,
   rating,
   verified = false,
+  redeemUrl,
 }) => {
   const SlackIcon = () => (
     <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
@@ -165,15 +167,33 @@ const Pick: React.FC<PickProps> = ({
         </div>
 
         {/* Redeem Button */}
+        {redeemUrl ? (
+          <a
+            href={redeemUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex-1 flex items-center justify-center px-3 py-2 rounded-full text-[#09090B] hover:text-white text-base bg-[#FAFAFA] hover:bg-gradient-to-b hover:from-[#501BD6] hover:to-[#7F57E2] transition-all duration-200"
+            style={{
+              fontFamily: "Poppins",
+              lineHeight: "24px",
+              textDecoration: "none",
+            }}
+          >
+            Redeem
+          </a>
+        ) : (
         <button
           className="flex-1 flex items-center justify-center px-3 py-2 rounded-full text-[#09090B] hover:text-white text-base bg-[#FAFAFA] hover:bg-gradient-to-b hover:from-[#501BD6] hover:to-[#7F57E2] transition-all duration-200"
           style={{
             fontFamily: "Poppins",
             lineHeight: "24px",
           }}
+            disabled
+            title="Redeem URL not available"
         >
           Redeem
         </button>
+        )}
       </div>
     </div>
   );
