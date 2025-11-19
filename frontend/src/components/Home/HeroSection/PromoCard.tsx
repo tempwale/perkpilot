@@ -12,7 +12,6 @@ import {
   image,
 } from "./assets";
 
-// White circle logo component with lightning bolt
 const WhiteCircleLogo: React.FC<{ size?: number; className?: string }> = ({
   size = 40,
   className = "",
@@ -244,7 +243,7 @@ export const PromoCard: React.FC = () => {
 
       {/* Brand Logo */}
       <div
-        className="hidden absolute flex flex-row gap-[12px] items-center right-[24.88px] top-[40.96px] xl:flex"
+        className="hidden absolute xl:flex flex-row gap-[12px] items-center right-[24.88px] top-[40.96px]"
         data-node-id="1:1221"
       >
         <div className="relative shrink-0 size-[40px]" data-node-id="1:1222">
@@ -307,7 +306,7 @@ export const PromoCard: React.FC = () => {
 
       {/* Cursor with Text */}
       <div
-        className="hidden absolute content-stretch flex flex-col gap-[4px] items-center rounded-[16px] top-[361.87px] translate-x-[-50%] xl:block"
+        className="hidden absolute xl:flex content-stretch flex-col gap-[4px] items-center rounded-[16px] top-[361.87px] translate-x-[-50%]"
         data-node-id="1:1244"
         style={{ left: "calc(50% - 230px)" }}
       >

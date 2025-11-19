@@ -1,10 +1,58 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
+import { STATS_API } from "../../config/backend";
 
 interface StatItem {
   value: string;
   label: string;
   numericValue: number;
   suffix: string;
+}
+
+export interface StatApiEntry {
+  numberValue?: string;
+  message?: string;
+}
+
+interface StatsProps {
+  statsData?: StatApiEntry[] | null;
+}
+
+function normalizeStats(entries: StatApiEntry[] = [], fallback: StatItem[]): StatItem[] {
+  const converted = entries
+    .map((entry) => {
+      const numValue = entry.numberValue || "";
+      const message = entry.message || "";
+      if (!numValue && !message) {
+        return null;
+      }
+
+      const match = numValue.match(/^(\d+\.?\d*)([KM]?\+?)$/);
+      let numeric = 0;
+      let suffix = "+";
+
+      if (match) {
+        numeric = parseFloat(match[1]);
+        suffix = match[2] || "+";
+      } else if (numValue) {
+        numeric = parseFloat(numValue.replace(/[^0-9.]/g, "")) || 0;
+        suffix = numValue.replace(/[0-9.]/g, "") || "+";
+      }
+
+      return {
+        value: numValue || "0+",
+        label: message,
+        numericValue: numeric,
+        suffix,
+      };
+    })
+    .filter((stat): stat is StatItem => stat !== null)
+    .slice(0, 4);
+
+  const padded = [...converted];
+  while (padded.length < 4) {
+    padded.push(fallback[padded.length]);
+  }
+  return padded;
 }
 
 // Custom hook for counting animation
@@ -78,41 +126,85 @@ const useInView = (threshold = 0.1) => {
   return [ref, isInView] as const;
 };
 
-const Stats: React.FC = () => {
+const Stats: React.FC<StatsProps> = ({ statsData }) => {
   const [ref, isInView] = useInView(0.3);
+  const [stats, setStats] = useState<StatItem[]>([]);
+  const [loading, setLoading] = useState(!statsData);
 
-  const stats: StatItem[] = [
-    {
-      value: "500+",
-      label: "Active Deals",
-      numericValue: 500,
-      suffix: "+",
-    },
-    {
-      value: "1000+",
-      label: "Expert Reviews",
-      numericValue: 1000,
-      suffix: "+",
-    },
-    {
-      value: "5000+",
-      label: "Happy Customers",
-      numericValue: 5000,
-      suffix: "+",
-    },
-    {
-      value: "2M+",
-      label: "Total Savings",
-      numericValue: 2,
-      suffix: "+",
-    },
-  ];
+  const defaultStats: StatItem[] = useMemo(
+    () => [
+      { value: "500+", label: "Active Deals", numericValue: 500, suffix: "+" },
+      { value: "1000+", label: "Expert Reviews", numericValue: 1000, suffix: "+" },
+      { value: "5000+", label: "Happy Customers", numericValue: 5000, suffix: "+" },
+      { value: "2M+", label: "Total Savings", numericValue: 2, suffix: "M+" },
+    ],
+    []
+  );
+
+  useEffect(() => {
+    // If statsData provided via props, use it directly (no fetch)
+    if (statsData) {
+      setStats(normalizeStats(statsData, defaultStats));
+      setLoading(false);
+      return;
+    }
+
+    let mounted = true;
+    async function fetchStats() {
+      try {
+        const response = await fetch(STATS_API);
+        if (!response.ok) {
+          // Only use defaults if API fails (not 404 - that means no stats saved yet)
+          if (response.status === 404) {
+            // No stats in DB yet - set empty array, will use defaults in displayStats
+            if (mounted) {
+              setStats([]);
+              setLoading(false);
+            }
+            return;
+          }
+          // For other errors, use defaults
+          if (mounted) {
+            setStats([]);
+            setLoading(false);
+          }
+          return;
+        }
+        
+        const data = await response.json();
+        if (!mounted) return;
+
+        if (mounted) {
+          setStats(normalizeStats(data.stats, defaultStats));
+          setLoading(false);
+        }
+      } catch (err) {
+        console.error("Error fetching stats:", err);
+        // On error, set empty array - will use defaults in displayStats
+        if (mounted) {
+          setStats([]);
+          setLoading(false);
+        }
+      }
+    }
+
+    void fetchStats();
+    return () => {
+      mounted = false;
+    };
+  }, [statsData, defaultStats]);
+  const displayStats: StatItem[] = useMemo(() => {
+    if (loading || stats.length === 0 || stats.every((s) => !s.value && !s.label)) {
+      return defaultStats;
+    }
+    return stats;
+  }, [defaultStats, loading, stats]);
 
   // Animated counters for each stat with fixed durations
-  const animatedValue0 = useCountUp(stats[0].numericValue, 2000, isInView);
-  const animatedValue1 = useCountUp(stats[1].numericValue, 2300, isInView);
-  const animatedValue2 = useCountUp(stats[2].numericValue, 2500, isInView);
-  const animatedValue3 = useCountUp(stats[3].numericValue, 2800, isInView);
+  const animatedValue0 = useCountUp(displayStats[0]?.numericValue || 0, 2000, isInView);
+  const animatedValue1 = useCountUp(displayStats[1]?.numericValue || 0, 2300, isInView);
+  const animatedValue2 = useCountUp(displayStats[2]?.numericValue || 0, 2500, isInView);
+  const animatedValue3 = useCountUp(displayStats[3]?.numericValue || 0, 2800, isInView);
 
   const animatedValues = [
     animatedValue0,
@@ -135,7 +227,7 @@ const Stats: React.FC = () => {
     >
       {/* Desktop Layout - Horizontal */}
       <div className="hidden md:flex items-center justify-between w-full max-w-6xl">
-        {stats.map((stat, index) => (
+        {displayStats.map((stat, index) => (
           <React.Fragment key={index}>
             <div className="flex flex-col items-center">
               <div
@@ -157,7 +249,7 @@ const Stats: React.FC = () => {
                 {stat.label}
               </div>
             </div>
-            {index < stats.length - 1 && (
+            {index < displayStats.length - 1 && (
               <div
                 className="w-px h-16 mx-8"
                 style={{ backgroundColor: "#0c071b" }}
@@ -174,18 +266,18 @@ const Stats: React.FC = () => {
           <div className="flex w-full">
             <div className="flex-1 flex flex-col gap-[13px] items-start justify-center p-4 border-r-[1.5px] border-[#0c071b]">
               <div className="text-[40px] font-semibold leading-[52px] text-neutral-50 capitalize">
-                {formatValue(animatedValues[2], stats[2])}
+                {formatValue(animatedValues[2], displayStats[2])}
               </div>
               <div className="text-[16px] leading-6 text-zinc-500 w-full">
-                {stats[2].label}
+                {displayStats[2].label}
               </div>
             </div>
             <div className="flex-1 flex flex-col gap-[13px] items-start justify-center p-4 border-r-[1.5px] border-[#0c071b]">
               <div className="text-[40px] font-semibold leading-[52px] text-neutral-50 capitalize">
-                {formatValue(animatedValues[1], stats[1])}
+                {formatValue(animatedValues[1], displayStats[1])}
               </div>
               <div className="text-[16px] leading-6 text-zinc-500 w-full">
-                {stats[1].label}
+                {displayStats[1].label}
               </div>
             </div>
           </div>
@@ -194,18 +286,18 @@ const Stats: React.FC = () => {
           <div className="flex w-full">
             <div className="flex-1 flex flex-col gap-[13px] items-start justify-center p-4 border-r-[1.5px] border-[#0c071b]">
               <div className="text-[40px] font-semibold leading-[52px] text-neutral-50 capitalize">
-                {formatValue(animatedValues[0], stats[0])}
+                {formatValue(animatedValues[0], displayStats[0])}
               </div>
               <div className="text-[16px] leading-6 text-zinc-500 w-full">
-                {stats[0].label}
+                {displayStats[0].label}
               </div>
             </div>
             <div className="flex-1 flex flex-col gap-[13px] items-start justify-center p-4">
               <div className="text-[40px] font-semibold leading-[52px] text-neutral-50 capitalize">
-                {formatValue(animatedValues[3], stats[3])}
+                {formatValue(animatedValues[3], displayStats[3])}
               </div>
               <div className="text-[16px] leading-6 text-zinc-500 w-full">
-                {stats[3].label}
+                {displayStats[3].label}
               </div>
             </div>
           </div>

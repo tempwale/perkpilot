@@ -7,6 +7,17 @@ export interface Deal {
   vendor?: string;
   tags?: string[];
   publishedAt?: string; // ISO date string
+  primary_cta_link?: string;
+  secondary_cta_link?: string;
+  primary_cta_text?: string;
+  secondary_cta_text?: string;
+  logoUri?: string;
+  verified?: boolean;
+  category?: string;
+  discount?: string;
+  savings?: string;
+  features?: string[];
+  tag?: string;
 }
 import { DEALS_API } from "../config/backend";
 

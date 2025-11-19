@@ -132,25 +132,25 @@ export const UniversalBadge: React.FC<UniversalBadgeProps> = ({
   // Size configurations
   const sizeConfig = {
     sm: {
-      container: "gap-[8px] pl-[12px] pr-[16px] py-[6px]",
-      badgeSection: "gap-[3px] h-[20px] pl-[6px] pr-[8px] py-[3px]",
-      badgeText: "text-[10px]",
-      secondaryText: "text-[12px]",
-      iconSize: "size-[12px]",
+      container: "gap-[6px] sm:gap-[8px] pl-[10px] sm:pl-[12px] pr-[12px] sm:pr-[16px] py-[5px] sm:py-[6px]",
+      badgeSection: "gap-[2px] sm:gap-[3px] h-[18px] sm:h-[20px] pl-[5px] sm:pl-[6px] pr-[6px] sm:pr-[8px] py-[2px] sm:py-[3px]",
+      badgeText: "text-[9px] sm:text-[10px]",
+      secondaryText: "text-[11px] sm:text-[12px]",
+      iconSize: "size-[10px] sm:size-[12px]",
     },
     md: {
-      container: "gap-[12px] pl-[16px] pr-[24px] py-[8px]",
-      badgeSection: "gap-[4px] h-[24px] pl-[8px] pr-[12px] py-[4px]",
-      badgeText: "text-[12px]",
-      secondaryText: "text-[14px]",
-      iconSize: "size-[16px]",
+      container: "gap-[8px] sm:gap-[12px] pl-[12px] sm:pl-[16px] pr-[16px] sm:pr-[24px] py-[6px] sm:py-[8px]",
+      badgeSection: "gap-[3px] sm:gap-[4px] h-[22px] sm:h-[24px] pl-[6px] sm:pl-[8px] pr-[10px] sm:pr-[12px] py-[3px] sm:py-[4px]",
+      badgeText: "text-[11px] sm:text-[12px]",
+      secondaryText: "text-[13px] sm:text-[14px]",
+      iconSize: "size-[14px] sm:size-[16px]",
     },
     lg: {
-      container: "gap-[16px] pl-[20px] pr-[32px] py-[12px]",
-      badgeSection: "gap-[6px] h-[32px] pl-[12px] pr-[16px] py-[6px]",
-      badgeText: "text-[14px]",
-      secondaryText: "text-[16px]",
-      iconSize: "size-[20px]",
+      container: "gap-[12px] sm:gap-[16px] pl-[16px] sm:pl-[20px] pr-[24px] sm:pr-[32px] py-[8px] sm:py-[12px]",
+      badgeSection: "gap-[4px] sm:gap-[6px] h-[28px] sm:h-[32px] pl-[10px] sm:pl-[12px] pr-[12px] sm:pr-[16px] py-[4px] sm:py-[6px]",
+      badgeText: "text-[13px] sm:text-[14px]",
+      secondaryText: "text-[15px] sm:text-[16px]",
+      iconSize: "size-[18px] sm:size-[20px]",
     },
   };
 
@@ -192,7 +192,7 @@ export const UniversalBadge: React.FC<UniversalBadgeProps> = ({
 
   return (
     <div
-      className={`bg-[rgba(244,244,245,0.08)] box-border content-stretch flex items-center justify-center relative rounded-[100px] ${
+      className={`bg-[rgba(244,244,245,0.08)] box-border content-stretch flex flex-col sm:flex-row items-center justify-center text-center sm:text-left relative rounded-[24px] sm:rounded-[100px] ${
         sizeConfig[size].container
       } ${
         onClick
@@ -219,7 +219,7 @@ export const UniversalBadge: React.FC<UniversalBadgeProps> = ({
       {/* Secondary text (optional) */}
       {secondaryText && (
         <div
-          className={`bg-clip-text bg-gradient-to-r font-['Plus_Jakarta_Sans:Medium',_sans-serif] font-medium from-[#ffffff] leading-[0] relative shrink-0 text-center to-[#949494] whitespace-nowrap ${sizeConfig[size].secondaryText}`}
+          className={`bg-clip-text bg-gradient-to-r font-['Plus_Jakarta_Sans:Medium',_sans-serif] font-medium from-[#ffffff] leading-[0] relative shrink-0 text-center sm:text-left to-[#949494] whitespace-pre-wrap sm:whitespace-nowrap mt-2 sm:mt-0 ${sizeConfig[size].secondaryText}`}
           style={{ WebkitTextFillColor: "transparent" }}
         >
           <p className="leading-[normal]">{secondaryText}</p>
