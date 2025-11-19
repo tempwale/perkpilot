@@ -12,6 +12,8 @@ interface ToolsCardProps {
   secondaryActionText?: string;
   description?: string;
   icon?: React.ReactNode;
+  primaryActionUrl?: string;
+  secondaryActionUrl?: string;
 }
 
 export default function ToolsCard({
@@ -26,6 +28,8 @@ export default function ToolsCard({
   secondaryActionText = "View Details",
   description,
   icon,
+  primaryActionUrl,
+  secondaryActionUrl,
 }: ToolsCardProps) {
   return (
     <div
@@ -164,9 +168,25 @@ export default function ToolsCard({
         data-layer="Filter"
         className="Filter w-full lg:w-[180px] self-stretch flex-row lg:flex-col justify-around items-start gap-3"
       >
+        {primaryActionUrl ? (
+          <a
+            href={primaryActionUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-layer="All Assets"
+            className="AllAssets self-stretch px-3 py-2 bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-lg inline-flex justify-center items-center hover:opacity-90 transition-opacity"
+          >
+            <div
+              data-layer="Redeem"
+              className="Redeem justify-start w-[120px] text-center text-white text-base font-normal font-['Poppins'] leading-normal"
+            >
+              {primaryActionText}
+            </div>
+          </a>
+        ) : (
         <div
           data-layer="All Assets"
-          className="AllAssets self-stretch px-3 py-2 bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-lg inline-flex justify-center items-center"
+            className="AllAssets self-stretch px-3 py-2 bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-lg inline-flex justify-center items-center opacity-60 cursor-not-allowed"
         >
           <div
             data-layer="Redeem"
@@ -175,9 +195,26 @@ export default function ToolsCard({
             {primaryActionText}
           </div>
         </div>
+        )}
+        {secondaryActionUrl ? (
+          <a
+            href={secondaryActionUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-layer="Crypto"
+            className="Crypto self-stretch px-3 py-2 bg-white/10 rounded-lg inline-flex justify-center items-center gap-2.5 hover:bg-white/20 transition-colors"
+          >
+            <div
+              data-layer="View Details"
+              className="ViewDetails justify-start w-[120px] text-center text-neutral-50 text-base font-normal font-['Poppins'] leading-normal"
+            >
+              {secondaryActionText}
+            </div>
+          </a>
+        ) : (
         <div
           data-layer="Crypto"
-          className="Crypto self-stretch px-3 py-2 bg-white/10 rounded-lg inline-flex justify-center items-center gap-2.5"
+            className="Crypto self-stretch px-3 py-2 bg-white/10 rounded-lg inline-flex justify-center items-center gap-2.5 opacity-60 cursor-not-allowed"
         >
           <div
             data-layer="View Details"
@@ -186,6 +223,7 @@ export default function ToolsCard({
             {secondaryActionText}
           </div>
         </div>
+        )}
       </div>
     </div>
   );

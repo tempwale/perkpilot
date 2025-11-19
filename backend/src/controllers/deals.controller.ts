@@ -1,12 +1,25 @@
 import { Request, Response } from "express";
 import mongoose from "mongoose";
-import Deal, { IDeal } from '../models/deal.model.js';
-import DealPage, { IDealPage } from '../models/dealpage.model.js';
+import Deal, { IDeal } from "../models/deal.model.js";
+import DealPage, { IDealPage } from "../models/dealpage.model.js";
+import Stats, { IStats } from "../models/stats.model.js";
 import { DealCreateBody } from '../types/index.js';
 
-// GET all deals
-export const getAllDeals = async (_req: Request, res: Response) => {
+// GET all deals or deal page (if ?page=true)
+export const getAllDeals = async (req: Request, res: Response) => {
   try {
+    // Check if requesting deal page data
+    if (req.query.page === "true") {
+      const dealPage: IDealPage | null = await DealPage.findOne().populate(
+        "deals"
+      );
+      if (!dealPage) {
+        return res.status(404).json({ message: "Deal page not found" });
+      }
+      return res.json(dealPage);
+    }
+    
+    // Otherwise return all deals
     const deals: IDeal[] = await Deal.find();
     console.log("Fetched deals:", deals);
     res.json(deals);
@@ -26,8 +39,13 @@ export const getDealById = async (req: Request, res: Response) => {
   }
 };
 
-// CREATE new deal
+// CREATE new deal, update deal page (if ?page=true), or update stats (if ?stats=true)
 export const createDeal = async (req: Request, res: Response) => {
+  // Check if updating deal page
+  if (req.query.page === "true") {
+    return updateDealPage(req, res);
+  }
+  
   try {
     const {
       title: bodyTitle,
@@ -106,8 +124,13 @@ export const createDeal = async (req: Request, res: Response) => {
   }
 };
 
-// UPDATE deal
+// UPDATE deal, deal page (if ?page=true), or stats (if ?stats=true)
 export const updateDeal = async (req: Request, res: Response) => {
+  // Check if updating deal page (only for PUT /api/deals?page=true, not PUT /api/deals/:id)
+  if (req.query.page === "true" && !req.params.id) {
+    return updateDealPage(req, res);
+  }
+  
   try {
     const updatedData: Partial<IDeal> = req.body;
 
@@ -168,8 +191,9 @@ export const getDealPage = async (_req: Request, res: Response) => {
     const dealPage: IDealPage | null = await DealPage.findOne().populate(
       "deals"
     );
-    if (!dealPage)
+    if (!dealPage) {
       return res.status(404).json({ message: "Deal page not found" });
+    }
 
     res.json(dealPage);
   } catch (error) {
@@ -182,28 +206,29 @@ export const updateDealPage = async (req: Request, res: Response) => {
   try {
     const updatedData: Partial<IDealPage> = req.body;
 
-    // Ensure only valid fields are updated
     const allowedFields: (keyof IDealPage)[] = [
       "topTagline",
       "heading",
       "subheading",
+      "status",
       "deals",
     ];
     const filteredData: Partial<IDealPage> = {};
     for (const key of allowedFields) {
       if (key in updatedData) {
-        filteredData[key] = updatedData[key];
+        if (updatedData[key] !== undefined) {
+          filteredData[key] = updatedData[key];
+        }
       }
     }
 
-    // Validate 'deals' if provided: must be an array of valid ObjectId strings
     if (filteredData.deals !== undefined) {
       if (!Array.isArray(filteredData.deals)) {
         return res
           .status(400)
           .json({ message: "'deals' must be an array of Deal _id strings" });
       }
-
+      if (filteredData.deals.length > 0) {
       const invalid = filteredData.deals.some(
         (d) => !mongoose.Types.ObjectId.isValid(String(d))
       );
@@ -213,10 +238,14 @@ export const updateDealPage = async (req: Request, res: Response) => {
         });
       }
 
-      // Optionally convert string ids to ObjectId instances before storing
+        // Convert string ids to ObjectId instances before storing
       filteredData.deals = filteredData.deals.map(
         (d) => new mongoose.Types.ObjectId(String(d))
       );
+      } else {
+        // Empty array - set to empty array
+        filteredData.deals = [];
+      }
     }
 
     // Update the singleton DealPage (no id). Try findOneAndUpdate first.
@@ -227,7 +256,12 @@ export const updateDealPage = async (req: Request, res: Response) => {
         new: true,
         runValidators: true,
       }
-    ).populate("deals");
+    );
+    
+    // Populate deals after update
+    if (dealPage) {
+      dealPage = await DealPage.findById(dealPage._id).populate("deals");
+    }
 
     // If no DealPage exists, create one (requires `heading` in filteredData)
     if (!dealPage) {
@@ -238,6 +272,10 @@ export const updateDealPage = async (req: Request, res: Response) => {
         });
       }
 
+      if (!filteredData.status) {
+        filteredData.status = "live";
+      }
+
       const created = await DealPage.create(filteredData);
       dealPage = await DealPage.findById(created._id).populate("deals");
     }
@@ -245,5 +283,53 @@ export const updateDealPage = async (req: Request, res: Response) => {
     res.json(dealPage);
   } catch (error) {
     res.status(400).json({ message: "Error updating deal page", error });
+  }
+};
+
+// UPDATE stats
+export const updateStats = async (req: Request, res: Response) => {
+  try {
+    const { stats: statsData } = req.body as { stats?: Array<{ numberValue: string; message: string }> };
+
+    if (!Array.isArray(statsData)) {
+      return res.status(400).json({ message: "'stats' must be an array" });
+    }
+
+    // Validate each stat entry
+    for (const stat of statsData) {
+      if (!stat.numberValue || !stat.message) {
+        return res.status(400).json({ 
+          message: "Each stat must have 'numberValue' and 'message' fields" 
+        });
+      }
+    }
+
+    // Update or create the singleton Stats document
+    const stats: IStats | null = await Stats.findOneAndUpdate(
+      {},
+      { stats: statsData },
+      {
+        new: true,
+        runValidators: true,
+        upsert: true, // Create if doesn't exist
+      }
+    );
+
+    res.json(stats);
+  } catch (error) {
+    res.status(400).json({ message: "Error updating stats", error });
+  }
+};
+
+// GET stats
+export const getStats = async (_req: Request, res: Response) => {
+  try {
+    const stats = await Stats.findOne();
+    if (!stats) {
+      return res.json({ stats: [] });
+    }
+    res.json(stats);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching stats", error });
   }
 };

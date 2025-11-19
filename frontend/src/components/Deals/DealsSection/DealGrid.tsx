@@ -17,10 +17,26 @@ type UIDeal = Partial<Deal> & {
   discount?: string;
   savings?: string;
   category?: string;
+  primary_cta_link?: string;
+  secondary_cta_link?: string;
 };
 
 interface DealGridProps {
   deals?: UIDeal[];
+  featuredDeals?: Array<{
+    _id: string;
+    title?: string;
+    category?: string;
+    description?: string;
+    logoUri?: string;
+    verified?: boolean;
+    tag?: string;
+    features?: string[];
+    discount?: string;
+    savings?: string;
+    primary_cta_link?: string;
+    secondary_cta_link?: string;
+  }>;
   onViewDetails?: (dealId: string | number) => void;
   onGetDeal?: (dealId: string | number) => void;
   itemsPerPage?: number;
@@ -29,6 +45,7 @@ interface DealGridProps {
 
 export default function DealGrid({
   deals,
+  featuredDeals,
   onViewDetails,
   onGetDeal,
   itemsPerPage = 6,
@@ -39,11 +56,12 @@ export default function DealGrid({
   const [apiDeals, setApiDeals] = useState<UIDeal[]>([]);
   const [loading, setLoading] = useState(false);
   const [fetchError, setFetchError] = useState<string | null>(null);
+  const hasPropDeals = Array.isArray(deals);
 
-  // Check if mobile on mount and window resize
+
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768); // md breakpoint
+      setIsMobile(window.innerWidth < 768); 
     };
 
     checkMobile();
@@ -57,9 +75,33 @@ export default function DealGrid({
     setCurrentPage(1);
   }, [isMobile]);
 
-  // Fetch deals from API on mount (if no `deals` prop provided)
+
   useEffect(() => {
-    if (deals && deals.length) return; // caller provided deals
+    if (hasPropDeals) {
+      setApiDeals([]);
+      setLoading(false);
+      setFetchError(null);
+      return;
+    }
+    if (featuredDeals && featuredDeals.length) {
+      const convertedDeals: UIDeal[] = featuredDeals.map((deal) => ({
+        _id: deal._id,
+        title: deal.title,
+        category: deal.category,
+        description: deal.description,
+        logoUri: deal.logoUri,
+        verified: deal.verified,
+        tag: deal.tag,
+        dealType: deal.tag,
+        features: deal.features,
+        discount: deal.discount,
+        savings: deal.savings,
+        primary_cta_link: deal.primary_cta_link,
+        secondary_cta_link: deal.secondary_cta_link,
+      }));
+      setApiDeals(convertedDeals);
+      return;
+    }
 
     let mounted = true;
     async function load() {
@@ -82,10 +124,12 @@ export default function DealGrid({
     return () => {
       mounted = false;
     };
-  }, [deals]);
+  }, [hasPropDeals, featuredDeals]);
 
-  // Decide which data source to use: prop -> API -> empty array
-  const sourceDeals = deals && deals.length > 0 ? deals : apiDeals;
+  // Decide which data source to use: prop -> featuredDeals -> API -> empty array
+  const sourceDeals = hasPropDeals
+    ? deals ?? []
+    : apiDeals;
 
   // Calculate items per page based on screen size
   const effectiveItemsPerPage = isMobile ? 3 : itemsPerPage;
@@ -157,7 +201,7 @@ export default function DealGrid({
               <img
                 src={deal.logoUri}
                 alt={deal.title ?? "logo"}
-                className="w-12 h-12 object-contain"
+                className="w-14 h-14 object-contain"
               />
             ) : null);
 
@@ -180,6 +224,7 @@ export default function DealGrid({
                 features={deal.features ?? []}
                 discount={deal.discount ?? ""}
                 savings={deal.savings ?? ""}
+                redeemUrl={deal.primary_cta_link}
                 onViewDetails={() => handleViewDetails(idKey)}
                 onGetDeal={() => handleGetDeal(idKey)}
               />
