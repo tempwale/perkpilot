@@ -62,7 +62,6 @@ interface DealCardProps {
   category?: string;
   description?: string;
   logoComponent?: React.ReactNode;
-  verified?: boolean;
   dealType?: string;
   features?: string[];
   discount?: string;
@@ -85,7 +84,6 @@ export default function DealCard({
   category,
   description,
   logoComponent = <DefaultLogo />,
-  verified,
   dealType,
   features = [],
   discount,
@@ -129,24 +127,16 @@ export default function DealCard({
               data-node-id="1:1659"
             >
               <div
-                className="content-stretch flex gap-[8px] items-start relative shrink-0 min-w-0 w-full"
+                className="content-stretch flex gap-[8px] items-center relative shrink-0 min-w-0 w-full"
                 data-node-id="1:1660"
               >
                 <p
-                  className="font-medium leading-[normal] relative text-base sm:text-lg md:text-[20px] text-white flex-1 min-w-0 wrap-break-word line-clamp-2"
+                  className="font-medium flex items-center gap-2 leading-[normal] relative text-base sm:text-lg md:text-[20px] text-white flex-1 min-w-0 wrap-break-word line-clamp-2"
                   data-node-id="1:1661"
                 >
                   {title}
+                  <VerificationIcon />
                 </p>
-                {verified && (
-                  <div
-                    className="relative flex-shrink-0 size-5 sm:size-6 mt-1"
-                    data-name="verification-icon"
-                    data-node-id="1:1662"
-                  >
-                    <VerificationIcon />
-                  </div>
-                )}
               </div>
               <p
                 className="leading-[normal] not-italic relative text-[#cbd2da] text-[11px] sm:text-[12px] w-full wrap-break-word truncate"
