@@ -60,6 +60,7 @@ export const createDeal = async (req: Request, res: Response) => {
       tag,
       logoUri,
       verified,
+      rating,
       primary_cta_text,
       secondary_cta_text,
       primary_cta_link,
@@ -112,6 +113,7 @@ export const createDeal = async (req: Request, res: Response) => {
       tag: tag || null,
       logoUri: logoUri || null,
       verified: verified ?? false, // default false if not provided
+      rating: rating || null,
       primary_cta_text: primary_cta_text || null,
       secondary_cta_text: secondary_cta_text || null,
       primary_cta_link: primary_cta_link || null,
@@ -145,6 +147,7 @@ export const updateDeal = async (req: Request, res: Response) => {
       "tag",
       "logoUri",
       "verified",
+      "rating",
       "primary_cta_text",
       "secondary_cta_text",
       "primary_cta_link",

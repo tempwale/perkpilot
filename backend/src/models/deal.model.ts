@@ -10,6 +10,7 @@ export interface IDeal extends Document {
   tag?: string; // e.g., "Hot Deal"
   logoUri?: string; // URI of logo image
   verified?: boolean; // is deal verified
+  rating?: number; 
   primary_cta_text?: string;
   secondary_cta_text?: string;
   primary_cta_link?: string;
@@ -57,6 +58,12 @@ const dealSchema = new Schema<IDeal>(
     verified: {
       type: Boolean,
       default: false,
+    },
+    rating: {
+      type: Number,
+      default: null,
+      min: 0,
+      max: 5,
     },
     primary_cta_text: {
       type: String,

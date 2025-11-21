@@ -46,6 +46,7 @@ export interface DealCreateBody {
   tag?: string;
   logoUri?: string;
   verified?: boolean;
+  rating?: number;
   primary_cta_text?: string;
   secondary_cta_text?: string;
   primary_cta_link?: string;

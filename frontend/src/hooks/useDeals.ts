@@ -13,6 +13,7 @@ export interface Deal {
   secondary_cta_text?: string;
   logoUri?: string;
   verified?: boolean;
+  rating?: number;
   category?: string;
   discount?: string;
   savings?: string;
