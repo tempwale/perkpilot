@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 interface HeroProps {
   category?: string;
@@ -118,37 +119,40 @@ export default function Hero({
         data-layer="Frame 2147206224"
         className="Frame2147206224 w-full lg:w-[608px] flex-col justify-start items-start gap-6"
       >
-        <div
+        <nav
           data-layer="Frame 2147206180"
-          className="Frame2147206180 flex justify-start  gap-4 px-4 md:flex-col"
+          className="Frame2147206180 flex flex-row justify-start items-center gap-2 px-4 flex-wrap"
+          style={{ fontFamily: "Plus Jakarta Sans" }}
         >
-          {/* leading dot before category */}
-          <div className="flex flex-row justify-start items-center gap-4">
-            <span
-              aria-hidden
-              className="w-2 h-2 rounded-full bg-zinc-500 inline-block "
-            />
-            <div
-              data-layer="Project Management"
-              className="ProjectManagement  text-zinc-500 text-sm font-medium font-['Plus_Jakarta_Sans'] leading-[21px]"
-            >
-              {category}
-            </div>
-          </div>
-          {/* small circular separator dot */}
-          <div className="flex flex-row justify-start items-center gap-4">
-            <span
-              aria-hidden
-              className="w-2 h-2 rounded-full bg-[#F4F4F5] inline-block"
-            />
-            <div
-              data-layer="Notion vs Obsidian vs Roam Research"
-              className="NotionVsObsidianVsRoamResearch justify-start text-zinc-100 text-sm font-medium font-['Plus_Jakarta_Sans'] leading-[21px]"
-            >
-              {breadcrumb}
-            </div>
-          </div>
-        </div>
+          {/* Home Link */}
+          <Link
+            to="/"
+            className="text-zinc-500 hover:text-zinc-400 transition-colors flex items-center text-sm font-medium leading-[21px] whitespace-nowrap"
+          >
+            Home
+          </Link>
+          {/* Separator dot */}
+          <span className="text-zinc-500 flex items-center" style={{ fontSize: "14px", lineHeight: "21px" }}>
+            •
+          </span>
+          {/* Category Link */}
+          <Link
+            to={`/blogs${category ? `?category=${encodeURIComponent(category)}` : ""}`}
+            className="text-zinc-500 hover:text-zinc-400 transition-colors flex items-center text-sm font-medium leading-[21px] whitespace-nowrap"
+          >
+            {category}
+          </Link>
+          {/* Separator dot */}
+          <span className="text-zinc-100 flex items-center" style={{ fontSize: "14px", lineHeight: "21px" }}>
+            •
+          </span>
+          <span
+            data-layer="Notion vs Obsidian vs Roam Research"
+            className="NotionVsObsidianVsRoamResearch text-zinc-100 text-sm font-medium leading-[21px] whitespace-nowrap"
+          >
+            {breadcrumb}
+          </span>
+        </nav>
 
         <div
           data-layer="Notion vs obsidian vs roam research"

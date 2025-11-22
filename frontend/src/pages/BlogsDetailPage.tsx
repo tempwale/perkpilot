@@ -10,6 +10,8 @@ import ToolDeal from "../components/BlogsDetail/ToolDeal";
 import SimilarBlogs from "../components/BlogsDetail/SimilarBlogs";
 import { fetchBlogBySlug, fetchBlogById, } from "../hooks/useBlogs";
 import { type Blog } from "../types/blogs.types";
+import Author from "../components/ComparisionsDetail/Author";
+import { type Author as AuthorData } from "../hooks/useAuthor";
 
 const formatDate = (date?: string | Date): string => {
   if (!date) return "";
@@ -171,6 +173,13 @@ export default function BlogsDetailPage() {
                 content={blog.blogBody}
               />
             )}
+
+            {/* Author Card after ToolDeal */}
+            {blog.blogAuthor && typeof blog.blogAuthor === 'object' && (
+              <div className="w-full mt-6">
+                <Author authorData={blog.blogAuthor as AuthorData} />
+              </div>
+            )}
           </div>
 
           <aside className="hidden md:block w-full md:w-[397px] flex-shrink-0">
@@ -178,9 +187,11 @@ export default function BlogsDetailPage() {
               <BlogModules modules={modules} />
             </div>
           </aside>
+
         </div>
+        
       </div>
-      
+     
       {blog.moreBlogs && blog.moreBlogs.length > 0 && (
         <div className="w-full flex mx-auto Rectangle2824 bg-[#040404] lg:bg-gradient-to-t from-black to-[#190845] px-4 py-20">
           <SimilarBlogs

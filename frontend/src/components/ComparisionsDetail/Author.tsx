@@ -9,13 +9,10 @@ type Social = {
 
 type Props = {
   authorData?: AuthorData;
-  data?: string;
   imageSrc?: string;
   name?: string;
   role?: string;
-  badges?: string[];
   bio?: string;
-  socials?: Social[];
   aboutTitle?: string;
   viewProfileText?: string;
 };
@@ -122,17 +119,10 @@ export default function Author({
   imageSrc = "https://placehold.co/256x225",
   name = "John Doe",
   role = "SaaS Industry Veteran & Growth Strategist",
-  badges = [],
-  bio = `John Doe is a SaaS industry veteran and a growth hacker with 10+ years\n          experience helping startups scale efficiently. He specializes in AI\n          integration, productivity optimization, and building sustainable\n          growth systems.`,
+  bio = `John Doe is a SaaS industry veteran and a growth hacker with 10+ years experience helping startups scale efficiently. He specializes in AI integration, productivity optimization, and building sustainable growth systems.`,
   aboutTitle = "About the Author",
-  viewProfileText = "View Profile",
-  socials = [
-    { href: "#", icon: DefaultX, label: "X" },
-    { href: "#", icon: DefaultInstagram, label: "Instagram" },
-    { href: "#", icon: DefaultLinkedIn, label: "LinkedIn" },
-  ],
+  viewProfileText = "View Profile >",
 }: Props) {
-  // Use API data if available, otherwise fall back to defaults
   const displayImage = authorData?.authorImageURL || imageSrc;
   const displayName = authorData?.authorName || name;
   const displayRole = authorData?.authorIndustry || role;
@@ -140,124 +130,147 @@ export default function Author({
   const displayAboutTitle = authorData?.authorTitle || aboutTitle;
   const displayProfileURL = authorData?.authorViewProfileURL || "#";
 
-  // Build socials array from API data
-  const displaySocials: Social[] = authorData
-    ? ([
-        authorData.authorXAccount && {
-          href: authorData.authorXAccount,
+  const formatSocialUrl = (url: string | undefined): string => {
+    if (!url || !url.trim()) return "#";
+    const trimmedUrl = url.trim();
+    if (!trimmedUrl.startsWith("http://") && !trimmedUrl.startsWith("https://")) {
+      return `https://${trimmedUrl}`;
+    }
+    return trimmedUrl;
+  };
+
+  const displaySocials: Social[] = [
+    {
+      href: formatSocialUrl(authorData?.authorXAccount),
           icon: DefaultX,
           label: "X",
         },
-        authorData.authorIGAccount && {
-          href: authorData.authorIGAccount,
+    {
+      href: formatSocialUrl(authorData?.authorIGAccount),
           icon: DefaultInstagram,
           label: "Instagram",
         },
-        authorData.authorLinkedinAccount && {
-          href: authorData.authorLinkedinAccount,
+    {
+      href: formatSocialUrl(authorData?.authorLinkedinAccount),
           icon: DefaultLinkedIn,
           label: "LinkedIn",
         },
-      ].filter(Boolean) as Social[])
-    : socials;
+  ];
 
   return (
+    <div className="w-full max-w-[821px] mx-auto">
     <div
       data-layer="Frame 2147206154"
-      className="Frame2147206154 h-[800px] md:h-[257px] p-4 bg-white/10 rounded-3xl outline-1 -outline-offset-[-1px] outline-white/10 flex justify-start items-start gap-6 flex-col md:flex-row"
+        className="box-border flex flex-col md:flex-row items-start p-4 gap-6 w-full md:w-[821px] h-auto md:h-[257px] bg-[rgba(255,255,255,0.08)] border border-[rgba(255,255,255,0.08)] rounded-[24px]"
     >
+        {/* Author Image */}
       <img
         data-layer="Rectangle 39982"
-        className="Rectangle39982 w-full md:w-64 self-stretch rounded-3xl"
+          className="w-full md:w-[256px] h-[225px] md:h-[225px] rounded-[24px] object-cover flex-none"
         src={displayImage}
         alt={displayName}
       />
+
       <div
         data-layer="Frame 2147206153"
-        className="Frame2147206153 flex-1 flex-col justify-start items-start gap-4"
+          className="flex flex-col items-start gap-4 flex-1 min-w-0 w-full md:w-[509px] h-auto md:h-[209px]"
       >
+          {/* About the Author Title */}
         <div
           data-layer="About the Author"
-          className="AboutTheAuthor self-stretch justify-start text-neutral-50 text-xl font-medium font-['Poppins'] leading-loose "
+            className="w-full text-[#FAFAFA] text-xl font-medium font-['Poppins'] leading-8"
         >
           {displayAboutTitle}
         </div>
+
+          {/* Name, Role Badge, and View Profile Button */}
         <div
           data-layer="Frame 2147206152"
-          className="Frame2147206152 self-stretch flex gap-5 md:gap-4-col md:flex-row items-start md:items-center content-center"
+            className="flex flex-row flex-nowrap items-center gap-4 w-full h-auto min-w-0 overflow-hidden"
         >
+            {/* Author Name */}
           <div
             data-layer="John Doe"
-            className="JohnDoe text-left md:text-center justify-start text-neutral-50 text-lg font-medium font-['Poppins']"
+              className="text-[#FAFAFA] text-lg font-medium font-['Poppins'] leading-[27px] flex-none whitespace-nowrap shrink-0"
           >
             {displayName}
           </div>
 
-          {badges.length > 0 ? (
-            badges.map((b, i) => (
-              <div
-                key={i}
-                data-layer={`Badge-${i}`}
-                className="Container px-4 py-1 bg-white/10 rounded-lg flex justify-start items-start gap-4"
-              >
-                <div className="SaasIndustryVeteranGrowthStrategist text-center justify-start text-neutral-50 text-xs font-medium font-['Poppins']">
-                  {b}
-                </div>
-              </div>
-            ))
-          ) : (
+            {/* Role Badge */}
             <div
               data-layer="Container"
-              className="Container px-4 py-1 bg-white/10 rounded-lg flex justify-start items-start gap-4"
+              className="flex flex-row items-center justify-center px-4 py-1 h-[26px] bg-[rgba(255,255,255,0.08)] rounded-lg flex-1 min-w-0 overflow-hidden"
             >
               <div
                 data-layer="SaaS Industry Veteran & Growth Strategist"
-                className="SaasIndustryVeteranGrowthStrategist text-left md:text-center justify-start text-neutral-50 text-xs font-medium font-['Poppins']"
+                className="text-[#FAFAFA] text-xs font-medium font-['Poppins'] leading-[18px] text-center truncate w-full"
               >
                 {displayRole}
               </div>
             </div>
-          )}
 
-          <a href={displayProfileURL} target="_blank" rel="noopener noreferrer">
+            {/* View Profile Button */}
+            <a
+              href={displayProfileURL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-none whitespace-nowrap shrink-0"
+            >
             <div
               data-layer="Container"
-              className="Container px-4 py-1 bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-lg flex justify-start items-start gap-4"
+                className="flex flex-row items-center justify-center px-4 py-1 h-[26px] bg-gradient-to-b from-[#501BD6] to-[#7F57E2] rounded-lg"
             >
               <div
                 data-layer="View Profile >"
-                className="ViewProfile text-left md:text-center justify-start text-white text-xs font-medium font-['Poppins']"
+                  className="text-white text-xs font-medium font-['Poppins'] leading-[18px] text-center whitespace-nowrap"
               >
                 {viewProfileText}
               </div>
             </div>
           </a>
         </div>
+
+          {/* Bio */}
         <div
           data-layer="bio"
-          className="JohnDoeIsASaasIndustryVeteranAndAGrowthHackerWith10YearsExperienceHelpingStartupsScaleEfficientlyHeSpecializesInAiIntegrationProductivityOptimizationAndBuildingSustainableGrowthSystems self-stretch justify-start text-zinc-100 text-xs font-normal font-['Poppins'] whitespace-pre-line"
+            className="w-full text-[#F4F4F5] text-xs font-normal font-['Poppins'] leading-[18px] line-clamp-3 overflow-hidden text-ellipsis"
         >
           {displayBio}
         </div>
+
+          {/* Social Icons */}
         <div
           data-layer="Button List"
-          className="ButtonList inline-flex justify-start items-center gap-4"
+            className="flex flex-row items-center gap-4 w-auto h-12"
         >
-          {displaySocials.map((s, i) => (
-            <a
-              key={i}
-              href={s.href || "#"}
-              aria-label={s.label || `${displayName} social`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <div className="XLogo w-12 h-12 bg-[#ebf2fd] rounded-[100px] flex justify-center items-center gap-2.5">
-                <div className="Icon w-6 h-6 relative overflow-hidden">
+          {displaySocials.map((s, i) => {
+            const hasValidLink = s.href && s.href !== "#";
+            const content = (
+              <div className="flex flex-row justify-center items-center w-12 h-12 bg-[#EBF2FD] rounded-[100px]">
+                <div className="w-6 h-6 relative">
                   {s.icon}
                 </div>
               </div>
+            );
+
+            return hasValidLink ? (
+              <a
+                key={i}
+                href={s.href}
+                aria-label={s.label || `${displayName} social`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-none"
+              >
+                {content}
             </a>
-          ))}
+            ) : (
+              <div key={i} className="flex-none opacity-50 cursor-not-allowed">
+                {content}
+              </div>
+            );
+          })}
+          </div>
         </div>
       </div>
     </div>
