@@ -26,50 +26,58 @@ export default function PricingSidebar({
   return (
     <div
       data-layer="Frame 2147206174"
-      className="Frame2147206174 w-[370px] p-6 bg-white/10 rounded-3xl -outline-offset-[-1px] outline-white/20 backdrop-blur-md flex-col justify-start items-start gap-8"
+      className="Frame2147206174 box-border flex flex-col items-start p-6 w-full max-w-[397px] bg-[rgba(255,255,255,0.08)] border border-[rgba(255,255,255,0.16)] backdrop-blur-[12px] rounded-[24px] gap-8"
     >
       <div
         data-layer="Pricing"
-        className="Pricing self-stretch justify-start text-neutral-50 text-2xl font-semibold font-['Urbanist']"
+        className="Pricing self-stretch text-[#FAFAFA] text-2xl font-semibold font-['Urbanist'] leading-[29px]"
+        style={{ fontSize: "24px", lineHeight: "29px" }}
       >
         Pricing
       </div>
       <div
         data-layer="Frame 2147205595"
-        className="Frame2147205595 self-stretch flex flex-col justify-start items-start gap-5"
+        className="Frame2147205595 self-stretch flex flex-col items-start gap-5"
+        style={{ gap: "20px" }}
       >
         {displayPricing.map((plan, index) => (
           <div
-            key={index}
+            key={`plan-${index}`}
             data-layer={`Frame-${index}`}
-            className="self-stretch inline-flex justify-between items-center"
+            className="self-stretch flex flex-row justify-between items-center gap-4"
+            style={{ gap: "16px", height: "24px" }}
           >
             <div
               data-layer={plan.plan}
-              className="justify-start text-neutral-50 text-base font-normal font-['Poppins'] leading-normal"
+              className="text-[#FAFAFA] font-['Poppins'] font-normal leading-6"
+              style={{ fontSize: "16px", lineHeight: "24px" }}
             >
               {plan.plan}
             </div>
             <div
               data-layer={plan.amount}
-              className="justify-start text-neutral-50 text-base font-medium font-['Poppins'] leading-normal"
+              className="text-[#FAFAFA] font-['Poppins'] font-medium leading-6"
+              style={{ fontSize: "16px", lineHeight: "24px" }}
             >
-              {plan.amount}
+              {plan.amount}/Month
             </div>
           </div>
         ))}
       </div>
       <div
         data-layer="Frame 2147206205"
-        className="Frame2147206205 self-stretch flex flex-col justify-start items-start gap-4"
+        className="Frame2147206205 self-stretch flex flex-col items-start gap-4"
+        style={{ gap: "16px" }}
       >
         <div
           data-layer="Buttons/main"
-          className="ButtonsMain self-stretch h-12 px-8 py-3 bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-[100px] -outline-offset-[-1px] outline-1-neutral-50/10 backdrop-blur-sm inline-flex justify-center items-center gap-3"
+          className="ButtonsMain box-border self-stretch flex flex-row justify-center items-center px-8 py-3 bg-gradient-to-b from-[#501BD6] to-[#7F57E2] border border-[rgba(250,250,250,0.08)] backdrop-blur-[4px] rounded-[100px] gap-3"
+          style={{ padding: "12px 32px", gap: "12px", height: "48px" }}
         >
           <div
             data-layer="Try Figma For Free"
-            className="TryFigmaForFree text-center justify-start text-neutral-50 text-base font-medium font-['Plus_Jakarta_Sans'] leading-normal"
+            className="TryFigmaForFree text-center text-[#FAFAFA] font-['Plus_Jakarta_Sans'] font-medium leading-6"
+            style={{ fontSize: "16px", lineHeight: "24px" }}
           >
             Try {title} For Free
           </div>
@@ -97,21 +105,24 @@ export default function PricingSidebar({
         </div>
         <div
           data-layer="Frame 2147206204"
-          className="Frame2147206204 self-stretch inline-flex justify-start items-start gap-4"
+          className="Frame2147206204 self-stretch flex flex-row items-start gap-4"
+          style={{ gap: "16px" }}
         >
           <div
             data-layer="Buttons/main"
-            className="ButtonsMain flex-1 h-12 px-8 py-3 bg-white/10 rounded-[100px] -outline-offset-[-1px] outline-1-zinc-100/10 backdrop-blur-sm flex justify-center items-center gap-3"
+            className="ButtonsMain box-border flex-1 flex flex-row justify-center items-center px-8 py-3 bg-[rgba(255,255,255,0.08)] border border-[rgba(244,244,245,0.08)] backdrop-blur-[4px] rounded-[100px] gap-3"
+            style={{ padding: "12px 32px", gap: "12px", height: "48px" }}
           >
             <div
               data-layer="Upvote"
-              className="Upvote text-center justify-start text-neutral-50 text-base font-normal font-['Plus_Jakarta_Sans'] leading-normal"
+              className="Upvote text-center text-[#FAFAFA] font-['Plus_Jakarta_Sans'] font-normal leading-6"
+              style={{ fontSize: "16px", lineHeight: "24px" }}
             >
               Upvote
             </div>
             <div
-              data-layer="fast-arrow-down"
-              className="FastArrowDown w-5 h-5 relative"
+              data-layer="fast-arrow-up"
+              className="FastArrowUp w-5 h-5 relative"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -122,14 +133,14 @@ export default function PricingSidebar({
                 className="w-full h-full"
               >
                 <path
-                  d="M15.8164 9.16669L10.8164 4.16669L5.81641 9.16669"
+                  d="M5.81641 12.5L10.8164 7.5L15.8164 12.5"
                   stroke="#FAFAFA"
                   strokeWidth="1.5"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
                 <path
-                  d="M15.8164 15.8333L10.8164 10.8333L5.81641 15.8333"
+                  d="M5.81641 7.5L10.8164 2.5L15.8164 7.5"
                   stroke="#FAFAFA"
                   strokeWidth="1.5"
                   strokeLinecap="round"
@@ -140,11 +151,13 @@ export default function PricingSidebar({
           </div>
           <div
             data-layer="Buttons/main"
-            className="ButtonsMain flex-1 h-12 px-8 py-3 bg-white/10 rounded-[100px] -outline-offset-[-1px] outline-1-zinc-100/10 backdrop-blur-sm flex justify-center items-center gap-3"
+            className="ButtonsMain box-border flex-1 flex flex-row justify-center items-center px-8 py-3 bg-[rgba(255,255,255,0.08)] border border-[rgba(244,244,245,0.08)] backdrop-blur-[4px] rounded-[100px] gap-3"
+            style={{ padding: "12px 32px", gap: "12px", height: "48px" }}
           >
             <div
               data-layer="Share"
-              className="Share text-center justify-start text-neutral-50 text-base font-normal font-['Plus_Jakarta_Sans'] leading-normal"
+              className="Share text-center text-[#FAFAFA] font-['Plus_Jakarta_Sans'] font-normal leading-6"
+              style={{ fontSize: "16px", lineHeight: "24px" }}
             >
               Share
             </div>
@@ -198,11 +211,13 @@ export default function PricingSidebar({
       </div>
       <div
         data-layer="Frame 2147223635"
-        className="Frame2147223635 self-stretch inline-flex justify-between items-center"
+        className="Frame2147223635 self-stretch flex flex-row justify-between items-center gap-3"
+        style={{ gap: "12px", height: "24px" }}
       >
         <div
           data-layer="Frame 2147223642"
-          className="Frame2147223642 flex justify-start items-center gap-3"
+          className="Frame2147223642 flex flex-row items-center gap-3"
+          style={{ gap: "12px" }}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -210,48 +225,50 @@ export default function PricingSidebar({
             height="25"
             viewBox="0 0 25 25"
             fill="none"
+            className="w-6 h-6"
           >
             <path
               d="M21.7343 8.31201C20.1911 4.7802 16.667 2.31201 12.5663 2.31201C7.381 2.31201 3.11745 6.25869 2.61572 11.312"
               stroke="#FAFAFA"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               d="M17.5664 8.31201H21.9664C22.2978 8.31201 22.5664 8.04338 22.5664 7.71201V3.31201"
               stroke="#FAFAFA"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               d="M3.44787 16.312C4.99098 19.8438 8.51514 22.312 12.6158 22.312C17.8011 22.312 22.0647 18.3653 22.5664 13.312"
               stroke="#FAFAFA"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               d="M7.61572 16.312H3.21572C2.88435 16.312 2.61572 16.5806 2.61572 16.912V21.312"
               stroke="#FAFAFA"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
           <div
             data-layer="Last Updated On"
-            className="LastUpdatedOn text-center justify-start text-neutral-50 text-base font-normal font-['Plus_Jakarta_Sans'] leading-normal"
+            className="LastUpdatedOn text-center text-[#FAFAFA] font-['Plus_Jakarta_Sans'] font-normal leading-6"
+            style={{ fontSize: "16px", lineHeight: "24px" }}
           >
             Last Updated On
           </div>
         </div>
         <div
           data-layer="Oct 2025"
-          className="Oct2025 text-center justify-start text-neutral-50 text-base font-normal font-['Plus_Jakarta_Sans'] leading-normal"
+          className="Oct2025 text-center text-[#FAFAFA] font-['Plus_Jakarta_Sans'] font-normal leading-6"
+          style={{ fontSize: "16px", lineHeight: "24px" }}
         >
-          {" "}
           {lastUpdated}
         </div>
       </div>

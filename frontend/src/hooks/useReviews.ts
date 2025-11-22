@@ -1,4 +1,4 @@
-import { REVIEWS_API } from "../config/backend";
+import { REVIEWS_API, REVIEWPAGE_API } from "../config/backend";
 
 export interface Review {
   _id: string;
@@ -138,6 +138,31 @@ export const fetchReviewById = async (id: string): Promise<Review> => {
 
   if (!response.ok) {
     throw new Error(`Failed to fetch review: ${response.statusText}`);
+  }
+
+  return response.json();
+};
+
+export interface ReviewPageSettings {
+  _id?: string;
+  reviewPageStatus?: "live" | "maintenance";
+  reviewPageTopTagline?: string;
+  reviewPageHeading?: string;
+  reviewPageSubheading?: string;
+  reviewPageTags?: string[];
+  featuredReviews?: string[] | Review[];
+}
+
+export const fetchReviewPageSettings = async (): Promise<ReviewPageSettings> => {
+  const response = await fetch(REVIEWPAGE_API, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch review page settings: ${response.statusText}`);
   }
 
   return response.json();

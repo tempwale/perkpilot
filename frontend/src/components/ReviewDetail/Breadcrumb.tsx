@@ -11,26 +11,24 @@ export default function Breadcrumb({ productName }: BreadcrumbProps) {
         className="flex items-center gap-2 text-sm font-medium"
         style={{ fontFamily: "Plus Jakarta Sans" }}
       >
-        <span className="text-zinc-500">•</span>
-
         <Link
           to="/"
-          className="text-zinc-500 hover:text-zinc-700 transition-colors"
+          className="text-zinc-500 hover:text-zinc-700 transition-colors flex items-center"
           style={{ fontSize: "14px", lineHeight: "21px" }}
         >
           Home
         </Link>
-        <span className="text-zinc-500">•</span>
+        <span className="text-zinc-500 flex items-center" style={{ fontSize: "14px", lineHeight: "21px" }}>•</span>
         <Link
           to="/reviews"
-          className="text-zinc-500 hover:text-zinc-700 transition-colors"
+          className="text-zinc-500 hover:text-zinc-700 transition-colors flex items-center"
           style={{ fontSize: "14px", lineHeight: "21px" }}
         >
           Reviews
         </Link>
-        <span className="text-white">•</span>
+        <span className="text-white flex items-center" style={{ fontSize: "14px", lineHeight: "21px" }}>•</span>
         <span
-          className="text-zinc-100"
+          className="text-zinc-100 flex items-center"
           style={{ fontSize: "14px", lineHeight: "21px" }}
         >
           {productName}

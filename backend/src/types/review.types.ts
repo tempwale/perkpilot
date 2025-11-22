@@ -1,4 +1,4 @@
-import { Document } from "mongoose";
+import { Document, Types } from "mongoose";
 
 // Type definitions for nested schemas
 export interface IFeature {
@@ -10,6 +10,8 @@ export interface IPricing {
   plan: string;
   amount: string;
   note?: string;
+  ctaText?: string;
+  ctaLink?: string;
 }
 
 export interface IAlternative {
@@ -61,6 +63,15 @@ export interface IRatingBreakdown {
 
 // Main Review interface
 export interface IReview extends Document {
+  // Review page management
+  isReviewPageSettings?: boolean;
+  reviewPageStatus?: "live" | "maintenance";
+  reviewPageTopTagline?: string;
+  reviewPageHeading?: string;
+  reviewPageSubheading?: string;
+  reviewPageTags?: string[];
+  featuredReviews?: Types.ObjectId[];
+
   // Reviewer's details (for backward compatibility - main reviewer)
   userName?: string;
   userTitle?: string;
@@ -81,6 +92,10 @@ export interface IReview extends Document {
   description?: string;
   overview?: string;
 
+  showProductUsedBy?: boolean;
+  productUsedByText?: string;
+  showAverageRating?: boolean;
+  averageRatingText?: string;
   features?: IFeature[];
   pricing?: IPricing[];
   alternatives?: IAlternative[];
@@ -111,8 +126,77 @@ export interface IReview extends Document {
   // Rating breakdown statistics
   ratingBreakdown?: IRatingBreakdown;
 
+  // Optional display fields (for UI compatibility)
+  logoComponent?: string;
+  dealType?: string;
+
   // Timestamps
   createdAt?: Date;
   updatedAt?: Date;
+}
+
+// ============ Review Query Parameter Types ============
+
+export interface ReviewQueryParams {
+  page?: string | number;
+  limit?: string | number;
+  productName?: string;
+  sortBy?: string;
+}
+
+// ============ Review Request Body Types ============
+
+export interface ReviewCreateBody {
+  productName: string;
+  productType?: string;
+  avatarUrl?: string;
+  description?: string;
+  overview?: string;
+  showProductUsedBy?: boolean;
+  productUsedByText?: string;
+  showAverageRating?: boolean;
+  averageRatingText?: string;
+  userName?: string;
+  userTitle?: string;
+  userAvatar?: string;
+  date?: string;
+  verified?: boolean;
+  reviewText?: string;
+  rating?: number;
+  aggregateRating?: number;
+  ratingCount?: number;
+  helpful?: number;
+  notHelpful?: number;
+  features?: IFeature[];
+  pricing?: IPricing[];
+  alternatives?: IAlternative[];
+  ratingCategories?: IRatingCategory[];
+  useCases?: IUseCase[];
+  pros?: string[];
+  cons?: string[];
+  faqs?: IFAQ[];
+  integrations?: string[];
+  productReviews?: IUserReview[];
+  userCount?: string;
+  foundedYear?: number;
+  employeeRange?: string;
+  headquarters?: string;
+  lastUpdated?: string;
+  upvotes?: number;
+  shareCount?: number;
+  ratingBreakdown?: IRatingBreakdown;
+  logoComponent?: string;
+  dealType?: string;
+}
+
+export type ReviewUpdateBody = Partial<ReviewCreateBody>;
+
+export interface ReviewPageSettingsBody {
+  reviewPageStatus?: "live" | "maintenance";
+  reviewPageTopTagline?: string;
+  reviewPageHeading?: string;
+  reviewPageSubheading?: string;
+  reviewPageTags?: string[];
+  featuredReviews?: string[]; // Array of Review ObjectIds
 }
 

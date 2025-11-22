@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import SearchSection from "../components/Reviews/SearchSection";
@@ -5,8 +6,43 @@ import Background from "../components/Background";
 import ReviewsSection from "../components/Reviews/ReviewsSection";
 import { UniversalBadge } from "../components/UniversalBadge";
 import { motion } from "framer-motion";
+import { fetchReviewPageSettings, type ReviewPageSettings } from "../hooks/useReviews";
 
 export default function ReviewsPage() {
+  const [reviewPageSettings, setReviewPageSettings] = useState<ReviewPageSettings | null>(null);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  useEffect(() => {
+    const loadSettings = async () => {
+      try {
+        const settings = await fetchReviewPageSettings();
+        setReviewPageSettings(settings);
+      } catch (error) {
+        console.error("Error loading review page settings:", error);
+        // Use defaults if API fails
+        setReviewPageSettings({
+          reviewPageTopTagline: "#1 Platform",
+          reviewPageHeading: "Software Reviews",
+          reviewPageSubheading: "Honest, in-depth reviews of the software tools that matter to your productivity and workflow.",
+        });
+      }
+    };
+    loadSettings();
+  }, []);
+
+  const handleSearch = (query: string) => {
+    setSearchQuery(query);
+  };
+
+  // Use settings from API or fallback to defaults
+  const badgeText = "#1 Platform";
+  const secondaryText = reviewPageSettings?.reviewPageTopTagline?.includes("Platform")
+    ? "For Software Reviews"
+    : reviewPageSettings?.reviewPageTopTagline || "For Software Reviews";
+  const heading = reviewPageSettings?.reviewPageHeading || "Software Reviews";
+  const subheading = reviewPageSettings?.reviewPageSubheading || 
+    "Honest, in-depth reviews of the software tools that matter to your productivity and workflow.";
+
   return (
     <div className="min-h-screen bg-black">
       <div className="max-w-full">
@@ -27,8 +63,8 @@ export default function ReviewsPage() {
               transition={{ duration: 0.7, ease: "easeOut" }}
             >
               <UniversalBadge
-                badgeText="#1 Platform"
-                secondaryText="For Software Reviews"
+                badgeText={badgeText}
+                secondaryText={secondaryText}
                 icon="electric"
                 className=""
                 variant="primary"
@@ -44,7 +80,7 @@ export default function ReviewsPage() {
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
               >
-                Software Reviews
+                {heading}
               </motion.h1>
 
               {/* Description with animation */}
@@ -55,18 +91,16 @@ export default function ReviewsPage() {
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.6, delay: 0.35, ease: "easeOut" }}
               >
-                <p className="mb-0">
-                  Honest, in-depth reviews of the software tools that matter
-                </p>
-                <p>to your productivity and workflow.</p>
+                <p>{subheading}</p>
               </motion.div>
             </motion.div>
           </div>
-          <SearchSection />
+          <SearchSection onSearch={handleSearch} />
           <ReviewsSection
             useAPI={true}
             itemsPerPage={6}
             showPagination={true}
+            searchQuery={searchQuery}
           />
 
           <Footer />

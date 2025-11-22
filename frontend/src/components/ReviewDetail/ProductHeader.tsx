@@ -126,17 +126,19 @@ export default function ProductHeader({
               887+
             </p>
           </div>
-          <div
-            data-layer="Deal Claimed By"
-            className="DealClaimedBy justify-start text-neutral-50 text-base font-normal font-['Plus_Jakarta_Sans'] leading-normal"
-          >
-            Deal Claimed By
-          </div>
-          <div
-            data-layer="( 50 Reviews )"
-            className="50Reviews justify-start text-zinc-400 text-base font-normal font-['Plus_Jakarta_Sans'] leading-normal"
-          >
-            ( 50 Reviews )
+          <div className="flex flex-col md:flex-row md:items-center gap-1 md:gap-4">
+            <div
+              data-layer="Deal Claimed By"
+              className="DealClaimedBy justify-start text-neutral-50 text-base font-normal font-['Plus_Jakarta_Sans'] leading-normal flex-none shrink-0"
+            >
+              Deal Claimed By
+            </div>
+            <div
+              data-layer="( 50 Reviews )"
+              className="50Reviews justify-start text-zinc-400 text-base font-normal font-['Plus_Jakarta_Sans'] leading-normal flex-none shrink-0"
+            >
+              ( 50 Reviews )
+            </div>
           </div>
         </div>
       </div>

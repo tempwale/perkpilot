@@ -10,6 +10,8 @@ const PricingSchema = new mongoose.Schema({
   plan: { type: String, required: true },
   amount: { type: String, required: true },
   note: { type: String },
+  ctaText: { type: String },
+  ctaLink: { type: String },
 });
 
 const AlternativeSchema = new mongoose.Schema({
@@ -47,13 +49,29 @@ const UserReviewSchema = new mongoose.Schema({
   date: { type: String },
   verified: { type: Boolean, default: false },
   rating: { type: Number, required: true, min: 1, max: 5 },
-  reviewText: { type: String, required: true },
+  reviewText: { type: String, default: "" },
   helpful: { type: Number, default: 0 },
   notHelpful: { type: Number, default: 0 },
 });
 
 const ReviewSchema = new mongoose.Schema(
   {
+    // Review page management fields 
+    isReviewPageSettings: { type: Boolean, default: false },
+    reviewPageStatus: {
+      type: String,
+      enum: ["live", "maintenance"],
+      default: "live",
+    },
+    reviewPageTopTagline: { type: String },
+    reviewPageHeading: { type: String },
+    reviewPageSubheading: { type: String },
+    reviewPageTags: [{ type: String }],
+    featuredReviews: {
+      type: [{ type: mongoose.Schema.Types.ObjectId, ref: "Review" }],
+      default: [],
+    },
+
     // Reviewer's details (for backward compatibility - main reviewer)
     userName: { type: String },
     userTitle: { type: String },
@@ -73,6 +91,10 @@ const ReviewSchema = new mongoose.Schema(
     avatarUrl: { type: String },
     description: { type: String },
     overview: { type: String },
+    showProductUsedBy: { type: Boolean, default: true },
+    productUsedByText: { type: String },
+    showAverageRating: { type: Boolean, default: false },
+    averageRatingText: { type: String },
 
     features: [FeatureSchema],
     pricing: [PricingSchema],
@@ -109,6 +131,10 @@ const ReviewSchema = new mongoose.Schema(
       twoStars: { type: Number, default: 0 },
       oneStars: { type: Number, default: 0 },
     },
+
+    // Optional display fields 
+    logoComponent: { type: String },
+    dealType: { type: String },
   },
   { timestamps: true }
 );
