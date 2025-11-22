@@ -7,7 +7,6 @@ export default function ProductFeatures({
   features,
   keyFeatures,
 }: ProductFeaturesProps) {
-  // Use features from API if available, otherwise fall back to keyFeatures or default
   const displayFeatures =
     features && features.length > 0
       ? features
@@ -43,28 +42,87 @@ export default function ProductFeatures({
   return (
     <div
       data-layer="Frame 2147206296"
-      className="Frame2147206296 w-full flex-col justify-start items-end gap-6 "
+      className="Frame2147206296 w-full max-w-[350px] md:max-w-[1240px] flex flex-col items-end"
+      style={{ gap: "12px" }}
     >
+      <style>{`
+        @media (min-width: 768px) {
+          .Frame2147206296 {
+            gap: 24px !important;
+          }
+          .Frame2147206310 {
+            padding: 16px 24px !important;
+            min-height: 100px !important;
+            gap: 169px !important;
+          }
+          .Frame2147206309 {
+            gap: 12px !important;
+            width: 288px !important;
+            flex: none !important;
+          }
+          .RealTimeCollaboration {
+            font-size: 24px !important;
+            line-height: 32px !important;
+            width: 288px !important;
+            max-height: none !important;
+            overflow: visible !important;
+            white-space: normal !important;
+          }
+          .MultipleUsersCanEditSimultaneously {
+            font-size: 16px !important;
+            line-height: 24px !important;
+            font-weight: 400 !important;
+            color: #FFFFFF !important;
+            text-align: left !important;
+            width: 288px !important;
+          }
+          .PerksPage {
+            width: 56px !important;
+            height: 56px !important;
+            min-width: 56px !important;
+          }
+          .PerksPage svg {
+            width: 40px !important;
+            height: 40px !important;
+          }
+        }
+      `}</style>
       {displayFeatures.map((feature, index) => (
         <div
-          key={feature._id || index}
+          key={feature._id || `feature-${index}`}
           data-layer="Frame 2147206310"
-          className="Frame2147206310 self-stretch px-6 py-4 bg-white/10 rounded-3xl outline-1 -outline-offset-[-1px] outline-white/10 inline-flex justify-between items-center"
+          className="Frame2147206310 box-border w-full max-w-[350px] md:max-w-[1240px] flex flex-row justify-between items-center bg-[rgba(255,255,255,0.08)] border border-[rgba(255,255,255,0.08)] rounded-2xl md:rounded-[24px]"
+          style={{
+            padding: "12px 16px",
+            gap: "8px",
+            minHeight: "82px",
+          }}
         >
           <div
             data-layer="Frame 2147206309"
-            className="Frame2147206309 w-full flex-col justify-start items-start gap-3"
+            className="Frame2147206309 flex flex-col items-start flex-1 min-w-0 md:flex-none"
+            style={{ gap: "10px" }}
           >
             <div
               data-layer="Real-time collaboration"
-              className="RealTimeCollaboration self-stretch justify-start text-white text-2xl font-medium font-['Plus_Jakarta_Sans'] leading-loose"
+              className="RealTimeCollaboration text-[#FAFAFA] font-['Plus_Jakarta_Sans'] font-medium break-words"
+              style={{
+                fontSize: "18px",
+                lineHeight: "27px",
+                width: "100%",
+              }}
             >
               {feature.title}
             </div>
             {feature.description && (
               <div
                 data-layer="Multiple users can edit simultaneously."
-                className="MultipleUsersCanEditSimultaneously self-stretch text-left w-full justify-start text-white text-base font-normal font-['Plus_Jakarta_Sans'] leading-normal"
+                className="MultipleUsersCanEditSimultaneously text-[#D4D4D8] md:text-white font-['Plus_Jakarta_Sans'] font-medium md:font-normal text-left break-words"
+                style={{
+                  fontSize: "14px",
+                  lineHeight: "21px",
+                  width: "100%",
+                }}
               >
                 {feature.description}
               </div>
@@ -72,25 +130,36 @@ export default function ProductFeatures({
           </div>
           <div
             data-layer="Perks Page"
-            className="PerksPage w-14 h-14 relative bg-white rounded-[100px] overflow-hidden"
+            className="PerksPage relative bg-white rounded-full flex-none shrink-0 flex items-center justify-center"
+            style={{
+              width: "32px",
+              height: "32px",
+              minWidth: "32px",
+            }}
           >
-            <div
-              data-layer="double-check"
-              className="DoubleCheck w-8 h-8 left-[12px] top-[12px] absolute overflow-hidden"
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-full h-full md:w-10 md:h-10"
             >
-              <div
-                data-layer="Vector"
-                className="Vector w-2.5 h-1.5 left-[2px] top-[16.67px] absolute rounded-[0.60px] outline-[1.50px] -outline-offset-[-0.75px] outline-1-black"
+              <path
+                d="M5 10L8 13L15 6"
+                stroke="#000000"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
-              <div
-                data-layer="Vector"
-                className="Vector w-[5.33px] h-[5.33px] left-[16px] top-[9.33px] absolute outline-[1.50px] -outline-offset-[-0.75px] outline-1-black"
+              <path
+                d="M5 6L8 9L15 2"
+                stroke="#000000"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
-              <div
-                data-layer="Vector"
-                className="Vector w-5 h-[13.33px] left-[9.33px] top-[9.33px] absolute rounded-[0.60px] outline-[1.50px] -outline-offset-[-0.75px] outline-1-black"
-              />
-            </div>
+            </svg>
           </div>
         </div>
       ))}
