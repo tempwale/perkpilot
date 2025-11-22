@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 
 export interface TransformedReview {
   id: string | undefined;
+  reviewId?: string;
   title: string;
   category: string;
   shortDescription: string;

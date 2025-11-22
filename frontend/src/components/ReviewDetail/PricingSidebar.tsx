@@ -1,3 +1,7 @@
+import { useState, useEffect } from "react";
+import { updateReviewUpvotes, updateReviewShareCount } from "../../hooks/useReviews";
+import { REVIEWS_API } from "../../config/backend";
+
 interface PricingSidebarProps {
   title: string;
   pricing?: Array<{
@@ -7,6 +11,11 @@ interface PricingSidebarProps {
     _id?: string;
   }>;
   lastUpdated?: string;
+  upvotes?: number;
+  reviewId?: string;
+  onUpvote?: (newUpvotes: number) => void;
+  shareUrl?: string;
+  onShare?: () => void;
 }
 
 const defaultPricing = [
@@ -20,7 +29,131 @@ export default function PricingSidebar({
   title,
   pricing,
   lastUpdated = "Oct 2025",
+  upvotes = 887,
+  reviewId,
+  onUpvote,
+  shareUrl,
+  onShare,
 }: PricingSidebarProps) {
+  const [localUpvotes, setLocalUpvotes] = useState(upvotes);
+  const [hasUpvoted, setHasUpvoted] = useState(false);
+  const [isUpdating, setIsUpdating] = useState(false);
+
+  useEffect(() => {
+    setLocalUpvotes(upvotes);
+  }, [upvotes]);
+
+  const handleUpvote = async () => {
+    if (isUpdating || !reviewId) return;
+
+    const newUpvotes = hasUpvoted ? localUpvotes - 1 : localUpvotes + 1;
+    
+    setLocalUpvotes(newUpvotes);
+    setHasUpvoted(!hasUpvoted);
+    setIsUpdating(true);
+
+    try {
+  
+      await updateReviewUpvotes(reviewId, newUpvotes);
+      onUpvote?.(newUpvotes);
+    } catch (error) {
+      console.error("Failed to update upvotes:", error);
+      setLocalUpvotes(hasUpvoted ? localUpvotes + 1 : localUpvotes - 1);
+      setHasUpvoted(hasUpvoted);
+    } finally {
+      setIsUpdating(false);
+    }
+  };
+
+  const formatUpvotes = (count: number): string => {
+    if (count >= 1000) {
+      return `${(count / 1000).toFixed(1)}k+`;
+    }
+    return `${count}+`;
+  };
+
+  const handleShare = async () => {
+    const urlToShare = shareUrl || window.location.href;
+    const shareData = {
+      title: `${title} Review`,
+      text: `Check out this review for ${title}`,
+      url: urlToShare,
+    };
+
+    try {
+      // Try Web Share API first (works on mobile and some desktop browsers)
+      if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
+        await navigator.share(shareData);
+        
+        // Update share count in backend
+        if (reviewId) {
+          try {
+            // Fetch current review to get current shareCount
+            const response = await fetch(`${REVIEWS_API}/${reviewId}`);
+            if (response.ok) {
+              const review = await response.json();
+              const currentShareCount = review.shareCount || 0;
+              await updateReviewShareCount(reviewId, currentShareCount + 1);
+              onShare?.();
+            }
+          } catch (error) {
+            console.error("Failed to update share count:", error);
+          }
+        }
+      } else {
+        // Fallback: Copy to clipboard
+        await navigator.clipboard.writeText(urlToShare);
+        
+        // Show feedback
+        const originalText = document.querySelector('.Share')?.textContent;
+        const shareElement = document.querySelector('.Share');
+        if (shareElement) {
+          shareElement.textContent = "Copied!";
+          setTimeout(() => {
+            if (shareElement) {
+              shareElement.textContent = originalText || "Share";
+            }
+          }, 2000);
+        }
+        
+        // Update share count in backend
+        if (reviewId) {
+          try {
+            const response = await fetch(`${REVIEWS_API}/${reviewId}`);
+            if (response.ok) {
+              const review = await response.json();
+              const currentShareCount = review.shareCount || 0;
+              await updateReviewShareCount(reviewId, currentShareCount + 1);
+              onShare?.();
+            }
+          } catch (error) {
+            console.error("Failed to update share count:", error);
+          }
+        }
+      }
+    } catch (error) {
+      // User cancelled share or error occurred
+      if (error instanceof Error && error.name !== "AbortError") {
+        console.error("Error sharing:", error);
+        // Fallback to clipboard if Web Share fails
+        try {
+          await navigator.clipboard.writeText(urlToShare);
+          const shareElement = document.querySelector('.Share');
+          if (shareElement) {
+            const originalText = shareElement.textContent;
+            shareElement.textContent = "Copied!";
+            setTimeout(() => {
+              if (shareElement) {
+                shareElement.textContent = originalText || "Share";
+              }
+            }, 2000);
+          }
+        } catch (clipboardError) {
+          console.error("Failed to copy to clipboard:", clipboardError);
+        }
+      }
+    }
+  };
   const displayPricing =
     pricing && pricing.length > 0 ? pricing : defaultPricing;
   return (
@@ -108,9 +241,16 @@ export default function PricingSidebar({
           className="Frame2147206204 self-stretch flex flex-row items-start gap-4"
           style={{ gap: "16px" }}
         >
-          <div
+          <button
+            type="button"
+            onClick={handleUpvote}
+            disabled={isUpdating || !reviewId}
             data-layer="Buttons/main"
-            className="ButtonsMain box-border flex-1 flex flex-row justify-center items-center px-8 py-3 bg-[rgba(255,255,255,0.08)] border border-[rgba(244,244,245,0.08)] backdrop-blur-[4px] rounded-[100px] gap-3"
+            className={`ButtonsMain box-border flex-1 flex flex-row justify-center items-center px-8 py-3 border backdrop-blur-[4px] rounded-[100px] gap-3 transition-all ${
+              hasUpvoted
+                ? "bg-gradient-to-b from-[#501BD6] to-[#7F57E2] border-[rgba(250,250,250,0.16)]"
+                : "bg-[rgba(255,255,255,0.08)] border-[rgba(244,244,245,0.08)] hover:bg-[rgba(255,255,255,0.12)]"
+            } ${isUpdating ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
             style={{ padding: "12px 32px", gap: "12px", height: "48px" }}
           >
             <div
@@ -118,7 +258,7 @@ export default function PricingSidebar({
               className="Upvote text-center text-[#FAFAFA] font-['Plus_Jakarta_Sans'] font-normal leading-6"
               style={{ fontSize: "16px", lineHeight: "24px" }}
             >
-              Upvote
+              {formatUpvotes(localUpvotes)}
             </div>
             <div
               data-layer="fast-arrow-up"
@@ -148,10 +288,12 @@ export default function PricingSidebar({
                 />
               </svg>
             </div>
-          </div>
-          <div
+          </button>
+          <button
+            type="button"
+            onClick={handleShare}
             data-layer="Buttons/main"
-            className="ButtonsMain box-border flex-1 flex flex-row justify-center items-center px-8 py-3 bg-[rgba(255,255,255,0.08)] border border-[rgba(244,244,245,0.08)] backdrop-blur-[4px] rounded-[100px] gap-3"
+            className="ButtonsMain box-border flex-1 flex flex-row justify-center items-center px-8 py-3 bg-[rgba(255,255,255,0.08)] border border-[rgba(244,244,245,0.08)] backdrop-blur-[4px] rounded-[100px] gap-3 hover:bg-[rgba(255,255,255,0.12)] transition-colors cursor-pointer"
             style={{ padding: "12px 32px", gap: "12px", height: "48px" }}
           >
             <div
@@ -206,7 +348,7 @@ export default function PricingSidebar({
                 />
               </svg>
             </div>
-          </div>
+          </button>
         </div>
       </div>
       <div

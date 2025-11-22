@@ -167,3 +167,35 @@ export const fetchReviewPageSettings = async (): Promise<ReviewPageSettings> => 
 
   return response.json();
 };
+
+export const updateReviewUpvotes = async (id: string, upvotes: number): Promise<Review> => {
+  const response = await fetch(`${REVIEWS_API}/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ upvotes }),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to update upvotes: ${response.statusText}`);
+  }
+
+  return response.json();
+};
+
+export const updateReviewShareCount = async (id: string, shareCount: number): Promise<Review> => {
+  const response = await fetch(`${REVIEWS_API}/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ shareCount }),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to update share count: ${response.statusText}`);
+  }
+
+  return response.json();
+};

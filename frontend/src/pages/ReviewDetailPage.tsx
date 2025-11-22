@@ -32,6 +32,7 @@ const transformApiReview = (review: Review): TransformedReview => {
 
   return {
     id: review._id,
+    reviewId: review._id,
     title: review.productName,
     category: review.productType || "Tool",
     shortDescription: review.description || "",
@@ -126,6 +127,28 @@ export default function ReviewDetailPage() {
   const [error, setError] = useState<string | null>(null);
   const useAPI = true; // Set to true to use API, false for static data
 
+  const handleUpvoteUpdate = (newUpvotes: number) => {
+    if (reviewData) {
+      setReviewData({
+        ...reviewData,
+        upvotes: newUpvotes,
+      });
+    }
+  };
+
+  const handleShareUpdate = async () => {
+    // Optionally refresh review data to get updated shareCount
+    if (id && useAPI) {
+      try {
+        const review = await fetchReviewById(id);
+        const transformedData = transformApiReview(review);
+        setReviewData(transformedData);
+      } catch (error) {
+        console.error("Failed to refresh review data after share:", error);
+      }
+    }
+  };
+
   // Fetch review from API
   useEffect(() => {
     if (!id) {
@@ -213,12 +236,18 @@ export default function ReviewDetailPage() {
             <ReviewDetailContent
               reviewData={{
                 ...reviewData,
-                pricing: reviewData.pricing.map((p: { plan: string; amount: string; note?: string }) => ({
+                pricing: reviewData.pricing.map((p: { plan: string; amount: string; note?: string; ctaText?: string; ctaLink?: string }) => ({
                   tier: p.plan,
                   price: p.amount,
                   features: p.note ? [p.note] : undefined,
+                  ctaText: p.ctaText,
+                  ctaLink: p.ctaLink,
                 })),
+                upvotes: reviewData.upvotes,
+                reviewId: reviewData.reviewId || reviewData.id,
               }}
+              onUpvoteUpdate={handleUpvoteUpdate}
+              onShareUpdate={handleShareUpdate}
             />
           </div>
           <ProductDetailsSection
