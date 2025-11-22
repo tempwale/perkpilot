@@ -139,11 +139,11 @@ export default function RatingsDetails({
   return (
     <div className="w-full px-[20px] md:px-[100px] py-16 pb-24">
       <div className="w-full max-w-[1240px] mx-auto">
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start lg:items-center">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-[235px] items-start">
           {/* Rating Breakdown Section */}
           <div
             data-layer="Frame 2147206212"
-            className="Frame2147206212 w-full lg:flex-1 max-w-full lg:max-w-[608px] flex flex-col justify-start items-start gap-6 lg:gap-10"
+            className="Frame2147206212 w-full lg:flex-none max-w-full lg:max-w-[608px] flex flex-col justify-start items-start gap-6 lg:gap-10"
           >
             <div
               data-layer="Rating Breakdown"
@@ -162,11 +162,11 @@ export default function RatingsDetails({
                   rating={item.rating}
                 />
               ))}
+            </div>
           </div>
-        </div>
 
           {/* Overall Rating Section */}
-          <div className="w-full lg:w-auto flex flex-col items-center gap-4">
+          <div className="w-full lg:w-[187px] flex flex-col items-center gap-4 flex-none lg:pt-[82px]">
             <div className="hidden md:block">
               <Tooltip />
             </div>

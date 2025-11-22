@@ -99,7 +99,7 @@ export default function BestUseCase({ useCases = [] }: BestUseCaseProps) {
           >
             Best Use Case
           </div>
-          {/* Mobile: Single column, Desktop: Two columns */}
+          {/* Mobile: Single column, Desktop: Alternating left/right */}
           <div
             data-layer="Frame 2147206222"
             className="Frame2147206222 flex flex-col md:flex-row items-start gap-4 md:gap-6 w-full"
@@ -110,22 +110,26 @@ export default function BestUseCase({ useCases = [] }: BestUseCaseProps) {
                 <UseCaseCard key={useCase.id} useCase={useCase} />
               ))}
             </div>
-            {/* Desktop: Two columns */}
+            {/* Desktop: Alternating left/right columns */}
             <div
               data-layer="Frame 2147206220"
               className="hidden md:flex flex-col items-start gap-6 w-full md:w-[608px]"
             >
-              {displayUseCases.slice(0, 2).map((useCase) => (
-                <UseCaseCard key={useCase.id} useCase={useCase} />
-              ))}
+              {displayUseCases
+                .filter((_, index) => index % 2 === 0)
+                .map((useCase) => (
+                  <UseCaseCard key={useCase.id} useCase={useCase} />
+                ))}
             </div>
             <div
               data-layer="Frame 2147206221"
               className="hidden md:flex flex-col items-start gap-6 w-full md:w-[608px]"
             >
-              {displayUseCases.slice(2, 4).map((useCase) => (
-                <UseCaseCard key={useCase.id} useCase={useCase} />
-              ))}
+              {displayUseCases
+                .filter((_, index) => index % 2 === 1)
+                .map((useCase) => (
+                  <UseCaseCard key={useCase.id} useCase={useCase} />
+                ))}
             </div>
           </div>
         </div>
