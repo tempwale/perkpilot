@@ -163,10 +163,45 @@ export default function Hero({
 
         <div
           data-layer="This comprasion blogs will help you understand the difference between these three tools and which one suits you the best."
-          className="ThisComprasionBlogsWillHelpYouUnderstandTheDifferenceBetweenTheseThreeToolsAndWhichOneSuitsYouTheBest self-stretch justify-start text-zinc-400 text-xl font-medium font-['Plus_Jakarta_Sans'] leading-loose"
-        >
-          {description}
-        </div>
+          className="ThisComprasionBlogsWillHelpYouUnderstandTheDifferenceBetweenTheseThreeToolsAndWhichOneSuitsYouTheBest self-stretch justify-start text-zinc-400 text-xl font-medium font-['Plus_Jakarta_Sans'] leading-loose prose prose-invert max-w-none"
+          dangerouslySetInnerHTML={{ __html: description || "" }}
+          style={{
+            wordBreak: "break-word",
+          }}
+        />
+        <style>{`
+          .prose a {
+            color: #737eff;
+            text-decoration: underline;
+          }
+          .prose a:hover {
+            opacity: 0.8;
+          }
+          .prose img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 16px 0;
+          }
+          .prose [data-youtube-embed] {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            border-radius: 8px;
+            overflow: hidden;
+          }
+          .prose [data-youtube-embed] iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+          }
+        `}</style>
 
         <div
           data-layer="Frame 2147206208"
