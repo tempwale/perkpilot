@@ -133,11 +133,11 @@ export default function ReviewCard({
             data-node-id="250:1133"
           >
             <div
-              className="bg-[#F9FAFB] border-2 border-[rgba(255,255,255,0.08)] border-solid box-border content-stretch flex gap-[10px] items-center justify-center p-[10px] relative rounded-[100px] shrink-0 w-20 h-20 md:w-24 md:h-24 flex-none"
+              className="bg-[#F9FAFB] border-2 border-[rgba(255,255,255,0.08)] border-solid box-border content-stretch flex gap-[10px] items-center justify-center p-[10px] relative rounded-[100px] shrink-0 w-14 h-14 flex-none overflow-hidden"
               data-node-id="250:1134"
             >
               <div
-                className="h-12 w-12 md:h-16 md:w-16 relative shrink-0 flex items-center justify-center"
+                className="h-8 w-8 md:h-10 md:w-9 relative shrink-0 flex items-center justify-center scale-150"
                 data-name="logo"
                 data-node-id="250:1135"
               >

@@ -89,6 +89,7 @@ const transformApiReview = (review: Review): TransformedReview => {
     lastUpdated: review.lastUpdated || new Date().toISOString().split("T")[0],
     upvotes: review.upvotes || 0,
     shareCount: review.shareCount || 0,
+    tryForFreeLink: review.tryForFreeLink,
     ratingCategories: review.ratingCategories || [],
     // If productReviews array exists and has data, use it
     // Otherwise, create a single review from the top-level fields if they exist
@@ -245,6 +246,7 @@ export default function ReviewDetailPage() {
                 })),
                 upvotes: reviewData.upvotes,
                 reviewId: reviewData.reviewId || reviewData.id,
+                tryForFreeLink: reviewData.tryForFreeLink,
               }}
               onUpvoteUpdate={handleUpvoteUpdate}
               onShareUpdate={handleShareUpdate}

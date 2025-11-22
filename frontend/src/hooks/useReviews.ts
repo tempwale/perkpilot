@@ -41,6 +41,7 @@ export interface Review {
   lastUpdated?: string;
   upvotes?: number;
   shareCount?: number;
+  tryForFreeLink?: string;
   aggregateRating?: number;
   ratingCount?: number;
   ratingCategories?: Array<{

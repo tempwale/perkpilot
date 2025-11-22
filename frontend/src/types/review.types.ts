@@ -44,6 +44,7 @@ export interface TransformedReview {
   lastUpdated: string;
   upvotes: number;
   shareCount: number;
+  tryForFreeLink?: string;
   ratingCategories: Array<{ category: string; value: number; outOf?: number }>;
   productReviews: Array<{
     userName: string;

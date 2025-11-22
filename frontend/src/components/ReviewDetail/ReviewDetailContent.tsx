@@ -29,6 +29,7 @@ interface ReviewData {
   lastUpdated: string;
   upvotes?: number;
   reviewId?: string;
+  tryForFreeLink?: string;
 }
 
 interface ReviewDetailContentProps {
@@ -98,6 +99,7 @@ export default function ReviewDetailContent({
               onUpvote={onUpvoteUpdate}
               shareUrl={typeof window !== 'undefined' ? window.location.href : ''}
               onShare={onShareUpdate}
+              tryForFreeLink={reviewData.tryForFreeLink}
             />
           </div>
         </div>
