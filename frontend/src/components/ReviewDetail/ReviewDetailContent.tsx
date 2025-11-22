@@ -4,6 +4,16 @@ import CompanyStats from "./CompanyStats";
 import PricingSidebar from "./PricingSidebar";
 import type { ReactNode } from "react";
 
+interface PricingItem {
+  plan?: string;
+  amount?: string;
+  note?: string;
+  _id?: string;
+  tier?: string;
+  price?: number | string;
+  features?: string[];
+}
+
 interface ReviewData {
   title: string;
   logoComponent: ReactNode;
@@ -15,7 +25,7 @@ interface ReviewData {
   employees: string;
   headquarters: string;
   userCount: string | number;
-  pricing: Array<{ tier?: string; price?: number | string; features?: string[] }>;
+  pricing: PricingItem[];
   lastUpdated: string;
 }
 
@@ -55,15 +65,26 @@ export default function ReviewDetailContent({
             </div>
           </div>
 
-          {/* Right Content - Pricing */}
           <div className="lg:col-span-1 lg:-mt-[40px] flex justify-center items-start">
             <PricingSidebar
               title={reviewData.title}
-              pricing={reviewData.pricing.map((p) => ({
-                plan: p.tier || '',
-                amount: typeof p.price === 'number' ? p.price.toString() : p.price || '',
-                note: p.features?.join(', '),
-              }))}
+              pricing={reviewData.pricing.map((p: PricingItem) => {
+                const plan = p.plan || p.tier || '';
+                const amount = typeof p.amount === 'string' 
+                  ? p.amount 
+                  : typeof p.price === 'number' 
+                    ? p.price.toString() 
+                    : typeof p.price === 'string'
+                      ? p.price
+                      : '';
+                const note = p.note || (Array.isArray(p.features) ? p.features.join(', ') : undefined);
+                return {
+                  plan,
+                  amount,
+                  note,
+                  _id: p._id,
+                };
+              })}
               lastUpdated={reviewData.lastUpdated}
             />
           </div>
