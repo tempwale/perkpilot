@@ -8,13 +8,14 @@ interface AlternativeCardProps {
   logo?: React.ReactNode;
 }
 
-const StarIcon = () => (
+const StarIcon = ({ className }: { className?: string }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="24"
     height="24"
     viewBox="0 0 24 24"
     fill="none"
+    className={className}
   >
     <path
       fillRule="evenodd"
@@ -25,24 +26,7 @@ const StarIcon = () => (
   </svg>
 );
 
-const AlternativeCard = ({
-  name,
-  category,
-  rating,
-  reviewCount,
-  pricing,
-  buttonText,
-  logo,
-}: AlternativeCardProps) => (
-  <div className="w-full h-full min-h-[200px] p-4 sm:p-6 lg:p-8 bg-white/5 rounded-2xl sm:rounded-3xl outline-1 -outline-offset-[-1px] outline-white/10 flex flex-col justify-between items-start gap-4 sm:gap-6 lg:gap-8 transition-all duration-300 hover:bg-white/10 hover:scale-[1.02]">
-    <div className="w-full flex flex-row gap-4 justify-between">
-      <div className="flex justify-start items-center gap-3 sm:gap-4">
-        <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-neutral-50 rounded-full flex-shrink-0" />
-        <div className="flex-1 min-w-0">
-          <div className="flex flex-row gap-1 items-center">
-            <div className="text-neutral-50 text-base text-lg font-medium font-['Plus_Jakarta_Sans'] leading-6 sm:leading-[27px] lg:leading-8 truncate">
-              {name}
-            </div>
+const VerifyIcon = () => (
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -57,52 +41,92 @@ const AlternativeCard = ({
                 fill="#FAFAFA"
               />
             </svg>
+);
+
+const AlternativeCard = ({
+  name,
+  category,
+  rating,
+  reviewCount,
+  pricing,
+  buttonText,
+  logo,
+}: AlternativeCardProps) => {
+  const displayRating = rating || 5;
+  const displayReviewCount = reviewCount || 0;
+
+  return (
+    <div className="box-border w-full max-w-[350px] md:max-w-[608px] flex flex-col items-start bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.08)] rounded-2xl md:rounded-[24px] p-4 md:p-6 gap-6 md:gap-[35px] h-[203px] md:h-[187px] overflow-hidden">
+      {/* Top Section */}
+      <div className="w-full flex flex-row justify-between items-center h-14 md:h-14 gap-3 md:gap-4">
+        {/* Name Section */}
+        <div className="flex flex-row items-center gap-2 md:gap-4 h-14 flex-1 min-w-0">
+          {/* Logo Circle */}
+          <div className="relative bg-[#FAFAFA] rounded-full flex-none shrink-0 flex items-center justify-center w-10 h-10 md:w-14 md:h-14">
+            {logo && (
+              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[18px] md:w-[26.48px] h-4 md:h-6">
+                {logo}
+              </div>
+            )}
+          </div>
+          {/* Name and Category */}
+          <div className="flex flex-col items-start gap-1 flex-1 min-w-0">
+            <div className="flex flex-row items-center gap-0.5 md:gap-1 w-full">
+              <div className="text-[#FAFAFA] font-['Plus_Jakarta_Sans'] font-medium text-sm md:text-lg leading-5 md:leading-[27px] flex items-center gap-0.5 md:gap-1 min-w-0">
+                {name}
+              <VerifyIcon />
+
+              </div>
+            </div>
+            <div className="text-[#A1A1AA] font-['Plus_Jakarta_Sans'] font-medium text-xs md:text-sm leading-4 md:leading-[21px] truncate w-full">
+              {category}
+            </div>
+          </div>
+        </div>
+
+        {/* Rating Section */}
+        <div className="flex flex-row items-center gap-1 md:gap-4">
+          {/* Mobile: Single star + rating number + reviews */}
+          <div className="md:hidden flex flex-row items-center gap-1">
+            <StarIcon className="w-6 h-6" />
+            <span className="text-[#FAFAFA] font-['Plus_Jakarta_Sans'] font-bold text-xs leading-6">
+              {displayRating.toFixed(1)}
+            </span>
+            <span className="text-[#FAFAFA] font-['Plus_Jakarta_Sans'] font-medium text-xs leading-[18px]">
+              Reviews ({displayReviewCount})
+            </span>
           </div>
 
-          <div className="text-zinc-400 text-sm  font-medium font-['Plus_Jakarta_Sans'] leading-[21px] truncate">
-            {category}
-          </div>
-        </div>
-        {logo && <div className="flex-shrink-0">{logo}</div>}
-      </div>
-      <div className="flex flex-wrap justify-between items-center gap-3">
-        <div className="flex items-center gap-1">
-          {[...Array(Math.max(0, Math.floor(rating || 0)))].map((_, index) => (
-            <span
-              key={index}
-              className={
-                index === 0 ? "inline-block" : "hidden sm:inline-block"
-              }
-            >
-              <StarIcon />
-            </span>
+          {/* Desktop: All stars + reviews */}
+          <div className="hidden md:flex flex-row items-center gap-4">
+            <div className="flex flex-row items-center gap-0">
+              {[...Array(5)].map((_, index) => (
+                <div key={index} className="relative w-6 h-6 flex-none">
+                  <StarIcon className="w-6 h-6" />
+                </div>
           ))}
         </div>
-        <div
-          className="text-zinc-400
-text-sm
-font-medium
-font-['Plus_Jakarta_Sans']
-leading-[21px]"
-        >
-          Reviews ({reviewCount})
+            <div className="text-[#FAFAFA] font-['Plus_Jakarta_Sans'] font-normal text-base leading-6">
+              Reviews ({displayReviewCount})
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <div className="w-full flex flex-col  sm:flex-row justify-between items-start sm:items-center gap-4">
-      <div className="w-full sm:w-auto text-center sm:text-left">
-        <div className="text-neutral-50 text-xl font-medium font-['Plus_Jakarta_Sans'] leading-loose">
+
+      {/* Bottom Section */}
+      <div className="w-full flex flex-col md:flex-row justify-center md:justify-between items-center gap-4 md:gap-6 md:h-12">
+        <div className="text-[#FAFAFA] font-['Plus_Jakarta_Sans'] font-medium text-lg md:text-xl leading-[27px] md:leading-8 text-center md:text-left">
           {pricing}
         </div>
-      </div>
-      <div className="w-full sm:w-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-3 lg:py-4 bg-white/10 rounded-[100px] flex justify-center items-center hover:bg-white/20 transition-colors duration-200 cursor-pointer">
-        <div className="text-neutral-50 text-sm sm:text-base lg:text-lg font-normal font-['Poppins'] leading-normal whitespace-nowrap">
-          {buttonText}
+        <div className="box-border bg-[rgba(255,255,255,0.08)] rounded-[100px] flex flex-row justify-center items-center cursor-pointer hover:bg-[rgba(255,255,255,0.12)] transition-colors px-4 py-2 md:px-6 md:py-3 h-auto md:h-12 w-full md:w-auto min-h-[40px] md:min-h-[48px]">
+          <div className="text-[#FAFAFA] font-['Poppins'] font-normal text-sm md:text-base leading-5 md:leading-6 text-center break-words md:whitespace-nowrap px-2">
+            {buttonText}
+          </div>
         </div>
-      </div>
     </div>
   </div>
 );
+};
 
 interface ProductAlternativesProps {
   alternatives?: Array<{
@@ -171,7 +195,6 @@ export default function ProductAlternatives({
     },
   ];
 
-  // Transform API alternatives to component format
   const alternativesData =
     alternatives && alternatives.length > 0
       ? alternatives.map((alt) => ({
@@ -181,21 +204,36 @@ export default function ProductAlternatives({
           reviewCount: alt.reviewCount || 0,
           pricing: alt.price || "N/A",
           buttonText: alt.compareNote || "Compare",
+          _id: alt._id,
+          avatarUrl: alt.avatarUrl,
         }))
-      : defaultAlternativesData;
+      : defaultAlternativesData.map((alt, idx) => ({
+          ...alt,
+          _id: `${idx}`,
+          avatarUrl: undefined,
+        }));
 
   return (
-    <div className="w-full h-full">
-      <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 auto-rows-fr">
+    <div className="w-full flex flex-col items-end gap-8 md:gap-6">
+      <div className="w-full max-w-[350px] md:max-w-[1240px] flex flex-col md:grid md:grid-cols-2 items-end gap-8 md:gap-6">
         {alternativesData.map((alternative, index) => (
           <AlternativeCard
-            key={index}
+            key={alternative._id || index}
             name={alternative.name}
             category={alternative.category}
             rating={alternative.rating}
             reviewCount={alternative.reviewCount}
             pricing={alternative.pricing}
             buttonText={alternative.buttonText}
+            logo={
+              alternative.avatarUrl ? (
+                <img
+                  src={alternative.avatarUrl}
+                  alt={alternative.name}
+                  className="w-full h-full object-contain"
+                />
+              ) : undefined
+            }
           />
         ))}
       </div>
