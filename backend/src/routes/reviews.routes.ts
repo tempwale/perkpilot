@@ -1,19 +1,23 @@
 import express from "express";
 import {
   getAllReviews,
+  getReviewPageSettings,
+  updateReviewPageSettings,
   getReviewById,
   createReview,
   updateReview,
   deleteReview,
-} from '../controllers/reviews.controller.js';
+} from "../controllers/reviews.controller.js";
 
 const router = express.Router();
 
 // Collection routes for individual reviews
-// GET all reviews with pagination and filtering
 router.get("/", getAllReviews);
 
-// POST create a new review
+// Review page settings routes
+router.get("/page/settings", getReviewPageSettings);
+router.put("/page/settings", updateReviewPageSettings);
+
 router.post("/", createReview);
 
 // ID-based routes (param) - declared after specific routes

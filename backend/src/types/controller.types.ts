@@ -15,13 +15,6 @@ export interface ComparisonQueryParams {
   q?: string;
 }
 
-export interface ReviewQueryParams {
-  page?: string | number;
-  limit?: string | number;
-  productName?: string;
-  sortBy?: string;
-}
-
 export interface BlogQueryParams {
   page?: string | number;
   limit?: string | number;
@@ -72,5 +65,27 @@ export interface MongoRegexFilter {
 
 export interface MongoTextSearchFilter {
   $search: string;
+}
+
+// ============ Response Types ============
+
+export interface PaginatedResponse<T> {
+  data: T[];
+  pagination: {
+    current: number;
+    limit: number;
+    total: number;
+    pages: number;
+  };
+}
+
+export interface ErrorResponse {
+  message: string;
+  error?: string;
+}
+
+export interface SuccessResponse<T> {
+  message?: string;
+  data?: T;
 }
 
