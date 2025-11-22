@@ -19,11 +19,11 @@ const ProsCard = ({ pros }: { pros: ProItem[] }) => {
   return (
     <div
       data-layer="Frame 2147206213"
-      className="Frame2147206213 w-full max-w-[608px] p-4 md:p-6 bg-white/10 rounded-3xl outline-1 -outline-offset-[-1px] outline-white/10 flex-col justify-start items-start gap-6 md:gap-10"
+      className="Frame2147206213 w-full max-w-[608px] p-4 md:p-6 bg-white/10 rounded-3xl outline-1 -outline-offset-[-1px] outline-white/10 flex-col justify-start items-start gap-6 md:gap-10 "
     >
       <div
         data-layer="Pros"
-        className="Pros self-stretch justify-start text-neutral-50 text-2xl md:text-[32px] font-medium font-['Plus_Jakarta_Sans'] leading-8 md:leading-[42px]"
+        className="Pros self-stretch justify-start text-neutral-50 text-2xl md:text-[32px] font-medium font-['Plus_Jakarta_Sans'] leading-8 md:leading-[42px] mb-6 md:mb-10 text-left"
       >
         Pros
       </div>
@@ -72,7 +72,7 @@ const ConsCard = ({ cons }: { cons: ConItem[] }) => {
     >
       <div
         data-layer="Cons"
-        className="Cons self-stretch justify-start text-neutral-50 text-2xl md:text-[32px] font-medium font-['Plus_Jakarta_Sans'] leading-8 md:leading-[42px]"
+        className="Cons self-stretch justify-start text-neutral-50 text-2xl md:text-[32px] font-medium font-['Plus_Jakarta_Sans'] leading-8 md:leading-[42px] mb-6 md:mb-10 text-left"
       >
         Cons
       </div>
@@ -103,7 +103,7 @@ const ConsCard = ({ cons }: { cons: ConItem[] }) => {
                 strokeLinejoin="round"
               />
             </svg>
-            <div className="flex-1 justify-start text-neutral-50 text-base md:text-lg font-medium font-['Plus_Jakarta_Sans'] leading-6 md:leading-[27px]">
+            <div className="flex-1 justify-start text-[#FAFAFA] text-base md:text-lg font-medium font-['Plus_Jakarta_Sans'] leading-6 md:leading-[27px]">
               {con.text}
             </div>
           </div>
@@ -114,13 +114,11 @@ const ConsCard = ({ cons }: { cons: ConItem[] }) => {
 };
 
 export default function ProsCons({ pros, cons }: ProsConsProps) {
-  // Component implementation goes here
-  // Will render both ProsCard and ConsCard side by side
   return (
     <div className="w-full px-4 md:px-8 flex flex-col lg:flex-row justify-center items-center lg:items-start gap-6 lg:gap-16 my-8 md:my-16 relative">
       <ProsCard pros={pros} />
       <ConsCard cons={cons} />
-      <div className="hidden md:block absolute top-0 left-0 w-full h-full mt-20">
+      <div className="hidden md:block absolute top-[90%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[700px] h-[400px] pointer-events-none">
         <Background />
       </div>
     </div>

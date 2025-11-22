@@ -49,6 +49,31 @@ const ThumbsUpIcon = () => (
   </svg>
 );
 
+const ThumbsDownIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    className="transform rotate-180"
+  >
+    <path
+      d="M16.4724 4L4.1 4C3.76863 4 3.5 4.26863 3.5 4.6L3.5 14.4C3.5 14.7314 3.76863 15 4.1 15H6.86762C7.57015 15 8.22116 15.3686 8.5826 15.971L11.293 20.4884C11.8779 21.4631 13.2554 21.5558 13.9655 20.6681C14.3002 20.2497 14.4081 19.6937 14.2541 19.1804L13.2317 15.7724C13.1162 15.3874 13.4045 15 13.8064 15H18.3815C19.7002 15 20.658 13.746 20.311 12.4738L18.4019 5.47376C18.1646 4.60364 17.3743 4 16.4724 4Z"
+      stroke="#FAFAFA"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+    />
+    <path
+      d="M7 4L7 15"
+      stroke="#FAFAFA"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
 const ReviewCard = ({
   name,
   position,
@@ -60,35 +85,26 @@ const ReviewCard = ({
   date,
   isVerified = false,
 }: ReviewCardProps) => (
-  <div className="self-stretch min-h-80 p-4 sm:p-6 md:p-10 bg-white/5 rounded-2xl sm:rounded-3xl shadow-[0px_1px_4px_0px_rgba(12,12,13,0.05)] -outline-offset-[-1px] outline-white/10 flex flex-col justify-center items-start gap-4 sm:gap-6">
-    <div className="self-stretch flex flex-col justify-start items-start gap-4 sm:gap-6">
-      <div className="w-full flex flex-col sm:flex-row justify-start items-start sm:items-center gap-3 sm:gap-4">
-        <div className="flex items-center gap-3 sm:gap-4 flex-1">
+  <div className="w-[350px] md:w-[1240px] p-6 md:p-10 bg-white/5 rounded-3xl border border-white/10 shadow-[0px_1px_4px_0px_rgba(12,12,13,0.05)] flex flex-col justify-center items-start gap-4 md:gap-6">
+    <div className="self-stretch flex flex-col items-start gap-4 md:gap-6">
+      <div className="w-full flex flex-row justify-between items-center gap-4">
+        <div className="flex items-center gap-4">
           <img
-            className="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover flex-shrink-0"
+            className="w-10 h-10 md:w-14 md:h-14 rounded-full object-cover flex-shrink-0"
             src={profileImage}
             alt={`${name} profile`}
           />
-          <div className="flex-1 flex-col min-w-0 flex justify-start items-start gap-1">
-            <div>
-              <div className="w-full truncate text-neutral-50 text-base sm:text-lg font-medium font-['Plus_Jakarta_Sans'] leading-6 sm:leading-[27px]">
-                {name}
-              </div>
-
-              <div className="w-full text-zinc-400 text-xs sm:text-sm font-medium font-['Plus_Jakarta_Sans'] leading-4 sm:leading-[21px] line-clamp-2">
-                {position}
-              </div>
+          <div className="flex flex-col items-start gap-1">
+            <div className="text-neutral-50 text-base md:text-lg font-normal md:font-medium font-['Plus_Jakarta_Sans'] leading-6 md:leading-[27px]">
+              {name}
+            </div>
+            <div className="text-[#A1A1AA] text-xs md:text-sm font-medium font-['Plus_Jakarta_Sans'] leading-[18px] md:leading-[21px]">
+              {position}
             </div>
             {date && (
-              <div className="flex justify-center items-center">
-                <div
-                  data-layer="Frame 2147206294"
-                  className="h-8 px-3 py-2.5 bg-white/5 rounded-[100px] inline-flex justify-center items-center gap-2.5"
-                >
-                  <div
-                    data-layer="2 Months Ago"
-                    className="text-neutral-50 text-xs font-medium font-['Plus_Jakarta_Sans'] leading-[18px]"
-                  >
+              <div className="md:hidden flex justify-center items-center mt-1">
+                <div className="h-6 px-2 py-1 bg-white/5 rounded-[100px] inline-flex justify-center items-center">
+                  <div className="text-neutral-50 text-xs font-medium font-['Plus_Jakarta_Sans'] leading-[18px]">
                     {date}
                   </div>
                 </div>
@@ -96,63 +112,55 @@ const ReviewCard = ({
             )}
           </div>
         </div>
-        {isVerified && (
-          <div className="h-7 sm:h-8 px-2 sm:px-3 py-1.5 sm:py-2.5 rounded-full sm:rounded-[100px] -outline-offset-[-1px] outline-[#501bd6] flex justify-center items-center gap-2 flex-shrink-0">
-            <div className="text-neutral-50 text-xs font-medium font-['Plus_Jakarta_Sans'] leading-4 sm:leading-[18px] whitespace-nowrap">
-              Verified
+        <div className="flex items-center gap-4">
+          {date && (
+            <div className="hidden md:flex justify-center items-center">
+              <div className="h-8 px-3 py-2.5 bg-white/5 rounded-[100px] inline-flex justify-center items-center">
+                <div className="text-neutral-50 text-xs font-medium font-['Plus_Jakarta_Sans'] leading-[18px]">
+                  {date}
+                </div>
+              </div>
             </div>
-          </div>
-        )}
+          )}
+          {isVerified && (
+            <div className="h-6 md:h-8 px-2 md:px-3 py-1 md:py-2.5 rounded-[100px] bg-white/5 flex justify-center items-center">
+              <div className="text-neutral-50 text-xs font-medium font-['Plus_Jakarta_Sans'] leading-[18px] whitespace-nowrap">
+                Verified
+              </div>
+            </div>
+          )}
+        </div>
       </div>
-      <div className="flex items-center gap-0.5 sm:gap-1">
+      
+      <div className="flex items-center gap-0">
         {[...Array(rating)].map((_, index) => (
-          <div key={index} className="w-5 h-5 sm:w-6 sm:h-6">
+          <div key={index} className="w-6 h-6">
             <StarIcon />
           </div>
         ))}
       </div>
-      <div className="self-stretch flex flex-col justify-start items-start gap-4 sm:gap-6">
-        <div className="self-stretch text-neutral-50 text-lg sm:text-xl md:text-2xl font-medium font-['Plus_Jakarta_Sans'] leading-7 sm:leading-8 md:leading-loose">
+      
+      <div className="self-stretch flex flex-col items-start gap-6">
+        <div className="self-stretch text-neutral-50 text-xl md:text-2xl font-medium font-['Plus_Jakarta_Sans'] leading-[26px] md:leading-8">
           {reviewText}
         </div>
       </div>
     </div>
-    <div className="flex justify-start items-center gap-2">
-      <div className="w-5 h-5 sm:w-6 sm:h-6">
-        <ThumbsUpIcon />
+    
+    <div className="flex justify-start items-center gap-4 md:gap-6">
+      <div className="flex items-center gap-2">
+        <div className="w-6 h-6">
+          <ThumbsUpIcon />
+        </div>
+        <div className="text-neutral-50 text-base font-normal font-['Plus_Jakarta_Sans'] leading-6">
+          Helpful ({helpfulCount})
+        </div>
       </div>
-      <div className="text-neutral-50 text-sm sm:text-base font-normal font-['Plus_Jakarta_Sans'] leading-5 sm:leading-normal">
-        Helpful ({helpfulCount})
-      </div>
-      <div
-        data-layer="Frame 2147206296"
-        className="Frame2147206296 inline-flex justify-start items-center gap-2"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-        >
-          <path
-            d="M16.4724 4L4.1 4C3.76863 4 3.5 4.26863 3.5 4.6L3.5 14.4C3.5 14.7314 3.76863 15 4.1 15H6.86762C7.57015 15 8.22116 15.3686 8.5826 15.971L11.293 20.4884C11.8779 21.4631 13.2554 21.5558 13.9655 20.6681C14.3002 20.2497 14.4081 19.6937 14.2541 19.1804L13.2317 15.7724C13.1162 15.3874 13.4045 15 13.8064 15H18.3815C19.7002 15 20.658 13.746 20.311 12.4738L18.4019 5.47376C18.1646 4.60364 17.3743 4 16.4724 4Z"
-            stroke="#FAFAFA"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-          />
-          <path
-            d="M7 4L7 15"
-            stroke="#FAFAFA"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-        <div
-          data-layer="Not Helpful ( 20)"
-          className="NotHelpful20 justify-start text-neutral-50 text-base font-normal font-['Plus_Jakarta_Sans'] leading-normal"
-        >
+      <div className="flex items-center gap-2">
+        <div className="w-6 h-6">
+          <ThumbsDownIcon />
+        </div>
+        <div className="text-neutral-50 text-base font-normal font-['Plus_Jakarta_Sans'] leading-6">
           Not Helpful ({notHelpfulCount})
         </div>
       </div>
@@ -220,30 +228,19 @@ export default function ProductReviews({
       : defaultReviewsData;
 
   return (
-    <div>
-      <div className="w-full flex flex-col gap-6">
-        <div
-          data-layer="Frame 2147223643"
-          className="Frame2147223643 flex flex-row md:inline-flex self-stretch justify-between items-center"
-        >
-          <div
-            data-layer="Product Reviews"
-            className="ProductReviews text-center justify-start text-neutral-50 text-xl md:text-2xl font-medium font-['Plus_Jakarta_Sans'] leading-loose"
-          >
-            Product Reviews
-          </div>
-          <div
-            data-layer="Buttons/main"
-            className="ButtonsMain  h-12 px-6 py-4 bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-[100px] flex justify-start items-center gap-3"
-          >
-            <div
-              data-layer="Write A Review"
-              className="WriteAReview text-center justify-start text-white text-sm md:text-base font-normal font-['Poppins'] leading-normal"
-            >
-              Write A Review
-            </div>
+    <div className="w-full flex flex-col items-center md:items-end gap-8 md:gap-6">
+      <div className="w-full md:w-[1240px] flex flex-row justify-between items-center gap-8">
+        <div className="text-neutral-50 text-xl md:text-2xl font-medium font-['Plus_Jakarta_Sans'] leading-8 md:leading-8">
+          Product Reviews
+        </div>
+        <div className="h-12 px-6 py-4 bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-[100px] flex justify-center items-center">
+          <div className="text-white text-base font-normal font-['Poppins'] leading-6 whitespace-nowrap">
+            Write A Review
           </div>
         </div>
+      </div>
+      
+      <div className="w-full flex flex-col items-center gap-8 md:gap-6">
         {reviewsData.map((review, index) => (
           <ReviewCard
             key={index}

@@ -130,10 +130,9 @@ export default function FAQ() {
                     id={`${faq.id}-panel`}
                     role="region"
                     aria-labelledby={faq.id}
-                    className={`mt-4 text-zinc-300 text-base text-zinc-700
- font-normal font-['Plus_Jakarta_Sans'] leading-normal ${
-   expanded ? "block" : "hidden"
- }`}
+                    className={`mt-4 text-zinc-700 text-base font-normal font-['Plus_Jakarta_Sans'] leading-normal ${
+                      expanded ? "block" : "hidden"
+                    }`}
                   >
                     {faq.a}
                   </div>
