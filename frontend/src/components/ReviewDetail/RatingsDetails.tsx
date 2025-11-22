@@ -89,9 +89,15 @@ const Tooltip = () => (
     />
     <img
       data-layer="image 11"
-      className="Image11 w-6 h-6"
-      src="https://placehold.co/24x24"
-      alt="Verification badge"
+      className="Image11 w-6 h-6 object-contain mx-auto"
+      src="https://www.g2.com/assets/favicon-32x32.png"
+      alt="G2 Verification badge"
+      onError={(e) => {
+        const target = e.currentTarget as HTMLImageElement;
+        if (target.src !== "https://logo.clearbit.com/g2.com") {
+          target.src = "https://logo.clearbit.com/g2.com";
+        }
+      }}
     />
     <div
       data-layer="Officially Verified Reviews"
