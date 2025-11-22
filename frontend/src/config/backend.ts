@@ -36,6 +36,8 @@ export const STATS_API = `${DEALS_API}/stats`;
 export const COMPARISIONS_API = `${BACKEND_URL}/api/comparisons`;
 export const AUTHORS_API = `${BACKEND_URL}/api/authors`;
 export const REVIEWS_API = `${BACKEND_URL}/api/reviews`;
+// Review page settings API endpoint
+export const REVIEWPAGE_API = `${REVIEWS_API}/page/settings`;
 export const BLOGS_API = `${BACKEND_URL}/api/blogs`;
 // Blog page settings API endpoint
 export const BLOGPAGE_API = `${BACKEND_URL}/api/blogs/blogpage`;
