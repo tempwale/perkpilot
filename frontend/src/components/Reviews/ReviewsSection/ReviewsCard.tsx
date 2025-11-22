@@ -63,11 +63,10 @@ function VerificationIcon() {
   );
 }
 
-function StarIcon() {
+function StarIcon({ className }: { className?: string }) {
   return (
     <svg
-      width="24"
-      height="24"
+      className={className || "w-4 h-4 md:w-4 md:h-4"}
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -99,7 +98,6 @@ export default function ReviewCard({
   category = "No-Code Tool",
   description = "Every communications experience, Integrated contact center, voice, video, chat, and APIs.",
   logoComponent = <DefaultLogo />,
-  verified = true,
   rating = "4.8/5.0 Ratings",
   pros = [
     "Real-time collaboration",
@@ -117,12 +115,12 @@ export default function ReviewCard({
 }: ReviewCardProps) {
   return (
     <div
-      className="backdrop-blur-md backdrop-filter bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.08)] border-solid box-border content-stretch flex flex-col gap-[16px] items-center pb-[16px] pt-0 px-[16px] relative rounded-[24px] size-full"
+      className="backdrop-blur-md backdrop-filter bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.08)] border-solid box-border content-stretch flex flex-col gap-4 items-center pb-4 pt-0 px-4 relative rounded-[24px] w-full h-auto"
       data-name="Card"
       data-node-id="1:1652"
     >
       <div
-        className="border-[rgba(235,239,245,0.12)] border-b border-l-0 border-r-0 border-solid border-t-0 box-border content-stretch flex flex-col gap-[16px] items-start px-0 py-[16px] relative shrink-0 w-full"
+        className="border-[rgba(235,239,245,0.12)] border-b border-l-0 border-r-0 border-solid border-t-0 box-border content-stretch flex flex-col gap-4 items-start px-0 py-4 relative shrink-0 w-full"
         data-node-id="250:1131"
       >
         {/* Header Section */}
@@ -131,15 +129,15 @@ export default function ReviewCard({
           data-node-id="250:1132"
         >
           <div
-            className="content-stretch flex flex-[1_0_0] gap-[12px] items-center min-h-px min-w-px relative shrink-0"
+            className="content-stretch flex flex-[1_0_0] gap-3 items-center min-h-px min-w-px relative shrink-0"
             data-node-id="250:1133"
           >
             <div
-              className="bg-gray-50 border-2 border-[rgba(255,255,255,0.08)] border-solid box-border content-stretch flex gap-[10px] items-center justify-center p-[10px] relative rounded-[100px] shrink-0 size-[56px]"
+              className="bg-[#F9FAFB] border-2 border-[rgba(255,255,255,0.08)] border-solid box-border content-stretch flex gap-[10px] items-center justify-center p-[10px] relative rounded-[100px] shrink-0 w-14 h-14 flex-none"
               data-node-id="250:1134"
             >
               <div
-                className="h-[32px] relative shrink-0 w-[21px]"
+                className="h-8 relative shrink-0 w-[21px] flex items-center justify-center"
                 data-name="logo"
                 data-node-id="250:1135"
               >
@@ -147,31 +145,29 @@ export default function ReviewCard({
               </div>
             </div>
             <div
-              className="content-stretch flex flex-col gap-[4px] items-start relative shrink-0"
+              className="content-stretch flex flex-col gap-1 items-start relative shrink-0 flex-1 min-w-0"
               data-node-id="250:1137"
             >
               <div
-                className="content-stretch flex gap-[8px] items-center relative shrink-0"
+                className="content-stretch flex gap-[8px] items-center relative shrink-0 flex-1 min-w-0"
                 data-node-id="250:1138"
               >
                 <p
-                  className="font-['Urbanist:Medium',_sans-serif] font-medium leading-[normal] relative shrink-0 text-[20px] text-white"
+                  className="font-['Urbanist'] font-medium leading-[normal] relative shrink-0 text-[20px] text-white flex-1 min-w-0 truncate"
                   data-node-id="250:1139"
                 >
                   {title}
                 </p>
-                {verified && (
-                  <div
-                    className="relative shrink-0 size-[24px]"
-                    data-name="verification-icon"
-                    data-node-id="250:1140"
-                  >
-                    <VerificationIcon />
-                  </div>
-                )}
+                <div
+                  className="relative shrink-0 size-[24px] flex-none"
+                  data-name="verification-icon"
+                  data-node-id="250:1140"
+                >
+                  <VerificationIcon />
+                </div>
               </div>
               <p
-                className="font-['Poppins:Medium',_sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cbd2da] text-[12px]"
+                className="font-['Poppins'] font-medium leading-[18px] not-italic relative shrink-0 text-[#cbd2da] text-xs w-full truncate"
                 data-node-id="250:1142"
               >
                 {category}
@@ -179,24 +175,24 @@ export default function ReviewCard({
             </div>
           </div>
           <div
-            className="bg-[rgba(255,255,255,0.08)] box-border content-stretch flex gap-[16px] items-start px-[12px] py-[4px] relative rounded-[100px] shrink-0"
+            className="bg-[rgba(255,255,255,0.08)] box-border content-stretch flex gap-1 md:gap-1.5 items-center px-1.5 md:px-2 py-0.5 relative rounded-[100px] shrink-0 flex-none"
             data-name="Container"
             data-node-id="250:1143"
           >
             <div
-              className="content-stretch flex gap-[8px] items-center relative rounded-[8px] shrink-0"
+              className="content-stretch flex gap-1 md:gap-1.5 items-center relative shrink-0"
               data-name="Container"
               data-node-id="250:1144"
             >
               <div
-                className="relative shrink-0 size-[24px]"
+                className="relative shrink-0 w-3 h-3 md:w-4 md:h-4 flex-none"
                 data-name="Star"
                 data-node-id="250:1145"
               >
-                <StarIcon />
+                <StarIcon className="w-full h-full" />
               </div>
               <p
-                className="font-['Plus_Jakarta_Sans:Medium',_sans-serif] font-medium leading-[21px] relative shrink-0 text-[14px] text-center text-zinc-100"
+                className="font-['Plus_Jakarta_Sans'] font-medium leading-3 md:leading-4 relative shrink-0 text-[10px] md:text-[11px] text-center text-[#F4F4F5] whitespace-nowrap"
                 data-node-id="250:1146"
               >
                 {rating}
@@ -207,47 +203,47 @@ export default function ReviewCard({
 
         {/* Description and Pros/Cons Section */}
         <div
-          className="content-stretch flex flex-col gap-[16px] items-start relative shrink-0 w-full"
+          className="content-stretch flex flex-col gap-4 items-start relative shrink-0 w-full"
           data-node-id="250:1147"
         >
           <p
-            className="font-['Poppins:Regular',_sans-serif] leading-[normal] not-italic relative shrink-0 text-[#cbd2da] text-[12px] w-full whitespace-pre-wrap"
+            className="font-['Poppins'] font-normal leading-[18px] not-italic relative shrink-0 text-[#cbd2da] text-xs w-full line-clamp-2 overflow-hidden"
             data-node-id="250:1148"
           >
             {description}
           </p>
           <div
-            className="content-stretch flex gap-[16px] items-start relative shrink-0 w-full"
+            className="content-stretch flex gap-4 items-start relative shrink-0 w-full"
             data-node-id="250:1149"
           >
             {/* Pros Column */}
             <div
-              className="content-stretch flex flex-[1_0_0] flex-col gap-[12px] items-start min-h-px min-w-px relative shrink-0"
+              className="content-stretch flex flex-[1_0_0] flex-col gap-3 items-start min-h-px min-w-px relative shrink-0"
               data-node-id="250:1150"
             >
               <p
-                className="font-['Poppins:Medium',_sans-serif] leading-[normal] not-italic relative shrink-0 text-[#ebeff5] text-[14px]"
+                className="font-['Poppins'] font-medium leading-[21px] not-italic relative shrink-0 text-[#ebeff5] text-sm"
                 data-node-id="250:1151"
               >
                 Pros
               </p>
               <div
-                className="content-stretch flex flex-col gap-[8px] items-start relative shrink-0"
+                className="content-stretch flex flex-col gap-2 items-start relative shrink-0 w-full"
                 data-node-id="250:1152"
               >
-                {pros.map((pro, index) => (
+                {pros.slice(0, 4).map((pro, index) => (
                   <div
                     key={index}
-                    className="content-stretch flex gap-[8px] items-center relative shrink-0"
+                    className={`flex flex-row items-start gap-2 w-full ${
+                      index === 0 ? "h-9" : "h-[18px]"
+                    }`}
                     data-node-id="250:1153"
                   >
-                    <div className="content-stretch flex gap-[8px] items-center relative shrink-0">
-                      <span className="text-white text-[14px] leading-[21px]">
-                        •
-                      </span>
-                      <span className="font-['Plus_Jakarta_Sans:Regular',_sans-serif] font-normal text-[14px] text-white leading-[21px]">
-                        {pro}
-                      </span>
+                    <div className="w-1.5 h-1.5 rounded-full bg-white mt-1.5 shrink-0"></div>
+                    <div className={`flex-1 font-['Plus_Jakarta_Sans'] font-medium text-xs leading-[18px] text-white overflow-hidden ${
+                      index === 0 ? "h-9 line-clamp-2" : "h-[18px] line-clamp-1"
+                    }`}>
+                      {pro}
                     </div>
                   </div>
                 ))}
@@ -256,32 +252,28 @@ export default function ReviewCard({
 
             {/* Cons Column */}
             <div
-              className="content-stretch flex flex-[1_0_0] flex-col gap-[12px] items-start min-h-px min-w-px relative shrink-0"
+              className="content-stretch flex flex-[1_0_0] flex-col gap-3 items-start min-h-px min-w-px relative shrink-0"
               data-node-id="250:1161"
             >
               <p
-                className="font-['Poppins:Medium',_sans-serif] leading-[normal] not-italic relative shrink-0 text-[#ebeff5] text-[14px]"
+                className="font-['Poppins'] font-medium leading-[21px] not-italic relative shrink-0 text-[#ebeff5] text-sm"
                 data-node-id="250:1162"
               >
                 Cons
               </p>
               <div
-                className="content-stretch flex flex-col gap-[8px] items-start relative shrink-0"
+                className="content-stretch flex flex-col gap-2 items-start relative shrink-0 w-full"
                 data-node-id="250:1163"
               >
-                {cons.map((con, index) => (
+                {cons.slice(0, 4).map((con, index) => (
                   <div
                     key={index}
-                    className="content-stretch flex gap-[8px] items-center relative shrink-0"
+                    className="flex flex-row items-start gap-2 w-full h-[18px]"
                     data-node-id="250:1164"
                   >
-                    <div className="content-stretch flex gap-[8px] items-center relative shrink-0">
-                      <span className="text-white text-[14px] leading-[21px]">
-                        •
-                      </span>
-                      <span className="font-['Plus_Jakarta_Sans:Regular',_sans-serif] font-normal text-[14px] text-white leading-[21px]">
-                        {con}
-                      </span>
+                    <div className="w-1.5 h-1.5 rounded-full bg-white mt-1.5 shrink-0"></div>
+                    <div className="flex-1 h-[18px] font-['Plus_Jakarta_Sans'] font-medium text-xs leading-[18px] text-white overflow-hidden line-clamp-1">
+                      {con}
                     </div>
                   </div>
                 ))}
@@ -292,89 +284,69 @@ export default function ReviewCard({
 
         {/* Pricing Section */}
         <div
-          className="bg-[rgba(255,255,255,0.08)] box-border content-stretch flex font-['Plus_Jakarta_Sans:Medium',_sans-serif] font-medium items-center justify-between leading-[21px] px-[16px] py-[8px] relative rounded-[100px] shrink-0 text-[14px] w-full"
+          className="bg-[rgba(255,255,255,0.08)] box-border content-stretch flex font-['Plus_Jakarta_Sans'] font-medium items-center justify-between leading-[21px] px-4 py-2 relative rounded-[100px] shrink-0 text-sm w-full"
           data-node-id="250:1172"
         >
           <p
-            className="relative shrink-0 text-neutral-50"
+            className="relative shrink-0 text-[#FAFAFA] whitespace-nowrap"
             data-node-id="250:1173"
           >
             Plan Starting:
           </p>
           <p
-            className="relative shrink-0 text-zinc-200"
+            className="relative shrink-0 text-[#E4E4E7] truncate"
             data-node-id="250:1174"
           >
-            {planPrice}
+            {(() => {
+              const amount = planPrice || "$14/Monthly";
+              const amountPart = amount.split("/")[0]?.trim() || "$14";
+              const cleanAmountPart = amountPart.replace(/\$/g, "");
+              const cleanAmount = cleanAmountPart ? `$${cleanAmountPart}` : "$14";
+              return `${cleanAmount}/Month`;
+            })()}
           </p>
         </div>
       </div>
 
       {/* Action Buttons */}
       <div
-        className="content-stretch flex gap-[24px] items-center relative shrink-0 w-full"
+        className="content-stretch flex gap-6 items-center relative shrink-0 w-full"
         data-name="Filter"
         data-node-id="250:1175"
       >
         <div
-          className="box-border content-stretch flex h-[48px] items-center pl-0 pr-[24px] py-0 relative shrink-0"
+          className="box-border content-stretch flex h-12 items-center pl-0 pr-6 py-0 relative shrink-0"
           data-node-id="250:1176"
         >
-          <div
-            className="aspect-[56/56] h-full mr-[-24px] relative shrink-0"
-            data-node-id="250:1177"
-          >
-            <img
-              src={profile1}
-              alt="Profile 1"
-              className="w-[48px] h-[48px] rounded-full object-cover"
-            />
-          </div>
-          <div
-            className="aspect-[56/56] h-full mr-[-24px] relative shrink-0"
-            data-node-id="250:1178"
-          >
-            <img
-              src={profile2}
-              alt="Profile 2"
-              className="w-[48px] h-[48px] rounded-full object-cover"
-            />
-          </div>
-          <div
-            className="aspect-[56/56] h-full mr-[-24px] relative shrink-0"
-            data-node-id="250:1179"
-          >
-            <img
-              src={profile3}
-              alt="Profile 3"
-              className="w-[48px] h-[48px] rounded-full object-cover"
-            />
-          </div>
-          <div
-            className="aspect-[56/56] h-full mr-[-24px] relative shrink-0"
-            data-node-id="250:1180"
-          >
-            <div className="w-[48px] h-[48px] rounded-full bg-white  flex items-center justify-center">
-              <span className="font-['Poppins:Medium',_sans-serif] text-[12px] text-zinc-950 font-medium">
+          <div className="flex items-center">
+            {[profile1, profile2, profile3].map((profile, idx) => (
+              <div
+                key={idx}
+                className="w-12 h-12 rounded-full border-2 border-white -ml-6 first:ml-0 relative shrink-0 overflow-hidden z-[1]"
+                style={{ zIndex: idx + 1 }}
+              >
+                <img
+                  src={profile}
+                  alt={`Profile ${idx + 1}`}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            ))}
+            <div className="flex items-center justify-center w-12 h-12 rounded-full bg-white border-2 border-white -ml-6 flex-none shrink-0 relative z-10">
+              <span className="font-['Poppins'] font-medium text-xs leading-[18px] text-center text-[#09090B]">
                 887+
               </span>
             </div>
           </div>
-          <p
-            className="absolute font-['Poppins:Medium',_sans-serif] leading-[normal] left-[96px] not-italic text-[12px] text-center text-zinc-950 top-[15px] translate-x-[-50%] opacity-0 pointer-events-none"
-            data-node-id="250:1181"
-          >
-            887+
-          </p>
         </div>
         <Link
           to={`/review/${id}`}
-          className="group bg-white hover:bg-gradient-to-b hover:from-[#501BD6] hover:to-[#7F57E2] box-border content-stretch flex flex-[1_0_0] items-center justify-center min-h-px min-w-px px-[12px] py-[8px] relative rounded-[100px] shrink-0 transition-all duration-200"
+          className="group bg-white hover:bg-gradient-to-b hover:from-[#501BD6] hover:to-[#7F57E2] box-border content-stretch flex flex-1 items-center justify-center min-h-px min-w-px px-3 py-2 relative rounded-[100px] shrink-0 transition-all duration-200"
           data-name="All Assets"
           data-node-id="250:1182"
         >
           <p
-            className="font-['Poppins:Regular',_sans-serif] leading-[24px] not-italic relative shrink-0 text-[16px] text-zinc-950 group-hover:text-white transition-colors duration-200"
+            className="font-['Poppins'] font-normal leading-6 not-italic relative shrink-0 text-base text-[#09090B] group-hover:text-white transition-colors duration-200 truncate"
             data-node-id="250:1183"
           >
             Read Full Review

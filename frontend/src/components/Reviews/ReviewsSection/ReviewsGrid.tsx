@@ -125,7 +125,6 @@ export default function ReviewGrid({
     description:
       review.description || review.overview || "No description available",
     logoComponent: <ProductLogo avatarUrl={review.avatarUrl} />,
-    verified: review.verified || false,
     rating: review.aggregateRating
       ? `${review.aggregateRating.toFixed(1)}/5.0 Ratings`
       : review.rating
@@ -182,7 +181,7 @@ export default function ReviewGrid({
       {/* Grid Container with animation */}
       {!loading && !error && (
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-7xl mx-auto px-4"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-7xl mx-auto px-4 md:px-6 lg:px-8"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
@@ -191,7 +190,7 @@ export default function ReviewGrid({
           {displayReviews.map((Review, idx) => (
             <motion.div
               key={Review.id}
-              className="flex"
+              className="flex w-full"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
@@ -203,7 +202,6 @@ export default function ReviewGrid({
                 category={Review.category}
                 description={Review.description}
                 logoComponent={Review.logoComponent}
-                verified={Review.verified}
                 rating={Review.rating}
                 pros={Review.pros}
                 cons={Review.cons}
