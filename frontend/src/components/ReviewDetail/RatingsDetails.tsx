@@ -6,17 +6,17 @@ interface OverallRatingProps {
 const OverallRating = ({ rating, totalReviews }: OverallRatingProps) => (
   <div
     data-layer="Frame 2147206184"
-    className="Frame2147206184 w-full md:w-[187px] flex-col justify-center items-center gap-4"
+    className="Frame2147206184 w-full md:w-[187px] flex flex-col justify-center items-center gap-4"
   >
     <div
       data-layer="4.9"
-      className="text-center justify-start text-neutral-50 text-[40px] md:text-[56px] font-bold font-['Plus_Jakarta_Sans'] leading-[52px] md:leading-[72px]"
+      className="text-center text-neutral-50 text-[40px] md:text-[56px] font-bold font-['Plus_Jakarta_Sans'] leading-[52px] md:leading-[72px]"
     >
       {rating.toFixed(1)}
     </div>
     <div
       data-layer="Frame 427320553"
-      className="Frame427320553 inline-flex justify-start items-center gap-[6.09px]"
+      className="Frame427320553 flex justify-center items-center gap-[6.09px]"
     >
       {[...Array(5)].map((_, index) => (
         <svg
@@ -38,7 +38,7 @@ const OverallRating = ({ rating, totalReviews }: OverallRatingProps) => (
     </div>
     <div
       data-layer="Based on 890 Reviews"
-      className="BasedOn890Reviews justify-start text-zinc-400 text-sm md:text-base font-normal font-['Plus_Jakarta_Sans'] leading-normal text-center"
+      className="BasedOn890Reviews text-zinc-400 text-sm md:text-base font-normal font-['Plus_Jakarta_Sans'] leading-normal text-center"
     >
       Based on {totalReviews.toLocaleString()} Reviews
     </div>
@@ -133,22 +133,21 @@ export default function RatingsDetails({
         }))
       : defaultCategoryRatings;
 
-  // Calculate total reviews and average rating
   const totalReviews = ratingCount || 890;
   const averageRating = aggregateRating || 4.9;
 
   return (
     <div className="w-full px-[20px] md:px-[100px] py-16 pb-24">
       <div className="w-full max-w-[1240px] mx-auto">
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start lg:items-center">
           {/* Rating Breakdown Section */}
           <div
             data-layer="Frame 2147206212"
-            className="Frame2147206212 w-full lg:flex-1 max-w-full lg:max-w-[608px] flex-col justify-start items-start gap-6 lg:gap-10"
+            className="Frame2147206212 w-full lg:flex-1 max-w-full lg:max-w-[608px] flex flex-col justify-start items-start gap-6 lg:gap-10"
           >
             <div
               data-layer="Rating Breakdown"
-              className="RatingBreakdown self-stretch justify-start text-neutral-50 text-2xl lg:text-[32px] font-medium font-['Plus_Jakarta_Sans'] leading-8 lg:leading-[42px]"
+              className="RatingBreakdown self-stretch text-neutral-50 text-2xl lg:text-[32px] font-medium font-['Plus_Jakarta_Sans'] leading-8 lg:leading-[42px]"
             >
               Rating Breakdown
             </div>
@@ -163,23 +162,15 @@ export default function RatingsDetails({
                   rating={item.rating}
                 />
               ))}
-            </div>
           </div>
+        </div>
 
           {/* Overall Rating Section */}
-          <div className="w-full  md:pl-50 lg:w-auto flex flex-col items-center lg:items-start gap-4">
-            {/* Tooltip */}
+          <div className="w-full lg:w-auto flex flex-col items-center gap-4">
             <div className="hidden md:block">
               <Tooltip />
             </div>
-
-            {/* Overall Rating */}
-            <div className="w-full lg:w-auto">
-              <OverallRating
-                rating={averageRating}
-                totalReviews={totalReviews}
-              />
-            </div>
+            <OverallRating rating={averageRating} totalReviews={totalReviews} />
           </div>
         </div>
       </div>
