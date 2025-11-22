@@ -177,8 +177,8 @@ export const createReview = async (
     // Validate aggregateRating if provided
     if (payload.aggregateRating !== undefined) {
       if (typeof payload.aggregateRating !== "number" || payload.aggregateRating < 1 || payload.aggregateRating > 5) {
-        return res
-          .status(400)
+      return res
+        .status(400)
           .json({ message: "aggregateRating must be a number between 1 and 5" });
       }
     }
@@ -331,8 +331,8 @@ export const updateReview = async (
     // Validate aggregateRating if provided
     if (updatedData.aggregateRating !== undefined) {
       if (typeof updatedData.aggregateRating !== "number" || updatedData.aggregateRating < 1 || updatedData.aggregateRating > 5) {
-        return res
-          .status(400)
+      return res
+        .status(400)
           .json({ message: "aggregateRating must be a number between 1 and 5" });
       }
     }
