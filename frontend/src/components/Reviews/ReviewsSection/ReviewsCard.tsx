@@ -158,13 +158,13 @@ export default function ReviewCard({
                 >
                   {title}
                 </p>
-                <div
+                  <div
                   className="relative shrink-0 size-[24px] flex-none"
-                  data-name="verification-icon"
-                  data-node-id="250:1140"
-                >
-                  <VerificationIcon />
-                </div>
+                    data-name="verification-icon"
+                    data-node-id="250:1140"
+                  >
+                    <VerificationIcon />
+                  </div>
               </div>
               <p
                 className="font-['Poppins'] font-medium leading-[18px] not-italic relative shrink-0 text-[#cbd2da] text-xs w-full truncate"
@@ -243,7 +243,7 @@ export default function ReviewCard({
                     <div className={`flex-1 font-['Plus_Jakarta_Sans'] font-medium text-xs leading-[18px] text-white overflow-hidden ${
                       index === 0 ? "h-9 line-clamp-2" : "h-[18px] line-clamp-1"
                     }`}>
-                      {pro}
+                        {pro}
                     </div>
                   </div>
                 ))}
@@ -273,7 +273,7 @@ export default function ReviewCard({
                   >
                     <div className="w-1.5 h-1.5 rounded-full bg-white mt-1.5 shrink-0"></div>
                     <div className="flex-1 h-[18px] font-['Plus_Jakarta_Sans'] font-medium text-xs leading-[18px] text-white overflow-hidden line-clamp-1">
-                      {con}
+                        {con}
                     </div>
                   </div>
                 ))}
@@ -320,17 +320,17 @@ export default function ReviewCard({
         >
           <div className="flex items-center">
             {[profile1, profile2, profile3].map((profile, idx) => (
-              <div
+          <div
                 key={idx}
                 className="w-12 h-12 rounded-full border-2 border-white -ml-6 first:ml-0 relative shrink-0 overflow-hidden z-[1]"
                 style={{ zIndex: idx + 1 }}
-              >
-                <img
+          >
+            <img
                   src={profile}
                   alt={`Profile ${idx + 1}`}
                   className="w-full h-full object-cover"
-                />
-              </div>
+            />
+          </div>
             ))}
             <div className="flex items-center justify-center w-12 h-12 rounded-full bg-white border-2 border-white -ml-6 flex-none shrink-0 relative z-10">
               <span className="font-['Poppins'] font-medium text-xs leading-[18px] text-center text-[#09090B]">
