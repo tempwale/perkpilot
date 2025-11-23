@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 
 export interface TransformedReview {
   id: string | undefined;
+  reviewId?: string;
   title: string;
   category: string;
   shortDescription: string;
@@ -43,6 +44,7 @@ export interface TransformedReview {
   lastUpdated: string;
   upvotes: number;
   shareCount: number;
+  tryForFreeLink?: string;
   ratingCategories: Array<{ category: string; value: number; outOf?: number }>;
   productReviews: Array<{
     userName: string;

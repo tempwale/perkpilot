@@ -5,6 +5,11 @@ export interface BlogAuthor {
   authorTitle?: string;
   authorImageURL?: string;
   authorDescription?: string;
+  authorIndustry?: string;
+  authorViewProfileURL?: string;
+  authorXAccount?: string;
+  authorIGAccount?: string;
+  authorLinkedinAccount?: string;
 }
 
 export interface BlogTool {

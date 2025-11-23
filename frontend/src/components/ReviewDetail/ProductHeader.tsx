@@ -9,6 +9,7 @@ interface ProductHeaderProps {
   shortDescription: string;
   rating: string;
   totalReviews: number;
+  upvotes?: number;
 }
 
 export default function ProductHeader({
@@ -16,7 +17,14 @@ export default function ProductHeader({
   title,
   category,
   shortDescription,
+  upvotes = 887,
 }: ProductHeaderProps) {
+  const formatUpvotes = (count: number): string => {
+    if (count >= 1000) {
+      return `${(count / 1000).toFixed(1)}k+`;
+    }
+    return `${count}+`;
+  };
   return (
     <div className="flex items-start gap-4 lg:gap-6" data-node-id="250:3625">
       {/* Logo Container */}
@@ -115,7 +123,7 @@ export default function ProductHeader({
             >
               <div className="w-[48px] h-[48px] rounded-full bg-white  flex items-center justify-center">
                 <span className="font-['Poppins:Medium',_sans-serif] text-[12px] text-zinc-950 font-medium">
-                  887+
+                  {formatUpvotes(upvotes)}
                 </span>
               </div>
             </div>
@@ -123,7 +131,7 @@ export default function ProductHeader({
               className="absolute font-['Poppins:Medium',_sans-serif] leading-[normal] left-[96px] not-italic text-[12px] text-center text-zinc-950 top-[15px] translate-x-[-50%] opacity-0 pointer-events-none"
               data-node-id="250:1181"
             >
-              887+
+              {formatUpvotes(upvotes)} Reviews
             </p>
           </div>
           <div className="flex flex-col md:flex-row md:items-center gap-1 md:gap-4">
@@ -134,10 +142,10 @@ export default function ProductHeader({
               Deal Claimed By
             </div>
             <div
-              data-layer="( 50 Reviews )"
-              className="50Reviews justify-start text-zinc-400 text-base font-normal font-['Plus_Jakarta_Sans'] leading-normal flex-none shrink-0"
+              data-layer="Upvotes"
+              className="Upvotes justify-start text-zinc-400 text-base font-normal font-['Plus_Jakarta_Sans'] leading-normal flex-none shrink-0"
             >
-              ( 50 Reviews )
+              {formatUpvotes(upvotes)}
             </div>
           </div>
         </div>

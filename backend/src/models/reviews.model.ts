@@ -106,6 +106,7 @@ const ReviewSchema = new mongoose.Schema(
     lastUpdated: { type: String },
     upvotes: { type: Number, default: 0 },
     shareCount: { type: Number, default: 0 },
+    tryForFreeLink: { type: String },
 
     // Ratings breakdown and review stats
     aggregateRating: { type: Number },
