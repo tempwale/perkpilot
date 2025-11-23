@@ -27,14 +27,21 @@ interface ReviewData {
   userCount: string | number;
   pricing: PricingItem[];
   lastUpdated: string;
+  upvotes?: number;
+  reviewId?: string;
+  tryForFreeLink?: string;
 }
 
 interface ReviewDetailContentProps {
   reviewData: ReviewData;
+  onUpvoteUpdate?: (newUpvotes: number) => void;
+  onShareUpdate?: () => void;
 }
 
 export default function ReviewDetailContent({
   reviewData,
+  onUpvoteUpdate,
+  onShareUpdate,
 }: ReviewDetailContentProps) {
   return (
     <div className="relative z-10 px-[20px] md:px-[135px] py-8 md:py-20">
@@ -53,6 +60,7 @@ export default function ReviewDetailContent({
               shortDescription={reviewData.shortDescription}
               rating={reviewData.rating}
               totalReviews={reviewData.totalReviews}
+              upvotes={reviewData.upvotes}
             />
 
             <div className="mt-8 lg:mt-[160px]">
@@ -86,6 +94,12 @@ export default function ReviewDetailContent({
                 };
               })}
               lastUpdated={reviewData.lastUpdated}
+              upvotes={reviewData.upvotes}
+              reviewId={reviewData.reviewId}
+              onUpvote={onUpvoteUpdate}
+              shareUrl={typeof window !== 'undefined' ? window.location.href : ''}
+              onShare={onShareUpdate}
+              tryForFreeLink={reviewData.tryForFreeLink}
             />
           </div>
         </div>
