@@ -112,7 +112,7 @@ export default function ComparisionsDetailPage() {
 
             <ProsCons data={comparison.prosConsCards} />
 
-            <Author authorData={author || undefined} data={comparison.author} />
+            <Author authorData={author || undefined} />
           </div>
 
           <aside className="hidden md:block w-full md:w-[400px] lg:w-[480px] flex-shrink-0">
