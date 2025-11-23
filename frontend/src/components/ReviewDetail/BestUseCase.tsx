@@ -118,8 +118,8 @@ export default function BestUseCase({ useCases = [] }: BestUseCaseProps) {
               {displayUseCases
                 .filter((_, index) => index % 2 === 0)
                 .map((useCase) => (
-                  <UseCaseCard key={useCase.id} useCase={useCase} />
-                ))}
+                <UseCaseCard key={useCase.id} useCase={useCase} />
+              ))}
             </div>
             <div
               data-layer="Frame 2147206221"
@@ -128,8 +128,8 @@ export default function BestUseCase({ useCases = [] }: BestUseCaseProps) {
               {displayUseCases
                 .filter((_, index) => index % 2 === 1)
                 .map((useCase) => (
-                  <UseCaseCard key={useCase.id} useCase={useCase} />
-                ))}
+                <UseCaseCard key={useCase.id} useCase={useCase} />
+              ))}
             </div>
           </div>
         </div>

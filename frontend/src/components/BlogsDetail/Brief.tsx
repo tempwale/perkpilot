@@ -91,12 +91,14 @@ export default function Brief({
 }: BriefProps) {
   const hasBulletPoints = bulletPoints.length > 0;
   const textContent = content || description || "";
-  const paragraphs = textContent
-    ? textContent
-        .split(/\n+/)
-        .map((paragraph) => paragraph.trim())
-        .filter(Boolean)
-    : [];
+  
+  // Check if content contains HTML tags (improved detection)
+  const hasHTML = textContent && (
+    /<[a-z][\s\S]*>/i.test(textContent) || 
+    /<[a-z]+[^>]*>/i.test(textContent) ||
+    textContent.includes('</') ||
+    textContent.includes('/>')
+  );
 
   return (
     <div 
@@ -112,46 +114,67 @@ export default function Brief({
 
       <div className="self-stretch flex flex-col gap-4">
         {hasBulletPoints
-          ? bulletPoints.map((point, index) => (
-              <div 
-                key={`${point}-${index}`} 
-                data-layer="Frame 2147206202"
-                className="Frame2147206202 self-stretch inline-flex justify-start items-start gap-4"
-              >
+          ? bulletPoints.map((point, index) => {
+              const pointHasHTML = /<[a-z][\s\S]*>/i.test(point);
+              return (
                 <div 
-                  data-layer="Ellipse 6044"
-                  className="Ellipse6044 w-2 h-2 bg-[#737eff] rounded-full shrink-0 mt-2"
-                />
-                <div 
-                  data-layer="Frame 2147206166"
-                  className="Frame2147206166 flex-1 flex-col justify-start items-start gap-4"
+                  key={`${point}-${index}`} 
+                  data-layer="Frame 2147206202"
+                  className="Frame2147206202 self-stretch inline-flex justify-start items-start gap-4"
                 >
-                  <div className="self-stretch justify-start">
-                    {highlightToolNames(point, dealsMentioned)}
+                  <div 
+                    data-layer="Ellipse 6044"
+                    className="Ellipse6044 w-2 h-2 bg-[#737eff] rounded-full shrink-0 mt-2"
+                  />
+                  <div 
+                    data-layer="Frame 2147206166"
+                    className="Frame2147206166 flex-1 flex-col justify-start items-start gap-4"
+                  >
+                    <div 
+                      className="self-stretch justify-start text-zinc-200 text-xl font-normal font-['Poppins'] leading-loose prose prose-invert max-w-none"
+                      dangerouslySetInnerHTML={pointHasHTML ? { __html: point } : undefined}
+                    >
+                      {!pointHasHTML && highlightToolNames(point, dealsMentioned)}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))
-          : paragraphs.map((paragraph, index) => (
+              );
+            })
+          : hasHTML ? (
+
               <div 
-                key={`${paragraph}-${index}`}
-                data-layer="Frame 2147206202"
-                className="Frame2147206202 self-stretch inline-flex justify-start items-start gap-4"
-              >
-                <div 
-                  data-layer="Ellipse 6044"
-                  className="Ellipse6044 w-2 h-2 bg-[#737eff] rounded-full shrink-0 mt-2"
-                />
-                <div 
-                  data-layer="Frame 2147206166"
-                  className="Frame2147206166 flex-1 flex-col justify-start items-start gap-4"
-                >
-                  <div className="self-stretch justify-start">
-                    {highlightToolNames(paragraph, dealsMentioned)}
+                className="self-stretch text-zinc-200 text-xl font-normal font-['Poppins'] leading-loose prose prose-invert max-w-none"
+                dangerouslySetInnerHTML={{ __html: textContent }}
+                style={{
+                  wordBreak: "break-word",
+                }}
+              />
+            ) : (
+              textContent
+                .split(/\n+/)
+                .map((paragraph) => paragraph.trim())
+                .filter(Boolean)
+                .map((paragraph, index) => (
+                  <div 
+                    key={`${paragraph}-${index}`}
+                    data-layer="Frame 2147206202"
+                    className="Frame2147206202 self-stretch inline-flex justify-start items-start gap-4"
+                  >
+                    <div 
+                      data-layer="Ellipse 6044"
+                      className="Ellipse6044 w-2 h-2 bg-[#737eff] rounded-full shrink-0 mt-2"
+                    />
+                    <div 
+                      data-layer="Frame 2147206166"
+                      className="Frame2147206166 flex-1 flex-col justify-start items-start gap-4"
+                    >
+                      <div className="self-stretch justify-start">
+                        {highlightToolNames(paragraph, dealsMentioned)}
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            ))}
+                ))
+            )}
       </div>
 
       {imageUrl ? (
@@ -170,7 +193,41 @@ export default function Brief({
           data-layer="Rectangle 39984"
           className="Rectangle39984 self-stretch h-[300px] md:h-[400px] bg-white/10 rounded-3xl border border-white/10"
         />
-      )}
+      )}      
+      <style>{`
+        .prose a {
+          color: #737eff;
+          text-decoration: underline;
+        }
+        .prose a:hover {
+          opacity: 0.8;
+        }
+        .prose img {
+          max-width: 100%;
+          height: auto;
+          border-radius: 8px;
+          margin: 16px 0;
+          display: block;
+        }
+        .prose [data-youtube-embed] {
+          width: 100%;
+          max-width: 800px;
+          margin: 20px auto;
+          position: relative;
+          padding-bottom: 56.25%;
+          height: 0;
+          border-radius: 8px;
+          overflow: hidden;
+        }
+        .prose [data-youtube-embed] iframe {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          border: none;
+        }
+      `}</style>
     </div>
   );
 }

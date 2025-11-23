@@ -162,8 +162,8 @@ export default function RatingsDetails({
                   rating={item.rating}
                 />
               ))}
-            </div>
           </div>
+        </div>
 
           {/* Overall Rating Section */}
           <div className="w-full lg:w-[187px] flex flex-col items-center gap-4 flex-none lg:pt-[82px]">

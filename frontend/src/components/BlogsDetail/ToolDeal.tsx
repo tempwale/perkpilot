@@ -9,14 +9,17 @@ export default function ToolDeal({ toolBlogCard }: ToolDealProps) {
     return null;
   }
 
-  const tool = toolBlogCard.dealsMentioned?.[0];
+  const deals = toolBlogCard.dealsMentioned || [];
 
-  if (!tool) {
+  if (deals.length === 0) {
     return null;
   }
 
   return (
+    <div className="self-stretch flex flex-col gap-6">
+      {deals.map((tool, index) => (
     <div
+          key={index}
       data-layer="Frame 2147206154"
       className="Frame2147206154 self-stretch p-6 bg-gradient-to-b from-white/10 to-[#eef2fc]/10 rounded-3xl outline-1 -outline-offset-[-1px] outline-[#ebeef4]/10 flex justify-start items-center gap-6 flex-col lg:flex-row"
     >
@@ -197,6 +200,8 @@ export default function ToolDeal({ toolBlogCard }: ToolDealProps) {
           </div>
         </div>
       </div>
+        </div>
+      ))}
     </div>
   );
 }
