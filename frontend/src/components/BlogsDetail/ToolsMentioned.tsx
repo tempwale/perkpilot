@@ -15,36 +15,33 @@ export default function ToolsMentioned({
   return (
     <div
       data-layer="Frame 2147206210"
-      className="Frame2147206210 w-full  flex justify-center px-1"
+      className="Frame2147206210 w-full flex justify-center"
     >
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4 w-full">
         <div
           data-layer="Frame 2147206209"
-          className="Frame2147206209 relative flex flex-col justify-between items-center md:flex-row"
+          className="Frame2147206209 relative flex flex-col justify-between items-start md:items-center md:flex-row gap-4 md:gap-0"
         >
-          <div className="flex flex-row pb-5 md:pb-0">
+          <div className="flex flex-row pb-0 w-full md:w-auto">
             <div
               data-layer="Tools Mentioned"
-              className="ToolsMentioned self-stretch pt-3 md:pt-0 justify-start w-[134px] md:w-[230px] items-center text-zinc-100 text-base md:text-xl md:font-medium font-['Poppins'] leading-loose"
+              className="ToolsMentioned self-stretch pt-0 justify-start w-[134px] md:w-[230px] flex-shrink-0 items-center text-zinc-100 text-base md:text-xl md:font-medium font-['Poppins'] leading-loose"
             >
               Tools Mentioned
             </div>
-            <div
-              data-layer="Line 5"
-              className="Line5 w-10 md:w-8 h-0 origin-top-left -rotate-90 -outline-offset-[-0.50px] outline-1-zinc-100 relative top-12 left-3 md:top-8 md:left-4"
-            ></div>
-            <div
-              data-layer="Essential Productive Tools To Enhance Your Workflow"
-              className="EssentialProductiveToolsToEnhanceYourWorkflow justify-start w-[210px] md:w-full md:pl-4 text-zinc-100 text-base md:text-xl font-normal font-['Poppins'] leading-loose"
-            >
-              {sectionHeadline}
-            </div>
-          </div>
+            <div className="h-6 md:h-8 w-px bg-[#F4F4F5] mx-2 md:mx-4 flex-shrink-0 mt-0.5"></div>
+            <div className="flex-1 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              <div
+                data-layer="Essential Productive Tools To Enhance Your Workflow"
+                className="EssentialProductiveToolsToEnhanceYourWorkflow justify-start md:pl-4 text-zinc-100 text-base md:text-xl font-normal font-['Poppins'] leading-loose"
+              >
+                {sectionHeadline}
+              </div>
 
-          <div
-            data-layer="Container"
-            className="Container px-3 py-2 bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-2xl flex justify-start items-center gap-2"
-          >
+              <div
+                data-layer="Container"
+                className="Container px-3 py-2 bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-2xl flex justify-center md:justify-start items-center gap-2 w-full md:w-auto flex-shrink-0 mb-8"
+              >
             <div
               data-layer="ion:bulb"
               className="IonBulb w-6 h-6 relative overflow-hidden"
@@ -64,13 +61,15 @@ export default function ToolsMentioned({
             </div>
             <div
               data-layer="Tools with exclusive discounts & cashbacks"
-              className="ToolsWithExclusiveDiscountsCashbacks justify-start text-neutral-50 text-sm font-normal font-['Poppins']"
+              className="ToolsWithExclusiveDiscountsCashbacks text-neutral-50 text-sm font-normal font-['Poppins'] text-center"
             >
               {tipBulbText}
             </div>
           </div>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col items-center gap-4 mt-2 xl:flex-row lg:justify-center w-full">
+        <div className="flex flex-col items-stretch md:items-center gap-4 mt-2 xl:flex-row xl:justify-center w-full">
           {tools.length > 0 ? (
             tools.map((tool, idx) => (
               <ToolsCard

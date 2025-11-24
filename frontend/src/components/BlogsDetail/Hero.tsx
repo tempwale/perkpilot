@@ -15,7 +15,6 @@ interface HeroProps {
 
 export default function Hero({
   category = "Project Management",
-  breadcrumb = "Notion vs Obsidian vs Roam Research",
   title = "Notion vs obsidian vs roam research",
   description = "This comprasion blogs will help you understand the difference between these three tools and which one suits you the best.",
   date = "Thursday 19 June 2025",
@@ -121,51 +120,59 @@ export default function Hero({
       >
         <nav
           data-layer="Frame 2147206180"
-          className="Frame2147206180 flex flex-row justify-start items-center gap-2 px-4 flex-wrap"
+          className="Frame2147206180 flex flex-col md:flex-row justify-start items-start md:items-center gap-2 px-4"
           style={{ fontFamily: "Plus Jakarta Sans" }}
         >
-          {/* Home Link */}
-          <Link
-            to="/"
-            className="text-zinc-500 hover:text-zinc-400 transition-colors flex items-center text-sm font-medium leading-[21px] whitespace-nowrap"
-          >
-            Home
-          </Link>
-          {/* Separator dot */}
-          <span className="text-zinc-500 flex items-center" style={{ fontSize: "14px", lineHeight: "21px" }}>
-            •
-          </span>
-          {/* Category Link */}
-          <Link
-            to={`/blogs${category ? `?category=${encodeURIComponent(category)}` : ""}`}
-            className="text-zinc-500 hover:text-zinc-400 transition-colors flex items-center text-sm font-medium leading-[21px] whitespace-nowrap"
-          >
-            {category}
-          </Link>
-          {/* Separator dot */}
-          <span className="text-zinc-100 flex items-center" style={{ fontSize: "14px", lineHeight: "21px" }}>
-            •
-          </span>
-          <span
-            data-layer="Notion vs Obsidian vs Roam Research"
-            className="NotionVsObsidianVsRoamResearch text-zinc-100 text-sm font-medium leading-[21px] whitespace-nowrap"
-          >
-            {breadcrumb}
-          </span>
+          {/* Blogs Page Link with dot */}
+          <div className="flex items-center gap-2">
+            <span className="text-zinc-500 hover:text-zinc-400 transition-colors flex items-center" style={{ fontSize: "14px", lineHeight: "21px" }}>
+              •
+            </span>
+            <Link
+              to="/blogs"
+              className="text-zinc-500 hover:text-zinc-400 transition-colors flex items-center text-sm font-medium leading-[21px] whitespace-nowrap"
+            >
+              Blogs
+            </Link>
+          </div>
+          {/* Separator dot and Category Link */}
+          <div className="flex items-center gap-2">
+            <span className="text-zinc-100 flex items-center" style={{ fontSize: "14px", lineHeight: "21px" }}>
+              •
+            </span>
+            <Link
+              to={`/blogs${category ? `?category=${encodeURIComponent(category)}` : ""}`}
+              className="text-zinc-100 hover:text-zinc-200 transition-colors flex items-center text-sm font-medium leading-[21px] whitespace-nowrap"
+            >
+              {category}
+            </Link>
+          </div>
         </nav>
 
         <div
           data-layer="Notion vs obsidian vs roam research"
-          className="NotionVsObsidiantitle self-stretch justify-start text-neutral-50 text-3xl md:text-4xl lg:text-5xl font-semibold font-['Plus_Jakarta_Sans'] capitalize leading-[1.05]"
+          className="NotionVsObsidiantitle self-stretch justify-start text-neutral-50 text-[32px] md:text-4xl lg:text-5xl font-medium font-['Plus_Jakarta_Sans'] capitalize leading-[42px] md:leading-[1.05] px-4 md:px-0"
+          style={{
+            fontFamily: "Plus Jakarta Sans",
+            fontWeight: 500,
+            fontSize: "32px",
+            lineHeight: "42px",
+            letterSpacing: "0%",
+          }}
         >
           {title}
         </div>
 
         <div
           data-layer="This comprasion blogs will help you understand the difference between these three tools and which one suits you the best."
-          className="ThisComprasionBlogsWillHelpYouUnderstandTheDifferenceBetweenTheseThreeToolsAndWhichOneSuitsYouTheBest self-stretch justify-start text-zinc-400 text-xl font-medium font-['Plus_Jakarta_Sans'] leading-loose prose prose-invert max-w-none"
+          className="ThisComprasionBlogsWillHelpYouUnderstandTheDifferenceBetweenTheseThreeToolsAndWhichOneSuitsYouTheBest self-stretch justify-start text-zinc-400 font-['Plus_Jakarta_Sans'] prose prose-invert max-w-none px-4 md:px-0"
           dangerouslySetInnerHTML={{ __html: description || "" }}
           style={{
+            fontFamily: "Plus Jakarta Sans",
+            fontWeight: 400,
+            fontSize: "16px",
+            lineHeight: "24px",
+            letterSpacing: "0%",
             wordBreak: "break-word",
           }}
         />
@@ -205,15 +212,15 @@ export default function Hero({
 
         <div
           data-layer="Frame 2147206208"
-          className="Frame2147206208 w-full md:w-[306.50px] flex flex-col justify-start items-start gap-3"
+          className="Frame2147206208 w-full md:w-[306.50px] mt-6 flex flex-col justify-start items-start gap-3 px-4 md:px-0"
         >
           <div
             data-layer="Frame 2147205829"
-            className="Frame2147205829 w-full h-[21px] inline-flex justify-start items-center gap-6 whitespace-nowrap"
+            className="Frame2147205829 w-full h-[21px] inline-flex justify-start items-center gap-2 md:gap-6 whitespace-nowrap"
           >
             <div
               data-layer="Thursday 19 June 2025"
-              className="Thursday19June2025 justify-start text-zinc-500 text-sm font-medium font-['Poppins'] "
+              className="Thursday19June2025 justify-start text-zinc-500 text-sm font-medium font-['Poppins']"
             >
               {date}
             </div>
@@ -222,31 +229,31 @@ export default function Hero({
               data-layer="9 Minute Read"
               className="MinuteRead text-zinc-500 text-sm font-medium font-['Poppins']"
             >
-              {readTime}
+              {readTime} Read
             </div>
           </div>
 
           <div
             data-layer="Button List"
-            className="ButtonList inline-flex justify-start items-center gap-4"
+            className="ButtonList inline-flex justify-start items-center gap-4 mt-2"
           >
             {socialIcons && socialIcons.length > 0
               ? socialIcons.map((icon, idx) => (
-                  <div
-                    key={idx}
-                    className="XLogo w-12 h-12 bg-white/10 rounded-[100px] flex justify-center items-center gap-2.5"
-                  >
-                    {icon}
-                  </div>
-                ))
+                <div
+                  key={idx}
+                  className="XLogo w-12 h-12 bg-white/10 rounded-[100px] flex justify-center items-center gap-2.5"
+                >
+                  {icon}
+                </div>
+              ))
               : defaultIcons.map((icon, idx) => (
-                  <div
-                    key={idx}
-                    className="XLogo w-12 h-12 bg-white/10 rounded-[100px] flex justify-center items-center gap-2.5"
-                  >
-                    {icon}
-                  </div>
-                ))}
+                <div
+                  key={idx}
+                  className="XLogo w-12 h-12 bg-white/10 rounded-[100px] flex justify-center items-center gap-2.5"
+                >
+                  {icon}
+                </div>
+              ))}
           </div>
         </div>
       </div>
