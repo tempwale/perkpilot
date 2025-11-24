@@ -62,9 +62,9 @@ export default function BlogsDetailPage() {
 
   if (loading) {
     return (
-      <div className="flex flex-col min-h-screen relative">
+      <div className="flex flex-col min-h-screen relative overflow-x-hidden">
         <Header />
-        <main className="py-40 flex-1 flex items-center justify-center w-full bg-[#040404]">
+        <main className="pt-[72px] sm:pt-[80px] lg:pt-[96px] pb-8 md:pb-20 lg:pb-40 flex-1 flex items-center justify-center w-full bg-[#040404] px-4">
           <p className="text-gray-400">Loading blog...</p>
         </main>
         <Footer />
@@ -74,14 +74,14 @@ export default function BlogsDetailPage() {
 
   if (error || !blog) {
     return (
-      <div className="flex flex-col min-h-screen relative">
+      <div className="flex flex-col min-h-screen relative overflow-x-hidden">
         <Header />
-        <main className="py-40 flex-1 flex items-center justify-center w-full bg-[#040404]">
-          <div className="text-center">
-            <h1 className="text-2xl font-bold text-white mb-4">
+        <main className="pt-[72px] sm:pt-[80px] lg:pt-[96px] pb-8 md:pb-20 lg:pb-40 flex-1 flex items-center justify-center w-full bg-[#040404] px-4">
+          <div className="text-center max-w-2xl mx-auto">
+            <h1 className="text-xl md:text-2xl font-bold text-white mb-4 px-4">
               {error || "Blog Not Found"}
             </h1>
-            <p className="text-gray-400">
+            <p className="text-gray-400 px-4">
               {error || "The blog you're looking for doesn't exist."}
             </p>
           </div>
@@ -112,13 +112,13 @@ export default function BlogsDetailPage() {
   });
 
   return (
-    <div className="flex flex-col min-h-screen relative">
+    <div className="flex flex-col min-h-screen relative overflow-x-hidden w-full">
       <Header />
-      <main className="py-40 flex-1 flex items-center justify-center Rectangle2823 w-full h-[640px] bg-[#040404] lg:bg-linear-to-b from-black to-[#190845]">
+      <main className="pt-[72px] sm:pt-[80px] lg:pt-[96px] pb-6 md:pb-12 lg:pb-20 xl:pb-40 flex-1 flex items-start justify-center w-full bg-[#040404] lg:bg-linear-to-b from-black to-[#190845]">
+        <div className="w-full max-w-[1232px] mx-auto px-4 md:px-6 lg:px-8">
         <Hero
           className="justify-center items-center"
           category={blog.blogCategory}
-          breadcrumb={blog.blogHeading}
           title={blog.blogHeading}
           description={blog.blogBody}
           date={formattedDate}
@@ -133,27 +133,31 @@ export default function BlogsDetailPage() {
             ) : undefined
           }
         />
+        </div>
       </main>
       
       {blog.sectionHeadline && (
-        <div className="flex mx-auto Rectangle2824 w-full h-[600px] lg:h-[400px] xl:h-[200px] bg-[#040404] lg:bg-gradient-to-t from-black to-[#190845]">
+        <div className="flex w-full bg-[#040404] lg:bg-gradient-to-t from-black to-[#190845] pt-6 pb-6 md:pt-8 md:pb-8 lg:pt-4 lg:pb-4 xl:pt-6 xl:pb-6">
+          <div className="w-full max-w-[1232px] mx-auto px-4 md:px-6 lg:px-8">
           <ToolsMentioned
             sectionHeadline={blog.sectionHeadline}
+              
             tipBulbText={blog.tipBulbText}
             tools={blog.blogToolsMentioned || []}
           />
+          </div>
         </div>
       )}
       
-      <div className="md:py-40 flex-1 flex items-center justify-center Rectangle2823 w-full h-[640px] bg-[#040404] lg:bg-linear-to-b from-black to-[#190845]">
-        <div className="w-full max-w-[1232px] mx-auto flex flex-col md:flex-row items-start gap-8 px-4">
-          <div className="w-full flex-1 flex flex-col gap-6">
+      <div className="py-6 md:py-12 lg:pt-8 lg:pb-20 xl:pt-10 xl:pb-40 flex-1 flex items-start justify-center w-full bg-[#040404] lg:bg-linear-to-b from-black to-[#190845]">
+        <div className="w-full max-w-[1232px] mx-auto flex flex-col md:flex-row items-start gap-6 md:gap-8 px-4 md:px-6 lg:px-8">
+          <div className="w-full flex-1 flex flex-col gap-6 min-w-0">
             {blog.blogToolBlogCards?.length ? (
               blog.blogToolBlogCards.map((toolCard, idx) => (
                 <div
                   key={toolCard.blogTitle ? `${toolCard.blogTitle}-${idx}` : idx}
                   id={`module-${idx}`}
-                  className="flex flex-col gap-6"
+                  className="flex flex-col gap-6 w-full"
                 >
                   <Brief
                     title={toolCard.blogTitle}
@@ -176,9 +180,9 @@ export default function BlogsDetailPage() {
 
             {/* Author Card after ToolDeal */}
             {blog.blogAuthor && typeof blog.blogAuthor === 'object' && (
-              <div className="w-full mt-6">
+            <div className="w-full mt-6">
                 <Author authorData={blog.blogAuthor as AuthorData} />
-              </div>
+            </div>
             )}
           </div>
 
@@ -193,11 +197,13 @@ export default function BlogsDetailPage() {
       </div>
      
       {blog.moreBlogs && blog.moreBlogs.length > 0 && (
-        <div className="w-full flex mx-auto Rectangle2824 bg-[#040404] lg:bg-gradient-to-t from-black to-[#190845] px-4 py-20">
+        <div className="w-full bg-[#040404] lg:bg-gradient-to-t from-black to-[#190845] py-8 md:py-12 lg:py-16 xl:py-20 overflow-x-hidden">
+          <div className="w-full max-w-[1232px] mx-auto px-4 md:px-6 lg:px-8">
           <SimilarBlogs
             sectionTitle={blog.moreBlogsSectionTitle || "Similar Blogs"}
             blogs={blog.moreBlogs}
           />
+          </div>
         </div>
       )}
 
