@@ -56,6 +56,11 @@ export default function ToolDeal({ toolBlogCard }: ToolDealProps) {
     return toolData?.savings || toolData?.discount || "";
   };
 
+  const getPrimaryCtaLink = (toolName: string): string | null => {
+    const toolData = getToolData(toolName);
+    return toolData?.primary_cta_link || null;
+  };
+
   if (!toolBlogCard) {
     return null;
   }
@@ -238,17 +243,40 @@ export default function ToolDeal({ toolBlogCard }: ToolDealProps) {
           data-layer="Frame 2147206151"
           className="Frame2147206151 self-stretch flex justify-start items-center gap-4"
         >
-          <div
-            data-layer="All Assets"
-            className="AllAssets px-6 py-2 bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-xl flex justify-center items-center cursor-pointer hover:opacity-90 transition-opacity"
-          >
-            <div
-              data-layer="Redeem Framer Deal"
-              className="RedeemFramerDeal text-center text-white text-base font-normal font-['Poppins'] leading-normal whitespace-nowrap"
-            >
-              Redeem {tool.toolName} Deal
-            </div>
-          </div>
+          {(() => {
+            const ctaLink = getPrimaryCtaLink(tool.toolName);
+            if (ctaLink) {
+              return (
+                <a
+                  href={ctaLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-layer="All Assets"
+                  className="AllAssets px-6 py-2 bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-xl flex justify-center items-center cursor-pointer hover:opacity-90 transition-opacity"
+                >
+                  <div
+                    data-layer="Redeem Framer Deal"
+                    className="RedeemFramerDeal text-center text-white text-base font-normal font-['Poppins'] leading-normal whitespace-nowrap"
+                  >
+                    Redeem {tool.toolName} Deal
+                  </div>
+                </a>
+              );
+            }
+            return (
+              <div
+                data-layer="All Assets"
+                className="AllAssets px-6 py-2 bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-xl flex justify-center items-center cursor-not-allowed opacity-50"
+              >
+                <div
+                  data-layer="Redeem Framer Deal"
+                  className="RedeemFramerDeal text-center text-white text-base font-normal font-['Poppins'] leading-normal whitespace-nowrap"
+                >
+                  Redeem {tool.toolName} Deal
+                </div>
+              </div>
+            );
+          })()}
         </div>
       </div>
         </div>
