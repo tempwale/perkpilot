@@ -1,10 +1,61 @@
+import { useEffect, useState } from "react";
 import type { BlogToolBlogCard } from "../../types/blogs.types";
+import { DEALS_API } from "../../config/backend";
+import type { Deal } from "../../hooks/useDeals";
 
 interface ToolDealProps {
   toolBlogCard?: BlogToolBlogCard;
 }
 
 export default function ToolDeal({ toolBlogCard }: ToolDealProps) {
+  const [dealsData, setDealsData] = useState<Deal[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchDeals = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch(DEALS_API);
+        if (!response.ok) {
+          throw new Error("Failed to fetch deals");
+        }
+        const allDeals = await response.json() as Deal[] | { value: Deal[] };
+        const fetchedDeals = Array.isArray(allDeals) ? allDeals : (allDeals.value || []);
+        setDealsData(fetchedDeals);
+      } catch (error) {
+        console.error("Error fetching deals:", error);
+        setDealsData([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    void fetchDeals();
+  }, []);
+
+
+  const getToolData = (toolName: string): Deal | null => {
+    return dealsData.find(
+      (deal) => deal.title?.toLowerCase().trim() === toolName.toLowerCase().trim()
+    ) || null;
+  };
+
+  const getToolDescription = (toolName: string): string => {
+    const toolData = getToolData(toolName);
+    return toolData?.description || "";
+  };
+
+
+  const getToolTitle = (toolName: string): string => {
+    const toolData = getToolData(toolName);
+    return toolData?.title || toolName;
+  };
+
+  const getSavingsAmount = (toolName: string): string => {
+    const toolData = getToolData(toolName);
+    return toolData?.savings || toolData?.discount || "";
+  };
+
   if (!toolBlogCard) {
     return null;
   }
@@ -21,11 +72,11 @@ export default function ToolDeal({ toolBlogCard }: ToolDealProps) {
     <div
           key={index}
       data-layer="Frame 2147206154"
-      className="Frame2147206154 self-stretch p-6 bg-gradient-to-b from-white/10 to-[#eef2fc]/10 rounded-3xl outline-1 -outline-offset-[-1px] outline-[#ebeef4]/10 flex justify-start items-center gap-6 flex-col lg:flex-row"
+      className="Frame2147206154 self-stretch p-6 bg-gradient-to-b from-white/10 to-[#eef2fc]/10 rounded-3xl outline-1 -outline-offset-[-1px] outline-[#ebeef4]/10 flex flex-col lg:flex-row justify-start items-start lg:items-center gap-6"
     >
       <div
         data-layer="Card"
-        className="Card w-full sm:w-80 px-4 pb-4 bg-white/10 rounded-3xl outline-1 outline-[#ebeef4]/10 flex-col justify-center items-center gap-4"
+        className="Card w-full sm:w-80 px-4 pb-4 bg-white/10 rounded-3xl outline-1 outline-[#ebeef4]/10 flex flex-col justify-center items-center gap-4"
       >
         <div
           data-layer="Frame 1321320236"
@@ -72,7 +123,7 @@ export default function ToolDeal({ toolBlogCard }: ToolDealProps) {
               </div>
               <div
                 data-layer="Frame 1321320233"
-                className="Frame1321320233 flex-col justify-start items-start gap-1"
+                className="Frame1321320233 flex flex-col justify-start items-start gap-1"
               >
                 <div
                   data-layer="Frame 2147205849"
@@ -123,7 +174,7 @@ export default function ToolDeal({ toolBlogCard }: ToolDealProps) {
               data-layer="Every communications experience, Integrated contact center, voice, video, chat, and APIs."
               className="EveryCommunicationsExperienceIntegratedContactCenterVoiceVideoChatAndApis self-stretch justify-start text-zinc-400 text-xs font-normal font-['Poppins']"
             >
-              {toolBlogCard.blogBody}
+              {loading ? "Loading..." : getToolDescription(tool.toolName) || toolBlogCard.blogBody}
             </div>
             <div
               data-layer="Frame 1321320286"
@@ -139,7 +190,7 @@ export default function ToolDeal({ toolBlogCard }: ToolDealProps) {
                 data-layer="$4,494/Year"
                 className="4494Year justify-start text-neutral-50 text-sm font-medium font-['Poppins']"
               >
-                $4,494/Year
+                {loading ? "Loading..." : getSavingsAmount(tool.toolName) || "$4,494/Year"}
               </div>
             </div>
           </div>
@@ -147,32 +198,32 @@ export default function ToolDeal({ toolBlogCard }: ToolDealProps) {
       </div>
       <div
         data-layer="Frame 2147206153"
-        className="Frame2147206153 flex-1 flex-col justify-start items-start gap-4"
+        className="Frame2147206153 flex-1 flex flex-col justify-start items-start gap-4"
       >
         <div
           data-layer="Boost Your Content Output by 10x!"
           className="BoostYourContentOutputBy10x self-stretch justify-start text-neutral-50 text-xl font-medium font-['Poppins'] leading-loose"
         >
-          {toolBlogCard.blogTitle}
+          {loading ? "Loading..." : getToolTitle(tool.toolName) || toolBlogCard.blogTitle}
         </div>
         <div
           data-layer="Frame 2147206152"
-          className="Frame2147206152 self-stretch flex justify-start items-center gap-4-wrap content-center"
+          className="Frame2147206152 self-stretch flex flex-wrap justify-start items-center gap-4"
         >
           <div
             data-layer="Container"
-            className="Container px-4 py-1 bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-lg flex justify-start items-start gap-4"
+            className="Container px-4 py-1 bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-lg flex justify-center items-center"
           >
             <div
               data-layer="15% CASHBACK"
-              className="Cashback text-center justify-start text-neutral-50 text-xs font-medium font-['Poppins']"
+              className="Cashback text-center text-neutral-50 text-xs font-medium font-['Poppins'] whitespace-nowrap"
             >
               15% CASHBACK
             </div>
           </div>
           <div
             data-layer="🎉 47 People Saved This Deal"
-            className="47PeopleSavedThisDeal text-center justify-start text-neutral-50 text-sm font-medium font-['Poppins']"
+            className="47PeopleSavedThisDeal text-neutral-50 text-sm font-medium font-['Poppins'] whitespace-nowrap"
           >
             🎉 47 People Saved This Deal
           </div>
@@ -181,19 +232,19 @@ export default function ToolDeal({ toolBlogCard }: ToolDealProps) {
           data-layer="Unlock Jasper AI with an exclusive discount and cashback only on DealYouNeed. Stop writing, start generating! This deal gives you access to all premium features at a fraction of the regular price."
           className="UnlockJasperAiWithAnExclusiveDiscountAndCashbackOnlyOnDealyouneedStopWritingStartGeneratingThisDealGivesYouAccessToAllPremiumFeaturesAtAFractionOfTheRegularPrice self-stretch justify-start text-zinc-400 text-xs font-normal font-['Poppins']"
         >
-          {toolBlogCard.additionalNote || toolBlogCard.blogBody}
+          {toolBlogCard.additionalNote || getToolDescription(tool.toolName)}
         </div>
         <div
           data-layer="Frame 2147206151"
-          className="Frame2147206151 self-stretch inline-flex justify-start items-center gap-4"
+          className="Frame2147206151 self-stretch flex justify-start items-center gap-4"
         >
           <div
             data-layer="All Assets"
-            className="AllAssets px-6 py-2 bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-xl flex justify-center items-center"
+            className="AllAssets px-6 py-2 bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-xl flex justify-center items-center cursor-pointer hover:opacity-90 transition-opacity"
           >
             <div
               data-layer="Redeem Framer Deal"
-              className="RedeemFramerDeal justify-start text-white text-base font-normal font-['Poppins'] leading-normal"
+              className="RedeemFramerDeal text-center text-white text-base font-normal font-['Poppins'] leading-normal whitespace-nowrap"
             >
               Redeem {tool.toolName} Deal
             </div>

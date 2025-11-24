@@ -17,7 +17,7 @@ const highlightToolNames = (text: string, tools?: BlogTool[]): React.ReactElemen
       <>
         {lines.map((line, idx) => (
           <React.Fragment key={idx}>
-            <span className="text-zinc-200 text-xl font-normal font-['Poppins'] leading-loose">{line}</span>
+            <span className="text-zinc-200 text-base sm:text-lg md:text-xl font-normal font-['Poppins'] leading-loose">{line}</span>
             {idx < lines.length - 1 && <br />}
           </React.Fragment>
         ))}
@@ -43,7 +43,7 @@ const highlightToolNames = (text: string, tools?: BlogTool[]): React.ReactElemen
       beforeLines.forEach((line, idx) => {
         if (line) {
           parts.push(
-            <span key={`text-${keyCounter++}`} className="text-zinc-200 text-xl font-normal font-['Poppins'] leading-loose">
+            <span key={`text-${keyCounter++}`} className="text-zinc-200 text-base sm:text-lg md:text-xl font-normal font-['Poppins'] leading-loose">
               {line}
             </span>
           );
@@ -54,7 +54,7 @@ const highlightToolNames = (text: string, tools?: BlogTool[]): React.ReactElemen
       });
     }
     parts.push(
-      <span key={`tool-${keyCounter++}`} className="text-[#737eff] text-xl font-normal font-['Poppins'] underline leading-loose">
+      <span key={`tool-${keyCounter++}`} className="text-[#737eff] text-base sm:text-lg md:text-xl font-normal font-['Poppins'] underline leading-loose">
         {matchText}
       </span>
     );
@@ -67,7 +67,7 @@ const highlightToolNames = (text: string, tools?: BlogTool[]): React.ReactElemen
     remainingLines.forEach((line, idx) => {
       if (line) {
         parts.push(
-          <span key={`text-${keyCounter++}`} className="text-zinc-200 text-xl font-normal font-['Poppins'] leading-loose">
+          <span key={`text-${keyCounter++}`} className="text-zinc-200 text-base sm:text-lg md:text-xl font-normal font-['Poppins'] leading-loose">
             {line}
           </span>
         );
@@ -78,7 +78,7 @@ const highlightToolNames = (text: string, tools?: BlogTool[]): React.ReactElemen
     });
   }
 
-  return <>{parts.length > 0 ? parts : <span className="text-zinc-200 text-xl font-normal font-['Poppins'] leading-loose">{text}</span>}</>;
+  return <>{parts.length > 0 ? parts : <span className="text-zinc-200 text-base sm:text-lg md:text-xl font-normal font-['Poppins'] leading-loose">{text}</span>}</>;
 };
 
 export default function Brief({
@@ -103,11 +103,11 @@ export default function Brief({
   return (
     <div 
       data-layer="Frame 2147206173"
-      className="Frame2147206173 self-stretch p-6 bg-white/10 rounded-3xl outline-1 -outline-offset-[-1px] outline-white/10 flex flex-col justify-start items-start gap-6"
+      className="Frame2147206173 self-stretch p-4 sm:p-6 bg-white/10 rounded-3xl outline-1 -outline-offset-[-1px] outline-white/10 flex flex-col justify-start items-start gap-4 sm:gap-6 w-full"
     >
       <div 
         data-layer={title}
-        className="WhichIsBetter self-stretch justify-start text-neutral-50 text-[32px] md:text-[40px] font-semibold font-['Urbanist'] leading-tight"
+        className="WhichIsBetter self-stretch justify-start text-neutral-50 text-2xl sm:text-[32px] md:text-[40px] font-semibold font-['Urbanist'] leading-tight"
       >
         {title}
       </div>
@@ -128,10 +128,10 @@ export default function Brief({
                   />
                   <div 
                     data-layer="Frame 2147206166"
-                    className="Frame2147206166 flex-1 flex-col justify-start items-start gap-4"
+                      className="Frame2147206166 flex-1 flex-col justify-start items-start gap-4 min-w-0"
                   >
                     <div 
-                      className="self-stretch justify-start text-zinc-200 text-xl font-normal font-['Poppins'] leading-loose prose prose-invert max-w-none"
+                        className="self-stretch justify-start text-zinc-200 text-base sm:text-lg md:text-xl font-normal font-['Poppins'] leading-loose prose prose-invert max-w-none break-words"
                       dangerouslySetInnerHTML={pointHasHTML ? { __html: point } : undefined}
                     >
                       {!pointHasHTML && highlightToolNames(point, dealsMentioned)}
@@ -143,7 +143,7 @@ export default function Brief({
           : hasHTML ? (
 
               <div 
-                className="self-stretch text-zinc-200 text-xl font-normal font-['Poppins'] leading-loose prose prose-invert max-w-none"
+                className="self-stretch text-zinc-200 text-base sm:text-lg md:text-xl font-normal font-['Poppins'] leading-loose prose prose-invert max-w-none break-words"
                 dangerouslySetInnerHTML={{ __html: textContent }}
                 style={{
                   wordBreak: "break-word",
@@ -166,9 +166,9 @@ export default function Brief({
                     />
                     <div 
                       data-layer="Frame 2147206166"
-                      className="Frame2147206166 flex-1 flex-col justify-start items-start gap-4"
+                      className="Frame2147206166 flex-1 flex-col justify-start items-start gap-4 min-w-0"
                     >
-                      <div className="self-stretch justify-start">
+                      <div className="self-stretch justify-start text-base sm:text-lg md:text-xl break-words">
                         {highlightToolNames(paragraph, dealsMentioned)}
                       </div>
                     </div>
@@ -180,7 +180,7 @@ export default function Brief({
       {imageUrl ? (
         <div 
           data-layer="Rectangle 39984"
-          className="Rectangle39984 self-stretch h-[300px] md:h-[400px] bg-white/10 rounded-3xl border border-white/10 overflow-hidden"
+          className="Rectangle39984 self-stretch h-[200px] sm:h-[300px] md:h-[400px] bg-white/10 rounded-3xl border border-white/10 overflow-hidden w-full"
         >
           <img
             src={imageUrl}
@@ -191,7 +191,7 @@ export default function Brief({
       ) : (
         <div 
           data-layer="Rectangle 39984"
-          className="Rectangle39984 self-stretch h-[300px] md:h-[400px] bg-white/10 rounded-3xl border border-white/10"
+          className="Rectangle39984 self-stretch h-[200px] sm:h-[300px] md:h-[400px] bg-white/10 rounded-3xl border border-white/10 w-full"
         />
       )}      
       <style>{`
