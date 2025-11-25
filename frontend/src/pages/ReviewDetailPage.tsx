@@ -14,7 +14,18 @@ import FAQ from "../components/ReviewDetail/FAQ";
 import { fetchReviewById, type Review } from "../hooks/useReviews";
 import type { TransformedReview } from "../types/review.types";
 
-// Transform API review data to match component structure
+type ReviewAlternative = {
+  name?: string;
+  type?: string;
+  avatarUrl?: string;
+  price?: string;
+  rating?: number;
+  reviewCount?: number;
+  compareNote?: string;
+  _id?: string;
+  dealId?: string;
+};
+
 const transformApiReview = (review: Review): TransformedReview => {
   // Default logo component
   const defaultLogoComponent = (
@@ -85,14 +96,33 @@ const transformApiReview = (review: Review): TransformedReview => {
       question: faq.question!,
       answer: faq.answer!,
     })),
-    alternatives: review.alternatives || [],
+    alternatives: (() => {
+      const sanitized: Array<{
+        name: string;
+        type?: string;
+        avatarUrl?: string;
+        price?: string;
+        rating?: number;
+        reviewCount?: number;
+        compareNote?: string;
+        _id?: string;
+      }> = (review.alternatives || []).map((alt: ReviewAlternative) => ({
+        name: alt.name ?? "Alternative",
+        type: alt.type,
+        avatarUrl: alt.avatarUrl,
+        price: alt.price,
+        rating: alt.rating,
+        reviewCount: alt.reviewCount,
+        compareNote: alt.compareNote,
+        _id: alt._id,
+      }));
+      return sanitized;
+    })(),
     lastUpdated: review.lastUpdated || new Date().toISOString().split("T")[0],
     upvotes: review.upvotes || 0,
     shareCount: review.shareCount || 0,
     tryForFreeLink: review.tryForFreeLink,
     ratingCategories: review.ratingCategories || [],
-    // If productReviews array exists and has data, use it
-    // Otherwise, create a single review from the top-level fields if they exist
     productReviews:
       review.productReviews && review.productReviews.length > 0
         ? review.productReviews
@@ -257,7 +287,16 @@ export default function ReviewDetailPage() {
             features={reviewData.features}
             pricing={reviewData.pricing}
             keyFeatures={reviewData.keyFeatures}
-            alternatives={reviewData.alternatives}
+            alternatives={reviewData.alternatives.map((alt: ReviewAlternative) => ({
+              name: alt.name ?? "Alternative",
+              type: alt.type,
+              avatarUrl: alt.avatarUrl,
+              price: alt.price,
+              rating: alt.rating,
+              reviewCount: alt.reviewCount,
+              compareNote: alt.compareNote,
+              _id: alt._id,
+            }))}
             productReviews={reviewData.productReviews}
             ratingBreakdown={reviewData.ratingBreakdown}
           />
