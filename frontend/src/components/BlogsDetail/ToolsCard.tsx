@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { DEALS_API } from "../../config/backend";
+import type { Deal } from "../../hooks/useDeals";
 
 interface ToolsCardProps {
   toolName?: string;
@@ -31,6 +33,58 @@ export default function ToolsCard({
   primaryActionUrl,
   secondaryActionUrl,
 }: ToolsCardProps) {
+  const [dealsData, setDealsData] = useState<Deal[]>([]);
+
+  useEffect(() => {
+    const fetchDeals = async () => {
+      try {
+        const response = await fetch(DEALS_API);
+        if (!response.ok) {
+          throw new Error("Failed to fetch deals");
+        }
+        const allDeals = await response.json() as Deal[] | { value: Deal[] };
+        const fetchedDeals = Array.isArray(allDeals) ? allDeals : (allDeals.value || []);
+        setDealsData(fetchedDeals);
+      } catch (error) {
+        console.error("Error fetching deals:", error);
+        setDealsData([]);
+      }
+    };
+
+    void fetchDeals();
+  }, []);
+
+  const getToolData = (toolName: string): Deal | null => {
+    return dealsData.find(
+      (deal) => deal.title?.toLowerCase().trim() === toolName.toLowerCase().trim()
+    ) || null;
+  };
+
+  const getPrimaryCtaLink = (toolName: string): string | null => {
+    const toolData = getToolData(toolName);
+    return toolData?.primary_cta_link || null;
+  };
+
+  const getSavingsAmount = (toolName: string): string => {
+    const toolData = getToolData(toolName);
+    return toolData?.savings || toolData?.discount || savingsValue;
+  };
+
+  const getBadgeText = (toolName: string): string => {
+    const toolData = getToolData(toolName);
+    if (toolData?.discount) {
+      return `${toolData.discount} OFF`;
+    }
+    if (toolData?.tag) {
+      return toolData.tag;
+    }
+    return badgeText;
+  };
+
+  // Get deal data for the current tool
+  const primaryCtaLink = toolName ? getPrimaryCtaLink(toolName) : primaryActionUrl;
+  const displaySavingsValue = toolName ? getSavingsAmount(toolName) : savingsValue;
+  const displayBadgeText = toolName ? getBadgeText(toolName) : badgeText;
   return (
     <div
       data-layer="Card"
@@ -126,7 +180,7 @@ export default function ToolsCard({
             data-layer="24% CASHBACK"
               className="Cashback text-center justify-start text-neutral-50 text-xs font-medium font-['Poppins'] whitespace-nowrap"
           >
-            {badgeText}
+            {displayBadgeText}
           </div>
         </div>
       </div>
@@ -148,7 +202,7 @@ export default function ToolsCard({
           data-layer="$4,494/Year"
               className="4494Year justify-start text-neutral-50 text-base font-normal font-['Poppins'] leading-normal"
         >
-          {savingsValue}
+          {displaySavingsValue}
         </div>
       </div>
       {description && (
@@ -165,9 +219,9 @@ export default function ToolsCard({
         data-layer="Filter"
         className="Filter w-full lg:w-[180px] flex flex-row lg:flex-col justify-start items-stretch gap-3"
       >
-        {primaryActionUrl ? (
+        {primaryCtaLink ? (
           <a
-            href={primaryActionUrl}
+            href={primaryCtaLink}
             target="_blank"
             rel="noopener noreferrer"
             data-layer="All Assets"
