@@ -36,22 +36,32 @@ export default function ToolsCard({
   const [dealsData, setDealsData] = useState<Deal[]>([]);
 
   useEffect(() => {
+    const controller = new AbortController();
     const fetchDeals = async () => {
       try {
-        const response = await fetch(DEALS_API);
+        const response = await fetch(DEALS_API, { signal: controller.signal });
         if (!response.ok) {
           throw new Error("Failed to fetch deals");
         }
-        const allDeals = await response.json() as Deal[] | { value: Deal[] };
-        const fetchedDeals = Array.isArray(allDeals) ? allDeals : (allDeals.value || []);
+        const allDeals = (await response.json()) as Deal[] | { value: Deal[] };
+        const fetchedDeals = Array.isArray(allDeals)
+          ? allDeals
+          : allDeals.value || [];
         setDealsData(fetchedDeals);
       } catch (error) {
+        if (controller.signal.aborted) {
+          return;
+        }
         console.error("Error fetching deals:", error);
         setDealsData([]);
       }
     };
 
     void fetchDeals();
+
+    return () => {
+      controller.abort();
+    };
   }, []);
 
   const getToolData = (toolName: string): Deal | null => {
@@ -91,15 +101,15 @@ export default function ToolsCard({
       className="Card w-full lg:w-[560px] p-2 sm:p-3 bg-white/10 rounded-3xl outline-1 -outline-offset-[-1px] outline-white/10 flex flex-col lg:flex-row justify-start items-start gap-4"
     >
       <div className="w-full lg:flex-1 flex flex-col justify-start items-start gap-3">
-        <div
-          data-layer="Frame 1321320234"
+      <div
+        data-layer="Frame 1321320234"
           className="Frame1321320234 w-full flex flex-row justify-between items-center gap-3"
+      >
+        <div
+          data-layer="Frame 1321320238"
+            className="Frame1321320238 flex justify-start items-center gap-2 flex-1 min-w-0"
         >
           <div
-            data-layer="Frame 1321320238"
-            className="Frame1321320238 flex justify-start items-center gap-2 flex-1 min-w-0"
-          >
-            <div
             data-layer="Frame 1321320224"
               className="Frame1321320224 w-12 h-12 p-2 bg-gray-50 rounded-full flex justify-center items-center gap-2 flex-shrink-0"
           >

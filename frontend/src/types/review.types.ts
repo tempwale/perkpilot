@@ -33,13 +33,15 @@ export interface TransformedReview {
   integrations: Array<{ id: string; name: string }>;
   faqs: Array<{ question: string; answer: string }>;
   alternatives: Array<{
-    name: string;
+    name?: string;
     type?: string;
     avatarUrl?: string;
     price?: string;
     rating?: number;
     reviewCount?: number;
     compareNote?: string;
+    _id?: string;
+    dealId?: string;
   }>;
   lastUpdated: string;
   upvotes: number;

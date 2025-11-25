@@ -85,4 +85,13 @@ const dealSchema = new Schema<IDeal>(
   { timestamps: true }
 );
 
+dealSchema.index({
+  title: "text",
+  description: "text",
+  category: "text",
+  tag: "text",
+  features: "text",
+}); 
+dealSchema.index({ createdAt: -1 }); 
+
 export default mongoose.model<IDeal>("Deal", dealSchema);

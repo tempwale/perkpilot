@@ -64,32 +64,36 @@ const ComparisionsCard: React.FC<ComparisionsCardProps> = ({
   // Render logo as <img> if URL, otherwise placeholder
   const LogoImage: React.FC<{ src?: string }> = ({ src }) =>
     src ? (
-      <img src={src} alt="tool" className="w-8 h-8 object-contain" />
+      <img
+        src={src}
+        alt="tool"
+        className="w-8 h-8 sm:w-8 sm:h-8 object-contain scale-110"
+      />
     ) : (
       <SlackLogo />
     );
 
   return (
-    <div className="w-full lg:w-[608px] p-4 sm:p-6 bg-white/5 rounded-3xl -outline-offset-[-1px] outline-white/10 flex-col justify-between items-start gap-6">
+    <div className="w-full lg:w-[608px] p-4 sm:p-6 bg-white/5 rounded-3xl -outline-offset-[-1px] outline-white/10 flex flex-col justify-between items-start gap-6 text-white">
       {/* Top Section: Logos and VS */}
       <div className="self-stretch flex flex-col justify-start items-center gap-4">
         <div className="w-full max-w-[28rem] inline-flex justify-center items-center mx-auto px-2">
           {/* App 1 Logo */}
-          <div className="w-12 h-12 sm:w-14 sm:h-14 p-1.5 sm:p-2.5 bg-neutral-50 rounded-[100px] -outline-offset-[-1px] outline-1-neutral-50 flex justify-center items-center gap-2.5">
+          <div className="w-12 h-12 sm:w-14 sm:h-14 p-1.5 sm:p-2.5 bg-white border border-white/40 rounded-[100px] -outline-offset-[-1px] outline-1-neutral-50 flex justify-center items-center gap-2.5">
             <div className="w-8 h-8 sm:w-8 sm:h-8 relative flex items-center justify-center">
               <LogoImage src={app1Logo} />
             </div>
           </div>
           {/* Line */}
           <LineIcon /> {/* VS Badge */}
-          <div className="w-7 h-7 sm:w-8 sm:h-8 p-1.5 bg-neutral-50 rounded-[100px] flex-col justify-center items-center gap-2.5">
+          <div className="w-7 h-7 sm:w-8 sm:h-8 p-1.5 bg-white border border-white/70 rounded-[100px] flex-col justify-center items-center gap-2.5">
             <div className="text-center text-zinc-950 text-xs sm:text-sm font-medium font-['Poppins']">
               vs
             </div>
           </div>
           {/* Line */}
           <LineIcon /> {/* App 2 Logo */}
-          <div className="w-12 h-12 sm:w-14 sm:h-14 p-1.5 sm:p-2.5 bg-neutral-50 rounded-[100px] -outline-offset-[-1px] outline-1-neutral-50 flex justify-center items-center gap-2.5">
+          <div className="w-12 h-12 sm:w-14 sm:h-14 p-1.5 sm:p-2.5 bg-white border border-white/40 rounded-[100px] -outline-offset-[-1px] outline-1-neutral-50 flex justify-center items-center gap-2.5">
             <div className="w-8 h-8 sm:w-8 sm:h-8 relative flex items-center justify-center">
               <LogoImage src={app2Logo} />
             </div>
@@ -97,10 +101,10 @@ const ComparisionsCard: React.FC<ComparisionsCardProps> = ({
         </div>
         {/* Title, Description, Tags */}
         <div className="self-stretch flex flex-col justify-start items-center gap-3 px-2">
-          <div className="self-stretch text-center text-neutral-50 text-lg sm:text-xl font-medium font-['Plus_Jakarta_Sans'] leading-loose">
+          <div className="self-stretch text-center text-white text-lg sm:text-xl font-medium font-['Plus_Jakarta_Sans'] leading-loose">
             {heroHeading}
           </div>
-          <div className="self-stretch text-center text-zinc-300 text-sm sm:text-base font-normal font-['Plus_Jakarta_Sans'] leading-normal">
+        <div className="self-stretch text-center text-white text-sm sm:text-base font-normal font-['Plus_Jakarta_Sans'] leading-normal">
             {heroBody}
           </div>
           <div className="inline-flex justify-center items-center gap-3 flex-wrap">
@@ -110,7 +114,7 @@ const ComparisionsCard: React.FC<ComparisionsCardProps> = ({
                 key={idx}
                 className="px-2 py-1 bg-white/10 rounded-[100px] flex justify-center items-center gap-2.5"
               >
-                <div className="text-zinc-200 text-xs font-medium font-['Poppins']">
+                <div className="text-white text-xs font-medium font-['Poppins']">
                   {tool.toolCategory || tool.toolName}
                 </div>
               </div>
@@ -129,7 +133,7 @@ const ComparisionsCard: React.FC<ComparisionsCardProps> = ({
         }}
         className="self-stretch h-10 sm:h-12 px-3 py-2 bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-[100px] inline-flex justify-center items-center cursor-pointer"
       >
-        <div className="text-neutral-50 text-sm sm:text-base font-normal font-['Poppins'] leading-normal">
+        <div className="text-white text-sm sm:text-base font-normal font-['Poppins'] leading-normal">
           Read Full Comparison
         </div>
       </Link>

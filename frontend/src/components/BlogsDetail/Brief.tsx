@@ -168,7 +168,7 @@ export default function Brief({
                       data-layer="Frame 2147206166"
                       className="Frame2147206166 flex-1 flex-col justify-start items-start gap-4 min-w-0"
                     >
-                      <div className="self-stretch justify-start text-base sm:text-lg md:text-xl break-words">
+                    <div className="self-stretch justify-start text-zinc-200 text-base sm:text-lg md:text-xl font-normal font-['Poppins'] leading-loose break-words">
                         {highlightToolNames(paragraph, dealsMentioned)}
                       </div>
                     </div>
