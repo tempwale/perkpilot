@@ -11,7 +11,8 @@ export const Background: React.FC<BackgroundProps> = ({
 }) => {
   return (
     <div
-      className={`absolute inset-0 w-full h-full ${className}`}
+      className={`absolute inset-0 w-[800px] h-[] ${className}`}
+      
       style={{
         background:
           "linear-gradient(180deg, rgba(103, 43, 255, 0.80) 0%, rgba(159, 121, 255, 0.80) 225.96%)",

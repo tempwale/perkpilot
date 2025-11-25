@@ -3,8 +3,13 @@ import mongoose from "mongoose";
 import ToolComparisonBlog, {
   IToolComparisonBlog,
   ToolComparisonBlogDocument,
-} from '../models/comparision.model.js';
-import { ComparisonQueryParams, MongoTextSearchFilter } from '../types/index.js';
+} from "../models/comparision.model.js";
+import ComparisonPageSettings from "../models/comparisonPageSettings.model.js";
+import {
+  ComparisonQueryParams,
+  MongoTextSearchFilter,
+  type ComparisonPageSettingsBody,
+} from "../types/index.js";
 
 // GET all comparisons
 export const getAllComparisons = async (req: Request, res: Response) => {
@@ -33,6 +38,64 @@ export const getAllComparisons = async (req: Request, res: Response) => {
   }
 };
 
+export const getComparisonPageSettings = async (req: Request, res: Response) => {
+  try {
+    const singletonValue = "comparison-page-settings";
+
+    const settings = await ComparisonPageSettings.findOneAndUpdate(
+      {},
+      {
+        $set: { singletonKey: singletonValue },
+        $setOnInsert: {},
+      },
+      {
+        new: true,
+        upsert: true,
+        setDefaultsOnInsert: true,
+      }
+    ).populate("featuredComparisons");
+
+    if (!settings) {
+      return res
+        .status(500)
+        .json({ message: "Unable to load comparison page settings" });
+    }
+
+    res.json(settings);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching comparison page settings", error });
+  }
+};
+
+export const updateComparisonPageSettings = async (
+  req: Request<unknown, unknown, ComparisonPageSettingsBody>,
+  res: Response
+) => {
+  try {
+    const payload = req.body || {};
+
+    const update = {
+      comparisonPageStatus: payload.comparisonPageStatus ?? "live",
+      comparisonPageTopTagline: payload.comparisonPageTopTagline ?? "",
+      comparisonPageHeading: payload.comparisonPageHeading ?? "",
+      comparisonPageSubheading: payload.comparisonPageSubheading ?? "",
+      comparisonPageTags: payload.comparisonPageTags ?? [],
+      featuredComparisons: payload.featuredComparisons ?? [],
+    };
+
+    const settings = await ComparisonPageSettings.findOneAndUpdate({}, update, {
+      new: true,
+      upsert: true,
+      setDefaultsOnInsert: true,
+      runValidators: true,
+    }).populate("featuredComparisons");
+
+    res.json(settings);
+  } catch (error) {
+    res.status(400).json({ message: "Error updating comparison page settings", error });
+  }
+};
+
 // GET one comparison by ID
 export const getComparisonById = async (req: Request, res: Response) => {
   try {
@@ -55,10 +118,14 @@ export const createComparison = async (req: Request, res: Response) => {
   try {
     const payload: Partial<IToolComparisonBlog> = req.body;
 
+
     // Create using model so mongoose validators run
     const created = await ToolComparisonBlog.create(payload);
+
+
     res.status(201).json(created);
   } catch (error) {
+    console.error("=== CREATE ERROR ===", error);
     res.status(400).json({ message: "Error creating comparison", error });
   }
 };
@@ -73,6 +140,7 @@ export const updateComparison = async (req: Request, res: Response) => {
 
     const updatedData: Partial<IToolComparisonBlog> = req.body;
 
+
     const updated = await ToolComparisonBlog.findByIdAndUpdate(
       id,
       updatedData,
@@ -85,8 +153,10 @@ export const updateComparison = async (req: Request, res: Response) => {
     if (!updated)
       return res.status(404).json({ message: "Comparison not found" });
 
+
     res.json(updated);
   } catch (error) {
+    console.error("=== UPDATE ERROR ===", error);
     res.status(400).json({ message: "Error updating comparison", error });
   }
 };
@@ -110,6 +180,8 @@ export const deleteComparison = async (req: Request, res: Response) => {
 
 export default {
   getAllComparisons,
+  getComparisonPageSettings,
+  updateComparisonPageSettings,
   getComparisonById,
   createComparison,
   updateComparison,

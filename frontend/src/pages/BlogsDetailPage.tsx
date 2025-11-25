@@ -93,6 +93,16 @@ export default function BlogsDetailPage() {
 
   const formattedDate = formatDate(blog.createdAt);
   const readTime = blog.blogReadingTime || "";
+  const origin =
+    typeof window !== "undefined"
+      ? window.location.origin
+      : "https://perkpilot.com";
+  const blogPath = blog.blogSlug
+    ? `/blogs/${blog.blogSlug}`
+    : typeof window !== "undefined"
+      ? window.location.pathname
+      : "";
+  const shareUrl = `${origin}${blogPath}`;
 
   const modules = blog.modules?.map((m, idx) => ({
     id: `module-${idx}`,
@@ -123,6 +133,7 @@ export default function BlogsDetailPage() {
           description={blog.blogBody}
           date={formattedDate}
           readTime={readTime ? `• ${readTime}` : ""}
+          shareUrl={shareUrl}
           imageComponent={
             blog.blogHeroImage ? (
               <img

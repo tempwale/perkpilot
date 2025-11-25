@@ -243,40 +243,40 @@ export default function PricingSidebar({
             </div>
           </a>
         ) : (
+        <div
+          data-layer="Buttons/main"
+          className="ButtonsMain box-border self-stretch flex flex-row justify-center items-center px-8 py-3 bg-gradient-to-b from-[#501BD6] to-[#7F57E2] border border-[rgba(250,250,250,0.08)] backdrop-blur-[4px] rounded-[100px] gap-3"
+          style={{ padding: "12px 32px", gap: "12px", height: "48px" }}
+        >
           <div
-            data-layer="Buttons/main"
-            className="ButtonsMain box-border self-stretch flex flex-row justify-center items-center px-8 py-3 bg-gradient-to-b from-[#501BD6] to-[#7F57E2] border border-[rgba(250,250,250,0.08)] backdrop-blur-[4px] rounded-[100px] gap-3"
-            style={{ padding: "12px 32px", gap: "12px", height: "48px" }}
+            data-layer="Try Figma For Free"
+            className="TryFigmaForFree text-center text-[#FAFAFA] font-['Plus_Jakarta_Sans'] font-medium leading-6"
+            style={{ fontSize: "16px", lineHeight: "24px" }}
           >
-            <div
-              data-layer="Try Figma For Free"
-              className="TryFigmaForFree text-center text-[#FAFAFA] font-['Plus_Jakarta_Sans'] font-medium leading-6"
-              style={{ fontSize: "16px", lineHeight: "24px" }}
-            >
-              Try {title} For Free
-            </div>
-            <div
-              data-layer="nav-arrow-right"
-              className="NavArrowRight w-6 h-6 relative"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="25"
-                height="24"
-                viewBox="0 0 25 24"
-                fill="none"
-                className="w-full h-full"
-              >
-                <path
-                  d="M9.56641 6L15.5664 12L9.56641 18"
-                  stroke="#FAFAFA"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </div>
+            Try {title} For Free
           </div>
+          <div
+            data-layer="nav-arrow-right"
+            className="NavArrowRight w-6 h-6 relative"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="25"
+              height="24"
+              viewBox="0 0 25 24"
+              fill="none"
+              className="w-full h-full"
+            >
+              <path
+                d="M9.56641 6L15.5664 12L9.56641 18"
+                stroke="#FAFAFA"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </div>
+        </div>
         )}
         <div
           data-layer="Frame 2147206204"

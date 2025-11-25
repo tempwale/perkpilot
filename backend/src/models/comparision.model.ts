@@ -43,6 +43,11 @@ interface IProsConsCard {
   prosConsPairs: IProsConsPair[];
 }
 
+interface IComparisonModule {
+  moduleNumber: number;
+  moduleName: string;
+}
+
 // Main document interface
 interface IToolComparisonBlog {
   pageType: string;
@@ -59,6 +64,7 @@ interface IToolComparisonBlog {
   toolBlogCards: IBlogSection[];
   featuresComparison: IFeatureComparison;
   prosConsCards: IProsConsCard[];
+  blogModules: IComparisonModule[];
   slug: string;
   isPublished: boolean;
   viewCount: number;
@@ -277,6 +283,23 @@ const ProsConsCardSchema = new Schema<IProsConsCard>(
   { _id: false }
 );
 
+const ComparisonModuleSchema = new Schema<IComparisonModule>(
+  {
+    moduleNumber: {
+      type: Number,
+      required: [true, "Module number is required"],
+      min: [1, "Module number must be at least 1"],
+    },
+    moduleName: {
+      type: String,
+      required: [true, "Module name is required"],
+      trim: true,
+      maxlength: [200, "Module name cannot exceed 200 characters"],
+    },
+  },
+  { _id: false }
+);
+
 // Main Tool Comparison Blog Schema
 const ToolComparisonBlogSchema = new Schema<
   IToolComparisonBlog,
@@ -403,6 +426,17 @@ const ToolComparisonBlogSchema = new Schema<
           message: "Card numbers must be unique",
         },
       ],
+    },
+    blogModules: {
+      type: [ComparisonModuleSchema],
+      default: [],
+      validate: {
+        validator: function (modules: IComparisonModule[]) {
+          const moduleNumbers = modules.map((module) => module.moduleNumber);
+          return new Set(moduleNumbers).size === moduleNumbers.length;
+        },
+        message: "Module numbers must be unique",
+      },
     },
     slug: {
       type: String,
@@ -545,6 +579,7 @@ export type {
   IFeatureComparison,
   IProsConsPair,
   IProsConsCard,
+  IComparisonModule,
 };
 
 // Type alias for hydrated documents
