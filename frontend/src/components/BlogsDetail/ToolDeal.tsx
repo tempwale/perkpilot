@@ -244,6 +244,22 @@ export default function ToolDeal({ toolBlogCard }: ToolDealProps) {
           className="Frame2147206151 self-stretch flex justify-start items-center gap-4"
         >
           {(() => {
+            if (loading) {
+              return (
+                <button
+                  disabled
+                  data-layer="All Assets"
+                  className="AllAssets px-6 py-2 bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-xl flex justify-center items-center cursor-not-allowed opacity-50"
+                >
+                  <div
+                    data-layer="Redeem Framer Deal"
+                    className="RedeemFramerDeal text-center text-white text-base font-normal font-['Poppins'] leading-normal whitespace-nowrap"
+                  >
+                    Loading...
+                  </div>
+                </button>
+              );
+            }
             const ctaLink = getPrimaryCtaLink(tool.toolName);
             if (ctaLink) {
               return (

@@ -25,7 +25,7 @@ export default function ToolsMentioned({
           <div className="flex flex-row pb-0 w-full md:w-auto">
             <div
               data-layer="Tools Mentioned"
-              className="ToolsMentioned self-stretch pt-0 justify-start w-[134px] md:w-[230px] flex-shrink-0 items-center text-zinc-100 text-base md:text-xl md:font-medium font-['Poppins'] leading-loose"
+              className="ToolsMentioned self-stretch pt-0 justify-start w-auto min-w-[134px] md:min-w-[230px] flex-shrink items-center text-zinc-100 text-base md:text-xl md:font-medium font-['Poppins'] leading-loose"
             >
               Tools Mentioned
             </div>
@@ -40,7 +40,7 @@ export default function ToolsMentioned({
 
               <div
                 data-layer="Container"
-                className="Container px-3 py-2 bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-2xl flex justify-center md:justify-start items-center gap-2 w-full md:w-auto flex-shrink-0 mb-8"
+              className="Container px-3 py-2 bg-gradient-to-b from-[#501bd6] to-[#7f57e2] rounded-2xl flex justify-center md:justify-start items-center gap-2 w-full md:w-auto flex-shrink"
               >
             <div
               data-layer="ion:bulb"

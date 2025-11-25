@@ -19,9 +19,27 @@ export const getAllDeals = async (req: Request, res: Response) => {
       return res.json(dealPage);
     }
     
-    // Otherwise return all deals
-    const deals: IDeal[] = await Deal.find();
-    console.log("Fetched deals:", deals);
+    // Handle search query parameter
+    const { q } = req.query;
+    let deals: IDeal[];
+    
+    if (q && typeof q === "string" && q.trim()) {
+      // Search deals by title, description, category, or features
+      const searchRegex = new RegExp(q.trim(), "i"); // Case-insensitive search
+      deals = await Deal.find({
+        $or: [
+          { title: searchRegex },
+          { description: searchRegex },
+          { category: searchRegex },
+          { tag: searchRegex },
+          { features: searchRegex },
+        ],
+      }).sort({ createdAt: -1 });
+    } else {
+      // Return all deals if no search query
+      deals = await Deal.find().sort({ createdAt: -1 });
+    }
+    
     res.json(deals);
   } catch (error) {
     res.status(500).json({ message: "Error fetching deals", error });

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 interface HeroProps {
@@ -11,6 +11,7 @@ interface HeroProps {
   socialIcons?: React.ReactNode[];
   imageComponent?: React.ReactNode;
   className?: string;
+  shareUrl?: string;
 }
 
 export default function Hero({
@@ -21,7 +22,33 @@ export default function Hero({
   readTime = "• 9 Minute Read",
   socialIcons,
   imageComponent,
+  shareUrl,
 }: HeroProps) {
+  const [copyMessage, setCopyMessage] = useState<"idle" | "copied" | "error">("idle");
+  const resolvedShareUrl =
+    shareUrl ||
+    (typeof window !== "undefined" ? window.location.href : undefined);
+  const encodedUrl = resolvedShareUrl ? encodeURIComponent(resolvedShareUrl) : "";
+  const plainTitle = title ? title.replace(/<[^>]*>/g, "") : "";
+  const plainDescription = description
+    ? description.replace(/<[^>]*>/g, "").replace(/\s+/g, " ").trim()
+    : "";
+  const encodedText = plainTitle
+    ? encodeURIComponent(`${plainTitle} – ${plainDescription}`)
+    : encodedUrl;
+
+  const handleCopyLink = async (): Promise<void> => {
+    if (!resolvedShareUrl) return;
+    try {
+      await navigator.clipboard.writeText(resolvedShareUrl);
+      setCopyMessage("copied");
+      setTimeout(() => setCopyMessage("idle"), 2000);
+    } catch {
+      setCopyMessage("error");
+      setTimeout(() => setCopyMessage("idle"), 2000);
+    }
+  };
+
   // Default SVG icon components
   const XIcon = (
     <svg
@@ -107,7 +134,31 @@ export default function Hero({
     </svg>
   );
 
-  const defaultIcons = [XIcon, InstaIcon, LinkedInIcon, LinkIcon];
+  const shareButtons = resolvedShareUrl
+    ? [
+        {
+          icon: XIcon,
+          label: "Share on X",
+          href: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedText}`,
+        },
+        {
+          icon: InstaIcon,
+          label: "Share on Instagram",
+          href: `https://www.instagram.com/?url=${encodedUrl}`,
+        },
+        {
+          icon: LinkedInIcon,
+          label: "Share on LinkedIn",
+          href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
+        },
+        {
+          icon: LinkIcon,
+          label: copyMessage === "copied" ? "Link copied" : "Copy link",
+          onClick: handleCopyLink,
+          disabled: copyMessage === "copied",
+        },
+      ]
+    : [];
 
   return (
     <div
@@ -126,26 +177,26 @@ export default function Hero({
           {/* Blogs Page Link with dot */}
           <div className="flex items-center gap-2">
             <span className="text-zinc-500 hover:text-zinc-400 transition-colors flex items-center" style={{ fontSize: "14px", lineHeight: "21px" }}>
-              •
-            </span>
-            <Link
-              to="/blogs"
-              className="text-zinc-500 hover:text-zinc-400 transition-colors flex items-center text-sm font-medium leading-[21px] whitespace-nowrap"
-            >
-              Blogs
-            </Link>
+            •
+          </span> 
+          <Link
+            to="/blogs"
+            className="text-zinc-500 hover:text-zinc-400 transition-colors flex items-center text-sm font-medium leading-[21px] whitespace-nowrap"
+          >
+            Blogs
+          </Link>
           </div>
           {/* Separator dot and Category Link */}
           <div className="flex items-center gap-2">
             <span className="text-zinc-100 flex items-center" style={{ fontSize: "14px", lineHeight: "21px" }}>
-              •
-            </span>
-            <Link
-              to={`/blogs${category ? `?category=${encodeURIComponent(category)}` : ""}`}
+            •
+          </span>
+          <Link
+            to={`/blogs${category ? `?category=${encodeURIComponent(category)}` : ""}`}
               className="text-zinc-100 hover:text-zinc-200 transition-colors flex items-center text-sm font-medium leading-[21px] whitespace-nowrap"
-            >
-              {category}
-            </Link>
+          >
+            {category}
+          </Link>
           </div>
         </nav>
 
@@ -239,21 +290,38 @@ export default function Hero({
           >
             {socialIcons && socialIcons.length > 0
               ? socialIcons.map((icon, idx) => (
-                <div
-                  key={idx}
-                  className="XLogo w-12 h-12 bg-white/10 rounded-[100px] flex justify-center items-center gap-2.5"
-                >
-                  {icon}
-                </div>
-              ))
-              : defaultIcons.map((icon, idx) => (
-                <div
-                  key={idx}
-                  className="XLogo w-12 h-12 bg-white/10 rounded-[100px] flex justify-center items-center gap-2.5"
-                >
-                  {icon}
-                </div>
-              ))}
+                  <div
+                    key={idx}
+                    className="XLogo w-12 h-12 bg-white/10 rounded-[100px] flex justify-center items-center gap-2.5"
+                  >
+                    {icon}
+                  </div>
+                ))
+              : shareButtons.map((button, idx) =>
+                  button.href ? (
+                    <a
+                      key={idx}
+                      href={button.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title={button.label}
+                      className="XLogo w-12 h-12 bg-white/10 rounded-[100px] flex justify-center items-center gap-2.5 hover:bg-white/20 transition-colors"
+                    >
+                      {button.icon}
+                    </a>
+                  ) : (
+                    <button
+                    key={idx}
+                      type="button"
+                      onClick={button.onClick}
+                      disabled={button.disabled}
+                      title={button.label}
+                      className="XLogo w-12 h-12 bg-white/10 rounded-[100px] flex justify-center items-center gap-2.5 hover:bg-white/20 transition-colors disabled:opacity-60"
+                  >
+                      {button.icon}
+                    </button>
+                  )
+                )}
           </div>
         </div>
       </div>
