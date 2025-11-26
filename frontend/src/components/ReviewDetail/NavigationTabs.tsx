@@ -74,7 +74,12 @@ export default function NavigationTabs({
       case "pricing":
         return <ProductPricing pricing={pricing} />;
       case "reviews":
-        return <ProductReviews productReviews={productReviews} />;
+        return (
+          <ProductReviews
+            productReviews={productReviews}
+            ratingBreakdown={ratingBreakdown}
+          />
+        );
 
       case "alternatives":
         return <ProductAlternatives alternatives={alternatives} />;

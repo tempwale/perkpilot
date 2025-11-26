@@ -1,8 +1,7 @@
-import React from "react";
-import type { ToolComparisonBlog } from "../../hooks/useComparisionDetail";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 interface HeroProps {
-  data?: ToolComparisonBlog;
   category?: string;
   breadcrumb?: string;
   title?: string;
@@ -12,45 +11,43 @@ interface HeroProps {
   socialIcons?: React.ReactNode[];
   imageComponent?: React.ReactNode;
   className?: string;
+  shareUrl?: string;
 }
 
 export default function Hero({
-  data,
   category = "Project Management",
-  breadcrumb = "Notion vs Obsidian vs Roam Research",
   title = "Notion vs obsidian vs roam research",
   description = "This comprasion blogs will help you understand the difference between these three tools and which one suits you the best.",
   date = "Thursday 19 June 2025",
   readTime = "• 9 Minute Read",
   socialIcons,
   imageComponent,
+  shareUrl,
 }: HeroProps) {
-  // Function to format ISO date to "Friday 7 November 2025" style
-  const formatDate = (isoDate: string): string => {
+  const [copyMessage, setCopyMessage] = useState<"idle" | "copied" | "error">("idle");
+  const resolvedShareUrl =
+    shareUrl ||
+    (typeof window !== "undefined" ? window.location.href : undefined);
+  const encodedUrl = resolvedShareUrl ? encodeURIComponent(resolvedShareUrl) : "";
+  const plainTitle = title ? title.replace(/<[^>]*>/g, "") : "";
+  const plainDescription = description
+    ? description.replace(/<[^>]*>/g, "").replace(/\s+/g, " ").trim()
+    : "";
+  const encodedText = plainTitle
+    ? encodeURIComponent(`${plainTitle} – ${plainDescription}`)
+    : encodedUrl;
+
+  const handleCopyLink = async (): Promise<void> => {
+    if (!resolvedShareUrl) return;
     try {
-      const date = new Date(isoDate);
-      const options: Intl.DateTimeFormatOptions = {
-        weekday: "long",
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-      };
-      return date.toLocaleDateString("en-US", options);
+      await navigator.clipboard.writeText(resolvedShareUrl);
+      setCopyMessage("copied");
+      setTimeout(() => setCopyMessage("idle"), 2000);
     } catch {
-      return isoDate;
+      setCopyMessage("error");
+      setTimeout(() => setCopyMessage("idle"), 2000);
     }
   };
-
-  // Use data from API if available, otherwise fall back to defaults
-  const displayImage = data?.comparisonHeroImage || imageComponent;
-  const displayTime = data?.createdAt ? formatDate(data.createdAt) : date;
-  const displayCategory = data?.pageType || category;
-  const displayBreadcrumb = data?.heroHeading || breadcrumb;
-  const displayTitle = data?.heroHeading || title;
-  const displayDescription = data?.heroBody || description;
-  const displayReadTime = data?.readingTime
-    ? `• ${data.readingTime}`
-    : readTime;
 
   // Default SVG icon components
   const XIcon = (
@@ -137,83 +134,146 @@ export default function Hero({
     </svg>
   );
 
-  const defaultIcons = [XIcon, InstaIcon, LinkedInIcon, LinkIcon];
+  const shareButtons = resolvedShareUrl
+    ? [
+        {
+          icon: XIcon,
+          label: "Share on X",
+          href: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedText}`,
+        },
+        {
+          icon: InstaIcon,
+          label: "Share on Instagram",
+          href: `https://www.instagram.com/?url=${encodedUrl}`,
+        },
+        {
+          icon: LinkedInIcon,
+          label: "Share on LinkedIn",
+          href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
+        },
+        {
+          icon: LinkIcon,
+          label: copyMessage === "copied" ? "Link copied" : "Copy link",
+          onClick: handleCopyLink,
+          disabled: copyMessage === "copied",
+        },
+      ]
+    : [];
 
   return (
     <div
       data-layer="Frame 2147206225"
-      className="Frame2147206225 flex flex-col px-4 lg:flex-row justify-start items-start lg:items-center gap-6"
+      className="Frame2147206225 flex flex-col px-4 lg:flex-row justify-start items-start lg:items-center gap-6 sm:mt-[50px] lg:mt-[90px]"
     >
       <div
         data-layer="Frame 2147206224"
-        className="Frame2147206224 w-full lg:w-[608px] flex-col justify-start items-start gap-6"
+        className="Frame2147206224 w-full lg:w-[608px] flex flex-col justify-start items-start gap-6"
       >
-        <div
+        <nav
           data-layer="Frame 2147206180"
-          className="Frame2147206180 flex justify-start  gap-4 px-4 md:flex-col"
+          className="Frame2147206180 flex flex-col md:flex-row justify-start items-start md:items-center gap-2 px-4"
+          style={{ fontFamily: "Plus Jakarta Sans" }}
         >
-          {/* leading dot before category */}
-          <div className="flex flex-row justify-start items-center gap-4">
-            <span
-              aria-hidden
-              className="w-2 h-2 rounded-full bg-zinc-500 inline-block "
-            />
-            <div
-              data-layer="Project Management"
-              className="ProjectManagement  text-zinc-500 text-sm font-medium font-['Plus_Jakarta_Sans'] leading-[21px]"
-            >
-              {displayCategory}
-            </div>
+          {/* Blogs Page Link with dot */}
+          <div className="flex items-center gap-2">
+            <span className="text-zinc-500 hover:text-zinc-400 transition-colors flex items-center" style={{ fontSize: "14px", lineHeight: "21px" }}>
+            •
+          </span>
+          <Link
+            to="/blogs"
+            className="text-zinc-500 hover:text-zinc-400 transition-colors flex items-center text-[14px] font-medium leading-[21px] whitespace-nowrap"
+          >
+            Blogs
+          </Link>
           </div>
-          {/* small circular separator dot */}
-          <div className="flex flex-row justify-start items-center gap-4">
-            <span
-              aria-hidden
-              className="w-2 h-2 rounded-full bg-[#F4F4F5] inline-block"
-            />
-            <div
-              data-layer="Notion vs Obsidian vs Roam Research"
-              className="NotionVsObsidianVsRoamResearch justify-start text-zinc-100 text-sm font-medium font-['Plus_Jakarta_Sans'] leading-[21px]"
-            >
-              {displayBreadcrumb}
-            </div>
+          {/* Separator dot and Category Link */}
+          <div className="flex items-center gap-2">
+            <span className="text-zinc-100 flex items-center" style={{ fontSize: "14px", lineHeight: "21px" }}>
+            •
+          </span>
+          <Link
+            to={`/blogs${category ? `?category=${encodeURIComponent(category)}` : ""}`}
+              className="text-zinc-100 hover:text-zinc-200 transition-colors flex items-center text-sm font-medium leading-[21px] whitespace-nowrap"
+          >
+            {category}
+          </Link>
           </div>
-        </div>
+        </nav>
 
         <div
           data-layer="Notion vs obsidian vs roam research"
-          className="NotionVsObsidiantitle self-stretch justify-start text-neutral-50 text-3xl md:text-4xl lg:text-5xl font-semibold font-['Plus_Jakarta_Sans'] capitalize leading-[1.05]"
+          className="self-stretch md:max-w-[1250px] justify-start text-neutral-50 text-[32px] md:text-[48px] font-medium font-['Plus_Jakarta_Sans'] capitalize leading-[42px] md:leading-[60px]"
         >
-          {displayTitle}
+          {title}
         </div>
 
         <div
           data-layer="This comprasion blogs will help you understand the difference between these three tools and which one suits you the best."
-          className="ThisComprasionBlogsWillHelpYouUnderstandTheDifferenceBetweenTheseThreeToolsAndWhichOneSuitsYouTheBest self-stretch justify-start text-zinc-400 text-xl font-medium font-['Plus_Jakarta_Sans'] leading-loose"
-        >
-          {displayDescription}
-        </div>
+          className="self-stretch justify-start text-zinc-400 font-['Plus_Jakarta_Sans'] prose prose-invert max-w-none"
+          dangerouslySetInnerHTML={{ __html: description || "" }}
+          style={{
+            fontFamily: "Plus Jakarta Sans",
+            fontWeight: 400,
+            fontSize: "16px",
+            lineHeight: "24px",
+            letterSpacing: "0%",
+            wordBreak: "break-word",
+          }}
+        />
+        <style>{`
+          .prose a {
+            color: #737eff;
+            text-decoration: underline;
+          }
+          .prose a:hover {
+            opacity: 0.8;
+          }
+          .prose img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 16px 0;
+          }
+          .prose [data-youtube-embed] {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            border-radius: 8px;
+            overflow: hidden;
+          }
+          .prose [data-youtube-embed] iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+          }
+        `}</style>
 
         <div
           data-layer="Frame 2147206208"
-          className="Frame2147206208 w-full md:w-[306.50px] flex flex-col justify-start items-start gap-3"
+          className="Frame2147206208 w-full flex flex-col justify-start items-start gap-6"
         >
           <div
             data-layer="Frame 2147205829"
-            className="Frame2147205829 w-full h-[21px] inline-flex justify-start items-center gap-6 whitespace-nowrap"
+            className="Frame2147205829 w-full h-[21px] inline-flex justify-start items-center gap-2 md:gap-6 whitespace-nowrap"
           >
             <div
               data-layer="Thursday 19 June 2025"
-              className="Thursday19June2025 justify-start text-zinc-500 text-sm font-medium font-['Poppins'] "
+              className="Thursday19June2025 justify-start text-zinc-500 text-sm font-medium font-['Poppins']"
             >
-              {displayTime}
+              {date}
             </div>
 
             <div
               data-layer="9 Minute Read"
               className="MinuteRead text-zinc-500 text-sm font-medium font-['Poppins']"
             >
-              {displayReadTime} Read
+              {readTime} Read
             </div>
           </div>
 
@@ -230,33 +290,43 @@ export default function Hero({
                     {icon}
                   </div>
                 ))
-              : defaultIcons.map((icon, idx) => (
-                  <div
-                    key={idx}
-                    className="XLogo w-12 h-12 bg-white/10 rounded-[100px] flex justify-center items-center gap-2.5"
-                  >
-                    {icon}
-                  </div>
-                ))}
+              : shareButtons.map((button, idx) =>
+                  button.href ? (
+
+                      <a
+                      key={idx}
+                      href={button.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title={button.label}
+                      className="XLogo w-12 h-12 bg-white/10 rounded-[100px] flex justify-center items-center gap-2.5 hover:bg-white/20 transition-colors"
+                    >
+                      {button.icon}
+                    </a>
+                  ) : (
+                    <button
+                      key={idx}
+                      type="button"
+                      onClick={button.onClick}
+                      disabled={button.disabled}
+                      title={button.label}
+                      className="XLogo w-12 h-12 bg-white/10 rounded-[100px] flex justify-center items-center gap-2.5 hover:bg-white/20 transition-colors disabled:opacity-60"
+                    >
+                      {button.icon}
+                    </button>
+                  )
+                )}
           </div>
         </div>
       </div>
 
       <div
         data-layer="Rectangle 2825"
-        className="Rectangle2825 w-full lg:w-[608px] rounded-3xl border border-white/10 overflow-hidden bg-[#d9d9d9]/10"
+        className="Rectangle2825 w-full lg:w-[608px] h-[400px] rounded-3xl border border-white/10 overflow-hidden bg-[#d9d9d9]/10"
       >
-        <div className="w-full h-56 md:h-72 lg:h-[400px] flex items-center justify-center">
-          {displayImage ? (
-            typeof displayImage === "string" ? (
-              <img
-                src={displayImage}
-                alt={displayTitle}
-                className="w-full h-full object-cover"
-              />
-            ) : (
-              <div className="w-full h-full object-cover">{displayImage}</div>
-            )
+        <div className="w-full h-full flex items-center justify-center">
+          {imageComponent ? (
+            <div className="w-full h-full object-cover">{imageComponent}</div>
           ) : (
             <div className="w-full h-full bg-gradient-to-b from-white/10 to-[#d9d9d9]/10" />
           )}

@@ -8,7 +8,8 @@ interface PickProps {
   savingsAmount: string;
   rating: string;
   verified?: boolean;
-  redeemUrl?: string;
+  redeemUrl: string;
+  logoUrl?: string;
 }
 
 const Pick: React.FC<PickProps> = ({
@@ -20,6 +21,7 @@ const Pick: React.FC<PickProps> = ({
   rating,
   verified = false,
   redeemUrl,
+  logoUrl,
 }) => {
   const SlackIcon = () => (
     <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
@@ -69,6 +71,31 @@ const Pick: React.FC<PickProps> = ({
     </svg>
   );
 
+  const LogoIcon = () => {
+    if (logoUrl) {
+      return (
+        <img
+          src={logoUrl}
+          alt={`${appName} logo`}
+          className="w-12 h-12 object-contain rounded-full bg-white/10 p-1"
+        />
+      );
+    }
+    return (
+      <div
+        className="flex items-center justify-center p-2.5 rounded-full border-2"
+        style={{
+          backgroundColor: "#FAFAFA",
+          borderColor: "rgba(255, 255, 255, 0.08)",
+          width: "56px",
+          height: "56px",
+        }}
+      >
+        <SlackIcon />
+      </div>
+    );
+  };
+
   return (
     <div
       className="flex flex-col items-center flex-shrink-0 w-full h-full"
@@ -90,17 +117,7 @@ const Pick: React.FC<PickProps> = ({
         <div className="flex items-center justify-between w-full">
           <div className="flex items-center gap-3 flex-1">
             {/* App Icon */}
-            <div
-              className="flex items-center justify-center p-2.5 rounded-full border-2"
-              style={{
-                backgroundColor: "#FAFAFA",
-                borderColor: "rgba(255, 255, 255, 0.08)",
-                width: "56px",
-                height: "56px",
-              }}
-            >
-              <SlackIcon />
-            </div>
+            <LogoIcon />
 
             {/* App Name and Category */}
             <div className="flex flex-col gap-1">

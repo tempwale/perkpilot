@@ -168,6 +168,14 @@ const ReviewCard = ({
   </div>
 );
 
+interface RatingBreakdown {
+  fiveStars?: number;
+  fourStars?: number;
+  threeStars?: number;
+  twoStars?: number;
+  oneStars?: number;
+}
+
 interface ProductReviewsProps {
   productReviews?: Array<{
     userName: string;
@@ -180,10 +188,12 @@ interface ProductReviewsProps {
     helpful?: number;
     notHelpful?: number;
   }>;
+  ratingBreakdown?: RatingBreakdown;
 }
 
 export default function ProductReviews({
   productReviews,
+  ratingBreakdown,
 }: ProductReviewsProps) {
   const defaultReviewsData = [
     {
@@ -227,6 +237,60 @@ export default function ProductReviews({
         }))
       : defaultReviewsData;
 
+  const bucketRating = (rating: number) => {
+    const rounded = Math.max(1, Math.min(5, Math.round(rating)));
+    switch (rounded) {
+      case 5:
+        return "fiveStars";
+      case 4:
+        return "fourStars";
+      case 3:
+        return "threeStars";
+      case 2:
+        return "twoStars";
+      default:
+        return "oneStars";
+    }
+  };
+
+  const breakdownKeys: Array<{ key: keyof RatingBreakdown; label: string }> = [
+    { key: "fiveStars", label: "5 stars" },
+    { key: "fourStars", label: "4 stars" },
+    { key: "threeStars", label: "3 stars" },
+    { key: "twoStars", label: "2 stars" },
+    { key: "oneStars", label: "1 star" },
+  ];
+
+  const derivedBreakdown: RatingBreakdown = reviewsData.reduce(
+    (acc, review) => {
+      const key = bucketRating(review.rating);
+      acc[key] = (acc[key] ?? 0) + 1;
+      return acc;
+    },
+    {
+      fiveStars: 0,
+      fourStars: 0,
+      threeStars: 0,
+      twoStars: 0,
+      oneStars: 0,
+    }
+  );
+
+  const hasExternalBreakdown =
+    ratingBreakdown &&
+    Object.values(ratingBreakdown).some(
+      (value) => typeof value === "number" && value > 0
+    );
+
+  const finalBreakdown = hasExternalBreakdown
+    ? ratingBreakdown
+    : derivedBreakdown;
+
+  const breakdownTotal = breakdownKeys.reduce(
+    (sum, { key }) => sum + (finalBreakdown?.[key] ?? 0),
+    0
+  );
+
   return (
     <div className="w-full flex flex-col items-center md:items-end gap-8 md:gap-6">
       <div className="w-full md:w-[1240px] flex flex-row justify-between items-center gap-8">
@@ -239,7 +303,52 @@ export default function ProductReviews({
           </div>
         </div>
       </div>
-      
+
+      <div className="w-full md:w-[1240px] flex flex-col gap-4">
+        <div className="bg-white/5 border border-white/10 rounded-[24px] p-4 md:p-6 flex flex-col gap-3">
+          <div className="flex justify-between items-center">
+            <div className="text-neutral-300 text-sm font-medium font-['Poppins']">
+              Rating breakdown
+            </div>
+            <div className="text-neutral-400 text-sm font-medium font-['Poppins']">
+              {breakdownTotal} review{breakdownTotal === 1 ? "" : "s"}
+            </div>
+          </div>
+          {breakdownTotal > 0 ? (
+            <div className="flex flex-col gap-2">
+              {breakdownKeys.map(({ key, label }) => {
+                const value = finalBreakdown?.[key] ?? 0;
+                const percentage =
+                  breakdownTotal > 0 ? (value / breakdownTotal) * 100 : 0;
+                return (
+                  <div
+                    key={key}
+                    className="flex items-center gap-3 w-full"
+                  >
+                    <div className="text-white text-sm font-medium font-['Poppins'] w-20">
+                      {label}
+                    </div>
+                    <div className="flex-1 h-2 bg-white/10 rounded-full overflow-hidden">
+                      <div
+                        className="h-2 bg-gradient-to-r from-[#501bd6] to-[#7f57e2]"
+                        style={{ width: `${percentage}%` }}
+                      />
+                    </div>
+                    <div className="text-white text-sm font-medium font-['Poppins'] w-12 text-right">
+                      {value}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <div className="text-[#D4D4D8] text-sm font-['Poppins']">
+              Not enough rating data yet.
+            </div>
+          )}
+        </div>
+      </div>
+
       <div className="w-full flex flex-col items-center gap-8 md:gap-6">
         {reviewsData.map((review, index) => (
           <ReviewCard
