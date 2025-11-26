@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Brief from "../components/BlogsDetail/Brief";
-import Hero from "../components/BlogsDetail/Hero";
+import Hero from "../components/Shared/Hero";
 import ToolsMentioned from "../components/BlogsDetail/ToolsMentioned";
 import BlogModules from "../components/BlogsDetail/BlogModules";
 import Footer from "../components/Footer";

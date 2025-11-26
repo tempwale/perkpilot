@@ -13,6 +13,7 @@ export interface ToolComparisonBlog {
     toolLogo: string;
     toolCategory?: string;
     isVerified?: boolean;
+    primaryCta: string | null;
   }>;
   author: string;
   authorId: string;

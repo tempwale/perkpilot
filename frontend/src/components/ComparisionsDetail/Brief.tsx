@@ -1,7 +1,6 @@
 import type { ToolComparisonBlog } from "../../hooks/useComparisionDetail";
 
 export default function Brief({ data }: { data?: ToolComparisonBlog }) {
-  // Use data from API if available
   const title = data?.heroHeading || "Notion vs Obsidian vs Roam Research";
   const description =
     data?.heroBody ||
@@ -13,36 +12,39 @@ export default function Brief({ data }: { data?: ToolComparisonBlog }) {
   return (
     <div
       data-layer="Frame 2147206226"
-      className="Frame2147206226  p-6 bg-white/5 rounded-3xl outline-1 -outline-offset-[-1px] outline-white/10 flex-col justify-start items-start gap-4 w-full"
+      className="Frame2147206226 w-full max-w-[819px] md:max-w-[819px] mx-auto sm:max-w-[350px] p-6 sm:p-4 bg-white/5 backdrop-blur rounded-[24px] border border-white/10 flex flex-col gap-4"
     >
-      <div
+      <h2
         data-layer="Notion vs Obsidian vs Roam Research"
-        className="NotionVsObsidianVsRoamResearch self-stretch justify-start text-white text-[40px] font-semibold font-['Plus_Jakarta_Sans'] capitalize leading-[52px]"
+        className="NotionVsObsidianVsRoamResearch self-stretch text-white text-[32px] sm:text-[32px] md:text-[40px] font-semibold font-['Plus_Jakarta_Sans'] capitalize leading-[42px] md:leading-[52px]"
       >
         {title}
-      </div>
-      <div
+      </h2>
+
+      <p
         data-layer="Description"
-        className="Description self-stretch justify-start text-zinc-400 text-xl font-medium font-['Plus_Jakarta_Sans'] leading-relaxed"
+        className="Description self-stretch text-zinc-400 text-[18px] md:text-[20px] font-medium font-['Plus_Jakarta_Sans'] leading-[26px]"
       >
         {description}
-      </div>
-      <div
+      </p>
+
+      <p
         data-layer="Additional description"
-        className="AdditionalDescription self-stretch justify-start text-zinc-400 text-base font-normal font-['Plus_Jakarta_Sans'] leading-normal"
+        className="AdditionalDescription self-stretch text-zinc-400 text-base font-normal font-['Plus_Jakarta_Sans'] leading-[24px]"
       >
         {description}
-      </div>
+      </p>
+
       <div
         data-layer="Frame 2147206227"
-        className="Frame2147206227 self-stretch px-4 py-2 bg-white/5 rounded-tr-2xl rounded-br-2xl border-l-2 border-white inline-flex justify-center items-center gap-2.5"
+        className="Frame2147206227 self-stretch flex justify-center items-center gap-2.5 px-4 py-2 bg-white/5 border-l-2 border-white rounded-tr-[16px] rounded-br-[16px]"
       >
-        <div
+        <span
           data-layer="Tip"
-          className="Tip flex-1 justify-start text-neutral-50 text-base font-normal font-['Plus_Jakarta_Sans'] leading-normal"
+          className="Tip flex-1 text-white text-[16px] font-normal font-['Plus_Jakarta_Sans'] leading-[24px]"
         >
           {tipText}
-        </div>
+        </span>
       </div>
     </div>
   );

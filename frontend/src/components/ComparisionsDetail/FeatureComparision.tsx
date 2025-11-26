@@ -51,7 +51,7 @@ export default function FeatureComparision({
               {tools.map((tool, idx) => (
                 <th
                   key={idx}
-                  className="text-zinc-200 text-base font-medium font-['Plus_Jakarta_Sans']  lg:px-4 py-3 "
+                  className="text-zinc-200 text-base font-medium font-['Plus_Jakarta_Sans'] text-center lg:px-4 py-3"
                 >
                   {tool}
                 </th>
