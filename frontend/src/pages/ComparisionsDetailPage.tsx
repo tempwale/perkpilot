@@ -126,7 +126,6 @@ export default function ComparisionsDetailPage() {
             description={displayDescription}
             date={displayTime}
             readTime={displayReadTime}
-            showBlogsLink={false}
             imageComponent={
               displayImage ? (
                 <img
@@ -144,7 +143,10 @@ export default function ComparisionsDetailPage() {
         <div className="flex w-full bg-[#040404] lg:bg-gradient-to-t from-black to-[#190845] pt-6 pb-6 md:pt-8 md:pb-8 lg:pt-4 lg:pb-4 xl:pt-6 xl:pb-6">
           <div className="w-full max-w-[1232px] mx-auto px-4 md:px-6 lg:px-8">
             <ToolsMentioned
-              data={comparison.toolsMentioned}
+              data={comparison.toolsMentioned.map(tool => ({
+                ...tool,
+                primaryCta: tool.primaryCta || "",
+              }))}
               sectionHeadline={comparison.sectionHeadline}
               tipBulbText={comparison.tipBulbText}
             />

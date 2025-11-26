@@ -8,6 +8,7 @@ interface ITool {
   toolLogo: string;
   toolCategory: string;
   isVerified: boolean;
+  primaryCta: string | null;
 }
 
 interface IBlogSection {
@@ -134,6 +135,17 @@ const ToolSchema = new Schema<ITool>(
     isVerified: {
       type: Boolean,
       default: false,
+    },
+    primaryCta: {
+      type: String,
+      trim: true,
+      validate: {
+        validator: function (v: string) {
+          if (!v) return true;
+          return /^https?:\/\/.+/.test(v);
+        },
+        message: "Invalid primary CTA URL",
+      },
     },
   },
   { _id: false }
@@ -444,7 +456,6 @@ const ToolComparisonBlogSchema = new Schema<
       unique: true,
       trim: true,
       lowercase: true,
-      index: true,
       validate: {
         validator: function (v: string) {
           return /^[a-z0-9-]+$/.test(v);

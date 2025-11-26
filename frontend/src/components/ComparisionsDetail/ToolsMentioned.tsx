@@ -8,6 +8,7 @@ interface ToolsMentionedProps {
     toolLogo: string;
     toolCategory?: string;
     isVerified?: boolean;
+    primaryCta?: string;
   }>;
 }
 
@@ -76,20 +77,22 @@ export default function ToolsMentioned({
         </div>
 
         <div className="flex flex-col items-center gap-4 mt-2 lg:flex-row">
-          {data && data.length > 0 ? (
-            data.map((tool, index) => (
-              <Pick
-                key={`${tool.toolName}-${index}`}
-                appName={tool.toolName}
-                category={tool.toolCategory || "Tool"}
-                description={`Explore ${tool.toolName} and its features.`}
-                discountPercentage="25% OFF"
-                savingsAmount="$30 savings"
-                rating="4.8/5.0 Ratings"
-                verified={tool.isVerified || false}
-              />
-            ))
-          ) : (
+            {data && data.length > 0 ? (
+              data.map((tool, index) => (
+                <Pick
+                  key={`${tool.toolName}-${index}`}
+                  appName={tool.toolName}
+                  category={tool.toolCategory || "Tool"}
+                  description={`Explore ${tool.toolName} and its features.`}
+                  discountPercentage="25% OFF"
+                  savingsAmount="$30 savings"
+                  rating="4.8/5.0 Ratings"
+                  verified={tool.isVerified || false}
+                  logoUrl={tool.toolLogo}
+                  redeemUrl={tool.primaryCta || ""}
+                />
+              ))
+            ) : (
             <>
               <Pick
                 appName="Figma"
@@ -99,6 +102,7 @@ export default function ToolsMentioned({
                 savingsAmount="$30 savings"
                 rating="4.8/5.0 Ratings"
                 verified={true}
+                redeemUrl=""
               />
               <Pick
                 appName="Slack"
@@ -108,6 +112,7 @@ export default function ToolsMentioned({
                 savingsAmount="$20 savings"
                 rating="4.8/5.0 Ratings"
                 verified={false}
+                redeemUrl=""
               />
               <Pick
                 appName="Airtable"
@@ -117,6 +122,7 @@ export default function ToolsMentioned({
                 savingsAmount="$25 savings"
                 rating="4.8/5.0 Ratings"
                 verified={true}
+                redeemUrl=""
               />
                <Pick
                 appName="Figma"
@@ -126,6 +132,7 @@ export default function ToolsMentioned({
                 savingsAmount="$30 savings"
                 rating="4.8/5.0 Ratings"
                 verified={true}
+                redeemUrl=""
               />
               
             </>

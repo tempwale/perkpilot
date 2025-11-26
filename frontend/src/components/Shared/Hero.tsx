@@ -12,12 +12,10 @@ interface HeroProps {
   imageComponent?: React.ReactNode;
   className?: string;
   shareUrl?: string;
-  showBlogsLink?: boolean;
 }
 
 export default function Hero({
   category = "Project Management",
-  breadcrumb,
   title = "Notion vs obsidian vs roam research",
   description = "This comprasion blogs will help you understand the difference between these three tools and which one suits you the best.",
   date = "Thursday 19 June 2025",
@@ -25,7 +23,6 @@ export default function Hero({
   socialIcons,
   imageComponent,
   shareUrl,
-  showBlogsLink = true,
 }: HeroProps) {
   const [copyMessage, setCopyMessage] = useState<"idle" | "copied" | "error">("idle");
   const resolvedShareUrl =
@@ -163,94 +160,56 @@ export default function Hero({
       ]
     : [];
 
-  const displayBreadcrumb = breadcrumb || title;
-
   return (
     <div
       data-layer="Frame 2147206225"
-      className="flex flex-col px-4 lg:flex-row justify-start items-start lg:items-center gap-6 md:mt-[100px] sm:mt-[50px]"
+      className="Frame2147206225 flex flex-col px-4 lg:flex-row justify-start items-start lg:items-center gap-6 sm:mt-[50px] lg:mt-[90px]"
     >
       <div
         data-layer="Frame 2147206224"
-        className="Frame2147206224 w-full lg:w-[608px] flex-col justify-start items-start gap-6"
+        className="Frame2147206224 w-full lg:w-[608px] flex flex-col justify-start items-start gap-6"
       >
         <nav
           data-layer="Frame 2147206180"
           className="Frame2147206180 flex flex-col md:flex-row justify-start items-start md:items-center gap-2 px-4"
           style={{ fontFamily: "Plus Jakarta Sans" }}
         >
-          {showBlogsLink && (
-            <>
-              {/* Blogs Page Link with dot */}
-              <div className="flex items-center gap-2">
-                <span className="text-zinc-500 hover:text-zinc-400 transition-colors flex items-center" style={{ fontSize: "14px", lineHeight: "21px" }}>
-                •
-              </span>
-              <Link
-                to="/blogs"
-                className="text-zinc-500 hover:text-zinc-400 transition-colors flex items-center text-sm font-medium leading-[21px] whitespace-nowrap"
-              >
-                Blogs
-              </Link>
-              </div>
-              {/* Separator dot and Category Link */}
-              <div className="flex items-center gap-2">
-                <span className="text-zinc-100 flex items-center" style={{ fontSize: "14px", lineHeight: "21px" }}>
-                •
-              </span>
-              <Link
-                to={`/blogs${category ? `?category=${encodeURIComponent(category)}` : ""}`}
-                  className="text-zinc-100 hover:text-zinc-200 transition-colors flex items-center text-sm font-medium leading-[21px] whitespace-nowrap"
-              >
-                {category}
-              </Link>
-              </div>
-            </>
-          )}
-
-          {!showBlogsLink && (
-            <>
-              {/* leading dot before category */}
-              <div className="flex flex-row justify-start items-center gap-4">
-                <span
-                  aria-hidden
-                  className="w-2 h-2 rounded-full bg-zinc-500 inline-block"
-                />
-                <div
-                  data-layer="Project Management"
-                  className="ProjectManagement text-zinc-500 text-sm font-medium font-['Plus_Jakarta_Sans'] leading-[21px]"
-                >
-                  {category}
-                </div>
-              </div>
-              {/* small circular separator dot */}
-              <div className="flex flex-row justify-start items-center gap-4">
-                <span
-                  aria-hidden
-                  className="w-2 h-2 rounded-full bg-[#F4F4F5] inline-block"
-                />
-                <div
-                  data-layer="Breadcrumb"
-                  className="justify-start text-zinc-100 text-sm font-medium font-['Plus_Jakarta_Sans'] leading-[21px]"
-                >
-                  {displayBreadcrumb}
-                </div>
-              </div>
-            </>
-          )}
+          {/* Blogs Page Link with dot */}
+          <div className="flex items-center gap-2">
+            <span className="text-zinc-500 hover:text-zinc-400 transition-colors flex items-center" style={{ fontSize: "14px", lineHeight: "21px" }}>
+            •
+          </span>
+          <Link
+            to="/blogs"
+            className="text-zinc-500 hover:text-zinc-400 transition-colors flex items-center text-[14px] font-medium leading-[21px] whitespace-nowrap"
+          >
+            Blogs
+          </Link>
+          </div>
+          {/* Separator dot and Category Link */}
+          <div className="flex items-center gap-2">
+            <span className="text-zinc-100 flex items-center" style={{ fontSize: "14px", lineHeight: "21px" }}>
+            •
+          </span>
+          <Link
+            to={`/blogs${category ? `?category=${encodeURIComponent(category)}` : ""}`}
+              className="text-zinc-100 hover:text-zinc-200 transition-colors flex items-center text-sm font-medium leading-[21px] whitespace-nowrap"
+          >
+            {category}
+          </Link>
+          </div>
         </nav>
 
         <div
           data-layer="Notion vs obsidian vs roam research"
-          className="self-stretch md:max-w-[1250px] justify-start text-neutral-50 text-[32px] md:text-[48px] lg:text-[48px] font-medium font-['Plus_Jakarta_Sans'] capitalize leading-[42px] md:leading-[60px]  px-4 md:px-0 w-full max-w-[350px] [84px] md:h-auto opacity-100 rotate-0"
-
+          className="self-stretch md:max-w-[1250px] justify-start text-neutral-50 text-[32px] md:text-[48px] font-medium font-['Plus_Jakarta_Sans'] capitalize leading-[42px] md:leading-[60px]"
         >
           {title}
         </div>
 
         <div
           data-layer="This comprasion blogs will help you understand the difference between these three tools and which one suits you the best."
-          className="self-stretch justify-start text-zinc-400 font-['Plus_Jakarta_Sans'] prose prose-invert max-w-none px-4 md:px-0"
+          className="self-stretch justify-start text-zinc-400 font-['Plus_Jakarta_Sans'] prose prose-invert max-w-none"
           dangerouslySetInnerHTML={{ __html: description || "" }}
           style={{
             fontFamily: "Plus Jakarta Sans",
@@ -297,7 +256,7 @@ export default function Hero({
 
         <div
           data-layer="Frame 2147206208"
-          className="Frame2147206208 w-full md:w-[306.50px] mt-6 flex flex-col justify-start items-start gap-3 px-4 md:px-0"
+          className="Frame2147206208 w-full flex flex-col justify-start items-start gap-6"
         >
           <div
             data-layer="Frame 2147205829"
@@ -320,7 +279,7 @@ export default function Hero({
 
           <div
             data-layer="Button List"
-            className="ButtonList inline-flex justify-start items-center gap-4 mt-2"
+            className="ButtonList inline-flex justify-start items-center gap-4"
           >
             {socialIcons && socialIcons.length > 0
               ? socialIcons.map((icon, idx) => (
@@ -333,7 +292,8 @@ export default function Hero({
                 ))
               : shareButtons.map((button, idx) =>
                   button.href ? (
-                    <a
+
+                      <a
                       key={idx}
                       href={button.href}
                       target="_blank"
@@ -345,13 +305,13 @@ export default function Hero({
                     </a>
                   ) : (
                     <button
-                    key={idx}
+                      key={idx}
                       type="button"
                       onClick={button.onClick}
                       disabled={button.disabled}
                       title={button.label}
                       className="XLogo w-12 h-12 bg-white/10 rounded-[100px] flex justify-center items-center gap-2.5 hover:bg-white/20 transition-colors disabled:opacity-60"
-                  >
+                    >
                       {button.icon}
                     </button>
                   )
@@ -362,9 +322,9 @@ export default function Hero({
 
       <div
         data-layer="Rectangle 2825"
-        className="Rectangle2825 w-full lg:w-[608px] rounded-3xl border border-white/10 overflow-hidden bg-[#d9d9d9]/10"
+        className="Rectangle2825 w-full lg:w-[608px] h-[400px] rounded-3xl border border-white/10 overflow-hidden bg-[#d9d9d9]/10"
       >
-        <div className="w-full h-56 md:h-72 lg:h-[400px] flex items-center justify-center">
+        <div className="w-full h-full flex items-center justify-center">
           {imageComponent ? (
             <div className="w-full h-full object-cover">{imageComponent}</div>
           ) : (
