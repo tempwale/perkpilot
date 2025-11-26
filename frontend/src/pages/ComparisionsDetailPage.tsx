@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import BackgroundDown from "../components/BackgroundDown";
 import Brief from "../components/ComparisionsDetail/Brief";
 import FeatureComparision from "../components/ComparisionsDetail/FeatureComparision";
-import Hero from "../components/ComparisionsDetail/Hero";
+import Hero from "../components/Shared/Hero";
 import ProsCons from "../components/ComparisionsDetail/ProsCons";
 import ToolsMentioned from "../components/ComparisionsDetail/ToolsMentioned";
 import BlogModules from "../components/ComparisionsDetail/BlogModules";
@@ -61,9 +61,9 @@ export default function ComparisionsDetailPage() {
 
   if (loading) {
     return (
-      <div className="flex flex-col min-h-screen relative">
+      <div className="flex flex-col min-h-screen relative overflow-x-hidden">
         <Header />
-        <main className="py-20 md:py-40 flex-1 flex items-center justify-center w-full bg-[#040404]">
+        <main className="pt-[72px] sm:pt-[80px] lg:pt-[96px] pb-8 md:pb-20 lg:pb-40 flex-1 flex items-center justify-center w-full bg-[#040404] px-4">
           <p className="text-gray-400">Loading comparison...</p>
         </main>
         <Footer />
@@ -73,56 +73,108 @@ export default function ComparisionsDetailPage() {
 
   if (error || !comparison) {
     return (
-      <div className="flex flex-col min-h-screen relative">
+      <div className="flex flex-col min-h-screen relative overflow-x-hidden">
         <Header />
-        <main className="py-20 md:py-40 flex-1 flex items-center justify-center w-full bg-[#040404]">
-          <p className="text-red-500">{error || "Comparison not found"}</p>
+        <main className="pt-[72px] sm:pt-[80px] lg:pt-[96px] pb-8 md:pb-20 lg:pb-40 flex-1 flex items-center justify-center w-full bg-[#040404] px-4">
+          <div className="text-center max-w-2xl mx-auto">
+            <h1 className="text-xl md:text-2xl font-bold text-white mb-4 px-4">
+              {error || "Comparison Not Found"}
+            </h1>
+            <p className="text-gray-400 px-4">
+              {error || "The comparison you're looking for doesn't exist."}
+            </p>
+          </div>
         </main>
         <Footer />
       </div>
     );
   }
 
+  // Function to format ISO date to "Friday 7 November 2025" style
+  const formatDate = (isoDate: string): string => {
+    try {
+      const date = new Date(isoDate);
+      const options: Intl.DateTimeFormatOptions = {
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      };
+      return date.toLocaleDateString("en-US", options);
+    } catch {
+      return isoDate;
+    }
+  };
+
+  const displayImage = comparison?.comparisonHeroImage;
+  const displayTime = comparison?.createdAt ? formatDate(comparison.createdAt) : "Thursday 19 June 2025";
+  const displayCategory = comparison?.pageType || "Project Management";
+  const displayBreadcrumb = comparison?.heroHeading;
+  const displayTitle = comparison?.heroHeading || "Notion vs obsidian vs roam research";
+  const displayDescription = comparison?.heroBody || "This comprasion blogs will help you understand the difference between these three tools and which one suits you the best.";
+  const displayReadTime = comparison?.readingTime ? `• ${comparison.readingTime}` : "• 9 Minute Read";
+
   return (
-    <div className="flex flex-col min-h-screen relative">
+    <div className="flex flex-col min-h-screen relative overflow-x-hidden w-full">
       <Header />
-      {/* BackgroundUp is absolutely positioned and will sit behind content */}
-      <main className="py-20  md:py-40 flex-1 flex items-center justify-center Rectangle2823 w-full bg-[#040404] lg:bg-gradient-to-b from-black to-[#190845]">
-        <Hero data={comparison} className="justify-center items-center" />
+      <main className="pt-[72px] sm:pt-[80px] lg:pt-[96px] pb-6 md:pb-12 lg:pb-20 xl:pb-40 flex-1 flex items-start justify-center w-full bg-[#040404] lg:bg-linear-to-b from-black to-[#190845]">
+        <div className="w-full max-w-[1232px] mx-auto px-4 md:px-6 lg:px-8">
+          <Hero
+            category={displayCategory}
+            breadcrumb={displayBreadcrumb}
+            title={displayTitle}
+            description={displayDescription}
+            date={displayTime}
+            readTime={displayReadTime}
+            showBlogsLink={false}
+            imageComponent={
+              displayImage ? (
+                <img
+                  src={displayImage}
+                  alt={displayTitle}
+                  className="w-full h-full object-cover rounded-3xl"
+                />
+              ) : undefined
+            }
+          />
+        </div>
       </main>
 
-      <div className="w-full h-[880px] lg:h-[350px] bg-[#040404] lg:bg-gradient-to-t from-black to-[#190845]">
-        <ToolsMentioned
-          data={comparison.toolsMentioned}
-          sectionHeadline={comparison.sectionHeadline}
-          tipBulbText={comparison.tipBulbText}
-        />
-      </div>
+      {comparison.sectionHeadline && (
+        <div className="flex w-full bg-[#040404] lg:bg-gradient-to-t from-black to-[#190845] pt-6 pb-6 md:pt-8 md:pb-8 lg:pt-4 lg:pb-4 xl:pt-6 xl:pb-6">
+          <div className="w-full max-w-[1232px] mx-auto px-4 md:px-6 lg:px-8">
+            <ToolsMentioned
+              data={comparison.toolsMentioned}
+              sectionHeadline={comparison.sectionHeadline}
+              tipBulbText={comparison.tipBulbText}
+            />
+          </div>
+        </div>
+      )}
 
-      <section className="py-20 md:py-40 w-full bg-[#040404] lg:bg-gradient-to-b from-black to-[#190845]">
-        <div className="w-full max-w-[1350px]  flex flex-col mx-auto lg:mx-32 lg:flex-row items-start gap-8 px-4 md:px-0">
-          <div className="w-full flex-1 flex flex-col gap-6 relative">
-            {/* overlay that sits above Brief + FeatureComparision */}
-            <div className="absolute inset-0 pointer-events-none bg-[#040404] lg:bg-gradient-to-b from-transparent via-[#501bd6]/10 to-transparent opacity-80 mix-blend-screen" />
-
-            <div className="relative z-10 flex flex-col gap-6 pt-10 md:pt-0">
-              <Brief data={comparison} />
-              <FeatureComparision data={comparison.featuresComparison} />
-            </div>
-
+      <div className="py-6 md:py-12 lg:pt-8 lg:pb-20 xl:pt-10 xl:pb-40 flex-1 flex items-start justify-center w-full bg-[#040404] lg:bg-linear-to-b from-black to-[#190845]">
+        <div className="w-full max-w-[1232px] mx-auto flex flex-col md:flex-row items-start gap-6 md:gap-8 px-4 md:px-6 lg:px-8">
+          <div className="w-full flex-1 flex flex-col gap-6 min-w-0">
+            <Brief data={comparison} />
+            <FeatureComparision data={comparison.featuresComparison} />
             <ProsCons data={comparison.prosConsCards} />
 
-            <Author authorData={author || undefined} />
+            {/* Author Card */}
+            {author && (
+              <div className="w-full mt-6">
+                <Author authorData={author} />
+              </div>
+            )}
           </div>
 
-          <aside className="hidden md:block w-full md:w-[400px] lg:w-[480px] flex-shrink-0">
+          <aside className="hidden md:block w-full md:w-[397px] flex-shrink-0">
             <div className="sticky top-24">
               <BlogModules data={comparison.toolBlogCards} />
             </div>
           </aside>
         </div>
-      </section>
-      {/* BackgroundDown is absolutely positioned and will sit behind content */}
+      </div>
+
       <BackgroundDown />
       <Footer />
     </div>

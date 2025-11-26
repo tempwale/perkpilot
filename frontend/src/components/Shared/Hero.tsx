@@ -12,10 +12,12 @@ interface HeroProps {
   imageComponent?: React.ReactNode;
   className?: string;
   shareUrl?: string;
+  showBlogsLink?: boolean;
 }
 
 export default function Hero({
   category = "Project Management",
+  breadcrumb,
   title = "Notion vs obsidian vs roam research",
   description = "This comprasion blogs will help you understand the difference between these three tools and which one suits you the best.",
   date = "Thursday 19 June 2025",
@@ -23,6 +25,7 @@ export default function Hero({
   socialIcons,
   imageComponent,
   shareUrl,
+  showBlogsLink = true,
 }: HeroProps) {
   const [copyMessage, setCopyMessage] = useState<"idle" | "copied" | "error">("idle");
   const resolvedShareUrl =
@@ -160,6 +163,8 @@ export default function Hero({
       ]
     : [];
 
+  const displayBreadcrumb = breadcrumb || title;
+
   return (
     <div
       data-layer="Frame 2147206225"
@@ -174,36 +179,71 @@ export default function Hero({
           className="Frame2147206180 flex flex-col md:flex-row justify-start items-start md:items-center gap-2 px-4"
           style={{ fontFamily: "Plus Jakarta Sans" }}
         >
-          {/* Blogs Page Link with dot */}
-          <div className="flex items-center gap-2">
-            <span className="text-zinc-500 hover:text-zinc-400 transition-colors flex items-center" style={{ fontSize: "14px", lineHeight: "21px" }}>
-            •
-          </span> 
-          <Link
-            to="/blogs"
-            className="text-zinc-500 hover:text-zinc-400 transition-colors flex items-center text-sm font-medium leading-[21px] whitespace-nowrap"
-          >
-            Blogs
-          </Link>
-          </div>
-          {/* Separator dot and Category Link */}
-          <div className="flex items-center gap-2">
-            <span className="text-zinc-100 flex items-center" style={{ fontSize: "14px", lineHeight: "21px" }}>
-            •
-          </span>
-          <Link
-            to={`/blogs${category ? `?category=${encodeURIComponent(category)}` : ""}`}
-              className="text-zinc-100 hover:text-zinc-200 transition-colors flex items-center text-sm font-medium leading-[21px] whitespace-nowrap"
-          >
-            {category}
-          </Link>
-          </div>
+          {showBlogsLink && (
+            <>
+              {/* Blogs Page Link with dot */}
+              <div className="flex items-center gap-2">
+                <span className="text-zinc-500 hover:text-zinc-400 transition-colors flex items-center" style={{ fontSize: "14px", lineHeight: "21px" }}>
+                •
+              </span>
+              <Link
+                to="/blogs"
+                className="text-zinc-500 hover:text-zinc-400 transition-colors flex items-center text-sm font-medium leading-[21px] whitespace-nowrap"
+              >
+                Blogs
+              </Link>
+              </div>
+              {/* Separator dot and Category Link */}
+              <div className="flex items-center gap-2">
+                <span className="text-zinc-100 flex items-center" style={{ fontSize: "14px", lineHeight: "21px" }}>
+                •
+              </span>
+              <Link
+                to={`/blogs${category ? `?category=${encodeURIComponent(category)}` : ""}`}
+                  className="text-zinc-100 hover:text-zinc-200 transition-colors flex items-center text-sm font-medium leading-[21px] whitespace-nowrap"
+              >
+                {category}
+              </Link>
+              </div>
+            </>
+          )}
+
+          {!showBlogsLink && (
+            <>
+              {/* leading dot before category */}
+              <div className="flex flex-row justify-start items-center gap-4">
+                <span
+                  aria-hidden
+                  className="w-2 h-2 rounded-full bg-zinc-500 inline-block"
+                />
+                <div
+                  data-layer="Project Management"
+                  className="ProjectManagement text-zinc-500 text-sm font-medium font-['Plus_Jakarta_Sans'] leading-[21px]"
+                >
+                  {category}
+                </div>
+              </div>
+              {/* small circular separator dot */}
+              <div className="flex flex-row justify-start items-center gap-4">
+                <span
+                  aria-hidden
+                  className="w-2 h-2 rounded-full bg-[#F4F4F5] inline-block"
+                />
+                <div
+                  data-layer="Breadcrumb"
+                  className="justify-start text-zinc-100 text-sm font-medium font-['Plus_Jakarta_Sans'] leading-[21px]"
+                >
+                  {displayBreadcrumb}
+                </div>
+              </div>
+            </>
+          )}
         </nav>
 
         <div
           data-layer="Notion vs obsidian vs roam research"
           className="self-stretch md:max-w-[1250px] justify-start text-neutral-50 text-[32px] md:text-[48px] lg:text-[48px] font-medium font-['Plus_Jakarta_Sans'] capitalize leading-[42px] md:leading-[60px]  px-4 md:px-0 w-full max-w-[350px] [84px] md:h-auto opacity-100 rotate-0"
-        
+
         >
           {title}
         </div>
