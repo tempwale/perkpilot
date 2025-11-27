@@ -25,6 +25,16 @@ export default function BlogsPage() {
     tags: [],
   });
   const [loading, setLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [activeFilter, setActiveFilter] = useState("All");
+
+  const handleSearch = (query: string) => {
+    setSearchQuery(query);
+  };
+
+  const handleFilterChange = (filter: string) => {
+    setActiveFilter(filter);
+  };
 
   useEffect(() => {
     const fetchBlogPageSettings = async (): Promise<void> => {
@@ -126,8 +136,15 @@ export default function BlogsPage() {
               )}
             </motion.div>
           </div>
-          <SearchSection />
-          <BlogsSection />
+          <SearchSection
+            onSearch={handleSearch}
+            onFilterChange={handleFilterChange}
+            activeFilter={activeFilter}
+          />
+          <BlogsSection
+            searchQuery={searchQuery}
+            activeFilter={activeFilter}
+          />
           <Footer />
         </div>
       </div>

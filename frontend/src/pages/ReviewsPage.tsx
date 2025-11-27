@@ -11,6 +11,7 @@ import { fetchReviewPageSettings, type ReviewPageSettings } from "../hooks/useRe
 export default function ReviewsPage() {
   const [reviewPageSettings, setReviewPageSettings] = useState<ReviewPageSettings | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
+  const [activeFilter, setActiveFilter] = useState("All");
 
   useEffect(() => {
     const loadSettings = async () => {
@@ -32,6 +33,10 @@ export default function ReviewsPage() {
 
   const handleSearch = (query: string) => {
     setSearchQuery(query);
+  };
+
+  const handleFilterChange = (filter: string) => {
+    setActiveFilter(filter);
   };
 
   // Use settings from API or fallback to defaults
@@ -95,12 +100,17 @@ export default function ReviewsPage() {
               </motion.div>
             </motion.div>
           </div>
-          <SearchSection onSearch={handleSearch} />
+          <SearchSection
+            onSearch={handleSearch}
+            onFilterChange={handleFilterChange}
+            activeFilter={activeFilter}
+          />
           <ReviewsSection
             useAPI={true}
             itemsPerPage={6}
             showPagination={true}
             searchQuery={searchQuery}
+            activeFilter={activeFilter}
           />
 
           <Footer />

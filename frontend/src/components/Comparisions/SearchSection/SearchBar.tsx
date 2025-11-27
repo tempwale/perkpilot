@@ -29,6 +29,8 @@ function SearchIcon() {
 }
 interface SearchBarProps {
   onSearch?: (query: string) => void;
+  onFilterChange?: (filter: string) => void;
+  activeFilter?: string;
   placeholder?: string;
   onSuggestionClick?: (suggestion: string) => void;
 }
@@ -43,41 +45,43 @@ const suggestions = [
 ];
 
 const categoryTags = [
+  "All",
   "CRM Softwares",
   "AI Note Takers",
   "Recruiting",
   "Marketing Tools",
   "Project Management",
   "Editors Choice",
-  "29 More +",
 ];
 
 const comparisonTags = [
+  "All",
   "CRM Softwares",
   "AI Note Takers",
   "Recruiting",
   "Marketing Tools",
   "Project Management",
   "Editors Choice",
-  "29 More +",
 ];
 
 const blogTags = [
+  "All",
   "CRM Softwares",
   "AI Note Takers",
   "Recruiting",
   "Marketing Tools",
   "Project Management",
   "Editors Choice",
-  "29 More +",
 ];
 
 function FloatingSearchPanel({
   onTagClick,
   onClose,
+  activeFilter,
 }: {
   onTagClick: (tag: string) => void;
   onClose: () => void;
+  activeFilter?: string;
 }) {
   return (
     <>
@@ -92,17 +96,24 @@ function FloatingSearchPanel({
             Categories
           </p>
           <div className="content-center flex flex-wrap gap-[13px] items-center relative shrink-0 w-full">
-            {categoryTags.map((tag, index) => (
-              <button
-                key={index}
-                onClick={() => onTagClick(tag)}
-                className="bg-[rgba(255,255,255,0.04)] border border-[rgba(235,239,245,0.12)] border-solid box-border content-stretch flex gap-[16px] items-center justify-center px-[16px] py-[8px] relative rounded-[100px] shrink-0 hover:bg-[rgba(255,255,255,0.08)] transition-colors"
-              >
-                <p className="font-medium leading-[21px] relative shrink-0 text-[#ebeff5] text-[14px] text-center">
-                  {tag}
-                </p>
-              </button>
-            ))}
+            {categoryTags.map((tag, index) => {
+              const isActive = activeFilter === tag;
+              return (
+                <button
+                  key={index}
+                  onClick={() => onTagClick(tag)}
+                  className={`border border-solid box-border content-stretch flex gap-[16px] items-center justify-center px-[16px] py-[8px] relative rounded-[100px] shrink-0 transition-colors ${
+                    isActive
+                      ? 'bg-gradient-to-b from-[#501bd6] to-[#7f57e2] border-[rgba(80,27,214,0.3)]'
+                      : 'bg-[rgba(255,255,255,0.04)] border-[rgba(235,239,245,0.12)] hover:bg-[rgba(255,255,255,0.08)]'
+                  }`}
+                >
+                  <p className="font-medium leading-[21px] relative shrink-0 text-[#ebeff5] text-[14px] text-center">
+                    {tag}
+                  </p>
+                </button>
+              );
+            })}
           </div>
         </div>
 
@@ -112,17 +123,24 @@ function FloatingSearchPanel({
             Comparisons
           </p>
           <div className="content-center flex flex-wrap gap-[13px] items-center relative shrink-0 w-full">
-            {comparisonTags.map((tag, index) => (
-              <button
-                key={index}
-                onClick={() => onTagClick(tag)}
-                className="bg-[rgba(255,255,255,0.04)] border border-[rgba(235,239,245,0.12)] border-solid box-border content-stretch flex gap-[16px] items-center justify-center px-[16px] py-[8px] relative rounded-[100px] shrink-0 hover:bg-[rgba(255,255,255,0.08)] transition-colors"
-              >
-                <p className="font-medium leading-[21px] relative shrink-0 text-[#ebeff5] text-[14px] text-center">
-                  {tag}
-                </p>
-              </button>
-            ))}
+            {comparisonTags.map((tag, index) => {
+              const isActive = activeFilter === tag;
+              return (
+                <button
+                  key={index}
+                  onClick={() => onTagClick(tag)}
+                  className={`border border-solid box-border content-stretch flex gap-[16px] items-center justify-center px-[16px] py-[8px] relative rounded-[100px] shrink-0 transition-colors ${
+                    isActive
+                      ? 'bg-gradient-to-b from-[#501bd6] to-[#7f57e2] border-[rgba(80,27,214,0.3)]'
+                      : 'bg-[rgba(255,255,255,0.04)] border-[rgba(235,239,245,0.12)] hover:bg-[rgba(255,255,255,0.08)]'
+                  }`}
+                >
+                  <p className="font-medium leading-[21px] relative shrink-0 text-[#ebeff5] text-[14px] text-center">
+                    {tag}
+                  </p>
+                </button>
+              );
+            })}
           </div>
         </div>
 
@@ -132,17 +150,24 @@ function FloatingSearchPanel({
             Blogs & Articles
           </p>
           <div className="content-center flex flex-wrap gap-[13px] items-center relative shrink-0 w-full">
-            {blogTags.map((tag, index) => (
-              <button
-                key={index}
-                onClick={() => onTagClick(tag)}
-                className="bg-[rgba(255,255,255,0.04)] border border-[rgba(235,239,245,0.12)] border-solid box-border content-stretch flex gap-[16px] items-center justify-center px-[16px] py-[8px] relative rounded-[100px] shrink-0 hover:bg-[rgba(255,255,255,0.08)] transition-colors"
-              >
-                <p className="font-medium leading-[21px] relative shrink-0 text-[#ebeff5] text-[14px] text-center">
-                  {tag}
-                </p>
-              </button>
-            ))}
+            {blogTags.map((tag, index) => {
+              const isActive = activeFilter === tag;
+              return (
+                <button
+                  key={index}
+                  onClick={() => onTagClick(tag)}
+                  className={`border border-solid box-border content-stretch flex gap-[16px] items-center justify-center px-[16px] py-[8px] relative rounded-[100px] shrink-0 transition-colors ${
+                    isActive
+                      ? 'bg-gradient-to-b from-[#501bd6] to-[#7f57e2] border-[rgba(80,27,214,0.3)]'
+                      : 'bg-[rgba(255,255,255,0.04)] border-[rgba(235,239,245,0.12)] hover:bg-[rgba(255,255,255,0.08)]'
+                  }`}
+                >
+                  <p className="font-medium leading-[21px] relative shrink-0 text-[#ebeff5] text-[14px] text-center">
+                    {tag}
+                  </p>
+                </button>
+              );
+            })}
           </div>
         </div>
       </div>
@@ -152,12 +177,21 @@ function FloatingSearchPanel({
 
 export default function SearchBar({
   onSearch,
+  onFilterChange,
+  activeFilter = "All",
   placeholder = "Tell us your business idea",
   onSuggestionClick,
 }: SearchBarProps) {
   const [query, setQuery] = useState("");
   const [isFloatingPanelOpen, setIsFloatingPanelOpen] = useState(false);
   const searchBarRef = useRef<HTMLDivElement>(null);
+
+  // Live search - trigger search as user types
+  useEffect(() => {
+    if (onSearch) {
+      onSearch(query);
+    }
+  }, [query, onSearch]);
 
   // Close floating panel when clicking outside
   useEffect(() => {
@@ -214,10 +248,9 @@ export default function SearchBar({
   };
 
   const handleTagClick = (tag: string) => {
-    setQuery(tag);
     setIsFloatingPanelOpen(false);
-    if (onSearch) {
-      onSearch(tag);
+    if (onFilterChange) {
+      onFilterChange(tag);
     }
   };
 
@@ -293,6 +326,7 @@ export default function SearchBar({
         <FloatingSearchPanel
           onTagClick={handleTagClick}
           onClose={() => setIsFloatingPanelOpen(false)}
+          activeFilter={activeFilter}
         />
       )}
 

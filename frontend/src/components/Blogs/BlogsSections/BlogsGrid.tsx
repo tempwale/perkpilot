@@ -30,13 +30,17 @@ const transformBlog = (blog: Blog) => ({
   date: formatDate(blog.createdAt),
 });
 
-const BlogsGrid: React.FC = () => {
+interface BlogsGridProps {
+  searchQuery?: string;
+  activeFilter?: string;
+}
+
+const BlogsGrid: React.FC<BlogsGridProps> = ({ searchQuery = "", activeFilter = "All" }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [isMobile, setIsMobile] = useState(false);
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [totalPages, setTotalPages] = useState(1);
   const showPagination = true;
 
 
@@ -48,19 +52,19 @@ const BlogsGrid: React.FC = () => {
   }, []);
 
 
+  // Fetch all blogs on mount
   useEffect(() => {
     const loadBlogs = async () => {
       try {
         setLoading(true);
         setError(null);
         const response = await fetchBlogs({
-          page: currentPage,
-          limit: isMobile ? 3 : 6,
+          page: 1,
+          limit: 1000, // Fetch all blogs for client-side filtering
           published: true,
           sortBy: "-createdAt",
         });
         setBlogs(response.data);
-        setTotalPages(response.pagination.pages);
       } catch (err) {
         console.error("Error fetching blogs:", err);
         setError(err instanceof Error ? err.message : "Failed to load blogs");
@@ -70,33 +74,67 @@ const BlogsGrid: React.FC = () => {
     };
 
     void loadBlogs();
-  }, [currentPage, isMobile]);
+  }, []);
 
+  // Reset to page 1 when search query, filter, or mobile state changes
   useEffect(() => {
     setCurrentPage(1);
-  }, [isMobile]);
+  }, [isMobile, searchQuery, activeFilter]);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  // Sort blogs: featured first, then by date (newest first)
-  const sortedBlogs = [...blogs].sort((a, b) => {
-    const aFeatured = a.blogIsFeatured ?? false;
-    const bFeatured = b.blogIsFeatured ?? false;
-    
-    // Featured blogs come first
-    if (aFeatured && !bFeatured) return -1;
-    if (!aFeatured && bFeatured) return 1;
-    
-    // Both featured or both not featured - sort by date (newest first)
-    const aDate = a.createdAt ? new Date(a.createdAt).getTime() : 0;
-    const bDate = b.createdAt ? new Date(b.createdAt).getTime() : 0;
-    return bDate - aDate;
-  });
+  // Filter and sort blogs
+  const filteredAndSortedBlogs = React.useMemo(() => {
+    let filtered = [...blogs];
 
-  const displayBlogs = sortedBlogs.map(transformBlog);
+    // Apply category filter
+    if (activeFilter && activeFilter !== "All") {
+      filtered = filtered.filter((blog) =>
+        blog.blogCategory?.toLowerCase() === activeFilter.toLowerCase()
+      );
+    }
+
+    // Apply search query
+    if (searchQuery.trim()) {
+      const lowerQuery = searchQuery.toLowerCase();
+      filtered = filtered.filter((blog) => {
+        return (
+          blog.blogHeading?.toLowerCase().includes(lowerQuery) ||
+          blog.blogBody?.toLowerCase().includes(lowerQuery) ||
+          blog.blogCategory?.toLowerCase().includes(lowerQuery)
+        );
+      });
+    }
+
+    // Sort: featured first, then by date (newest first)
+    filtered.sort((a, b) => {
+      const aFeatured = a.blogIsFeatured ?? false;
+      const bFeatured = b.blogIsFeatured ?? false;
+
+      // Featured blogs come first
+      if (aFeatured && !bFeatured) return -1;
+      if (!aFeatured && bFeatured) return 1;
+
+      // Both featured or both not featured - sort by date (newest first)
+      const aDate = a.createdAt ? new Date(a.createdAt).getTime() : 0;
+      const bDate = b.createdAt ? new Date(b.createdAt).getTime() : 0;
+      return bDate - aDate;
+    });
+
+    return filtered;
+  }, [blogs, searchQuery, activeFilter]);
+
+  // Pagination
+  const itemsPerPage = isMobile ? 3 : 6;
+  const totalPages = Math.ceil(filteredAndSortedBlogs.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const paginatedBlogs = filteredAndSortedBlogs.slice(startIndex, endIndex);
+
+  const displayBlogs = paginatedBlogs.map(transformBlog);
 
   if (loading) {
     return (
@@ -114,10 +152,15 @@ const BlogsGrid: React.FC = () => {
     );
   }
 
-  if (displayBlogs.length === 0) {
+  if (displayBlogs.length === 0 && !loading) {
     return (
       <div className="w-full flex flex-col items-center gap-8 pb-20">
-        <div className="text-zinc-400">No blogs found.</div>
+        <div className="flex flex-col items-center justify-center gap-4">
+          <p className="text-lg text-gray-400">No blogs found matching your search</p>
+          {(searchQuery || activeFilter !== "All") && (
+            <p className="text-sm text-gray-500">Try searching with different keywords or filters</p>
+          )}
+        </div>
       </div>
     );
   }
