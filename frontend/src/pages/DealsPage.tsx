@@ -16,6 +16,7 @@ export default function DealsPage() {
   const [dealPageData, setDealPageData] = useState<DealPageData | null>(null);
   const [statsData, setStatsData] = useState<StatApiEntry[] | null>(null);
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const [activeFilter, setActiveFilter] = useState<string>("All");
   const [allDeals, setAllDeals] = useState<Deal[]>([]);
   const [filteredDeals, setFilteredDeals] = useState<Deal[]>([]);
 
@@ -89,35 +90,47 @@ export default function DealsPage() {
   }, []);
 
   useEffect(() => {
-    if (!searchQuery.trim()) {
-      setFilteredDeals(allDeals);
-      return;
+    let filtered = [...allDeals];
+
+    // Apply category filter first
+    if (activeFilter && activeFilter !== "All") {
+      filtered = filtered.filter((deal) =>
+        deal.category?.toLowerCase() === activeFilter.toLowerCase() ||
+        deal.tag?.toLowerCase() === activeFilter.toLowerCase()
+      );
     }
 
-    const query = searchQuery.toLowerCase();
-    const filtered = allDeals.filter((deal) => {
-      const titleMatch = deal.title?.toLowerCase().includes(query);
-      const categoryMatch = deal.category?.toLowerCase().includes(query);
-      const descriptionMatch = deal.description?.toLowerCase().includes(query);
-      const tagMatch = deal.tag?.toLowerCase().includes(query);
-      const featuresMatch = deal.features?.some((f) =>
-        f.toLowerCase().includes(query)
-      );
+    // Apply search query
+    if (searchQuery.trim()) {
+      const query = searchQuery.toLowerCase();
+      filtered = filtered.filter((deal) => {
+        const titleMatch = deal.title?.toLowerCase().includes(query);
+        const categoryMatch = deal.category?.toLowerCase().includes(query);
+        const descriptionMatch = deal.description?.toLowerCase().includes(query);
+        const tagMatch = deal.tag?.toLowerCase().includes(query);
+        const featuresMatch = deal.features?.some((f) =>
+          f.toLowerCase().includes(query)
+        );
 
-      return (
-        titleMatch ||
-        categoryMatch ||
-        descriptionMatch ||
-        tagMatch ||
-        featuresMatch
-      );
-    });
+        return (
+          titleMatch ||
+          categoryMatch ||
+          descriptionMatch ||
+          tagMatch ||
+          featuresMatch
+        );
+      });
+    }
 
     setFilteredDeals(filtered);
-  }, [searchQuery, allDeals]);
+  }, [searchQuery, activeFilter, allDeals]);
 
   const handleSearch = (query: string) => {
     setSearchQuery(query);
+  };
+
+  const handleFilterChange = (filter: string) => {
+    setActiveFilter(filter);
   };
 
   const topTagline = dealPageData?.topTagline || "#1 Platform";
@@ -182,7 +195,11 @@ export default function DealsPage() {
             </motion.div>
           </div>
           <div className="px-4 sm:px-6 lg:px-8">
-            <SearchSection onSearch={handleSearch} />
+            <SearchSection
+              onSearch={handleSearch}
+              onFilterChange={handleFilterChange}
+              activeFilter={activeFilter}
+            />
           </div>
           {searchQuery ? (
             <div className="px-4 sm:px-6 lg:px-8 py-6 sm:py-8">

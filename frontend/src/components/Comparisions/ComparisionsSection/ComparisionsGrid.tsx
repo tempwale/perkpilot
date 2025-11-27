@@ -20,7 +20,12 @@ interface ComparisonData {
   readingTime?: string;
 }
 
-const ComparisionsGrid: React.FC = () => {
+interface ComparisionsGridProps {
+  searchQuery?: string;
+  activeFilter?: string;
+}
+
+const ComparisionsGrid: React.FC<ComparisionsGridProps> = ({ searchQuery = "", activeFilter = "All" }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [isMobile, setIsMobile] = useState(false);
   const [comparisonsData, setComparisonsData] = useState<ComparisonData[]>([]);
@@ -53,19 +58,66 @@ const ComparisionsGrid: React.FC = () => {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  // Reset to page 1 when switching between mobile/desktop
   useEffect(() => {
     setCurrentPage(1);
-  }, [isMobile]);
+  }, [isMobile, searchQuery, activeFilter]);
+
+  const filteredComparisons = React.useMemo(() => {
+    let filtered = comparisonsData;
+
+    if (activeFilter && activeFilter !== "All") {
+      filtered = filtered.filter((comparison) => {
+        if (comparison.blogCategory?.toLowerCase() === activeFilter.toLowerCase()) {
+          return true;
+        }
+
+        if (comparison.toolsMentioned?.some(tool =>
+          tool.toolCategory?.toLowerCase() === activeFilter.toLowerCase()
+        )) {
+          return true;
+        }
+
+        return false;
+      });
+    }
+
+    if (searchQuery.trim()) {
+      const lowerQuery = searchQuery.toLowerCase();
+      filtered = filtered.filter((comparison) => {
+        if (comparison.heroHeading?.toLowerCase().includes(lowerQuery)) {
+          return true;
+        }
+
+        if (comparison.heroBody?.toLowerCase().includes(lowerQuery)) {
+          return true;
+        }
+
+        if (comparison.blogCategory?.toLowerCase().includes(lowerQuery)) {
+          return true;
+        }
+
+        if (comparison.toolsMentioned?.some(tool =>
+          tool.toolName?.toLowerCase().includes(lowerQuery) ||
+          tool.toolCategory?.toLowerCase().includes(lowerQuery)
+        )) {
+          return true;
+        }
+
+        return false;
+      });
+    }
+
+    return filtered;
+  }, [comparisonsData, searchQuery, activeFilter]);
 
   // 3 rows per page: 6 cards desktop, 3 cards mobile
   const itemsPerPage = isMobile ? 3 : 6;
-  const totalPages = Math.ceil(comparisonsData.length / itemsPerPage);
+  const totalPages = Math.ceil(filteredComparisons.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const displayComparisons = showPagination
-    ? comparisonsData.slice(startIndex, endIndex)
-    : comparisonsData;
+    ? filteredComparisons.slice(startIndex, endIndex)
+    : filteredComparisons;
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -88,8 +140,17 @@ const ComparisionsGrid: React.FC = () => {
         </div>
       )}
 
+      {!loading && !error && filteredComparisons.length === 0 && (
+        <div className="flex flex-col items-center justify-center w-full h-40 gap-4">
+          <p className="text-lg text-gray-400">No comparisons found matching your search</p>
+          {searchQuery && (
+            <p className="text-sm text-gray-500">Try searching with different keywords</p>
+          )}
+        </div>
+      )}
+
       {/* Comparisons Cards Grid with animation */}
-      {!loading && !error && (
+      {!loading && !error && filteredComparisons.length > 0 && (
         <>
           <motion.div
             className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-7xl mx-auto"

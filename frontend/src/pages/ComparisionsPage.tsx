@@ -17,6 +17,8 @@ export default function ComparisionsPage() {
   const [settings, setSettings] = useState<ComparisonPageSettings | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [activeFilter, setActiveFilter] = useState("All");
 
   useEffect(() => {
     (async () => {
@@ -31,6 +33,14 @@ export default function ComparisionsPage() {
       }
     })();
   }, []);
+
+  const handleSearch = (query: string) => {
+    setSearchQuery(query);
+  };
+
+  const handleFilterChange = (filter: string) => {
+    setActiveFilter(filter);
+  };
 
   const badgeText = settings?.comparisonPageTopTagline ?? "#1 Platform";
   const secondaryText = "For Software Comparisons";
@@ -102,8 +112,15 @@ export default function ComparisionsPage() {
           </div>
           {!loading && isMaintenance === false && (
             <>
-          <SearchSection />
-          <ComparisionsSection />
+          <SearchSection
+            onSearch={handleSearch}
+            onFilterChange={handleFilterChange}
+            activeFilter={activeFilter}
+          />
+          <ComparisionsSection
+            searchQuery={searchQuery}
+            activeFilter={activeFilter}
+          />
             </>
           )}
           <Footer />
