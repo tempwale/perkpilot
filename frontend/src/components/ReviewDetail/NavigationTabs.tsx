@@ -52,6 +52,7 @@ export default function NavigationTabs({
   keyFeatures,
   alternatives,
   productReviews,
+  ratingBreakdown,
 }: NavigationTabsProps) {
   const [activeTab, setActiveTab] = useState("overview");
 

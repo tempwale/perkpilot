@@ -24,6 +24,7 @@ const PicksGrid: React.FC = () => {
       savingsAmount: "Save Up To $1234",
       rating: "4.8/5.0 Ratings",
       verified: true,
+      redeemUrl: "#",
     },
     {
       appName: "Slack",
@@ -34,6 +35,7 @@ const PicksGrid: React.FC = () => {
       savingsAmount: "Save Up To $1234",
       rating: "4.8/5.0 Ratings",
       verified: true,
+      redeemUrl: "#",
     },
     {
       appName: "Slack",
@@ -44,6 +46,7 @@ const PicksGrid: React.FC = () => {
       savingsAmount: "Save Up To $1234",
       rating: "4.8/5.0 Ratings",
       verified: true,
+      redeemUrl: "#",
     },
     {
       appName: "Slack",
@@ -54,6 +57,7 @@ const PicksGrid: React.FC = () => {
       savingsAmount: "Save Up To $1234",
       rating: "4.8/5.0 Ratings",
       verified: true,
+      redeemUrl: "#",
     },
     {
       appName: "Slack",
@@ -64,6 +68,7 @@ const PicksGrid: React.FC = () => {
       savingsAmount: "Save Up To $1234",
       rating: "4.8/5.0 Ratings",
       verified: true,
+      redeemUrl: "#",
     },
     {
       appName: "Slack",
@@ -74,6 +79,7 @@ const PicksGrid: React.FC = () => {
       savingsAmount: "Save Up To $1234",
       rating: "4.8/5.0 Ratings",
       verified: true,
+      redeemUrl: "#",
     },
     {
       appName: "Slack",
@@ -84,6 +90,7 @@ const PicksGrid: React.FC = () => {
       savingsAmount: "Save Up To $1234",
       rating: "4.8/5.0 Ratings",
       verified: true,
+      redeemUrl: "#",
     },
     {
       appName: "Slack",
@@ -94,6 +101,7 @@ const PicksGrid: React.FC = () => {
       savingsAmount: "Save Up To $1234",
       rating: "4.8/5.0 Ratings",
       verified: true,
+      redeemUrl: "#",
     },
     {
       appName: "Slack",
@@ -104,6 +112,7 @@ const PicksGrid: React.FC = () => {
       savingsAmount: "Save Up To $1234",
       rating: "4.8/5.0 Ratings",
       verified: true,
+      redeemUrl: "#",
     },
   ];
 
@@ -122,6 +131,7 @@ const PicksGrid: React.FC = () => {
               savingsAmount={pick.savingsAmount}
               rating={pick.rating}
               verified={pick.verified}
+              redeemUrl={pick.redeemUrl}
             />
           ))}
       </div>
