@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import ReviewCard from "./ReviewsCard";
 import Pagination from "./Pagination";
@@ -53,6 +53,7 @@ interface ReviewGridProps {
   showPagination?: boolean;
   useAPI?: boolean;
   searchQuery?: string;
+  activeFilter?: string;
 }
 
 export default function ReviewGrid({
@@ -61,13 +62,13 @@ export default function ReviewGrid({
   showPagination = true,
   useAPI = false,
   searchQuery = "",
+  activeFilter = "All",
 }: ReviewGridProps) {
   const [currentPage, setCurrentPage] = useState(1);
   const [isMobile, setIsMobile] = useState(false);
   const [apiReviews, setApiReviews] = useState<Review[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [totalPages, setTotalPages] = useState(1);
 
   // Check if mobile on mount and window resize
   useEffect(() => {
@@ -81,7 +82,7 @@ export default function ReviewGrid({
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  // Fetch reviews from API
+  // Fetch all reviews from API on mount
   useEffect(() => {
     if (!useAPI) return;
 
@@ -89,15 +90,12 @@ export default function ReviewGrid({
       try {
         setLoading(true);
         setError(null);
-        const effectiveItemsPerPage = isMobile ? 3 : itemsPerPage;
         const response = await fetchReviews({
-          page: currentPage,
-          limit: effectiveItemsPerPage,
+          page: 1,
+          limit: 1000, // Fetch all reviews for client-side filtering
           sortBy: "-createdAt",
-          productName: searchQuery || undefined,
         });
         setApiReviews(response.data);
-        setTotalPages(response.pagination.pages);
       } catch (err) {
         setError(err instanceof Error ? err.message : "Failed to fetch reviews");
         console.error("Error fetching reviews:", err);
@@ -107,12 +105,12 @@ export default function ReviewGrid({
     };
 
     loadReviews();
-  }, [useAPI, currentPage, isMobile, itemsPerPage, searchQuery]);
+  }, [useAPI]);
 
-  // Reset to page 1 when switching between mobile/desktop or search query changes
+  // Reset to page 1 when switching between mobile/desktop, search query, or filter changes
   useEffect(() => {
     setCurrentPage(1);
-  }, [isMobile, searchQuery]);
+  }, [isMobile, searchQuery, activeFilter]);
 
   // Calculate items per page based on screen size
   const effectiveItemsPerPage = isMobile ? 3 : itemsPerPage;
@@ -138,23 +136,48 @@ export default function ReviewGrid({
         : "Contact for pricing",
   });
 
-  // Map API reviews to display format
-  const mappedApiReviews = apiReviews.map(mapReviewToDisplay);
+  // Filter and paginate reviews
+  const { paginatedReviews, finalTotalPages } = React.useMemo(() => {
+    const reviewsToFilter = useAPI ? apiReviews : Reviews;
 
-  // Map static reviews to display format (fallback when not using API)
-  const mappedStaticReviews = Reviews.map(mapReviewToDisplay);
+    let filtered = [...reviewsToFilter];
 
-  // Calculate pagination for static data (fallback when not using API)
-  const staticTotalPages = mappedStaticReviews.length > 0 ? Math.ceil(mappedStaticReviews.length / effectiveItemsPerPage) : 1;
-  const startIndex = (currentPage - 1) * effectiveItemsPerPage;
-  const endIndex = startIndex + effectiveItemsPerPage;
-  const staticDisplayReviews = showPagination && mappedStaticReviews.length > 0
-    ? mappedStaticReviews.slice(startIndex, endIndex)
-    : mappedStaticReviews;
+    // Apply category filter
+    if (activeFilter && activeFilter !== "All") {
+      filtered = filtered.filter((review) =>
+        review.productType?.toLowerCase() === activeFilter.toLowerCase()
+      );
+    }
 
-  // Choose which data to display
-  const displayReviews = useAPI ? mappedApiReviews : staticDisplayReviews;
-  const finalTotalPages = useAPI ? totalPages : staticTotalPages;
+    // Apply search query
+    if (searchQuery.trim()) {
+      const lowerQuery = searchQuery.toLowerCase();
+      filtered = filtered.filter((review) => {
+        return (
+          review.productName?.toLowerCase().includes(lowerQuery) ||
+          review.description?.toLowerCase().includes(lowerQuery) ||
+          review.overview?.toLowerCase().includes(lowerQuery) ||
+          review.productType?.toLowerCase().includes(lowerQuery)
+        );
+      });
+    }
+
+    // Calculate pagination
+    const totalPages = Math.ceil(filtered.length / effectiveItemsPerPage);
+    const startIndex = (currentPage - 1) * effectiveItemsPerPage;
+    const endIndex = startIndex + effectiveItemsPerPage;
+    const paginated = showPagination
+      ? filtered.slice(startIndex, endIndex)
+      : filtered;
+
+    return {
+      paginatedReviews: paginated,
+      finalTotalPages: totalPages,
+    };
+  }, [apiReviews, Reviews, useAPI, searchQuery, activeFilter, currentPage, effectiveItemsPerPage, showPagination]);
+
+  // Map reviews to display format
+  const displayReviews = paginatedReviews.map(mapReviewToDisplay);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
