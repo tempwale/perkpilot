@@ -1,7 +1,19 @@
 import React from "react";
 import { UniversalBadge } from "../../UniversalBadge";
 
-export const HeroContent: React.FC = () => {
+interface HeroContentProps {
+  topTagline: string;
+  secondaryText: string;
+  mainHeadline: string;
+  subHeadline: string;
+}
+
+export const HeroContent: React.FC<HeroContentProps> = ({
+  topTagline,
+  secondaryText,
+  mainHeadline,
+  subHeadline,
+}) => {
   return (
     <div
       className="content-stretch flex flex-col gap-[12px] md:gap-[16px] items-center md:items-start justify-center relative flex-1 px-4 md:pl-[90px] md:pr-[36px] py-[16px] md:py-[22px] text-center md:text-left"
@@ -9,8 +21,8 @@ export const HeroContent: React.FC = () => {
     >
       {/* Badge Section */}
       <UniversalBadge
-        badgeText="#1 Platform"
-        secondaryText="For Discounted SaaS Deals"
+        badgeText={topTagline}
+        secondaryText={secondaryText}
         icon="electric"
         variant="primary"
         size="sm"
@@ -27,8 +39,9 @@ export const HeroContent: React.FC = () => {
           WebkitTextFillColor: "transparent",
         }}
       >
-        <p className="mb-0">Build Your Dream.</p>
-        <p>{`We'll Find The Tools.`}</p>
+        {mainHeadline.split('\n').map((line, index) => (
+          <p key={index} className={index === 0 ? "mb-0" : ""}>{line}</p>
+        ))}
       </div>
 
       {/* Subtitle */}
@@ -39,11 +52,7 @@ export const HeroContent: React.FC = () => {
           color: "var(--Primary-300, #A1A1AA)",
         }}
       >
-        <p className="mb-0">{`Stop searching endlessly. Tell our AI Agent your vision and get `}</p>
-        <p>
-          an instant, personalized list of all the software you need-with
-          exclusive discounts.
-        </p>
+        {subHeadline}
       </div>
     </div>
   );

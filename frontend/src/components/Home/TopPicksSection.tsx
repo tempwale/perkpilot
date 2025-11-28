@@ -1,10 +1,50 @@
+import React, { useState, useEffect } from "react";
 import { UniversalBadge } from "../UniversalBadge";
 import { UniversalCTAButton } from "../UniversalCTAButton";
 import PicksGrid from "./TopPicksSection/PicksGrid";
 import TopPicksBackground from "./TopPicksSection/TopPicksBackground";
 import { motion } from "framer-motion";
+import { fetchHomePage } from "../../hooks/useHomePage";
+import { useNavigate } from "react-router-dom";
+const defaultData = {
+  badgeText: "#1 Platform",
+  secondaryText: "For Discounted SaaS Deals",
+  heading: "Top Picks This Month",
+  description: "Hand-picked software tools that deliver exceptional value and performance for modern teams.",
+  ctaText: "Explore All Deals",
+  ctaLink: "",
+};
 
 const TopPicksSection: React.FC = () => {
+  const [contentData, setContentData] = useState(defaultData);
+  const navigate = useNavigate();
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const homepageData = await fetchHomePage();
+
+        if (homepageData.topPicks) {
+          setContentData({
+            badgeText: defaultData.badgeText,
+            secondaryText: defaultData.secondaryText,
+            heading: homepageData.topPicks.sectionTitle || defaultData.heading,
+            description: homepageData.topPicks.body || defaultData.description,
+            ctaText: defaultData.ctaText,
+            ctaLink: defaultData.ctaLink,
+          });
+        }
+      } catch {
+        // Error fetching data, using defaults
+      }
+    };
+
+    void loadData();
+  }, []);
+
+  const handleCTAClick = () => {
+    void navigate("/deals");
+  };
+
   return (
     <section className="relative w-full min-h-screen flex items-center justify-center px-4 md:px-8">
       <TopPicksBackground />
@@ -16,8 +56,8 @@ const TopPicksSection: React.FC = () => {
         transition={{ duration: 0.7, ease: "easeOut" }}
       >
         <UniversalBadge
-          badgeText="#1 Platform"
-          secondaryText="For Discounted SaaS Deals"
+          badgeText={contentData.badgeText}
+          secondaryText={contentData.secondaryText}
           icon="electric"
           className=""
           variant="primary"
@@ -33,7 +73,7 @@ const TopPicksSection: React.FC = () => {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
         >
-          Top Picks This Month
+          {contentData.heading}
         </motion.h2>
 
         {/* Description text with animation */}
@@ -45,8 +85,7 @@ const TopPicksSection: React.FC = () => {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, delay: 0.35, ease: "easeOut" }}
         >
-          Hand-picked software tools that deliver exceptional value and
-          performance for modern teams.
+          {contentData.description}
         </motion.p>
 
         {/* Picks Grid below the content with animation */}
@@ -68,12 +107,12 @@ const TopPicksSection: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.7, ease: "easeOut" }}
         >
           <UniversalCTAButton
-            text="Explore All Deals"
+            text={contentData.ctaText}
             icon="arrow"
             variant="primary"
             size="md"
             iconRotation="-rotate-45"
-            onClick={() => console.log("About Us CTA clicked")}
+            onClick={handleCTAClick}
           />
         </motion.div>
       </motion.div>

@@ -5,12 +5,10 @@ import ComparisionsGrid from "./Comparisions/ComparisionsGrid";
 
 const ComparisionsSection: React.FC = () => {
   const handlePrevious = () => {
-    console.log("Previous comparison clicked");
     // Add your navigation logic here
   };
 
   const handleNext = () => {
-    console.log("Next comparison clicked");
     // Add your navigation logic here
   };
 

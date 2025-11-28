@@ -100,6 +100,8 @@ const DownloadIcon: React.FC<{ className?: string }> = ({ className = "" }) => (
 interface UniversalCTAButtonProps {
   // Button text
   text: string;
+  // Link URL (if provided, renders as <a> tag instead of <button>)
+  ctaLink?: string;
   // Icon type or custom icon element
   icon?: CTAIconType | React.ReactNode;
   // Button variants
@@ -125,10 +127,13 @@ interface UniversalCTAButtonProps {
   iconRotation?: string;
   // Full width
   fullWidth?: boolean;
+  // Open link in new tab
+  target?: "_blank" | "_self";
 }
 
 export const UniversalCTAButton: React.FC<UniversalCTAButtonProps> = ({
   text,
+  ctaLink,
   icon = "arrow",
   variant = "primary",
   size = "md",
@@ -140,8 +145,8 @@ export const UniversalCTAButton: React.FC<UniversalCTAButtonProps> = ({
   loading = false,
   iconRotation = "-rotate-45",
   fullWidth = false,
+  target = "_self",
 }) => {
-  // Size configurations - Updated to match Figma exactly
   const sizeConfig = {
     sm: {
       container: "h-[48px] pl-[32px] pr-[6px] py-[12px] gap-[12px]",
@@ -280,32 +285,56 @@ export const UniversalCTAButton: React.FC<UniversalCTAButtonProps> = ({
     </>
   );
 
-  return (
-    <button
-      className={`
-        group
-        ${config.background}
-        ${config.border}
-        ${config.hover}
-        ${config.shadow}
-        backdrop-blur-sm backdrop-filter
-        border border-solid
-        flex items-center justify-center
-        relative rounded-[100px] shrink-0
-        cursor-pointer transition-all duration-200
-        ${sizeConfig[size].container}
-        ${fullWidth ? "w-full" : ""}
-        ${disabled ? "opacity-50 cursor-not-allowed" : ""}
-        ${className}
-      `}
-      onClick={disabled || loading ? undefined : onClick}
-      disabled={disabled || loading}
-    >
+  const commonClassName = `
+    group
+    ${config.background}
+    ${config.border}
+    ${config.hover}
+    ${config.shadow}
+    backdrop-blur-sm backdrop-filter
+    border border-solid
+    flex items-center justify-center
+    relative rounded-[100px] shrink-0
+    cursor-pointer transition-all duration-200
+    ${sizeConfig[size].container}
+    ${fullWidth ? "w-full" : ""}
+    ${disabled ? "opacity-50 cursor-not-allowed" : ""}
+    ${className}
+  `;
+
+  const innerContent = (
+    <>
       <div
         aria-hidden="true"
         className="absolute border border-[rgba(250,250,250,0.08)] border-solid inset-0 pointer-events-none rounded-[100px]"
       />
       {buttonContent}
+    </>
+  );
+
+  // If ctaLink is provided, render as anchor tag
+  if (ctaLink && !disabled && !loading) {
+    return (
+      <a
+        href={ctaLink}
+        target={target}
+        rel={target === "_blank" ? "noopener noreferrer" : undefined}
+        className={commonClassName}
+        onClick={onClick}
+      >
+        {innerContent}
+      </a>
+    );
+  }
+
+  // Otherwise render as button
+  return (
+    <button
+      className={commonClassName}
+      onClick={disabled || loading ? undefined : onClick}
+      disabled={disabled || loading}
+    >
+      {innerContent}
     </button>
   );
 };
