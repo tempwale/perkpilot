@@ -42,5 +42,7 @@ export const REVIEWPAGE_API = `${REVIEWS_API}/page/settings`;
 export const BLOGS_API = `${BACKEND_URL}/api/blogs`;
 // Blog page settings API endpoint
 export const BLOGPAGE_API = `${BACKEND_URL}/api/blogs/blogpage`;
+// Homepage API endpoint
+export const HOMEPAGE_API = `${BACKEND_URL}/api/homepage`;
 
 export default BACKEND_URL;
