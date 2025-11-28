@@ -7,6 +7,7 @@ import comparisionRouter from './routes/comparision.routes.js';
 import reviewsRoutes from './routes/reviews.routes.js';
 import authorRoutes from './routes/author.routes.js';
 import blogsRoutes from './routes/blogs.routes.js';
+import homepageRoutes from './routes/homepage.routes.js';
 // Load environment variables from .env file
 dotenv.config();
 
@@ -29,6 +30,8 @@ app.use("/api/reviews", reviewsRoutes);
 app.use("/api/authors", authorRoutes);
 
 app.use("/api/blogs", blogsRoutes);
+
+app.use("/api/homepage", homepageRoutes);
 // Health check / default route
 app.get("/", (_req: Request, res: Response) => {
   console.log("API is running...");

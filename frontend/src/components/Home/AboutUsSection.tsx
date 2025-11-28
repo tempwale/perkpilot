@@ -10,7 +10,7 @@ const AboutUsSection: React.FC = () => {
  
 
       <motion.div
-        className="relative z-10 max-w-[1200px] mx-auto px-[40px]"
+        className="relative z-10 max-w-[1200px] mx-auto px-4 sm:px-6 md:px-[40px]"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
@@ -33,7 +33,6 @@ const AboutUsSection: React.FC = () => {
             variant="primary"
             size="md"
             iconRotation="-rotate-45"
-            onClick={() => console.log("About Us CTA clicked")}
           />
         </motion.div>
         <AboutUsContent />

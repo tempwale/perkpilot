@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { fetchHomePage } from "../../../hooks/useHomePage";
 
 interface StatItem {
   value: string;
@@ -78,37 +79,75 @@ const useInView = (threshold = 0.1) => {
   return [ref, isInView] as const;
 };
 
+// Default stats as fallback
+const defaultStats: StatItem[] = [
+  {
+    value: "5000+",
+    label: "Happy Customers",
+    numericValue: 5000,
+    suffix: "+",
+  },
+  {
+    value: "1000+",
+    label: "Expert Reviews",
+    numericValue: 1000,
+    suffix: "+",
+  },
+  {
+    value: "500+",
+    label: "Active Deals",
+    numericValue: 500,
+    suffix: "+",
+  },
+  {
+    value: "2M+",
+    label: "Total Savings",
+    numericValue: 2,
+    suffix: "M+",
+  },
+];
+
+// Helper function to parse value and suffix from API data
+const parseStatValue = (value: string): { numericValue: number; suffix: string } => {
+  const match = value.match(/^(\d+(?:\.\d+)?)(.*)/);
+  if (match) {
+    return {
+      numericValue: parseFloat(match[1]),
+      suffix: match[2] || "",
+    };
+  }
+  return { numericValue: 0, suffix: "" };
+};
+
 const Stats: React.FC = () => {
   const [ref, isInView] = useInView(0.3);
+  const [stats, setStats] = useState<StatItem[]>(defaultStats);
 
-  const stats: StatItem[] = [
-    {
-      value: "5000+",
-      label: "Happy Customers",
-      numericValue: 5000,
-      suffix: "+",
-    },
-    {
-      value: "1000+",
-      label: "Expert Reviews",
-      numericValue: 1000,
-      suffix: "+",
-    },
-    {
-      value: "500+",
-      label: "Active Deals",
-      numericValue: 500,
-      suffix: "+",
-    },
-    {
-      value: "2M+",
-      label: "Total Savings",
-      numericValue: 2,
-      suffix: "M+",
-    },
-  ];
+  useEffect(() => {
+    const loadStats = async () => {
+      try {
+        const homepageData = await fetchHomePage();
 
-  // Animated counters for each stat with fixed durations
+        if (homepageData.stats && homepageData.stats.length > 0) {
+          const apiStats: StatItem[] = homepageData.stats.map(item => {
+            const { numericValue, suffix } = parseStatValue(item.numberValue);
+            return {
+              value: item.numberValue,
+              label: item.message,
+              numericValue,
+              suffix,
+            };
+          });
+          setStats(apiStats);
+        }
+      } catch {
+        // Error fetching stats, using defaults
+      }
+    };
+
+    void loadStats();
+  }, []);
+
   const animatedValue0 = useCountUp(stats[0].numericValue, 2000, isInView);
   const animatedValue1 = useCountUp(stats[1].numericValue, 2300, isInView);
   const animatedValue2 = useCountUp(stats[2].numericValue, 2500, isInView);
@@ -133,7 +172,6 @@ const Stats: React.FC = () => {
       ref={ref}
       className="flex flex-col items-center justify-center w-full py-6 md:py-20"
     >
-      {/* Desktop Layout - Horizontal */}
       <div className="hidden md:flex items-center justify-between w-full max-w-6xl">
         {stats.map((stat, index) => (
           <React.Fragment key={index}>
@@ -167,10 +205,8 @@ const Stats: React.FC = () => {
         ))}
       </div>
 
-      {/* Mobile Layout - 2x2 Grid */}
       <div className="md:hidden w-full max-w-sm border-t border-black pt-6">
         <div className="flex flex-col gap-6 w-full">
-          {/* First Row */}
           <div className="flex w-full">
             <div className="flex-1 flex flex-col gap-[13px] items-start justify-center p-4 border-r-[1.5px] border-[#0c071b]">
               <div className="text-[40px] font-semibold leading-[52px] text-neutral-50 capitalize">

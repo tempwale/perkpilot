@@ -2,8 +2,12 @@ import { UniversalBadge } from "../UniversalBadge";
 import { UniversalCTAButton } from "../UniversalCTAButton";
 import ReviewsGrid from "./ReviewsSection/ReviewsGrid";
 import { motion } from "framer-motion";
-
+import { useNavigate } from "react-router-dom";
 const ReviewsSection: React.FC = () => {
+  const navigate = useNavigate();
+  const handleCTAClick = () => {
+    void navigate("/reviews");
+  };
   return (
     <section className="relative w-full py-16 flex items-center justify-center">
       <motion.div
@@ -71,7 +75,7 @@ const ReviewsSection: React.FC = () => {
             variant="primary"
             size="md"
             iconRotation="-rotate-45"
-            onClick={() => console.log("About Us CTA clicked")}
+            onClick={handleCTAClick}
           />
         </motion.div>
       </motion.div>

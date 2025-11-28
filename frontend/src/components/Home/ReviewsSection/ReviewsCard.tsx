@@ -6,6 +6,7 @@ interface ReviewsCardProps {
   description: string;
   rating: string;
   reviewCount: string;
+  logoUrl?: string;
   userAvatars?: string[];
   starRating: string;
   onReadReview?: () => void;
@@ -17,6 +18,7 @@ const ReviewsCard: React.FC<ReviewsCardProps> = ({
   description,
   rating,
   reviewCount,
+  logoUrl,
   userAvatars,
   starRating,
   onReadReview,
@@ -84,8 +86,16 @@ const ReviewsCard: React.FC<ReviewsCardProps> = ({
         <div className="flex items-center justify-between w-full">
           <div className="flex items-center gap-3 flex-1">
             {/* App Icon */}
-            <div className="bg-neutral-50 border-2 border-[rgba(255,255,255,0.08)] rounded-full p-2.5 w-14 h-14 flex items-center justify-center">
-              <SlackIcon />
+            <div className="bg-neutral-50 border-2 border-[rgba(255,255,255,0.08)] rounded-full p-2.5 w-14 h-14 flex items-center justify-center overflow-hidden">
+              {logoUrl ? (
+                <img
+                  src={logoUrl}
+                  alt={appName}
+                  className="w-full h-full object-contain"
+                />
+              ) : (
+                <SlackIcon />
+              )}
             </div>
 
             {/* App Name and Category */}
