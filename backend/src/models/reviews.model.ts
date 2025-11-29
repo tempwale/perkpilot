@@ -22,10 +22,11 @@ const AlternativeSchema = new mongoose.Schema({
   rating: { type: Number, min: 1, max: 5 },
   reviewCount: { type: Number },
   compareNote: { type: String },
+  reviewId: { type: String },
 });
 
 const RatingCategorySchema = new mongoose.Schema({
-  category: { type: String, required: true }, // e.g., "Ease of Use"
+  category: { type: String, required: true },
   value: { type: Number, required: true },
   outOf: { type: Number, default: 5 },
 });

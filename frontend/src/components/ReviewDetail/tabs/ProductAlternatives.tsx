@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 interface AlternativeCardProps {
   name: string;
   category: string;
@@ -6,6 +8,7 @@ interface AlternativeCardProps {
   pricing: string;
   buttonText: string;
   logo?: React.ReactNode;
+  reviewId?: string;
 }
 
 const StarIcon = ({ className }: { className?: string }) => (
@@ -51,6 +54,7 @@ const AlternativeCard = ({
   pricing,
   buttonText,
   logo,
+  reviewId,
 }: AlternativeCardProps) => {
   const displayRating = rating || 5;
   const displayReviewCount = reviewCount || 0;
@@ -118,11 +122,22 @@ const AlternativeCard = ({
         <div className="text-[#FAFAFA] font-['Plus_Jakarta_Sans'] font-medium text-lg md:text-xl leading-[27px] md:leading-8 text-center md:text-left">
           {pricing}
         </div>
-        <div className="box-border bg-[rgba(255,255,255,0.08)] rounded-[100px] flex flex-row justify-center items-center cursor-pointer hover:bg-[rgba(255,255,255,0.12)] transition-colors px-4 py-2 md:px-6 md:py-3 h-auto md:h-12 w-full md:w-auto min-h-[40px] md:min-h-[48px]">
-          <div className="text-[#FAFAFA] font-['Poppins'] font-normal text-sm md:text-base leading-5 md:leading-6 text-center break-words md:whitespace-nowrap px-2">
-            {buttonText}
+        {reviewId ? (
+          <Link
+            to={`/review/${reviewId}`}
+            className="box-border bg-[rgba(255,255,255,0.08)] rounded-[100px] flex flex-row justify-center items-center cursor-pointer hover:bg-[rgba(255,255,255,0.12)] transition-colors px-4 py-2 md:px-6 md:py-3 h-auto md:h-12 w-full md:w-auto min-h-[40px] md:min-h-[48px]"
+          >
+            <div className="text-[#FAFAFA] font-['Poppins'] font-normal text-sm md:text-base leading-5 md:leading-6 text-center break-words md:whitespace-nowrap px-2">
+              {buttonText}
+            </div>
+          </Link>
+        ) : (
+          <div className="box-border bg-[rgba(255,255,255,0.08)] rounded-[100px] flex flex-row justify-center items-center cursor-pointer hover:bg-[rgba(255,255,255,0.12)] transition-colors px-4 py-2 md:px-6 md:py-3 h-auto md:h-12 w-full md:w-auto min-h-[40px] md:min-h-[48px]">
+            <div className="text-[#FAFAFA] font-['Poppins'] font-normal text-sm md:text-base leading-5 md:leading-6 text-center break-words md:whitespace-nowrap px-2">
+              {buttonText}
+            </div>
           </div>
-        </div>
+        )}
     </div>
   </div>
 );
@@ -137,6 +152,7 @@ interface ProductAlternativesProps {
     rating?: number;
     reviewCount?: number;
     compareNote?: string;
+    reviewId?: string;
     _id?: string;
   }>;
 }
@@ -203,12 +219,14 @@ export default function ProductAlternatives({
           rating: alt.rating || 5,
           reviewCount: alt.reviewCount || 0,
           pricing: alt.price || "N/A",
-          buttonText: alt.compareNote || "Compare",
+          buttonText: `Compare with ${alt.name}`,
+          reviewId: alt.reviewId,
           _id: alt._id,
           avatarUrl: alt.avatarUrl,
         }))
       : defaultAlternativesData.map((alt, idx) => ({
           ...alt,
+          reviewId: undefined,
           _id: `${idx}`,
           avatarUrl: undefined,
         }));
@@ -225,6 +243,7 @@ export default function ProductAlternatives({
             reviewCount={alternative.reviewCount}
             pricing={alternative.pricing}
             buttonText={alternative.buttonText}
+            reviewId={alternative.reviewId}
             logo={
               alternative.avatarUrl ? (
                 <img
