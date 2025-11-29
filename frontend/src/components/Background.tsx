@@ -11,7 +11,7 @@ export const Background: React.FC<BackgroundProps> = ({
 }) => {
   return (
     <div
-      className={`absolute inset-0 w-[800px] h-[] ${className}`}
+      className={`absolute inset-0 w-full ${className}`}
       
       style={{
         background:

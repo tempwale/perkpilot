@@ -22,6 +22,7 @@ type ReviewAlternative = {
   rating?: number;
   reviewCount?: number;
   compareNote?: string;
+  reviewId?: string;
   _id?: string;
   dealId?: string;
 };
@@ -105,6 +106,7 @@ const transformApiReview = (review: Review): TransformedReview => {
         rating?: number;
         reviewCount?: number;
         compareNote?: string;
+        reviewId?: string;
         _id?: string;
       }> = (review.alternatives || []).map((alt: ReviewAlternative) => ({
         name: alt.name ?? "Alternative",
@@ -114,6 +116,7 @@ const transformApiReview = (review: Review): TransformedReview => {
         rating: alt.rating,
         reviewCount: alt.reviewCount,
         compareNote: alt.compareNote,
+        reviewId: alt.reviewId,
         _id: alt._id,
       }));
       return sanitized;
@@ -295,6 +298,7 @@ export default function ReviewDetailPage() {
               rating: alt.rating,
               reviewCount: alt.reviewCount,
               compareNote: alt.compareNote,
+              reviewId: alt.reviewId,
               _id: alt._id,
             }))}
             productReviews={reviewData.productReviews}

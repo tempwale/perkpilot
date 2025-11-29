@@ -23,6 +23,7 @@ interface NavigationTabsProps {
     rating?: number;
     reviewCount?: number;
     compareNote?: string;
+    reviewId?: string;
     _id?: string;
   }>;
   productReviews?: Array<{

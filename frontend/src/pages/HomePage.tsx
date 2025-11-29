@@ -10,8 +10,8 @@ import Footer from "../components/Footer";
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-black">
-      <div className="max-w-full">
+    <div className="min-h-screen bg-black overflow-x-hidden">
+      <div className="max-w-full overflow-x-hidden">
         <Header />
         {/* Content container with top padding to account for fixed header */}
         <div className="pt-[80px]">
