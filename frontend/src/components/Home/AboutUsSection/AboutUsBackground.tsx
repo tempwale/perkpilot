@@ -14,7 +14,7 @@ const AboutUsBackground: React.FC<AboutUsBackgroundProps> = ({
         background:
           "linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.80) 100%)",
         width: "1440px",
-        height: "381px",
+        height: "532.56px",
         maxWidth: "100vw",
       }}
     />

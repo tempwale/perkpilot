@@ -123,6 +123,13 @@ Slack is the AI productivity platform that helps teams work faster with AI and a
 
   const displayOverview = overview || (error ? "" : defaultOverview);
 
+  const hasHTML = displayOverview && (
+    /<[a-z][\s\S]*>/i.test(displayOverview) ||
+    /<[a-z]+[^>]*>/i.test(displayOverview) ||
+    displayOverview.includes('</') ||
+    displayOverview.includes('/>')
+  );
+
   return (
     <div
       className="bg-zinc-900 border border-[#2e2e2f] border-solid box-border content-stretch flex flex-col gap-[24px] min-h-[192px] items-start p-[24px] relative rounded-[24px] shrink-0 w-full"
@@ -151,6 +158,15 @@ Slack is the AI productivity platform that helps teams work faster with AI and a
           <div className="font-['Plus_Jakarta_Sans:Regular',_sans-serif] font-normal leading-[24px] relative shrink-0 text-[16px] text-red-400 w-full">
             {error}
           </div>
+        ) : hasHTML ? (
+          <div
+            className="font-['Plus_Jakarta_Sans:Regular',_sans-serif] font-normal leading-[24px] relative shrink-0 text-[16px] text-zinc-400 w-full prose prose-invert max-w-none break-words"
+            data-node-id="250:2540"
+            dangerouslySetInnerHTML={{ __html: displayOverview }}
+            style={{
+              wordBreak: "break-word",
+            }}
+          />
         ) : (
           <div
             className="font-['Plus_Jakarta_Sans:Regular',_sans-serif] font-normal leading-[24px] relative shrink-0 text-[16px] text-zinc-400 w-full whitespace-pre-line"
@@ -160,6 +176,62 @@ Slack is the AI productivity platform that helps teams work faster with AI and a
           </div>
         )}
       </div>
+      <style>{`
+        .prose a {
+          color: #737eff;
+          text-decoration: underline;
+        }
+        .prose a:hover {
+          opacity: 0.8;
+        }
+        .prose img {
+          max-width: 100%;
+          height: auto;
+          border-radius: 8px;
+          margin: 16px 0;
+          display: block;
+        }
+        .prose [data-youtube-wrapper] {
+          width: 100%;
+          max-width: 800px;
+          margin: 20px auto;
+          position: relative;
+          outline: none !important;
+          border: none !important;
+        }
+        .prose [data-youtube-embed] {
+          width: 100%;
+          max-width: 800px;
+          margin: 20px auto;
+          position: relative;
+          padding-bottom: 56.25%;
+          height: 0;
+          border-radius: 8px;
+          overflow: hidden;
+          outline: none !important;
+          border: none !important;
+        }
+        .prose [data-youtube-embed] iframe {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          border: none;
+        }
+        /* Hide resize handles on frontend */
+        .prose .iframe-resize-handle {
+          display: none !important;
+        }
+        .prose .resizable-iframe {
+          outline: none !important;
+          border: none !important;
+        }
+        /* Hide any editor-specific resize elements */
+        .prose [data-youtube-wrapper] > div:not([data-youtube-embed]) {
+          display: none !important;
+        }
+      `}</style>
     </div>
   );
 }
