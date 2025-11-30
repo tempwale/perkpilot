@@ -53,8 +53,12 @@ export default function ToolDeal({ toolBlogCard }: ToolDealProps) {
 
   const getSavingsAmount = (toolName: string): string => {
     const toolData = getToolData(toolName);
-    const savings = toolData?.savings || toolData?.discount || "";
-    return savings.replace(/^Save Up To\s*/i, "").trim();
+    let savings = toolData?.savings || toolData?.discount || "";
+    savings = savings.replace(/^Save Up To\s*/i, "").trim();
+    if (savings && !/\/(year|yr|y)$/i.test(savings)) {
+      savings = `${savings}/Year`;
+    }
+    return savings;
   };
 
   const getPrimaryCtaLink = (toolName: string): string | null => {
@@ -187,16 +191,16 @@ export default function ToolDeal({ toolBlogCard }: ToolDealProps) {
               className="Frame1321320286 self-stretch inline-flex justify-between items-center"
             >
               <div
-                data-layer="Money Save Up to"
+                data-layer="Money Save Up To"
                 className="MoneySaveUpTo justify-start text-neutral-50 text-sm font-medium font-['Poppins']"
               >
-                Money Save Up to
+                Money Save Up To
               </div>
               <div
-                data-layer="$4,494/Year"
+                data-layer="—"
                 className="4494Year justify-start text-neutral-50 text-sm font-medium font-['Poppins']"
               >
-                {loading ? "Loading..." : getSavingsAmount(tool.toolName) || "$4,494/Year"}
+                {loading ? "Loading..." : getSavingsAmount(tool.toolName) || "—"}
               </div>
             </div>
           </div>
