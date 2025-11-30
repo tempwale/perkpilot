@@ -53,7 +53,8 @@ export default function ToolDeal({ toolBlogCard }: ToolDealProps) {
 
   const getSavingsAmount = (toolName: string): string => {
     const toolData = getToolData(toolName);
-    return toolData?.savings || toolData?.discount || "";
+    const savings = toolData?.savings || toolData?.discount || "";
+    return savings.replace(/^Save Up To\s*/i, "").trim();
   };
 
   const getPrimaryCtaLink = (toolName: string): string | null => {
