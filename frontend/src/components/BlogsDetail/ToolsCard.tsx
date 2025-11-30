@@ -77,7 +77,12 @@ export default function ToolsCard({
 
   const getSavingsAmount = (toolName: string): string => {
     const toolData = getToolData(toolName);
-    return toolData?.savings || toolData?.discount || savingsValue;
+    let savings = toolData?.savings || toolData?.discount || savingsValue;
+    savings = savings.replace(/^Save Up To\s*/i, "").trim();
+    if (savings && !/\/(year|yr|y)$/i.test(savings)) {
+      savings = `${savings}/Year`;
+    }
+    return savings;
   };
 
   const getBadgeText = (toolName: string): string => {
